@@ -92,7 +92,7 @@ class AMFG_Funds_Posttype_Metaboxes {
 
         wp_nonce_field( plugin_basename( __FILE__ ), 'amfg_nonce' );
 
-        $fund_featured = get_post_meta( $post->ID, $this::FIELD_FUND_FEATURED, true );
+        $fund_featured = get_post_meta( $post->ID, self::FIELD_FUND_FEATURED, true );
 
         echo '<label for="_fund_featured">Feature This Event : </label>';
 
@@ -111,7 +111,7 @@ class AMFG_Funds_Posttype_Metaboxes {
         global $post;
         wp_nonce_field( plugin_basename( __FILE__ ), 'amfg_nonce' );
 
-        $meta_data = get_post_meta( $post->ID, $this::FIELD_FUND_URL, true );
+        $meta_data = get_post_meta( $post->ID, self::FIELD_FUND_URL, true );
         echo '<input id="_fund_url" name="_fund_url" value="'.$meta_data.'" />';
     }
 
@@ -121,7 +121,7 @@ class AMFG_Funds_Posttype_Metaboxes {
         global $post;
         wp_nonce_field( plugin_basename( __FILE__ ), 'amfg_nonce' );
 
-        $meta_data = get_post_meta( $post->ID,$this::FIELD_FUND_BSE_ID, true );
+        $meta_data = get_post_meta( $post->ID,self::FIELD_FUND_BSE_ID, true );
         echo '<input id="_fund_bse_id" name="_fund_bse_id" value="'.$meta_data.'" />';
     }
 
@@ -131,7 +131,7 @@ class AMFG_Funds_Posttype_Metaboxes {
         global $post;
         wp_nonce_field( plugin_basename( __FILE__ ), 'amfg_nonce' );
 
-        $meta_data = get_post_meta( $post->ID, $this::FIELD_FUND_NSE_ID, true );
+        $meta_data = get_post_meta( $post->ID, self::FIELD_FUND_NSE_ID, true );
         echo '<input id="_fund_nse_id" name="_fund_nse_id" value="'.$meta_data.'" />';
     }
 
@@ -141,7 +141,7 @@ class AMFG_Funds_Posttype_Metaboxes {
         global $post;
         wp_nonce_field( plugin_basename( __FILE__ ), 'amfg_nonce' );
 
-        $meta_data = get_post_meta( $post->ID, $this::FIELD_FUND_MIN_INVESTMENT, true );
+        $meta_data = get_post_meta( $post->ID, self::FIELD_FUND_MIN_INVESTMENT, true );
         echo '<input id="_fund_min_investment" name="_fund_min_investment" value="'.$meta_data.'" />';
     }
 
@@ -151,7 +151,7 @@ class AMFG_Funds_Posttype_Metaboxes {
         global $post;
         wp_nonce_field( plugin_basename( __FILE__ ), 'amfg_nonce' );
 
-        $meta_data = get_post_meta( $post->ID, $this::FIELD_FUND_RETURNS, true );
+        $meta_data = get_post_meta( $post->ID, self::FIELD_FUND_RETURNS, true );
         echo '<input id="_fund_returns" name="_fund_returns" value="'.$meta_data.'" />';
     }
 
@@ -170,7 +170,7 @@ class AMFG_Funds_Posttype_Metaboxes {
         if ( !current_user_can( 'edit_post', $post->ID ) )
             return;
 
-        $metabox_ids = $this::getConstants($this,'FIELD');
+        $metabox_ids = self::getConstants($this,'FIELD');
 
         foreach ($metabox_ids as $key) {
 
@@ -215,8 +215,5 @@ class AMFG_Funds_Posttype_Metaboxes {
                 add_post_meta( $post->ID, $key, $value );
             }
         }
-
     }
-
-
 }

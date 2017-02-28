@@ -9,6 +9,13 @@ class AMFG_AMCs_Taxonomy {
     public function __construct($plugin_name, $version)
     {
         add_action('init', array( $this , 'amfg_create_taxonomy'));
+        add_action('amc_edit_form_fields',array( $this , 'amfg_amc_edit_form_fields'));
+        add_action('amc_edit_form',array( $this ,  'amfg_amc_edit_form'));
+        add_action('amc_add_form_fields',array( $this , 'amfg_amc_edit_form_fields'));
+        add_action('amc_add_form',array( $this , 'amfg_amc_edit_form'));
+        add_action( 'edited_amc', array( $this , 'amfg_save_custom_fields'), 10, 2 );
+        add_action( 'create_amc', array( $this , 'amfg_save_custom_fields'), 10, 2 );
+
         $this->plugin_name = $plugin_name;
         $this->version = $version;
     }
@@ -46,6 +53,55 @@ class AMFG_AMCs_Taxonomy {
         );
 
         register_taxonomy( 'amc', 'fund', $amc_args );
+    }
+
+    function amfg_amc_edit_form() {
+        ?>
+        <script type="text/javascript">
+            jQuery(document).ready(function(){
+                jQuery('#edittag').attr( "enctype", "multipart/form-data" ).attr( "encoding", "multipart/form-data" );
+            });
+        </script>
+        <?php
+    }
+
+    function amfg_amc_edit_form_fields () {
+        ?>
+        <tr class="form-field">
+            <th valign="top" scope="row">
+                <label for="term_meta[logo]"><?php _e('AMC Logo', ''); ?></label>
+            </th>
+            <td>
+                <input type="file" id="term_meta[logo]" name="term_meta[logo]"/>
+            </td>
+        </tr>
+        <tr class="form-field">
+            <th valign="top" scope="row">
+                <label for="term_meta[url]"><?php _e('AMC Url', ''); ?></label>
+            </th>
+            <td>
+                <input type="text" id="term_meta[url]" name="term_meta[url]"/>
+            </td>
+        </tr>
+        <?php
+    }
+
+    function amfg_save_custom_fields($term_id) {
+/*            print_r($_POST);
+            die;*/
+
+            if ( isset( $_POST['term_meta'] ) ) {
+                $t_id = $term_id;
+                $term_meta = get_option( "taxonomy_term_$t_id" );
+                $cat_keys = array_keys( $_POST['term_meta'] );
+                foreach ( $cat_keys as $key ){
+                    if ( isset( $_POST['term_meta'][$key] ) ){
+                        $term_meta[$key] = $_POST['term_meta'][$key];
+                    }
+                }
+                //save the option array
+                update_option( "taxonomy_term_$t_id", $term_meta );
+            }
     }
 
 }
