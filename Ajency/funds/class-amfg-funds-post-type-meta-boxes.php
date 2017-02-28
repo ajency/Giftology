@@ -158,7 +158,10 @@ class AMFG_Funds_Posttype_Metaboxes {
     function amfg_save_meta( $post_id, $post )  {
 
         if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
-            return;
+          /*  print_r($_POST);
+            die;
+          */
+          return;
         if ( !isset( $_POST['amfg_nonce'] ) )
             return;
         if ( !wp_verify_nonce( $_POST['amfg_nonce'], plugin_basename( __FILE__ ) ) )
@@ -169,26 +172,46 @@ class AMFG_Funds_Posttype_Metaboxes {
 
         $metabox_ids = $this::getConstants($this,'FIELD');
 
-        if(true) {
-            self::amfg_display_error('missing','Something is weird');
-        }
-
         foreach ($metabox_ids as $key) {
 
-            print $key."<br>";
             $value = $_POST[$key];
-            print $value."<br>";
             $existing_value = get_post_meta( $post->ID, $key, true );
-            print $existing_value."<br>";
+
+            switch ($key) {
+                case self::FIELD_FUND_URL:
+
+                    if ($value && filter_var($value, FILTER_VALIDATE_URL) === FALSE) {
+                        self::amfg_display_error(self::FIELD_FUND_URL.'_error','Please enter a valid url for Fund Url');
+                        $value = NULL;
+                    }
+                    break;
+
+                case self::FIELD_FUND_RETURNS:
+
+                    if($value && !is_numeric($value)){
+                        self::amfg_display_error(self::FIELD_FUND_RETURNS.'_error','Please enter a number for Fund Returns');
+                        $value = NULL;
+                    }
+                    break;
+
+                case self::FIELD_FUND_MIN_INVESTMENT:
+
+                    if($value && !is_numeric($value)){
+                        self::amfg_display_error(self::FIELD_FUND_MIN_INVESTMENT.'_error','Please enter a number for Fund Min Investment');
+                        $value = NULL;
+                    }
+                    break;
+
+                default:
+                    //Let every thing else pass
+                    //TODO - Do we want to validate lat long as float?
+            }
 
             if(empty($value) && $existing_value){
-                print "1<br>";
                 delete_post_meta( $post->ID, $key );
             } else if ($existing_value && !empty($value)) {
-                print "2<br>";
                 update_post_meta( $post->ID, $key, $value );
             } else if(!empty($value)) {
-                print "3<br>";
                 add_post_meta( $post->ID, $key, $value );
             }
         }
