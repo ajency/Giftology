@@ -5,19 +5,22 @@ class AMFG_Buckets_Taxonomy {
     private $plugin_name;
     
     private $version;
-    
+
+    private $no_of_buckets;
+
+
     public function __construct($plugin_name, $version)
     {
         add_action('init', array( $this , 'amfg_create_taxonomy'));
-        
         $this->plugin_name = $plugin_name;
         $this->version = $version;
+        $this->no_of_buckets = 3;
     }
 
 
     function amfg_create_taxonomy() {
 
-        for($i = 1; $i <=3; $i++ ){
+        for($i = 1; $i <= $this->no_of_buckets; $i++ ){
 
             $bucket_singular = get_option('_fund_bucket_'.$i.'_singular','Bucket '.$i.' Value');
             $bucket_plural = get_option('_fund_bucket_'.$i.'_plural','Bucket '.$i.' Values');

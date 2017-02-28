@@ -1,6 +1,6 @@
 <?php
 
-class MySettingsPage
+class AMFG_Buckets_Taxonomy_Options
 {
     /**
      * Holds the values to be used in the fields callbacks

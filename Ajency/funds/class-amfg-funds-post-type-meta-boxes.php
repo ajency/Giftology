@@ -17,34 +17,10 @@ class AMFG_Funds_Posttype_Metaboxes {
     {
         add_action('add_meta_boxes', array( $this , 'amfg_register_metaboxes'));
         add_action('save_post', array( $this , 'amfg_save_meta'),1,2);
-        add_action('in_admin_header', array( $this , 'amfg_rename_metaboxes'),9999);
-
-       add_action( 'admin_notices', $this, 'amfg_register_admin_notices', 1, 2);
+        add_action('admin_notices', array($this, 'amfg_register_admin_notices'), 1, 2);
 
         $this->plugin_name = $plugin_name;
         $this->version = $version;
-    }
-
-    public function amfg_rename_metaboxes(){
-        global $wp_meta_boxes;
-
-        /* Specified Custom Post Type. */
-        $custom_post_type = 'fund';
-        /* Only perform these actions on Adding or Editing pages for the specified Custom Post Type. */
-        if(array_key_exists($custom_post_type, $wp_meta_boxes)){
-            /* Make a backup copy of the original Meta Boxes. */
-            $meta_box['featured_image'] = $wp_meta_boxes[$custom_post_type]['side']['low']['postimagediv'];
-
-            /* Remove the original Meta Boxes from the Custom Post Type. */
-            unset($wp_meta_boxes[$custom_post_type]['side']['low']['postimagediv']);
-
-            /* Re-label the "Featured Image" Meta Box. */
-            $meta_box['featured_image']['title'] = 'Fund Image';
-
-            /* Re-add our Meta Boxes to the Custom Post Type. */
-            $wp_meta_boxes[$custom_post_type]['side']['high']['postimagediv'] = $meta_box['featured_image'];
-        }
-
     }
 
     public static function getConstants($class, $prefix = null, $assoc = false, $exclude = [])
@@ -81,19 +57,15 @@ class AMFG_Funds_Posttype_Metaboxes {
 
     function amfg_register_admin_notices() {
 
-        //TODO add messages to string error msgs
-        // If there are no errors, then we'll exit the function
         if ( ! ( $errors = get_transient( 'amfg_errors' ) ) ) {
             return;
         }
-        // Otherwise, build the list of errors that exist in the settings errores
-
 
         $message = '<div id="message" class="error below-h2"><p><ul>';
         $errors = array_column($errors,'message','setting');
 
         foreach ( $errors as $error ) {
-            $message .= '<li>' . __($error,'book') . '</li>';
+            $message .= '<li>' . __($error,'fund') . '</li>';
         }
         $message .= '</ul></p></div><!-- #error -->';
         // Write them out to the screen
@@ -104,6 +76,7 @@ class AMFG_Funds_Posttype_Metaboxes {
     }
 
     function amfg_display_error($id,$message){
+
         add_settings_error(
             $id,
             $id,
@@ -196,13 +169,8 @@ class AMFG_Funds_Posttype_Metaboxes {
 
         $metabox_ids = $this::getConstants($this,'FIELD');
 
-        $validations = [
-
-
-        ];
-
         if(true) {
-            $this->amfg_display_error('missing','Something is weird');
+            self::amfg_display_error('missing','Something is weird');
         }
 
         foreach ($metabox_ids as $key) {
