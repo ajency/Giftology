@@ -19,6 +19,7 @@ class AMFG_Buckets_Taxonomy_Options
         $this->plugin_name = $plugin_name;
         $this->version = $version;
     }
+
     /**
      * Add options page
      */
