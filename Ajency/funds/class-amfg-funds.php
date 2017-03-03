@@ -1,12 +1,12 @@
 <?php
 
-include '/var/www/mfgift/wp-content/themes/mfgiftology/Ajency/ajencyPress/class-ajencypress-post-type.php';
-include '/var/www/mfgift/wp-content/themes/mfgiftology/Ajency/ajencyPress/class-ajencypress-taxonomy.php';
-include '/var/www/mfgift/wp-content/themes/mfgiftology/Ajency/ajencyPress/class-ajencypress-post-type-metaboxes.php';
-include '/var/www/mfgift/wp-content/themes/mfgiftology/Ajency/ajencyPress/class-ajencypress-taxonomy-metaboxes.php';
-include '/var/www/mfgift/wp-content/themes/mfgiftology/Ajency/ajencyPress/class-ajencypress-metaboxes-validation.php';
-include '/var/www/mfgift/wp-content/themes/mfgiftology/Ajency/ajencyPress/class-ajencypress-metaboxes-markup.php';
-include '/var/www/mfgift/wp-content/themes/mfgiftology/Ajency/ajencyPress/class-ajencypress-admin-errors.php';
+include( get_template_directory() . '/Ajency/ajencyPress/class-ajencypress-post-type.php' );
+include( get_template_directory() . '/Ajency/ajencyPress/class-ajencypress-taxonomy.php' );
+include( get_template_directory() . '/Ajency/ajencyPress/class-ajencypress-post-type-metaboxes.php' );
+include( get_template_directory() . '/Ajency/ajencyPress/class-ajencypress-taxonomy-metaboxes.php' );
+include( get_template_directory() . '/Ajency/ajencyPress/class-ajencypress-metaboxes-validation.php' );
+include( get_template_directory() . '/Ajency/ajencyPress/class-ajencypress-metaboxes-markup.php' );
+include( get_template_directory() . '/Ajency/ajencyPress/class-ajencypress-admin-errors.php' );
 
 class Ajency_MFG_Funds {
 
