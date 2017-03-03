@@ -93,6 +93,16 @@ class Ajency_MFG_Funds {
 
         $taxonomy_meta_boxes = new Ajencypress_Taxonomy_Metaboxes();
         $taxonomy_meta_boxes->setTaxonomyName('amc');
+
+        $fields = [
+            [
+                'id' => '_url' , 'title' => 'AMC Url','type' => 'link',
+                'validations' => [ 'required' => ['required' => true ]],
+                'message' => 'A link for url'
+            ]
+        ];
+
+        $taxonomy_meta_boxes->setMetaFieldConfig($fields);
         $taxonomy_meta_boxes->add_metaboxes_to_taxonomy();
 
 

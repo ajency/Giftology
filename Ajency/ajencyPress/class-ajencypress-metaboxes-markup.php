@@ -10,13 +10,7 @@ class Ajencypress_Metabox_Markup {
     const FIELD_TYPE_TEXT = 'text';
 
 
-    function display_meta_box_field_markup($post, $callback_args) {
-
-        global $post;
-        wp_nonce_field( 'amfg_nonce', 'amfg_nonce' );
-        $field = $callback_args['args'];
-
-        $meta_data = get_post_meta($post->ID,$field['id'],true);
+    static function generate_meta_box_field_markup($field,$meta_data) {
 
         switch ($field['type']) {
             case self::FIELD_TYPE_LINK:
@@ -52,7 +46,14 @@ class Ajencypress_Metabox_Markup {
         if($field['message']) {
             $meta_box_content = $meta_box_content.'<p>'.$field['message'].'</p>';
         }
-        echo $meta_box_content;
+        return $meta_box_content;
+    }
 
+    function display_meta_box_field_markup($post, $callback_args) {
+        global $post;
+        wp_nonce_field( 'amfg_nonce', 'amfg_nonce' );
+        $field = $callback_args['args'];
+        $meta_data = get_post_meta($post->ID,$field['id'],true);
+        echo self::generate_meta_box_field_markup($field,$meta_data);
     }
 }

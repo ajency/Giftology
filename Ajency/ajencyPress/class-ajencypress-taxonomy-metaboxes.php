@@ -5,6 +5,16 @@ class Ajencypress_Taxonomy_Metaboxes {
 
     private $taxonomy_name;
 
+    private $metaFieldConfig;
+
+    /**
+     * @param mixed $metaFieldConfig
+     */
+    public function setMetaFieldConfig($metaFieldConfig)
+    {
+        $this->metaFieldConfig = $metaFieldConfig;
+    }
+
     /**
      * @param mixed $taxonomy_name
      */
@@ -15,10 +25,10 @@ class Ajencypress_Taxonomy_Metaboxes {
 
     function add_metaboxes_to_taxonomy() {
 
-        add_action($this->taxonomy_name.'_edit_form_fields',array( $this , 'metaboxes_amc_edit_form_fields'));
-        add_action($this->taxonomy_name.'_edit_form',array( $this ,  'metaboxes_amc_edit_form'));
-        add_action($this->taxonomy_name.'_add_form_fields',array( $this , 'metaboxes_amc_edit_form_fields'));
-        add_action($this->taxonomy_name.'_add_form',array( $this , 'metaboxes_amc_edit_form'));
+        add_action($this->taxonomy_name.'_edit_form_fields',array( $this , 'metaboxes_amc_edit_form_fields'), 10, 2 );
+        add_action($this->taxonomy_name.'_edit_form',array( $this ,  'metaboxes_amc_edit_form'), 10, 2 );
+        add_action($this->taxonomy_name.'_add_form_fields',array( $this , 'metaboxes_amc_edit_form_fields'), 10, 2 );
+        add_action($this->taxonomy_name.'_add_form',array( $this , 'metaboxes_amc_edit_form'), 10, 2 );
         add_action( 'edited_'.$this->taxonomy_name, array( $this , 'metaboxes_save_custom_fields'), 10, 2 );
         add_action( 'create_'.$this->taxonomy_name, array( $this , 'metaboxes_save_custom_fields'), 10, 2 );
     }
@@ -34,7 +44,11 @@ class Ajencypress_Taxonomy_Metaboxes {
     }
 
 
-    function metaboxes_amc_add_form_fields () {
+    function metaboxes_amc_add_form_fields ($tag) {
+
+        foreach ($this->metaFieldConfig as $field)
+        {
+            $meta_value = get_term_meta( $tag->term_id,$field['id'],true);
         ?>
         <!--<tr class="form-field">
             <th valign="top" scope="row">
@@ -45,44 +59,54 @@ class Ajencypress_Taxonomy_Metaboxes {
             </td>
         </tr>-->
 
-        <div class="form-field term-amc-url-wrap">
-            <label for="amc-url"><?php _e('AMC Url', ''); ?></label>
-            <input name="term_meta[url]" id="term_meta[url]" type="text" value="" size="40">
-            <p>The “slug” is the URL-friendly version of the name. It is usually all lowercase and contains only letters, numbers, and hyphens.</p>
+        <div class="form-field term-<?php echo $field['id'] ?>-wrap">
+            <label for="amc-url"><?php _e($field['title'], ''); ?></label>
+            <?php Ajencypress_Metabox_Markup::generate_meta_box_field_markup($field,$meta_value) ?>
         </div>
         <?php
+        }
     }
 
 
-    function metaboxes_amc_edit_form_fields () {
-        $meta_value = get_term_meta( 8,'url',true);
-        ?>
-        <tr class="form-field">
-            <th valign="top" scope="row">
-                <label for="term_meta[url]"><?php _e('AMC Url', ''); ?></label>
-            </th>
-            <td>
-                <input type="text" id="term_meta[url]" name="term_meta[url]" value="<?php echo $meta_value; ?>"/>
-            </td>
-        </tr>
+    function metaboxes_amc_edit_form_fields ($tag) {
 
-<!--        <div class="form-field term-amc-url-wrap">
-            <label for="amc-url"><?php /*_e('AMC Url', ''); */?></label>
+        foreach ($this->metaFieldConfig as $field) {
+            $meta_value = get_term_meta( $tag->term_id,$field['id'],true);
+
+            ?>
+            <tr class="form-field">
+                <th valign="top" scope="row">
+                    <label for="term_meta[<?php _e($field['id'], ''); ?>]"><?php _e($field['title'], ''); ?></label>
+                </th>
+                <td>
+                    <?php echo Ajencypress_Metabox_Markup::generate_meta_box_field_markup($field,$meta_value) ?>
+                </td>
+            </tr>
+
+            <!--        <div class="form-field term-amc-url-wrap">
+            <label for="amc-url"><?php /*_e('AMC Url', ''); */
+            ?></label>
             <input name="term_meta[url]" id="term_meta[url]" type="text" value="" size="40">
             <p>The “slug” is the URL-friendly version of the name. It is usually all lowercase and contains only letters, numbers, and hyphens.</p>
         </div>-->
-        <?php
+            <?php
+        }
     }
 
     function metaboxes_save_custom_fields($term_id) {
+            foreach ( $this->metaFieldConfig as $field ){
+                $key = $field['id'];
+                $existing_value = get_term_meta( $term_id, $key, true );
+                $value = $_POST[$field['id']];
 
-        if ( isset( $_POST['term_meta'] ) ) {
-            $t_id = $term_id;
-            foreach ( $_POST['term_meta'] as $key => $value ){
-                add_term_meta( $t_id, $key, $value );
+                if(empty($value) && $existing_value) {
+                    delete_term_meta( $term_id, $key );
+                } else if ($existing_value && !empty($value)) {
+                    update_term_meta( $term_id, $key, $value );
+                } else if(!empty($value)) {
+                    add_term_meta( $term_id, $key, $value );
+                }
             }
-            //save the option array
-        }
     }
 
 
