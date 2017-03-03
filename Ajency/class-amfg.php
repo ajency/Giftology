@@ -13,24 +13,8 @@ class Ajency_MFG {
     }
 
     public function load() {
-
-        include 'funds/class-amfg-funds-post-type.php';
-        new AMFG_Funds_Posttype($this->plugin_name,$this->version);
-
-        include 'funds/class-amfg-funds-post-type-meta-boxes.php';
-        new AMFG_Funds_Posttype_Metaboxes($this->plugin_name,$this->version);
-
-        include 'funds/class-amfg-amc-taxonomy.php';
-        new AMFG_AMCs_Taxonomy($this->plugin_name,$this->version);
-
-        include 'funds/class-amfg-buckets-taxonomy.php';
-        new AMFG_Buckets_Taxonomy($this->plugin_name,$this->version);
-
-        if( is_admin() ) {
-
-            include 'funds/class-amfg-buckets-taxonomy-options.php';
-            new AMFG_Buckets_Taxonomy_Options($this->plugin_name,$this->version);
-
-        }
+        //Initialize the fund module
+        include 'funds/class-amfg-funds.php';
+        new Ajency_MFG_Funds($this->plugin_name,$this->version);
     }
 }
