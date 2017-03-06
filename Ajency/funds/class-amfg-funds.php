@@ -3,10 +3,11 @@
 include( get_template_directory() . '/Ajency/ajencyPress/class-ajencypress-post-type.php' );
 include( get_template_directory() . '/Ajency/ajencyPress/class-ajencypress-taxonomy.php' );
 include( get_template_directory() . '/Ajency/ajencyPress/class-ajencypress-post-type-metaboxes.php' );
-include( get_template_directory() . '/Ajency/ajencyPress/class-ajencypress-taxonomy-metaboxes.php' );
-include( get_template_directory() . '/Ajency/ajencyPress/class-ajencypress-metaboxes-validation.php' );
-include( get_template_directory() . '/Ajency/ajencyPress/class-ajencypress-metaboxes-markup.php' );
+include( get_template_directory() . '/Ajency/ajencyPress/class-ajencypress-taxonomy-fields.php' );
+include( get_template_directory() . '/Ajency/ajencyPress/class-ajencypress-field-validation.php' );
+include( get_template_directory() . '/Ajency/ajencyPress/class-ajencypress-field-markup.php' );
 include( get_template_directory() . '/Ajency/ajencyPress/class-ajencypress-admin-errors.php' );
+
 
 class Ajency_MFG_Funds {
 
@@ -22,6 +23,16 @@ class Ajency_MFG_Funds {
     }
 
     public function load() {
+
+#        add_action( 'init',  array($this,'_wp_term_images_init'), 88 );
+/*
+        function enable_featured_image() {
+            if(isset($_GET['taxonomy']) && $_GET['taxonomy'] == $this->taxonomy_name) {
+            }
+        }*/
+
+
+        new Ajencypress_Admin_Errors();
 
         //Create Custom post type for fund
         $funds_post_type = new Ajencypress_Post_Type();
@@ -90,10 +101,8 @@ class Ajency_MFG_Funds {
         $meta_boxes->setPostStatusIfValidationFails('draft');
         $meta_boxes->add_metaboxes_to_post_type();
 
-
-        $taxonomy_meta_boxes = new Ajencypress_Taxonomy_Metaboxes();
-        $taxonomy_meta_boxes->setTaxonomyName('amc');
-
+        $taxonomy_fields = new Ajencypress_Taxonomy_Fields();
+        $taxonomy_fields->setTaxonomyName('amc');
         $fields = [
             [
                 'id' => '_url' , 'title' => 'AMC Url','type' => 'link',
@@ -101,12 +110,12 @@ class Ajency_MFG_Funds {
                 'message' => 'A link for url'
             ]
         ];
+        $taxonomy_fields->setMetaFieldConfig($fields);
+        $taxonomy_fields->add_metaboxes_to_taxonomy();
+        $taxonomy_fields->enable_featured_image();
 
-        $taxonomy_meta_boxes->setMetaFieldConfig($fields);
-        $taxonomy_meta_boxes->add_metaboxes_to_taxonomy();
 
 
-        //Other custom stuff like option settings. Can we make this generic also? - NO
         if( is_admin() ) {
 
             include 'class-amfg-buckets-taxonomy-options.php';

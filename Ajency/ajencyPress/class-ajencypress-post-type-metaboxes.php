@@ -36,24 +36,29 @@ class Ajencypress_Post_Type_Metaboxes {
         $this->post_status_if_validation_fails = $post_status_if_validation_fails;
     }
 
-    function remove_post_published_admin_message( $messages )
-    {
-        global $post, $post_ID;
-        if($post->post_status == 'draft') {
-            unset($messages[post][6]);
-            return $messages;
-        }
-    }
-
     public function add_metaboxes_to_post_type() {
 
         add_action('add_meta_boxes', array( $this , 'register_metaboxes'));
         add_action('save_post', array( $this , 'save_meta'),1,2);
 
         //Reusable Admin Notices function
-        add_action('admin_notices', array(Ajencypress_Admin_Errors::class, 'register_admin_notices'), 1, 2);
-        add_filter( 'post_updated_messages', array( $this , 'remove_post_published_admin_message' ));
+       # add_filter( 'post_updated_messages', array( $this , 'remove_post_published_admin_message' ));
+
+        /*        add_action('transition_post_status', array($this, 'post_status_transition'), 1, 3);*/
     }
+
+    function remove_post_published_admin_message( $messages )
+    {
+            unset($messages[post][6]);
+            return $messages;
+    }
+
+            /*function post_status_transition( $new_status, $old_status, $post ) {
+
+                if ($_POST && $new_status === 'publish' && true) {
+               #     $this->ajf_get_warning_message();
+                }
+            }*/
 
     /**
      * @param mixed $metaFieldConfig
@@ -89,7 +94,7 @@ class Ajencypress_Post_Type_Metaboxes {
         foreach ($fields as $field) {
 
             $key = $field['id'];
-            $value = Ajencypress_Metabox_Validation::meta_validations($field,$_POST[$field['id']]);
+            $value = Ajencypress_Field_Validation::meta_validations($field,$_POST[$field['id']]);
             //Validation errors encountered, we set this to
             if($value == false) {
                 $this->setValidationSuccess($value);
@@ -112,12 +117,14 @@ class Ajencypress_Post_Type_Metaboxes {
         }
 
         add_action( 'save_post', array( $this, 'save_meta' ), 1, 2 );
+
     }
+
 
     function register_metaboxes() {
 
         foreach ($this->metaFieldConfig as $key => $field) {
-            add_meta_box( $field['id'], $field['title'], array( Ajencypress_Metabox_Markup::class, 'display_meta_box_field_markup'), $this->post_type, 'side', 'default', $field );
+            add_meta_box( $field['id'], $field['title'], array( Ajencypress_Field_Markup::class, 'display_meta_box_field_markup'), $this->post_type, 'side', 'default', $field );
         }
     }
 }
