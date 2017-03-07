@@ -87,8 +87,12 @@ class Ajency_MFG_Funds {
                 'validations' => [ 'required' => ['required' => true ]]
             ],
             [
-                'id' => '_fund_returns' ,'title' => 'Fund Returns','type' => 'number',
-                'validations' => [ 'required' => ['required' => true ]]
+                'id' => '_fund_returns' ,'title' => 'Fund Returns(%)', 'type' => 'number',
+                'validations' => [
+                    'required' => ['required' => true ],
+                    'min' => ['min' => 0 , 'message' => 'Fund Returns has to be a percentage' ],
+                    'max' => ['max' => 100 , 'message' => 'Fund Returns has to be a percentage' ]
+                ]
             ],
             [
                 'id' => '_fund_min_investment' ,'title' => 'Fund Min Investment','type' => 'number',

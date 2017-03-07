@@ -16,5 +16,10 @@ class Ajency_MFG {
         //Initialize the fund module
         include 'funds/class-amfg-funds.php';
         new Ajency_MFG_Funds($this->plugin_name,$this->version);
+
+        include 'sociallogin/class-amfg-social-login.php';
+        new Ajency_MFG_Social_Login($this->plugin_name,$this->version);
+
     }
+
 }

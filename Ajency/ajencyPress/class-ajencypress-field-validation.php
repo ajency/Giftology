@@ -40,15 +40,6 @@ class Ajencypress_Field_Validation {
                     self::add_validation_error_to_queue($field['id'].'_error','Please enter a valid url for '.$field['title']);
                     $value = false;
                 }
-
-                break;
-
-            case self::FIELD_TYPE_NUMBER:
-
-                if(!empty($value) && !is_numeric($value)){
-                    self::add_validation_error_to_queue($field['id'].'_error','Please enter a number for '.$field['title']);
-                    $value = false;
-                }
                 break;
 
             case self::FIELD_TYPE_NUMBER:
@@ -58,18 +49,20 @@ class Ajencypress_Field_Validation {
                     $value = false;
                 }
 
-                if(!empty($value) && !is_numeric($value) && $value < $validations['between']['min']){
-                    self::add_validation_error_to_queue($field['id'].'_error','Please enter a number greater than '.$validations['between']['min'].' '.$field['title']);
+                //Validate Min Values
+                if(isset($validations['min']['min']) && !empty($value) && is_numeric($value) && $value < $validations['min']['min']){
+                    $message = isset($validations['min']['message']) ? $validations['min']['message']  : 'Please enter a number greater than '.$validations['min']['min'].' for '.$field['title'];
+                    self::add_validation_error_to_queue($field['id'].'_error',$message);
                     $value = false;
                 }
 
-                if(!empty($value) && !is_numeric($value) && $value > $validations['between']['max']){
-                    self::add_validation_error_to_queue($field['id'].'_error','Please enter a number less than '.$validations['between']['max'].' '.$field['title']);
+                //Validate Max Values
+                if(isset($validations['max']['max']) && !empty($value) && is_numeric($value) && $value > $validations['max']['max']){
+                    $message = isset($validations['max']['message']) ? $validations['max']['message']  : 'Please enter a number less than '.$validations['max']['max'].' for '.$field['title'];
+                    self::add_validation_error_to_queue($field['id'].'_error',$message);
                     $value = false;
                 }
-
                 break;
-
             default:
         }
 
@@ -83,7 +76,7 @@ class Ajencypress_Field_Validation {
         add_settings_error(
             $id,
             $id,
-            __($message,'sdfsdf'),
+            __($message,'sdfsdf'), //TODO
             'error'
         );
         set_transient( 'amfg_errors', get_settings_errors(), 30 );
