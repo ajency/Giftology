@@ -1,7 +1,4 @@
 <?php
-do_action( 'wordpress_social_login' );
-die;
-
 get_header(); ?>
 
 <div id="primary" class="content-area">

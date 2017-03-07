@@ -49,20 +49,27 @@ class Ajency_MFG_Funds {
         $amc_taxonomy->create_taxonomy();
 
         //Create 3 bucket AMCs
+        $bucket_names = get_option('_amfg_bucket_settings');
         $bucket_1_taxonomy = new Ajencypress_Taxonomy();
         $bucket_1_taxonomy->setCustomTaxonomyName('bucket-1');
+        $bucket_1_taxonomy->setSingularLabel($bucket_names['_amfg_bucket_1_singular']);
+        $bucket_1_taxonomy->setPluralLabel($bucket_names['_amfg_bucket_1_plural']);
         $bucket_1_taxonomy->setAttachToPostType('fund');
         $bucket_1_taxonomy->setL10nDomain($this->plugin_name);
         $bucket_1_taxonomy->create_taxonomy();
 
         $bucket_2_taxonomy = new Ajencypress_Taxonomy();
         $bucket_2_taxonomy->setCustomTaxonomyName('bucket-2');
+        $bucket_2_taxonomy->setSingularLabel($bucket_names['_amfg_bucket_2_singular']);
+        $bucket_2_taxonomy->setPluralLabel($bucket_names['_amfg_bucket_2_plural']);
         $bucket_2_taxonomy->setAttachToPostType('fund');
         $bucket_2_taxonomy->setL10nDomain($this->plugin_name);
         $bucket_2_taxonomy->create_taxonomy();
 
         $bucket_3_taxonomy = new Ajencypress_Taxonomy();
         $bucket_3_taxonomy->setCustomTaxonomyName('bucket-3');
+        $bucket_3_taxonomy->setSingularLabel($bucket_names['_amfg_bucket_3_singular']);
+        $bucket_3_taxonomy->setPluralLabel($bucket_names['_amfg_bucket_3_plural']);
         $bucket_3_taxonomy->setAttachToPostType('fund');
         $bucket_3_taxonomy->setL10nDomain($this->plugin_name);
         $bucket_3_taxonomy->create_taxonomy();
@@ -119,7 +126,7 @@ class Ajency_MFG_Funds {
         $taxonomy_fields->enable_featured_image();
 
 
-
+        //Add theme options for buckets
         if( is_admin() ) {
 
             include 'class-amfg-buckets-taxonomy-options.php';

@@ -1,6 +1,4 @@
 <?php
-echo "Single";
-die;
 /**
  * The template for displaying all single posts and attachments
  *

@@ -27,12 +27,12 @@ class Ajencypress_Taxonomy {
 
     function create_taxonomy_action() {
 
-        if(!isset($this->singular_label)) {
+        if(empty($this->singular_label)) {
 
             $this->singular_label = ucfirst($this->custom_taxonomy_name);
         }
 
-        if(!isset($this->plural_label)) {
+        if(empty($this->plural_label)) {
 
             $this->plural_label = ucfirst($this->custom_taxonomy_name.'s');
         }

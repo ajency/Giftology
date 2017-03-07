@@ -1,5 +1,4 @@
 <?php
-die;
 /**
  * The template for displaying pages
  *

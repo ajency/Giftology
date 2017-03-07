@@ -1,6 +1,4 @@
 <?php
-echo "Arch";
-die;
 /**
  * The template for displaying archive pages
  *
