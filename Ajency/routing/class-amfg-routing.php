@@ -23,9 +23,20 @@ class Ajency_MFG_Routing {
 
     function my_plugin_parse_request($wp) {
 
-        do_action( 'wordpress_social_login' );
-        print_r($wp->query_vars);
+        if($wp->query_vars['page'] == 'test-anom')
+        {
+            print "Any user Can See This Message";
+            do_action( 'wordpress_social_login' );
 
+        } else if ($wp->query_vars['page'] == 'test-auth') {
+
+            if(is_user_logged_in()) {
+                print "Logged in user Can See This Message";
+
+            } else {
+                do_action( 'wordpress_social_login' );
+            }
+        }
     }
 
     function my_plugin_query_vars($vars) {
@@ -35,7 +46,18 @@ class Ajency_MFG_Routing {
 
     function send_email($user_id) {
 
-        $html =
-        print_r($user_id);
+        $user = get_userdata($user_id);
+        $email_to = $user->user_email;
+        $email_subject = "Welcome, $user->first_name";
+        $message = 'Message';
+
+        $headers[] = 'From: Me Myself <me@example.net>';
+
+        if(wp_mail($email_to,$email_subject,$message, $headers)) {
+            echo json_encode(array("result"=>"complete"));
+        } else {
+            echo json_encode(array("result" => "mail_error"));
+            var_dump($GLOBALS['phpmailer']->ErrorInfo);
+        }
     }
 }
