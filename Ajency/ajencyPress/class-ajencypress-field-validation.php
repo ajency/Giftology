@@ -1,7 +1,7 @@
 <?php
 
 
-class Ajencypress_Field_Validation {
+class Ajencypress_Field_Validation_New {
 
     const FIELD_TYPE_CHECKBOX = 'checkbox';
     const FIELD_TYPE_LINK = 'link';
@@ -23,8 +23,7 @@ class Ajencypress_Field_Validation {
                 $message = $field['title'].' field is Required';
             }
 
-            self::add_validation_error_to_queue($field['id'].'_error', $message);
-            $value = false;
+            $errors[] = $message;
         }
 
        /* if(isset($validations['regex']) && (preg_match($validations['regex']['regex'], $value))) {
@@ -37,48 +36,33 @@ class Ajencypress_Field_Validation {
             case self::FIELD_TYPE_LINK:
 
                 if (!empty($value) && filter_var($value, FILTER_VALIDATE_URL) === FALSE) {
-                    self::add_validation_error_to_queue($field['id'].'_error','Please enter a valid url for '.$field['title']);
-                    $value = false;
+
+                    $errors[] = 'Please enter a valid url for '.$field['title'];
                 }
                 break;
 
             case self::FIELD_TYPE_NUMBER:
 
                 if(!empty($value) && !is_numeric($value)){
-                    self::add_validation_error_to_queue($field['id'].'_error','Please enter a number for '.$field['title']);
-                    $value = false;
+
+                    $errors[] = 'Please enter a number for '.$field['title'];
                 }
 
                 //Validate Min Values
                 if(isset($validations['min']['min']) && !empty($value) && is_numeric($value) && $value < $validations['min']['min']){
                     $message = isset($validations['min']['message']) ? $validations['min']['message']  : 'Please enter a number greater than '.$validations['min']['min'].' for '.$field['title'];
-                    self::add_validation_error_to_queue($field['id'].'_error',$message);
-                    $value = false;
+                    $errors[] = $message;
                 }
 
                 //Validate Max Values
                 if(isset($validations['max']['max']) && !empty($value) && is_numeric($value) && $value > $validations['max']['max']){
                     $message = isset($validations['max']['message']) ? $validations['max']['message']  : 'Please enter a number less than '.$validations['max']['max'].' for '.$field['title'];
-                    self::add_validation_error_to_queue($field['id'].'_error',$message);
-                    $value = false;
+                    $errors[] = $message;
                 }
                 break;
             default:
         }
 
-        return $value;
-    }
-
-
-
-    static function add_validation_error_to_queue($id,$message) {
-
-        add_settings_error(
-            $id,
-            $id,
-            __($message,'sdfsdf'), //TODO
-            'error'
-        );
-        set_transient( 'amfg_errors', get_settings_errors(), 30 );
+        return $errors;
     }
 }

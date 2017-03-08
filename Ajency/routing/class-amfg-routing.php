@@ -32,8 +32,8 @@ class Ajency_MFG_Routing {
 
             if(is_user_logged_in()) {
                 print "Logged in user Can See This Message";
-
             } else {
+                print "Logged out user Can See This Message";
                 do_action( 'wordpress_social_login' );
             }
         }

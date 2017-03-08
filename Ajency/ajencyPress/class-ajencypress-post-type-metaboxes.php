@@ -11,21 +11,12 @@ class Ajencypress_Post_Type_Metaboxes {
 
     private $metaFieldConfig;
     private $post_type;
-    private $validation_success;
     private $post_status_if_validation_fails;
 
     public function __construct()
     {
         $this->post_type = 'post';
         $this->post_status_if_validation_fails = false;
-    }
-
-    /**
-     * @param mixed $validation_failed
-     */
-    public function setValidationSuccess($validation_success)
-    {
-        $this->validation_success = $validation_success;
     }
 
     /**
@@ -42,23 +33,23 @@ class Ajencypress_Post_Type_Metaboxes {
         add_action('save_post', array( $this , 'save_meta'),1,2);
 
         //Reusable Admin Notices function
-       # add_filter( 'post_updated_messages', array( $this , 'remove_post_published_admin_message' ));
+        # add_filter( 'post_updated_messages', array( $this , 'remove_post_published_admin_message' ));
 
         /*        add_action('transition_post_status', array($this, 'post_status_transition'), 1, 3);*/
     }
 
     function remove_post_published_admin_message( $messages )
     {
-            unset($messages[post][6]);
-            return $messages;
+        unset($messages[post][6]);
+        return $messages;
     }
 
-            /*function post_status_transition( $new_status, $old_status, $post ) {
+    /*function post_status_transition( $new_status, $old_status, $post ) {
 
-                if ($_POST && $new_status === 'publish' && true) {
-               #     $this->ajf_get_warning_message();
-                }
-            }*/
+        if ($_POST && $new_status === 'publish' && true) {
+       #     $this->ajf_get_warning_message();
+        }
+    }*/
 
     /**
      * @param mixed $metaFieldConfig
@@ -78,6 +69,7 @@ class Ajencypress_Post_Type_Metaboxes {
 
     public function save_meta( $post_id, $post) {
 
+
         if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
             return;
         if ( !isset( $_POST['amfg_nonce'] ) )
@@ -88,17 +80,18 @@ class Ajencypress_Post_Type_Metaboxes {
         if ( !current_user_can( 'edit_post', $post->ID ) )
             return;
 
-        $fields = $this->metaFieldConfig;
+        foreach ($this->metaFieldConfig as $field) {
 
-
-        foreach ($fields as $field) {
 
             $key = $field['id'];
-            $value = Ajencypress_Field_Validation::meta_validations($field,$_POST[$field['id']]);
-            //Validation errors encountered, we set this to
-            if($value == false) {
-                $this->setValidationSuccess($value);
+            $value = $_POST[$key];
+            $errors[$key] = Ajencypress_Field_Validation_New::meta_validations($field,$value);
+            if(is_array($errors[$key])) {
+                $value = false;
+            } else {
+                unset($errors[$key]);
             }
+
             $existing_value = get_post_meta( $post->ID, $field['id'], true );
 
             if(empty($value) && $existing_value) {
@@ -110,13 +103,17 @@ class Ajencypress_Post_Type_Metaboxes {
             }
         }
 
-        remove_action( 'save_post',  array( $this, 'save_meta' ), 1, 2 );
+        if(!empty($errors)) {
+            foreach ($errors as $key => $error) {
+                Ajencypress_Admin_Errors::add_validation_error_to_queue($key, implode(" ,",$error));
+            }
+            remove_action( 'save_post',  array( $this, 'save_meta' ), 1, 2 );
 
-        if(!$this->validation_success && $this->post_status_if_validation_fails) {
-            wp_update_post( array( 'ID' => $post_id, 'post_status' => $this->post_status_if_validation_fails ));
+            if($this->post_status_if_validation_fails) {
+                wp_update_post( array( 'ID' => $post_id, 'post_status' => $this->post_status_if_validation_fails ));
+            }
+            add_action( 'save_post', array( $this, 'save_meta' ), 1, 2 );
         }
-
-        add_action( 'save_post', array( $this, 'save_meta' ), 1, 2 );
 
     }
 

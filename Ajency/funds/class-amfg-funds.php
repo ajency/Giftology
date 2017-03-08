@@ -4,8 +4,8 @@ include( get_template_directory() . '/Ajency/ajencyPress/class-ajencypress-post-
 include( get_template_directory() . '/Ajency/ajencyPress/class-ajencypress-taxonomy.php' );
 include( get_template_directory() . '/Ajency/ajencyPress/class-ajencypress-post-type-metaboxes.php' );
 include( get_template_directory() . '/Ajency/ajencyPress/class-ajencypress-taxonomy-fields.php' );
-include( get_template_directory() . '/Ajency/ajencyPress/class-ajencypress-field-validation.php' );
 include( get_template_directory() . '/Ajency/ajencyPress/class-ajencypress-field-markup.php' );
+include( get_template_directory() . '/Ajency/ajencyPress/class-ajencypress-field-validation.php' );
 include( get_template_directory() . '/Ajency/ajencyPress/class-ajencypress-admin-errors.php' );
 
 
@@ -32,7 +32,7 @@ class Ajency_MFG_Funds {
         }*/
 
 
-        new Ajencypress_Admin_Errors();
+        new Ajencypress_Admin_Errors( $this->plugin_name);
 
         //Create Custom post type for fund
         $funds_post_type = new Ajencypress_Post_Type();
@@ -78,7 +78,6 @@ class Ajency_MFG_Funds {
         $fields = [
             [
                 'id' => '_fund_featured' , 'title' => 'Feature this Fund','type' => 'checkbox',
-                'validations' => [ 'required' => ['required' => true ], 'regex' => ['regex' => false, 'message' => 'sdfsdf' ]],
                 'message' => 'Feature this fund to make it appear'
             ],
             [
@@ -119,9 +118,24 @@ class Ajency_MFG_Funds {
                 'id' => '_url' , 'title' => 'AMC Url','type' => 'link',
                 'validations' => [ 'required' => ['required' => true ]],
                 'message' => 'A link for url'
+            ],
+            [
+                'id' => 'description' ,'type' => NULL,
+                'validations' => [ 'required' => ['required' => true  , 'message' => 'AMC Description field is required']],
+
+            ],
+            [
+                'id' => 'term-image' ,'type' => NULL,
+                'validations' => [ 'required' => ['required' => true , 'message' => 'AMC Image field is required']],
+
+            ],
+            [
+                'id' => 'name' ,'type' => NULL,
+                'validations' => [ 'required' => ['required' => true , 'message' => 'AMC Name field is required']],
             ]
         ];
         $taxonomy_fields->setMetaFieldConfig($fields);
+        $taxonomy_fields->metaConfigIncludesDefaultFields();
         $taxonomy_fields->add_metaboxes_to_taxonomy();
         $taxonomy_fields->enable_featured_image();
 

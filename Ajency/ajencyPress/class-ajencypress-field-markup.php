@@ -48,7 +48,7 @@ class Ajencypress_Field_Markup {
                 break;
 
             default:
-                $meta_box_content = '<input type="text" id="'.$field['id'].'" name="'.$field['id'].'" value="'.$meta_data.'" />';
+                $meta_box_content = false;
         }
         if($field['message']) {
             $meta_box_content = $meta_box_content.'<p>'.$field['message'].'</p>';

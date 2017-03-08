@@ -7,6 +7,35 @@ class Ajencypress_Taxonomy_Fields {
 
     private $metaFieldConfig;
 
+    public function metaConfigIncludesDefaultFields()
+    {
+        add_filter( 'pre_insert_term', array($this, 'prevent_add_term'), 20, 2 );
+    }
+
+    function prevent_add_term( $term, $taxonomy )
+    {
+        foreach ($this->metaFieldConfig as $field) {
+
+            if($field['id'] == 'name') {
+                $field['id']  = 'tag-name'; //I know, horrible, absolutely horrible TODO
+            }
+
+            $errors[$field['id']] = Ajencypress_Field_Validation_New::meta_validations($field,$_POST[$field['id']]);
+            if(is_array($errors[$field['id']])) {
+
+            } else {
+                unset($errors[$field['id']]);
+            }
+        }
+        if(!empty($errors)) {
+            foreach ($errors as $key => $error) {
+                $final_errors[] = implode(" ,", $error);
+            }
+            $term = new WP_Error('invalid_term', __(implode(', ', $final_errors), 'textdomain'));
+        }
+        return $term;
+    }
+
     /**
      * @param mixed $metaFieldConfig
      */
@@ -49,6 +78,8 @@ class Ajencypress_Taxonomy_Fields {
         add_action( 'create_'.$this->taxonomy_name, array( $this , 'metaboxes_save_custom_fields'), 10, 2 );
     }
 
+
+
     function metaboxes_amc_edit_form() {
         ?>
         <script type="text/javascript">
@@ -64,22 +95,16 @@ class Ajencypress_Taxonomy_Fields {
 
         foreach ($this->metaFieldConfig as $field)
         {
-            $meta_value = get_term_meta( $tag->term_id,$field['id'],true);
-        ?>
-        <!--<tr class="form-field">
-            <th valign="top" scope="row">
-                <label for="term_meta[logo]"><?php /*_e('AMC Logo', ''); */?></label>
-            </th>
-            <td>
-                <input type="file" id="term_meta[logo]" name="term_meta[logo]"/>
-            </td>
-        </tr>-->
+            if($field['type']) {
+                $meta_value = get_term_meta( $tag->term_id,$field['id'],true);
+                ?>
 
-        <div class="form-field term-<?php echo $field['id'] ?>-wrap">
-            <label for="amc-url"><?php _e($field['title'], ''); ?></label>
-            <?php Ajencypress_Field_Markup::generate_meta_box_field_markup($field,$meta_value) ?>
-        </div>
-        <?php
+                <div class="form-field term-<?php echo $field['id'] ?>-wrap">
+                    <label for="amc-url"><?php _e($field['title'], ''); ?></label>
+                    <?php Ajencypress_Field_Markup::generate_meta_box_field_markup($field,$meta_value) ?>
+                </div>
+                <?php
+            }
         }
     }
 
@@ -87,33 +112,46 @@ class Ajencypress_Taxonomy_Fields {
     function metaboxes_amc_edit_form_fields ($tag) {
 
         foreach ($this->metaFieldConfig as $field) {
-            $meta_value = get_term_meta( $tag->term_id,$field['id'],true);
 
-            ?>
-            <tr class="form-field">
-                <th valign="top" scope="row">
-                    <label for="term_meta[<?php _e($field['id'], ''); ?>]"><?php _e($field['title'], ''); ?></label>
-                </th>
-                <td>
-                    <?php echo Ajencypress_Field_Markup::generate_meta_box_field_markup($field,$meta_value) ?>
-                </td>
-            </tr>
+            if($field['type']) {
+                $meta_value = get_term_meta( $tag->term_id,$field['id'],true);
 
-            <!--        <div class="form-field term-amc-url-wrap">
-            <label for="amc-url"><?php /*_e('AMC Url', ''); */
-            ?></label>
-            <input name="term_meta[url]" id="term_meta[url]" type="text" value="" size="40">
-            <p>The “slug” is the URL-friendly version of the name. It is usually all lowercase and contains only letters, numbers, and hyphens.</p>
-        </div>-->
-            <?php
+                ?>
+                <tr class="form-field">
+                    <th valign="top" scope="row">
+                        <label for="term_meta[<?php _e($field['id'], ''); ?>]"><?php _e($field['title'], ''); ?></label>
+                    </th>
+                    <td>
+                        <?php echo Ajencypress_Field_Markup::generate_meta_box_field_markup($field,$meta_value) ?>
+                    </td>
+                </tr>
+
+                <?php
+            }
+
         }
     }
 
     function metaboxes_save_custom_fields($term_id) {
 
-            foreach ( $this->metaFieldConfig as $field ){
-                $key = $field['id'];
-                $value = Ajencypress_Field_Validation::meta_validations($field,$_POST[$field['id']]);
+        foreach ( $this->metaFieldConfig as $field ) {
+
+
+            $key = $field['id'];
+            $value = $_POST[$field['id']];
+
+            $errors[$key] = Ajencypress_Field_Validation_New::meta_validations($field,$value);
+            if(is_array($errors[$key])) {
+                $value = false;
+            } else {
+                unset($errors[$key]);
+
+            }
+
+            if($field['type']) {
+
+                print $field['type'];
+
                 $existing_value = get_term_meta( $term_id, $key, true );
 
                 if(empty($value) && $existing_value) {
@@ -124,6 +162,15 @@ class Ajencypress_Taxonomy_Fields {
                     add_term_meta( $term_id, $key, $value );
                 }
             }
+
+        }
+
+        if(!empty($errors)) {
+
+            foreach ($errors as $key => $error) {
+                Ajencypress_Admin_Errors::add_validation_error_to_queue($key, implode(" ,",$error));
+            }
+        }
     }
 
 

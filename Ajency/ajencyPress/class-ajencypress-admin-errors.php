@@ -3,8 +3,9 @@
 
 class Ajencypress_Admin_Errors {
 
-    function __construct()
+    function __construct($text_domain)
     {
+        $this->textdomain = $text_domain;
         add_action('admin_notices', array($this, 'register_admin_notices'), 1, 2);
 
     }
@@ -21,7 +22,7 @@ class Ajencypress_Admin_Errors {
         $errors = array_column($errors,'message','setting');
 
         foreach ( $errors as $error ) {
-            $message .= '<li>' . __($error,'fund') . '</li>';
+            $message .= '<li>' . __($error, $this->textdomain) . '</li>';
         }
         $message .= '</ul></p></div><!-- #error -->';
         // Write them out to the screen
@@ -38,4 +39,15 @@ class Ajencypress_Admin_Errors {
             unset($messages[post][6]);
             return $messages;
      }*/
+
+    static function add_validation_error_to_queue($id,$message) {
+
+        add_settings_error(
+            $id,
+            $id,
+            __($message,'sdfsdf'), //TODO
+            'error'
+        );
+        set_transient( 'amfg_errors', get_settings_errors(), 30 );
+    }
 }
