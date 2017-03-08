@@ -9,6 +9,7 @@ class Ajencypress_Field_Markup {
     const FIELD_TYPE_TEXTAREA = 'textarea';
     const FIELD_TYPE_TEXT = 'text';
     const FIELD_TYPE_MEDIA_IMAGE = 'image';
+    const FIELD_TYPE_TAXONOMY = 'taxonomy';
 
 
     static function generate_meta_box_field_markup($field,$meta_data) {
@@ -48,7 +49,6 @@ class Ajencypress_Field_Markup {
                 break;
 
             default:
-                $meta_box_content = false;
         }
         if($field['message']) {
             $meta_box_content = $meta_box_content.'<p>'.$field['message'].'</p>';
@@ -59,8 +59,8 @@ class Ajencypress_Field_Markup {
 
     function display_meta_box_field_markup($post, $callback_args) {
         global $post;
-        wp_nonce_field( 'amfg_nonce', 'amfg_nonce' );
         $field = $callback_args['args'];
+        wp_nonce_field( 'amfg_nonce', 'amfg_nonce' );
         $meta_data = get_post_meta($post->ID,$field['id'],true);
         echo self::generate_meta_box_field_markup($field,$meta_data);
     }

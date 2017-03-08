@@ -31,12 +31,27 @@ class Ajencypress_Post_Type_Metaboxes {
 
         add_action('add_meta_boxes', array( $this , 'register_metaboxes'));
         add_action('save_post', array( $this , 'save_meta'),1,2);
+#        add_action('pre_post_update', array( $this , 'check_if_post_something'));
 
         //Reusable Admin Notices function
         # add_filter( 'post_updated_messages', array( $this , 'remove_post_published_admin_message' ));
 
         /*        add_action('transition_post_status', array($this, 'post_status_transition'), 1, 3);*/
     }
+
+ /*   public function check_if_post_something($post_id){
+
+        global $post;
+        // verify if this is an auto save routine.
+        // If it is our form has not been submitted, so we dont want to do anything
+        if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+            return;
+        }
+
+        if ($post->post_status == "publish") {
+            //do update stuff here.
+        }
+    }*/
 
     function remove_post_published_admin_message( $messages )
     {
@@ -84,7 +99,14 @@ class Ajencypress_Post_Type_Metaboxes {
 
 
             $key = $field['id'];
-            $value = $_POST[$key];
+
+
+            if($field['type'] == 'taxonomy'){
+                $value = $_POST['tax_input'][$key];
+            } else {
+                $value = $_POST[$key];
+            }
+
             $errors[$key] = Ajencypress_Field_Validation_New::meta_validations($field,$value);
             if(is_array($errors[$key])) {
                 $value = false;
@@ -92,14 +114,16 @@ class Ajencypress_Post_Type_Metaboxes {
                 unset($errors[$key]);
             }
 
-            $existing_value = get_post_meta( $post->ID, $field['id'], true );
+            if($field['is_custom_field']) {
+                $existing_value = get_post_meta( $post->ID, $field['id'], true );
 
-            if(empty($value) && $existing_value) {
-                delete_post_meta( $post->ID, $key );
-            } else if ($existing_value && !empty($value)) {
-                update_post_meta( $post->ID, $key, $value );
-            } else if(!empty($value)) {
-                add_post_meta( $post->ID, $key, $value );
+                if(empty($value) && $existing_value) {
+                    delete_post_meta( $post->ID, $key );
+                } else if ($existing_value && !empty($value)) {
+                    update_post_meta( $post->ID, $key, $value );
+                } else if(!empty($value)) {
+                    add_post_meta( $post->ID, $key, $value );
+                }
             }
         }
 
@@ -121,7 +145,9 @@ class Ajencypress_Post_Type_Metaboxes {
     function register_metaboxes() {
 
         foreach ($this->metaFieldConfig as $key => $field) {
-            add_meta_box( $field['id'], $field['title'], array( Ajencypress_Field_Markup::class, 'display_meta_box_field_markup'), $this->post_type, 'side', 'default', $field );
+            if($field['is_custom_field']) {
+                add_meta_box($field['id'], $field['title'], array(Ajencypress_Field_Markup::class, 'display_meta_box_field_markup'), $this->post_type, 'side', 'default', $field);
+            }
         }
     }
 }

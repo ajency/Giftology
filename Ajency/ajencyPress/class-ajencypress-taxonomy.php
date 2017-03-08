@@ -100,7 +100,20 @@ class Ajencypress_Taxonomy {
      */
     public function setSingularLabel($singular_label)
     {
-        $this->singular_label = $singular_label;
+
+        if(empty($singular_label)) {
+
+            $this->singular_label = ucfirst($this->custom_taxonomy_name);
+        } else {
+            $this->singular_label = $singular_label;
+
+        }
+    }
+
+    public function getSingularLabel()
+    {
+        return $this->singular_label;
+
     }
 
     /**
@@ -108,7 +121,13 @@ class Ajencypress_Taxonomy {
      */
     public function setPluralLabel($plural_label)
     {
-        $this->plural_label = $plural_label;
+        if(empty($plural_label)) {
+
+            $this->plural_label = ucfirst($this->custom_taxonomy_name);
+        } else {
+            $this->plural_label = $plural_label;
+
+        }
     }
 
     /**

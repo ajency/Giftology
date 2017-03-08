@@ -14,9 +14,16 @@ class Ajencypress_Field_Validation_New {
 
         $validations = $field['validations'];
 
-        if(isset($validations['required']) && $validations['required']['required'] == true && empty($value))
-        {
+        if($field['type'] == 'taxonomy' && count($value) == 1 && $value[0] == 0) {
 
+            $required_failed = true;
+
+        } else if(isset($validations['required']) && $validations['required']['required'] == true && empty($value))
+        {
+            $required_failed = true;
+        }
+
+        if($required_failed) {
             if($validations['required']['message']) {
                 $message = $validations['required']['message'];
             } else {
@@ -24,6 +31,7 @@ class Ajencypress_Field_Validation_New {
             }
 
             $errors[] = $message;
+
         }
 
        /* if(isset($validations['regex']) && (preg_match($validations['regex']['regex'], $value))) {

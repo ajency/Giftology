@@ -9,24 +9,26 @@ class Ajencypress_Taxonomy_Fields {
 
     function prevent_add_term( $term, $taxonomy )
     {
-        foreach ($this->metaFieldConfig as $field) {
+        if($taxonomy == $this->taxonomy_name) {
+            foreach ($this->metaFieldConfig as $field) {
 
-            if($field['id'] == 'name') {
-                $field['id']  = 'tag-name'; //I know, horrible, absolutely horrible TODO
-            }
+                if($field['id'] == 'name') {
+                    $field['id']  = 'tag-name'; //I know, horrible, absolutely horrible TODO
+                }
 
-            $errors[$field['id']] = Ajencypress_Field_Validation_New::meta_validations($field,$_POST[$field['id']]);
-            if(is_array($errors[$field['id']])) {
+                $errors[$field['id']] = Ajencypress_Field_Validation_New::meta_validations($field,$_POST[$field['id']]);
+                if(is_array($errors[$field['id']])) {
 
-            } else {
-                unset($errors[$field['id']]);
+                } else {
+                    unset($errors[$field['id']]);
+                }
             }
-        }
-        if(!empty($errors)) {
-            foreach ($errors as $key => $error) {
-                $final_errors[] = implode(" ,", $error);
+            if(!empty($errors)) {
+                foreach ($errors as $key => $error) {
+                    $final_errors[] = implode(" ,", $error);
+                }
+                $term = new WP_Error('invalid_term', __(implode(', ', $final_errors), 'textdomain'));
             }
-            $term = new WP_Error('invalid_term', __(implode(', ', $final_errors), 'textdomain'));
         }
         return $term;
     }
@@ -91,7 +93,7 @@ class Ajencypress_Taxonomy_Fields {
 
         foreach ($this->metaFieldConfig as $field)
         {
-            if($field['type']) {
+            if($field['is_custom_field']) {
                 $meta_value = get_term_meta( $tag->term_id,$field['id'],true);
                 ?>
 
@@ -109,7 +111,7 @@ class Ajencypress_Taxonomy_Fields {
 
         foreach ($this->metaFieldConfig as $field) {
 
-            if($field['type']) {
+            if($field['is_custom_field']) {
                 $meta_value = get_term_meta( $tag->term_id,$field['id'],true);
 
                 ?>
@@ -135,7 +137,7 @@ class Ajencypress_Taxonomy_Fields {
 
             $key = $field['id'];
             $value = $_POST[$field['id']];
-            if($field['type']) {
+            if($field['is_custom_field']) {
                 $existing_value = get_term_meta( $term_id, $key, true );
 
                 if(empty($value) && $existing_value) {
@@ -166,7 +168,7 @@ class Ajencypress_Taxonomy_Fields {
 
             }
 
-            if($field['type']) {
+            if($field['is_custom_field']) {
                 $existing_value = get_term_meta( $term_id, $key, true );
 
                 if(empty($value) && $existing_value) {

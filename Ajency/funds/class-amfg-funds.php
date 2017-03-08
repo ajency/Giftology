@@ -48,6 +48,9 @@ class Ajency_MFG_Funds {
         $amc_taxonomy->setL10nDomain($this->plugin_name);
         $amc_taxonomy->create_taxonomy();
 
+
+
+
         //Create 3 bucket AMCs
         $bucket_names = get_option('_amfg_bucket_settings');
         $bucket_1_taxonomy = new Ajencypress_Taxonomy();
@@ -75,22 +78,46 @@ class Ajency_MFG_Funds {
         $bucket_3_taxonomy->create_taxonomy();
 
         //Add meta boxes to Fund
-        $fields = [
+        $fields_fund = [
             [
                 'id' => '_fund_featured' , 'title' => 'Feature this Fund','type' => 'checkbox',
-                'message' => 'Feature this fund to make it appear'
+                'message' => 'Feature this fund to make it appear',
+                'is_custom_field' => true
+            ],
+            [
+                'id' => 'amc' ,  'title' => 'AMC','type' => 'taxonomy',
+                'validations' => [ 'required' => ['required' => true ]]
+            ],
+            [
+                'id' => 'bucket-1' ,  'title' => $bucket_1_taxonomy->getSingularLabel(),'type' => 'taxonomy',
+                'validations' => [ 'required' => ['required' => true ]]
+            ],
+            [
+                'id' => 'bucket-2' ,  'title' => $bucket_2_taxonomy->getSingularLabel(),'type' => 'taxonomy',
+                'validations' => [ 'required' => ['required' => true ]]
+            ],
+            [
+                'id' => 'bucket-3' ,  'title' => $bucket_3_taxonomy->getSingularLabel(),'type' => 'taxonomy',
+                'validations' => [ 'required' => ['required' => true ]]
+            ],
+            [
+                'id' => 'content' ,  'title' => 'Fund Description','type' => NULL,
+                'validations' => [ 'required' => ['required' => true ]]
             ],
             [
                 'id' => '_fund_url' ,  'title' => 'Fund Url','type' => 'link',
-                'validations' => [ 'required' => ['required' => true ]]
+                'validations' => [ 'required' => ['required' => true ]],
+                'is_custom_field' => true
             ],
             [
                 'id' => '_fund_bse_id' ,'title' => 'BSE ID','type' => 'text',
-                'validations' => [ 'required' => ['required' => true ]]
+                'validations' => [ 'required' => ['required' => true ]],
+                'is_custom_field' => true
             ],
             [
                 'id' => '_fund_nse_id' ,'title' => 'NSE ID','type' => 'text',
-                'validations' => [ 'required' => ['required' => true ]]
+                'validations' => [ 'required' => ['required' => true ]],
+                'is_custom_field' => true
             ],
             [
                 'id' => '_fund_returns' ,'title' => 'Fund Returns(%)', 'type' => 'number',
@@ -98,26 +125,29 @@ class Ajency_MFG_Funds {
                     'required' => ['required' => true ],
                     'min' => ['min' => 0 , 'message' => 'Fund Returns has to be a percentage' ],
                     'max' => ['max' => 100 , 'message' => 'Fund Returns has to be a percentage' ]
-                ]
+                ],
+                'is_custom_field' => true
             ],
             [
                 'id' => '_fund_min_investment' ,'title' => 'Fund Min Investment','type' => 'number',
-                'validations' => [ 'required' => ['required' => true ]]
+                'validations' => [ 'required' => ['required' => true ]],
+                'is_custom_field' => true
             ]
         ];
         $meta_boxes = new Ajencypress_Post_Type_Metaboxes();
         $meta_boxes->setPostType('fund');
-        $meta_boxes->setMetaFieldConfig($fields);
+        $meta_boxes->setMetaFieldConfig($fields_fund);
         $meta_boxes->setPostStatusIfValidationFails('draft');
         $meta_boxes->add_metaboxes_to_post_type();
 
         $taxonomy_fields = new Ajencypress_Taxonomy_Fields();
         $taxonomy_fields->setTaxonomyName('amc');
-        $fields = [
+        $fields_amc = [
             [
                 'id' => '_url' , 'title' => 'AMC Url','type' => 'link',
                 'validations' => [ 'required' => ['required' => true ]],
-                'message' => 'A link for url'
+                'message' => 'A link for url',
+                'is_custom_field' => true
             ],
             [
                 'id' => 'description' ,'type' => NULL,
@@ -134,9 +164,32 @@ class Ajency_MFG_Funds {
                 'validations' => [ 'required' => ['required' => true , 'message' => 'AMC Name field is required']],
             ]
         ];
-        $taxonomy_fields->setMetaFieldConfig($fields);
+        $taxonomy_fields->setMetaFieldConfig($fields_amc);
         $taxonomy_fields->add_metaboxes_to_taxonomy();
         $taxonomy_fields->enable_featured_image();
+
+        $fields_b = [
+            [
+                'id' => 'description' ,'type' => NULL,
+                'validations' => [ 'required' => ['required' => true  , 'message' => 'Bucket Description field is required']],
+
+            ]
+        ];
+
+        $taxonomy_fields_b1 = new Ajencypress_Taxonomy_Fields();
+        $taxonomy_fields_b1->setTaxonomyName('bucket-1');
+        $taxonomy_fields_b1->setMetaFieldConfig($fields_b);
+        $taxonomy_fields_b1->add_metaboxes_to_taxonomy();
+
+        $taxonomy_fields_b2 = new Ajencypress_Taxonomy_Fields();
+        $taxonomy_fields_b2->setTaxonomyName('bucket-2');
+        $taxonomy_fields_b2->setMetaFieldConfig($fields_b);
+        $taxonomy_fields_b2->add_metaboxes_to_taxonomy();
+
+        $taxonomy_fields_b3 = new Ajencypress_Taxonomy_Fields();
+        $taxonomy_fields_b3->setTaxonomyName('bucket-3');
+        $taxonomy_fields_b3->setMetaFieldConfig($fields_b);
+        $taxonomy_fields_b3->add_metaboxes_to_taxonomy();
 
 
         //Add theme options for buckets
