@@ -7,11 +7,6 @@ class Ajencypress_Taxonomy_Fields {
 
     private $metaFieldConfig;
 
-    public function metaConfigIncludesDefaultFields()
-    {
-        add_filter( 'pre_insert_term', array($this, 'prevent_add_term'), 20, 2 );
-    }
-
     function prevent_add_term( $term, $taxonomy )
     {
         foreach ($this->metaFieldConfig as $field) {
@@ -75,7 +70,8 @@ class Ajencypress_Taxonomy_Fields {
         add_action($this->taxonomy_name.'_add_form_fields',array( $this , 'metaboxes_amc_edit_form_fields'), 10, 2 );
         add_action($this->taxonomy_name.'_add_form',array( $this , 'metaboxes_amc_edit_form'), 10, 2 );
         add_action( 'edited_'.$this->taxonomy_name, array( $this , 'metaboxes_save_custom_fields'), 10, 2 );
-        add_action( 'create_'.$this->taxonomy_name, array( $this , 'metaboxes_save_custom_fields'), 10, 2 );
+        add_action( 'create_'.$this->taxonomy_name, array( $this , 'metaboxes_save_custom_fields_no_validation'), 10, 2 );
+        add_filter( 'pre_insert_term', array($this, 'prevent_add_term'), 20, 2 );
     }
 
 
@@ -132,6 +128,28 @@ class Ajencypress_Taxonomy_Fields {
         }
     }
 
+    function metaboxes_save_custom_fields_no_validation($term_id) {
+
+        foreach ( $this->metaFieldConfig as $field ) {
+
+
+            $key = $field['id'];
+            $value = $_POST[$field['id']];
+            if($field['type']) {
+                $existing_value = get_term_meta( $term_id, $key, true );
+
+                if(empty($value) && $existing_value) {
+                    delete_term_meta( $term_id, $key );
+                } else if ($existing_value && !empty($value)) {
+                    update_term_meta( $term_id, $key, $value );
+                } else if(!empty($value)) {
+                    add_term_meta( $term_id, $key, $value );
+                }
+            }
+
+        }
+    }
+
     function metaboxes_save_custom_fields($term_id) {
 
         foreach ( $this->metaFieldConfig as $field ) {
@@ -149,9 +167,6 @@ class Ajencypress_Taxonomy_Fields {
             }
 
             if($field['type']) {
-
-                print $field['type'];
-
                 $existing_value = get_term_meta( $term_id, $key, true );
 
                 if(empty($value) && $existing_value) {

@@ -135,7 +135,6 @@ class Ajency_MFG_Funds {
             ]
         ];
         $taxonomy_fields->setMetaFieldConfig($fields);
-        $taxonomy_fields->metaConfigIncludesDefaultFields();
         $taxonomy_fields->add_metaboxes_to_taxonomy();
         $taxonomy_fields->enable_featured_image();
 
