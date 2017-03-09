@@ -81,14 +81,13 @@ class Ajency_MFG_Funds {
         $fields_fund = [
             [
                 'id' => '_fund_featured' , 'title' => 'Feature this Fund','type' => 'checkbox',
+                'is_custom_field' => true,
                 'message' => 'Feature this fund to make it appear',
-                'is_custom_field' => true
             ],
             [
                 'id' => 'amc' ,  'title' => 'AMC','type' => Ajencypress_Field_Validation_New::FIELD_TYPE_TAXONOMY,
                 'validations' => [ 'required' => ['required' => true ]]
             ],
-
             [
                 'id' => 'bucket-1' ,  'title' => $bucket_1_taxonomy->getSingularLabel(),'type' => Ajencypress_Field_Validation_New::FIELD_TYPE_TAXONOMY,
                 'validations' => [ 'required' => ['required' => true ]]
