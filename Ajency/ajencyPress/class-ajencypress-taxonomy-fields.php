@@ -134,7 +134,6 @@ class Ajencypress_Taxonomy_Fields {
 
         foreach ( $this->metaFieldConfig as $field ) {
 
-
             $key = $field['id'];
             $value = $_POST[$field['id']];
             if($field['is_custom_field']) {
@@ -187,10 +186,7 @@ class Ajencypress_Taxonomy_Fields {
             foreach ($errors as $key => $error) {
                 Ajencypress_Admin_Errors::add_validation_error_to_queue($key, implode(" ,",$error));
             }
+            return;
         }
     }
-
-
-
-
 }

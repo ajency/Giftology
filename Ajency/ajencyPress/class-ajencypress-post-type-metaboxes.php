@@ -84,7 +84,6 @@ class Ajencypress_Post_Type_Metaboxes {
 
     public function save_meta( $post_id, $post) {
 
-
         if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
             return;
         if ( !isset( $_POST['amfg_nonce'] ) )

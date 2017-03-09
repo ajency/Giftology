@@ -47,7 +47,7 @@ class Ajencypress_Post_Type {
         $this->supports_thumbnail = true;
         $this->supports_author = true;
         $this->supports_revisions = true;
-        $this->supports_custom_fields = false;
+        $this->supports_custom_fields = true;
         $this->menu_icon = 'dashicons-smiley';
         $this->capability_type = 'post';
         $this->is_hierarchical        = false;

@@ -8,17 +8,24 @@ class Ajencypress_Field_Validation_New {
     const FIELD_TYPE_NUMBER = 'number';
     const FIELD_TYPE_TEXTAREA = 'textarea';
     const FIELD_TYPE_TEXT = 'text';
+    const FIELD_TYPE_FEATURED_IMAGE = 'featured-image';
+    const FIELD_TYPE_TAXONOMY = 'taxonomy';
 
 
     static function meta_validations($field, $value) {
 
         $validations = $field['validations'];
 
-        if($field['type'] == 'taxonomy' && count($value) == 1 && $value[0] == 0) {
+        if ($field['type'] == self::FIELD_TYPE_FEATURED_IMAGE && $value == -1) {
 
             $required_failed = true;
 
-        } else if(isset($validations['required']) && $validations['required']['required'] == true && empty($value))
+        } else if($field['type'] == self::FIELD_TYPE_TAXONOMY && count($value) == 1 && $value[0] == 0) {
+
+            $required_failed = true;
+
+        }
+        else if(isset($validations['required']) && $validations['required']['required'] == true && empty($value))
         {
             $required_failed = true;
         }

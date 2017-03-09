@@ -85,19 +85,24 @@ class Ajency_MFG_Funds {
                 'is_custom_field' => true
             ],
             [
-                'id' => 'amc' ,  'title' => 'AMC','type' => 'taxonomy',
+                'id' => 'amc' ,  'title' => 'AMC','type' => Ajencypress_Field_Validation_New::FIELD_TYPE_TAXONOMY,
+                'validations' => [ 'required' => ['required' => true ]]
+            ],
+
+            [
+                'id' => 'bucket-1' ,  'title' => $bucket_1_taxonomy->getSingularLabel(),'type' => Ajencypress_Field_Validation_New::FIELD_TYPE_TAXONOMY,
                 'validations' => [ 'required' => ['required' => true ]]
             ],
             [
-                'id' => 'bucket-1' ,  'title' => $bucket_1_taxonomy->getSingularLabel(),'type' => 'taxonomy',
+                'id' => '_thumbnail_id' ,  'title' => 'Featured Image','type' => Ajencypress_Field_Validation_New::FIELD_TYPE_FEATURED_IMAGE,
                 'validations' => [ 'required' => ['required' => true ]]
             ],
             [
-                'id' => 'bucket-2' ,  'title' => $bucket_2_taxonomy->getSingularLabel(),'type' => 'taxonomy',
+                'id' => 'bucket-2' ,  'title' => $bucket_2_taxonomy->getSingularLabel(),'type' => Ajencypress_Field_Validation_New::FIELD_TYPE_TAXONOMY,
                 'validations' => [ 'required' => ['required' => true ]]
             ],
             [
-                'id' => 'bucket-3' ,  'title' => $bucket_3_taxonomy->getSingularLabel(),'type' => 'taxonomy',
+                'id' => 'bucket-3' ,  'title' => $bucket_3_taxonomy->getSingularLabel(),'type' => Ajencypress_Field_Validation_New::FIELD_TYPE_TAXONOMY,
                 'validations' => [ 'required' => ['required' => true ]]
             ],
             [
