@@ -232,7 +232,7 @@ function giftology_send_invites($request_data){
     return false;
 }
 
-function json_response($success, $message, $data) {
+function json_response($success, $message, $data = []) {
     return [
         'success' => $success,
         'message' => $message,
