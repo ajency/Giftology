@@ -105,7 +105,7 @@ class Ajency_MFG_Gift {
 
         //TODO make action optional, can be dangerous though
         global $wpdb;
-        $query = "select DISTINCT ,inv.email,inv.status as inv_status, u.id, inv.invite_code, meta.meta_value as pic,u.display_name,u.user_email from wp_giftology_invites inv left join wp_users u on inv.email = u.user_email left join wp_usermeta meta on u.id = meta.user_id and meta.meta_key = 'wsl_current_user_image' where inv.gift_id = '".$gift_id."'";
+        $query = "select inv.email,inv.status as inv_status, u.id, inv.invite_code, meta.meta_value as pic,u.display_name,u.user_email from wp_giftology_invites inv left join wp_users u on inv.email = u.user_email left join wp_usermeta meta on u.id = meta.user_id and meta.meta_key = 'wsl_current_user_image' where inv.gift_id = '".$gift_id."'";
         $query .= " and (";
         $last = count($status) - 1;
         for ($i = 0 ; $i < $last; $i++) {

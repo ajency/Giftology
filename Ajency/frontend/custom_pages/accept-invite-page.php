@@ -9,6 +9,7 @@ print $user_id;
 
 <?php if(is_user_logged_in())
 {
+    print "Logged In";
     $user_id = get_current_user_id();
     $invite = Ajency_MFG_Gift::get_invite_by_code($code,[Ajency_MFG_Gift::STATUS_INVITE_SENT,Ajency_MFG_Gift::STATUS_INVITE_SENT_USED]);
     $gift_id = $invite->gift_id;
@@ -28,6 +29,7 @@ print $user_id;
 
 <?php if(!is_user_logged_in())
 {
+    print "Logged Out";
     $dest = home_url() .'/login?destination=/?accept-gift-invite='.$code;
     wp_redirect($dest);
 }
