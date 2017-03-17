@@ -1,139 +1,3 @@
-.login-container {
-  min-height: calc(100vh - 275.5px);
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  background-color: rgba(238, 238, 238, 0.42);
-}
-.login-container .login-title {
-  font-weight: 400;
-  font-size: 1.4em;
-  text-transform: uppercase;
-  margin: 0 0 0.6em 0;
-  border-bottom: 5px double #eee;
-  padding-bottom: 0.5em;
-  text-shadow: 1px 0px 1px rgba(0, 0, 0, 0.34);
-}
-.login-container .login-card {
-  width: 450px;
-  box-shadow: 0px 0px 20px 0px rgba(158, 1, 45, 0.13);
-  padding: 2.5em 1.5em;
-  text-align: center;
-  background-color: #fff;
-}
-.login-container .login-card .site-name {
-  margin: 0.8em 2em;
-  font-size: 1.4em;
-  font-weight: 400;
-  position: relative;
-  text-transform: uppercase;
-  text-shadow: 1px 0px 1px rgba(0, 0, 0, 0.75);
-}
-.login-container .login-card .site-name:before,
-.login-container .login-card .site-name:after {
-  content: '';
-  display: block;
-  border-bottom: 2px solid #d8d8d8;
-  border-top: 2px solid #d8d8d8;
-  position: absolute;
-  height: 7px;
-  width: 30%;
-  top: 33%;
-}
-.login-container .login-card .site-name:after {
-  right: 0;
-}
-.login-container .login-card .site-caption {
-  font-size: 1.1em;
-  color: #989898;
-  text-transform: capitalize;
-}
-.login-container .login-card .social-acc {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  padding: 0 2.5em;
-}
-.login-container .login-card .social-acc .btn {
-  margin: 1em 0;
-  color: #fff;
-  border-radius: 0;
-  text-transform: uppercase;
-  font-size: 1.15em;
-  -webkit-transition: all 0.5s ease;
-  transition: all 0.5s ease;
-}
-.login-container .login-card .social-acc .btn i {
-  padding-right: 0.5em;
-}
-.login-container .login-card .social-acc .btn.google {
-  background-color: #DB4A37;
-  margin-bottom: 0;
-}
-.login-container .login-card .social-acc .btn.google:hover {
-  background-color: #e37162;
-}
-.login-container .login-card .social-acc .btn.facebook {
-  background-color: #527EBF;
-}
-.login-container .login-card .social-acc .btn.facebook:hover {
-  background-color: #779acd;
-}
-.modal .modal-content {
-  border-radius: 0;
-}
-.modal-header {
-  background-color: #9c1bef;
-  color: #fff;
-  padding: 1.2em;
-}
-.modal-header .close {
-  text-shadow: 1px 1px 1px #000;
-  opacity: 1;
-  color: #fff;
-  outline: 0;
-}
-.status {
-  padding: 2em;
-  background-color: #fff;
-  box-shadow: 0px 0px 20px 0px rgba(158, 1, 45, 0.13);
-  border-radius: 0;
-  border: 0;
-}
-.status-title {
-  margin: 0 0 8px 0;
-  font-size: 1.25em;
-}
-.status-caption {
-  font-size: 1.1em;
-  margin-bottom: 0;
-}
-.status .close {
-  top: -15px;
-  right: -10px;
-  opacity: 1;
-  color: #ee275f;
-}
 body {
   font-family: 'Maven Pro', sans-serif;
 }
@@ -567,7 +431,7 @@ input:focus,
   -webkit-align-items: flex-end;
   -ms-flex-align: end;
   align-items: flex-end;
-  margin-top: -5px;
+  margin-top: 0;
   margin-bottom: 0;
 }
 .invit-emails .col .profile-info .name .label {
@@ -608,10 +472,13 @@ input:focus,
   overflow: auto;
 }
 .invit-emails.center-email .col {
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
 }
 .add-email .modal-title {
   font-weight: 500;
@@ -739,5 +606,237 @@ input:focus,
 .gift-footer .sub-footer .copyright p {
   color: #a2a2a2;
   margin-bottom: 0;
+}
+.login-container {
+  min-height: calc(100vh - 275.5px);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  background-color: rgba(238, 238, 238, 0.42);
+}
+.login-container .login-title {
+  font-weight: 400;
+  font-size: 1.4em;
+  text-transform: uppercase;
+  margin: 0 0 1em 0;
+  border-bottom: 5px double #eee;
+  padding-bottom: 0.5em;
+  text-shadow: 1px 0px 1px rgba(0, 0, 0, 0.34);
+}
+.login-container .login-card {
+  width: 450px;
+  box-shadow: 0px 0px 20px 0px rgba(158, 1, 45, 0.13);
+  padding: 2.5em 1.5em;
+  text-align: center;
+  background-color: #fff;
+}
+.login-container .login-card .site-name {
+  margin: 0.8em 2em;
+  font-size: 1.4em;
+  font-weight: 400;
+  position: relative;
+  text-transform: uppercase;
+  text-shadow: 1px 0px 1px rgba(0, 0, 0, 0.75);
+}
+.login-container .login-card .site-name:before,
+.login-container .login-card .site-name:after {
+  content: '';
+  display: block;
+  border-bottom: 2px solid #d8d8d8;
+  border-top: 2px solid #d8d8d8;
+  position: absolute;
+  height: 7px;
+  width: 30%;
+  top: 33%;
+}
+.login-container .login-card .site-name:after {
+  right: 0;
+}
+.login-container .login-card .site-caption {
+  font-size: 1.1em;
+  color: #989898;
+  text-transform: uppercase;
+  margin: 0.5em 0;
+  text-shadow: 1px 0px 1px rgba(0, 0, 0, 0.38);
+}
+.login-container .login-card .wp-social-login-provider-list {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding: 0 2.5em;
+}
+.login-container .login-card .wp-social-login-provider-list .wp-social-login-provider {
+  margin: 1em 0 0 0;
+  color: #fff;
+  border-radius: 0;
+  text-transform: uppercase;
+  font-size: 1.05em;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  padding: 0.7em 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+.login-container .login-card .wp-social-login-provider-list .wp-social-login-provider img {
+  display: none;
+}
+.login-container .login-card .wp-social-login-provider-list .wp-social-login-provider:before {
+  content: '';
+  display: block;
+  font: normal normal normal 14px/1 FontAwesome;
+  padding-right: 0.5em;
+  -webkit-font-smoothing: antialiased;
+}
+.login-container .login-card .wp-social-login-provider-list .wp-social-login-provider-google {
+  background-color: #DB4A37;
+}
+.login-container .login-card .wp-social-login-provider-list .wp-social-login-provider-google:hover {
+  background-color: #df5e4d;
+}
+.login-container .login-card .wp-social-login-provider-list .wp-social-login-provider-google:before {
+  content: "\f0d5";
+}
+.login-container .login-card .wp-social-login-provider-list .wp-social-login-provider-google:after {
+  content: 'Google+';
+  text-transform: uppercase;
+}
+.login-container .login-card .wp-social-login-provider-list .wp-social-login-provider-facebook {
+  background-color: #3b5998;
+}
+.login-container .login-card .wp-social-login-provider-list .wp-social-login-provider-facebook:hover {
+  background-color: #658cc6;
+}
+.login-container .login-card .wp-social-login-provider-list .wp-social-login-provider-facebook:before {
+  content: '\f09a';
+}
+.login-container .login-card .wp-social-login-provider-list .wp-social-login-provider-facebook:after {
+  content: 'Facebook';
+  text-transform: uppercase;
+}
+.modal-open[style] {
+  padding-right: 0px !important;
+}
+.modal .modal-content {
+  border-radius: 0;
+}
+.modal-header {
+  background-color: #9c1bef;
+  color: #fff;
+  padding: 1.2em;
+}
+.modal-header .close {
+  text-shadow: 1px 1px 1px #000;
+  opacity: 1;
+  color: #fff;
+  outline: 0;
+}
+.modal-body pre {
+  padding: 0;
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: initial;
+  background-color: transparent;
+  border: 0;
+  word-wrap: initial;
+  word-break: inherit;
+  overflow: inherit;
+  white-space: inherit;
+  color: inherit;
+}
+.modal .btn {
+  border-radius: 0;
+  text-transform: uppercase;
+}
+.label {
+  font-weight: 400;
+  font-size: 0.9em;
+  padding: 0.25em 0.65em;
+}
+.status {
+  padding: 2em;
+  background-color: #fff;
+  box-shadow: 0px 0px 20px 0px rgba(158, 1, 45, 0.13);
+  border-radius: 0;
+  border: 0;
+}
+.status-title {
+  margin: 0 0 8px 0;
+  font-size: 1.25em;
+}
+.status-caption {
+  font-size: 1.1em;
+  margin-bottom: 0;
+}
+.status .close {
+  top: -15px;
+  right: -10px;
+  opacity: 1;
+  color: #ee275f;
+}
+.ribbion {
+  position: relative;
+  overflow: hidden;
+}
+.ribbion:after {
+  content: '';
+  display: block;
+  position: absolute;
+  height: 15px;
+  width: 120px;
+  background-color: #ee275f;
+  top: 1.8em;
+  right: -35px;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  box-shadow: 0px 0px 20px 0px rgba(238, 39, 95, 0.43);
+}
+.medal {
+  background: #ee275f;
+  position: absolute;
+  width: 20px;
+  padding: 10px 0;
+}
+.medal:after {
+  content: " ";
+  position: absolute;
+  top: 70%;
+  left: 0;
+  border-style: solid;
+  width: 0;
+  height: 0;
+  border-width: 10px;
+  border-color: #ee275f #ee275f transparent #ee275f;
 }
 /*# sourceMappingURL=style.css.map */

@@ -184,6 +184,7 @@ class Ajency_MFG_Testing {
   email varchar(55) NOT NULL,
   gift_id int(10) NOT NULL,
   user_id int(10) DEFAULT NULL,
+  invited_by int(10) DEFAULT NULL,
   message_id int(10) NOT NULL,
   invite_code varchar(100) NOT NULL,
   invite_group varchar(100) DEFAULT '' NOT NULL,

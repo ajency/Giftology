@@ -13,7 +13,7 @@ function gift_invites($atts) {
     $recepients = Ajency_MFG_Gift::get_invitations($gift_id,$status,$limit,$inv_group);
 
     if($template == 2) {
-        $classes = 'invit-emails';
+        $classes = 'invit-emails center-email';
     } else {
 /*        $classes = 'invit-emails center-email';*/
         $classes = 'invit-emails';

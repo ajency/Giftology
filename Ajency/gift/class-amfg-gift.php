@@ -152,7 +152,7 @@ class Ajency_MFG_Gift {
     }
 
 
-    public static function add_invitation($email, $gift_id, $status, $message_id) {
+    public static function add_invitation($email, $gift_id, $invited_by, $status, $message_id) {
 
         global $wpdb;
         $table_name = $wpdb->prefix . "giftology_invites";
@@ -161,6 +161,7 @@ class Ajency_MFG_Gift {
             'gift_id' => $gift_id,
             'invite_code' => uniqid(),
             'message_id' => $message_id,
+            'invited_by' => $invited_by,
             'status' => $status,
         ),array(
             '%s',

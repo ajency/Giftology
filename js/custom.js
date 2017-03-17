@@ -104,6 +104,14 @@
             window.location.reload();
         });
 
+        jQuery('.modal').on('shown.bs.modal', function (e) {
+            jQuery('body').addClass('modal-open');
+        });
+
+        jQuery('.modal').on('hidden.bs.modal', function (e) {
+            jQuery('body').removeClass('modal-open');
+        });
+
         jQuery('#confirm-emails').on('show.bs.modal', function (e) {
             var gift_id = $( '#gift_id' ).val();
             var loadurl = giftology_api.homeUrl + '?gift-invites-step-1='+gift_id+'&modal=true';
