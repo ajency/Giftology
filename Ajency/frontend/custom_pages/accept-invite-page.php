@@ -2,6 +2,9 @@
 
 <?php
 $code = $_GET['accept-gift-invite'];
+print $code;
+$user_id = get_current_user_id();
+print $user_id;
 ?>
 
 <?php if(is_user_logged_in())
