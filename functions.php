@@ -189,18 +189,18 @@ function giftology_send_invites($request_data){
                     //mark status as 3 for user, also send link to user, if they use it status gets changes to 2
                     Ajency_MFG_Gift::mark_gift_code_as_sent_used($invite->invite_code, $invite_group, $invite->id);
                     //send gift url directly
-                    $message = file_get_contents( get_template_directory() . '/Ajency/users/welcome-email-template.html');
+                   /* $message = file_get_contents( get_template_directory() . '/Ajency/users/welcome-email-template.html');
                     $text = 'User invited you to contribute to a Gift';
                     $email_subject = "User invited you to contribute to a Gift on Giftology!";
-                    $this->send_email($email_subject, $message, $text, $invite->email);
+                    $this->send_email($email_subject, $message, $text, $invite->email);*/
 
 
                 } else {
 
-                    $message = file_get_contents( get_template_directory() . '/Ajency/users/welcome-email-template.html');
+                 /*   $message = file_get_contents( get_template_directory() . '/Ajency/users/welcome-email-template.html');
                     $text = 'Welcome to Giftology';
                     $email_subject = "User invited you to contribute to a Gift on Giftology!";
-                    $this->send_email($email_subject, $message, $text, $invite->email);
+                    $this->send_email($email_subject, $message, $text, $invite->email);*/
 
                     //send email with other email
 
@@ -208,6 +208,7 @@ function giftology_send_invites($request_data){
                     Ajency_MFG_Gift::mark_gift_code_as_sent($invite->invite_code,$invite_group);
 
                 }
+                //Trigger Email
             }
         }
         //TODO take care of errors in JS, check if for a gift and email already exists that is queued
