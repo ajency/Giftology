@@ -55,7 +55,7 @@ function gift_invites($atts) {
             if($show_op_icon) {
                 if($recepient->inv_status == 0) {
                     $html .= '<div class="remove-email"><a href="#"><i class="fa fa-times" aria-hidden="true"></i></a></div>';
-                } else if($recepient->inv_status == 1) {
+                } else if($recepient->inv_status == 1 || $recepient->inv_status == 3) {
                     $html .= '<div class="remove-email"><a href="#"><i class="fa fa-check" aria-hidden="true"></i></a></div>';
                 }
             }

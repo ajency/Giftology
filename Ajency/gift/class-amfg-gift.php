@@ -71,6 +71,7 @@ class Ajency_MFG_Gift {
         global $wpdb;
         $query = "SELECT is_allowed from wp_giftology_acl where entity = '".$entity."' and entity_id = $entity_id and (user_id = $user_id || user_id IS NULL) and action = '".$action."' and is_allowed = 1";
         $results =  $wpdb->get_results($query)[0];
+        print_r($results);
         return $results->is_allowed;
     }
 

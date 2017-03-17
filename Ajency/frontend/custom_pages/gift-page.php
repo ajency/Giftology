@@ -38,11 +38,11 @@ $user_id = get_current_user_id();
             <div class="row fund-gift">
                 <div class="col-sm-7">
                     <div class="data-banner">
-                        <h1 class="banner-title">Sarvesh's Anniversary Gift
+                        <h1 class="banner-title"><?php  echo $gift->title; ?>
                             <a href="" class="banner-link">Edit gift details</a>
                         </h1>
                         <div class="banner-img">
-                            <img src="<?php echo get_template_directory_uri(); ?>/img/gift-banner.png" class="img-responsive">
+                            <img src="<?php  echo $gift->img; ?>" class="img-responsive">
                         </div>
                         <div class="voucher">
                             <div class="col voucher-name">
@@ -112,15 +112,54 @@ $user_id = get_current_user_id();
             <div class="row">
                 <div class="col-sm-7"></div>
                 <div class="col-sm-5">
+
+                    <!--
+                       If the current user is allowed to view-invites show the tabs
+                       -->
+                    <?php
+                    $perms['recepients_count'] = count(Ajency_MFG_Gift::get_invitations($gift_id,[Ajency_MFG_Gift::STATUS_INVITE_SENT,Ajency_MFG_Gift::STATUS_INVITE_SENT_USED,Ajency_MFG_Gift::STATUS_INVITE_USED]));
+                    $perms['current_user_can_edit'] = $user_id == $gift->created_by ? true : false;
+                    $perms['current_user_can_view_invites'] = Ajency_MFG_Gift::get_acl_access_rule('gift',$gift_id,$user_id,'view-invites');
+                    $perms['current_user_can_send_invites'] = Ajency_MFG_Gift::get_acl_access_rule('gift',$gift_id,$user_id,'send-invites');
+                    ?>
+
+                    <?php if($perms['current_user_can_edit']) : ?>
+                        <!-- if the gift creator only then show edit contrib settings -->
+
+                        <?php  if($gift->contrib_setting_id == Ajency_MFG_Gift::SETTING_CONTRIB_ONLY_ME || $gift->contrib_setting_id  == 0): ?>
+                            <div class="only-me">
+                                <p>You have selected <span class="link-color">Only me</span> option to change/update setting click <a href="#" data-toggle="modal" data-target="#change-email">here</a></p>
+                            </div>
+                        <?php  endif; ?>
+
+                        <?php  if($gift->contrib_setting_id == Ajency_MFG_Gift::SETTING_CONTRIB_SPECIFIC): ?>
+                            <div class="only-me">
+                                <p>You have selected <span class="link-color">specific</span> option to change/update setting click <a href="#" data-toggle="modal" data-target="#change-email">here</a></p>
+                            </div>
+                        <?php  endif; ?>
+
+                        <?php  if($gift->contrib_setting_id == Ajency_MFG_Gift::SETTING_CONTRIB_EVERYONE): ?>
+                            <div class="only-me">
+                                <p>You have selected <span class="link-color">everyone</span> option to change/update setting click <a href="#" data-toggle="modal" data-target="#change-email">here</a></p>
+                            </div>
+                        <?php  endif; ?>
+
+                    <?php  endif; ?>
+
                     <div class="contrib-selector">
 
-                        <!-- Nav tabs -->
+
+                        <?php  if($perms['current_user_can_view_invites']) : ?>
+
                         <ul class="nav nav-tabs" role="tablist">
                             <li role="presentation" class="active">
                                 <div class="invitees">
                                     <a href="#invitees" aria-controls="invitees" role="tab" data-toggle="tab" class="tab-link">
-                                        <span><b>8</b> Invitees</span>
-                                        <?php  if(Ajency_MFG_Gift::get_acl_access_rule('gift',$gift_id,$user_id,'send-invites') == 1) : ?>
+                                        <span><b><?php echo $perms['recepients_count'] ?></b> Invitees</span>
+                                        <!--
+                                        If the current user is allowed to send-invites and recepients are more than 0, show the add button
+                                        -->
+                                        <?php  if($perms['current_user_can_send_invites'] && $perms['recepients_count'] > 0) : ?>
                                             <a href="#" class="add" data-toggle="modal" data-target="#add-email">Add</a>
                                         <?php endif; ?>
                                     </a>
@@ -134,40 +173,14 @@ $user_id = get_current_user_id();
                                 </div>
                             </li>
                         </ul>
-
+                         <?php endif; ?>
                         <!-- Tab panes -->
                         <div class="tab-content">
                             <div role="tabpanel" class="tab-pane active" id="invitees">
-
-                                <!-- only me setting -->
-
-                                <?php  if($gift->created_by == $user_id && $gift->contrib_setting_id == Ajency_MFG_Gift::SETTING_CONTRIB_ONLY_ME || $gift->contrib_setting_id  == 0): ?>
-                                    <div class="only-me">
-                                        <p>You have selected <span class="link-color">Only me</span> option to change/update setting click <a href="#" data-toggle="modal" data-target="#change-email">here</a></p>
-                                    </div>
-                                <?php  endif; ?>
-
-                                <?php  if($gift->created_by == $user_id && $gift->contrib_setting_id == Ajency_MFG_Gift::SETTING_CONTRIB_SPECIFIC): ?>
-                                    <div class="only-me">
-                                        <p>You have selected <span class="link-color">specific</span> option to change/update setting click <a href="#" data-toggle="modal" data-target="#change-email">here</a></p>
-                                    </div>
-                                <?php  endif; ?>
-
-                                <?php  if($gift->created_by == $user_id && $gift->contrib_setting_id == Ajency_MFG_Gift::SETTING_CONTRIB_EVERYONE): ?>
-                                    <div class="only-me">
-                                        <p>You have selected <span class="link-color">everyone</span> option to change/update setting click <a href="#" data-toggle="modal" data-target="#change-email">here</a></p>
-                                    </div>
-                                <?php  endif; ?>
-
-
-                                <!-- no-invitation -->
-
-                                <!--If the user can send invites and ionvitations have not been sent before
+                                <!--If user is allowed to send invites and no invitations have been sent, show the big invite button
                                 -->
 
-                                <?php $recepients = Ajency_MFG_Gift::get_invitations($gift_id,[Ajency_MFG_Gift::STATUS_INVITE_SENT,Ajency_MFG_Gift::STATUS_INVITE_SENT_USED,Ajency_MFG_Gift::STATUS_INVITE_USED]); ?>
-
-                                <?php  if(Ajency_MFG_Gift::get_acl_access_rule('gift',$gift_id,$user_id,'send-invites') == 1 && count($recepients) == 0) : ?>
+                                <?php  if($perms['current_user_can_send_invites'] && $perms['recepients_count'] == 0) : ?>
 
                                     <div class="no-invit">
                                         <p>You have not invited any contributors to this gift yet</p>
@@ -178,9 +191,10 @@ $user_id = get_current_user_id();
 
 
 
-                                <!--                                //If invitations have been sent and the user can see invitiaions-->
+                                <!--If user is allowed to seee invites and invitations have been sent
+-->
 
-                                <?php if(Ajency_MFG_Gift::get_acl_access_rule('gift',$gift_id,$user_id,'send-invites') == 1 && count($recepients) > 0) : ?>
+                                <?php if($perms['current_user_can_view_invites'] && $perms['recepients_count'] > 0) : ?>
                                     <?php echo do_shortcode( '[gift_invites limit=4 gift_id="'.$gift_id.'" status="1,2,3"]' ); ?>
                                 <?php  endif; ?>
                             </div>

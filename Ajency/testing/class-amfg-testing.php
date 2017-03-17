@@ -125,7 +125,7 @@ class Ajency_MFG_Testing {
 
 
         } else if($wp->query_vars['db'] == 'db') {
-
+/*
             global $wpdb;
              $table_name = $wpdb->prefix . "giftology_gifts";
              $charset_collate = $wpdb->get_charset_collate();
@@ -173,7 +173,7 @@ class Ajency_MFG_Testing {
   UNIQUE KEY pkey (entity,entity_id,action,user_id)
 ) $charset_collate;";
             require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
-            dbDelta( $sql );
+            dbDelta( $sql );*/
 
 
             global $wpdb;
@@ -198,7 +198,7 @@ class Ajency_MFG_Testing {
             dbDelta( $sql );
 
 
-
+/*
             global $wpdb;
             $table_name = $wpdb->prefix . "giftology_invites_message";
             $charset_collate = $wpdb->get_charset_collate();
@@ -209,7 +209,7 @@ class Ajency_MFG_Testing {
 ) $charset_collate;";
             require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
             dbDelta( $sql );
-
+*/
 
         }
     }

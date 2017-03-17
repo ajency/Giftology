@@ -117,20 +117,29 @@ function giftology_change_gift_settings($request_data)
             if ($new_contrib_setting == Ajency_MFG_Gift::SETTING_CONTRIB_ONLY_ME) { // Only me
 
                 Ajency_MFG_Gift::add_acl_rule('gift', $gift_id, NULL, 'send-invites', 0); //No One is allowed to send invites
+                Ajency_MFG_Gift::add_acl_rule('gift', $gift_id, NULL, 'view-invites', 1); //EveryOne is allowed to view invites
 
-                Ajency_MFG_Gift::add_acl_rule('gift', $gift_id, $user_id, 'contribute', 1); //Only the gift creator can contribute
+                Ajency_MFG_Gift::add_acl_rule('gift', $gift_id, NULL, 'contribute', 0); //Only the gift contributor can contribute for now
+                Ajency_MFG_Gift::add_acl_rule('gift', $gift_id, $user_id, 'contribute', 1); //Only the gift contributor can contribute for now
+
 
             } else if ($new_contrib_setting == Ajency_MFG_Gift::SETTING_CONTRIB_SPECIFIC) {
+
+
+                Ajency_MFG_Gift::add_acl_rule('gift', $gift_id, NULL, 'view-invites', 1); //EveryOne is allowed to view invites
 
                 Ajency_MFG_Gift::add_acl_rule('gift', $gift_id, NULL, 'send-invites', 0); //No One is allowed to send invites
                 Ajency_MFG_Gift::add_acl_rule('gift', $gift_id, $user_id, 'send-invites', 1); //Except the gift creator for now
                 //And invited people but that logic has a flow on actual invite popup and using invite link
 
+                Ajency_MFG_Gift::add_acl_rule('gift', $gift_id, NULL, 'contribute', 0); //Only the gift contributor can contribute for now
                 Ajency_MFG_Gift::add_acl_rule('gift', $gift_id, $user_id, 'contribute', 1); //Only the gift contributor can contribute for now
+
 
             } else if ($new_contrib_setting == Ajency_MFG_Gift::SETTING_CONTRIB_EVERYONE) {
 
                 Ajency_MFG_Gift::add_acl_rule('gift', $gift_id, NULL, 'send-invites', 1); //Everyone is allowed
+                Ajency_MFG_Gift::add_acl_rule('gift', $gift_id, NULL, 'view-invites', 1); //Everyone is allowed to view
                 Ajency_MFG_Gift::add_acl_rule('gift', $gift_id, NULL, 'contribute', 1); //Everyone is allowed to contribute also
 
             }

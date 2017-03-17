@@ -10,7 +10,9 @@ $code = $_GET['accept-gift-invite'];
     $invite = Ajency_MFG_Gift::get_invite_by_code($code);
     if($invite) {
         $gift_id = $invite->gift_id;
+        //TODO check if Gift contrib status is only_me the fail it
         Ajency_MFG_Gift::add_acl_rule('gift', $gift_id, $user_id, 'send-invites', 1);
+        Ajency_MFG_Gift::add_acl_rule('gift', $gift_id, $user_id, 'contribute', 1);
         Ajency_MFG_Gift::mark_gift_code_as_used($code,$user_id);
         //TODO redirect to gift id
         wp_redirect( home_url().'/?gifts='.$gift_id );
