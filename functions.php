@@ -219,7 +219,7 @@ function giftology_send_invites($request_data){
                     Ajency_MFG_Gift::mark_gift_code_as_sent($invite->invite_code,$invite_group);
 
                 }
-                $text = $message = 'Copy Paste the following link in browser : '.home_url().'?/accept-gift-invite='.$invite->invite_code;
+                $text = $message = 'Copy Paste the following link in browser : '.home_url().'/?accept-gift-invite='.$invite->invite_code;
                 $email_subject = "A user has invited you to contribute to a Gift on Giftology!";
                 Ajency_MFG_Users::send_email($email_subject, $message, $text, $invite->email, 'invite-email');
 
