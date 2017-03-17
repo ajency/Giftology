@@ -48,11 +48,11 @@ class Ajency_MFG_Frontend
         }
         else if($wp->query_vars['gift-invites-step-1'])
         {
-            echo do_shortcode( '[gift_invites inv_group="" show_op_icon=1 template=2 gift_id='.$wp->query_vars['gift-invites-step-1'].' status=0]' );
+            echo do_shortcode( '[gift_invites show_op_icon=1 template=2 gift_id='.$wp->query_vars['gift-invites-step-1'].' status=0]' );
         }
         else if($wp->query_vars['gift-invites-step-2'])
         {
-            echo do_shortcode( '[gift_invites inv_group="" show_op_icon=1 template=2 gift_id='.$wp->query_vars['gift-invites-step-2'].' status=1,3]' );
+            echo do_shortcode( '[gift_invites inv_group="'.$wp->query_vars['invite-group'].'" show_op_icon=1 template=2 gift_id='.$wp->query_vars['gift-invites-step-2'].' status=1,3]' );
         }
         else if($wp->query_vars['accept-gift-invite']) //Step 3
         {
@@ -68,6 +68,7 @@ class Ajency_MFG_Frontend
         $vars[] = 'gift-invites-step-1';
         $vars[] = 'gift-invites-step-2';
         $vars[] = 'accept-gift-invite';
+        $vars[] = 'invite-group';
         $vars[] = 'modal';
         return $vars;
     }

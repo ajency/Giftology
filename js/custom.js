@@ -73,10 +73,13 @@
         jQuery("#send-invites").click(function(){
 
             var gift_id = $( '#gift_id' ).val();
+            var invite_group = Math.random().toString(36).substring(7);
+            document.getElementById("invite_group").value = invite_group;
+            console.log(invite_group);
 
             $.ajax({
                 type: "POST",
-                url: giftology_api.root + 'giftology/v1/gifts/'+ gift_id +'/send-invites',
+                url: giftology_api.root + 'giftology/v1/gifts/'+ gift_id +'/send-invites?invite-group='+invite_group,
                 beforeSend: function ( xhr ) {
                     xhr.setRequestHeader( 'X-WP-Nonce', giftology_api.nonce );
                 },
@@ -84,7 +87,9 @@
                 success: function(data){
                     /*                    $("#thanks").html(msg)
                      $("#form-content").modal('hide');*/
+                    var invite_group = $( '#invite_group' ).val();
                     console.log(data);
+                    console.log("sdfsdf" + invite_group);
                 },
                 error: function(){
                     alert("Internal Server Error : Please contact Admin");
@@ -106,8 +111,10 @@
         });
 
         jQuery('#confirmed-emails').on('show.bs.modal', function (e) {
+            var invite_group = $( '#invite_group' ).val();
+            console.log("invite-group" + invite_group);
             var gift_id = $( '#gift_id' ).val();
-            var loadurl = giftology_api.homeUrl + '?gift-invites-step-2='+gift_id+'&modal=true';
+            var loadurl = giftology_api.homeUrl + '?gift-invites-step-2='+gift_id+'&invite-group='+invite_group+'&modal=true';
             $(this).find('.modal-body').load(loadurl);
         });
 

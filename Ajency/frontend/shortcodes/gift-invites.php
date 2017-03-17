@@ -6,6 +6,7 @@ function gift_invites($atts) {
     $template = isset($atts['template']) ? $atts['template'] : 1;
     $limit = isset($atts['limit']) ? $atts['limit'] : false;
     $inv_group = isset($atts['inv_group']) ? $atts['inv_group'] : false;
+    $view_all_link = isset($atts['view-all-link']) ? $atts['view-all-link'] : false;
 
     $status = explode(',',$atts['status']);
     $show_op_icon = isset($atts['show_op_icon']) ? $atts['show_op_icon'] : 0;
@@ -60,6 +61,11 @@ function gift_invites($atts) {
                 }
             }
             $html .= '</div>';
+        }
+        if($view_all_link) {
+            $html .= '<div class="col view-all">
+					    			<a href="/'.$view_all_link.'">View all</a>
+					    		</div>';
         }
         $html .= '</div>';
     } else {

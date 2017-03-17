@@ -182,12 +182,12 @@ function giftology_send_invites($request_data){
     $parameters = $request_data->get_params();
     $user_id = get_current_user_id();
     $gift_id = $parameters['gift_id'];
+    $invite_group = $parameters['invite-group'];
 
     $gift = Ajency_MFG_Gift::get_gift_details($gift_id);
 
     if ($gift->created_by == $user_id) {
         $invites = Ajency_MFG_Gift::get_invitations($gift_id);
-        $invite_group = uniqid();
         foreach ($invites as $invite) {
             if (filter_var($invite->email, FILTER_VALIDATE_EMAIL)) { //still check again - paracodeania
 
@@ -222,7 +222,7 @@ function giftology_send_invites($request_data){
             }
         }
         //TODO take care of errors in JS, check if for a gift and email already exists that is queued
-        return json_response(true, 'Invitaions sent for ' . $gift_id, $invites);
+        return json_response(true, 'Invitaions sent for ' . $gift_id, $invite_group);
     }
     return false;
 }

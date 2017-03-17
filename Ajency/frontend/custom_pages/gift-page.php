@@ -194,7 +194,7 @@ $user_id = get_current_user_id();
 -->
 
                                 <?php if($perms['current_user_can_view_invites'] && $perms['recepients_count'] > 0) : ?>
-                                    <?php echo do_shortcode( '[gift_invites limit=4 gift_id="'.$gift_id.'" status="1,2,3"]' ); ?>
+                                    <?php echo do_shortcode( '[gift_invites view-all-link=# limit=4 gift_id="'.$gift_id.'" status="1,2,3"]' ); ?>
                                 <?php  endif; ?>
                             </div>
                             <div role="tabpanel" class="tab-pane" id="contributors">contributors</div>
@@ -264,6 +264,9 @@ $user_id = get_current_user_id();
             </div>
         </div>
 
+        <?php
+        echo '<input type="hidden" name="invite_group" id="invite_group" value="" />';
+        ?>
 
         <div class="add-email modal fade" id="confirmed-emails" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
@@ -288,31 +291,31 @@ $user_id = get_current_user_id();
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Update Email Settings</h4>
+                        <h4 class="modal-title" id="myModalLabel">Update Contribution Settings</h4>
                     </div>
                     <div class="modal-body">
                         <form class="" id="settings">
                             <div class="settings">
-                                <h6 class="settings-heading">Update your email settings</h6>
+                                <h6 class="settings-heading">Who can contribute to this gift?</h6>
                                 <ul>
                                     <li>
                                         <label class="radio-inline">
-                                            <input name="contribSetting" id="radio1" value="<?php echo Ajency_MFG_Gift::SETTING_CONTRIB_ONLY_ME; ?>" <?php echo Ajency_MFG_Gift::SETTING_CONTRIB_ONLY_ME == $gift->contrib_setting_id ? 'checked' : ''; ?> type="radio"> Only me (Default)
+                                            <input name="contribSetting" id="radio1" value="<?php echo Ajency_MFG_Gift::SETTING_CONTRIB_ONLY_ME; ?>" <?php echo Ajency_MFG_Gift::SETTING_CONTRIB_ONLY_ME == $gift->contrib_setting_id ? 'checked' : ''; ?> type="radio"> Only me (Private)
                                         </label>
                                     </li>
                                     <li>
                                         <label class="radio-inline select">
-                                            <input name="contribSetting" id="radio2" value="others" type="radio"> Other than me
+                                            <input disabled name="contribSetting" id="radio2" value="others" type="radio"> Other than me
                                         </label>
                                         <ul>
                                             <li>
                                                 <label class="radio-inline">
-                                                    <input name="contribSetting" id="radio1" value="<?php echo Ajency_MFG_Gift::SETTING_CONTRIB_SPECIFIC; ?>" <?php echo Ajency_MFG_Gift::SETTING_CONTRIB_SPECIFIC == $gift->contrib_setting_id ? 'checked' : ''; ?> type="radio" class="sub-option"> Specific
+                                                    <input name="contribSetting" id="radio1" value="<?php echo Ajency_MFG_Gift::SETTING_CONTRIB_SPECIFIC; ?>" <?php echo Ajency_MFG_Gift::SETTING_CONTRIB_SPECIFIC == $gift->contrib_setting_id ? 'checked' : ''; ?> type="radio" class="sub-option"> Specific People
                                                 </label>
                                             </li>
                                             <li>
                                                 <label class="radio-inline">
-                                                    <input name="contribSetting" id="radio2" value="<?php echo Ajency_MFG_Gift::SETTING_CONTRIB_EVERYONE; ?>" <?php echo Ajency_MFG_Gift::SETTING_CONTRIB_EVERYONE == $gift->contrib_setting_id ? 'checked' : ''; ?> type="radio" class="sub-option"> Everyone
+                                                    <input name="contribSetting" id="radio2" value="<?php echo Ajency_MFG_Gift::SETTING_CONTRIB_EVERYONE; ?>" <?php echo Ajency_MFG_Gift::SETTING_CONTRIB_EVERYONE == $gift->contrib_setting_id ? 'checked' : ''; ?> type="radio" class="sub-option"> Everyone (Public)
                                                 </label>
                                             </li>
                                         </ul>

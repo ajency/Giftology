@@ -107,7 +107,7 @@ class Ajency_MFG_Gift {
         $query .= "inv.status = '".$status[$last]."')";
 
         if($inv_group) {
-            $query = " AND inv.invite_group = ".$inv_group;
+            $query .= " AND inv.invite_group = '".$inv_group."'";
         }
 
 
