@@ -7,9 +7,9 @@ $code = $_GET['accept-gift-invite'];
 <?php if(is_user_logged_in())
 {
     $user_id = get_current_user_id();
-    $invite = Ajency_MFG_Gift::get_invite_by_code($code);
+    $invite = Ajency_MFG_Gift::get_invite_by_code($code,[Ajency_MFG_Gift::STATUS_INVITE_SENT,Ajency_MFG_Gift::STATUS_INVITE_SENT_USED]);
+    $gift_id = $invite->gift_id;
     if($invite) {
-        $gift_id = $invite->gift_id;
         //TODO check if Gift contrib status is only_me the fail it
         Ajency_MFG_Gift::add_acl_rule('gift', $gift_id, $user_id, 'send-invites', 1);
         Ajency_MFG_Gift::add_acl_rule('gift', $gift_id, $user_id, 'contribute', 1);
@@ -17,7 +17,7 @@ $code = $_GET['accept-gift-invite'];
         //TODO redirect to gift id
         wp_redirect( home_url().'/?gifts='.$gift_id );
     }
-    print "Invalid Invite. Click here to continue";
+    print "Invalid Code Page, Give options here";
 }
 ?>
 
