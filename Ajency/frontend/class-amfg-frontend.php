@@ -57,7 +57,6 @@ class Ajency_MFG_Frontend
         else if($wp->query_vars['accept-gift-invite']) //Step 3
         {
             //Page to accept invitaions and login
-            print "Hi";
             get_template_part( 'Ajency/frontend/custom_pages/accept-invite', 'page' );
             /*            echo do_shortcode( '[gift_invites show_delete=1 template=2 gift_id="1" status="0"]' );*/
         }
