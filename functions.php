@@ -159,7 +159,10 @@ function giftology_queue_invites($request_data) {
 
     $gift = Ajency_MFG_Gift::get_gift_details($gift_id);
 
-    if ($gift->created_by == $user_id) {
+
+    //TODO change
+    if (Ajency_MFG_Gift::get_acl_access_rule('gift',$gift_id,$user_id,'send-invites')) {
+
         $emails = explode(',', $_POST['email']);
         $message_id = Ajency_MFG_Gift::add_invitation_message($_POST['message']);
 
@@ -186,7 +189,7 @@ function giftology_send_invites($request_data){
 
     $gift = Ajency_MFG_Gift::get_gift_details($gift_id);
 
-    if ($gift->created_by == $user_id) {
+    if (Ajency_MFG_Gift::get_acl_access_rule('gift',$gift_id,$user_id,'send-invites')) {
         $invites = Ajency_MFG_Gift::get_invitations($gift_id);
         foreach ($invites as $invite) {
             if (filter_var($invite->email, FILTER_VALIDATE_EMAIL)) { //still check again - paracodeania
@@ -199,10 +202,8 @@ function giftology_send_invites($request_data){
                     //mark status as 3 for user, also send link to user, if they use it status gets changes to 2
                     Ajency_MFG_Gift::mark_gift_code_as_sent_used($invite->invite_code, $invite_group, $invite->id);
                     //send gift url directly
-                   /* $message = file_get_contents( get_template_directory() . '/Ajency/users/welcome-email-template.html');
-                    $text = 'User invited you to contribute to a Gift';
-                    $email_subject = "User invited you to contribute to a Gift on Giftology!";
-                    $this->send_email($email_subject, $message, $text, $invite->email);*/
+/*                    $message = file_get_contents( get_template_directory() . '/Ajency/users/welcome-email-template.html');*/
+
 
 
                 } else {
@@ -218,6 +219,10 @@ function giftology_send_invites($request_data){
                     Ajency_MFG_Gift::mark_gift_code_as_sent($invite->invite_code,$invite_group);
 
                 }
+                $text = $message = 'Copy Paste the following link in browser : '.home_url().'?/accept-gift-invite='.$invite->invite_code;
+                $email_subject = "A user has invited you to contribute to a Gift on Giftology!";
+                Ajency_MFG_Users::send_email($email_subject, $message, $text, $invite->email, 'invite-email');
+
                 //Trigger Email
             }
         }

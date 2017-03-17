@@ -84,7 +84,7 @@ class Ajency_MFG_Users {
         return $column_headers;
     }
 
-    function send_email($subject,$html,$text,$to,$tag) {
+    static function send_email($subject,$html,$text,$to,$tag) {
 
 
         $url = 'https://api.sendgrid.com/';
