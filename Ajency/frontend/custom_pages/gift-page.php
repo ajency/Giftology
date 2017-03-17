@@ -148,8 +148,7 @@ $user_id = get_current_user_id();
 
                     <div class="contrib-selector">
 
-
-                        <?php  if($perms['current_user_can_view_invites']) : ?>
+                        <?php  if($perms['current_user_can_view_invites'] && $perms['recepients_count'] > 0) : ?>
 
                         <ul class="nav nav-tabs" role="tablist">
                             <li role="presentation" class="active">
@@ -215,12 +214,12 @@ $user_id = get_current_user_id();
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Add Email</h4>
+                        <h4 class="modal-title" id="myModalLabel">Invite via email to contribute</h4>
                     </div>
                     <form class="form-horizontal" id="invite">
                         <div class="modal-body">
                             <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+                                <label for="inputEmail3" class="col-sm-2 control-label">Emails</label>
                                 <div class="col-sm-10">
                                     <input name="email" class="form-control" id="email-tags" placeholder="Email" required>
                                 </div>
@@ -228,13 +227,15 @@ $user_id = get_current_user_id();
                             <div class="form-group">
                                 <label for="message" class="col-sm-2 control-label">Message</label>
                                 <div class="col-sm-10">
-                                    <textarea name="message" class="form-control" placeholder="Message" id="message" rows="5" required></textarea>
+                                    <textarea name="message" class="form-control" placeholder="Message" id="message" rows="5" required>[Default Message Template]</textarea>
                                 </div>
                             </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="submit" id="queue-invites" class="btn btn-primary site-btn-2" data-toggle="modal" data-load-url="#" data-target="#confirm-emails" data-dismiss="modal">Save</button>
+                            <button type="submit" id="queue-invites" class="btn btn-primary site-btn-2" data-toggle="modal" data-load-url="#" data-target="#confirm-emails" data-dismiss="modal">
+                                Send
+                            </button>
                         </div>
                     </form>
 
@@ -273,7 +274,7 @@ $user_id = get_current_user_id();
                     </div>
                     <div class="modal-body"></div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" id="finish-invites" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>

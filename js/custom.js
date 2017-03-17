@@ -32,6 +32,19 @@
 
     jQuery(document).ready(function() {
 
+/*
+
+        $(".settings input[type='radio']").change(function() {
+            if (this.value == "option1") {
+                $('.second-option').attr('disabled','disable');
+            } else {
+                $('.second-option').removeAttr('disabled');
+                $('.sub-option').attr('checked','checked');
+
+            }
+        });
+*/
+
 
         function validateEmail(email)
         {
@@ -77,6 +90,13 @@
                     alert("Internal Server Error : Please contact Admin");
                 }
             });
+        });
+
+        jQuery("#finish-invites").click(function(){
+
+            document.getElementsByName("email").value = '';
+            document.getElementsByName("message").value = '';
+            window.location.reload();
         });
 
         jQuery('#confirm-emails').on('show.bs.modal', function (e) {

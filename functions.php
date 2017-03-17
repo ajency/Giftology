@@ -162,9 +162,10 @@ function giftology_queue_invites($request_data) {
     if ($gift->created_by == $user_id) {
         $emails = explode(',', $_POST['email']);
         $message_id = Ajency_MFG_Gift::add_invitation_message($_POST['message']);
+
         $already_queued_emails = Ajency_MFG_Gift::check_if_invites_already_queued($gift_id, $emails);
+
         $emails_to_add = array_diff($emails, $already_queued_emails);
-        $invite_group = uniqid();
         foreach ($emails_to_add as $email) {
             if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 Ajency_MFG_Gift::add_invitation($email, $gift_id, Ajency_MFG_Gift::STATUS_INVITE_QUEUED, $message_id);
