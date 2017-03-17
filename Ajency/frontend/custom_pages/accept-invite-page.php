@@ -31,6 +31,7 @@ print $user_id;
 {
     print "Logged Out";
     $dest = home_url() .'/login?destination=/?accept-gift-invite='.$code;
+    print $dest;
     wp_redirect($dest);
 }
 ?>
