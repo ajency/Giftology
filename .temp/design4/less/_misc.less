@@ -1,0 +1,49 @@
+
+// ---------------------------
+// DEFAULT MODAL STYLING -----------
+// --------------------------- 
+
+
+.modal{
+	.modal-content{
+		border-radius: 0;
+	}
+	&-header{
+		background-color: @link-color;
+    	color: #fff;
+    	padding: 1.2em;
+    	.close{
+    		text-shadow: 1px 1px 1px #000;
+    		opacity: 1;
+    		color: #fff;
+    		outline: 0;
+    	}
+	}
+}
+
+
+// ---------------------------
+// STATUS STYLING -----------
+// --------------------------- 
+
+.status{
+    padding: 2em;
+    background-color: #fff;
+    box-shadow: @brand-box-shadow;
+    border-radius: 0;
+    border: 0;
+    &-title{
+        margin: 0 0 8px 0;
+        font-size: 1.25em;
+    }
+    &-caption{
+        font-size: 1.1em;
+        margin-bottom: 0;
+    }
+    .close{
+        top: -15px;
+        right: -10px;
+        opacity: 1;
+        color: @link-color-2;
+    }
+}

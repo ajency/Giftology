@@ -1,5 +1,7 @@
 <?php
 
+namespace BSEStarMF\MFOrder;
+
 class orderEntryParam
 {
 
@@ -215,7 +217,7 @@ class orderEntryParam
 
     /**
      * @param string $TransCode
-     * @return orderEntryParam
+     * @return \BSEStarMF\MFOrder\orderEntryParam
      */
     public function setTransCode($TransCode)
     {
@@ -233,7 +235,7 @@ class orderEntryParam
 
     /**
      * @param string $TransNo
-     * @return orderEntryParam
+     * @return \BSEStarMF\MFOrder\orderEntryParam
      */
     public function setTransNo($TransNo)
     {
@@ -251,7 +253,7 @@ class orderEntryParam
 
     /**
      * @param string $OrderId
-     * @return orderEntryParam
+     * @return \BSEStarMF\MFOrder\orderEntryParam
      */
     public function setOrderId($OrderId)
     {
@@ -269,7 +271,7 @@ class orderEntryParam
 
     /**
      * @param string $UserID
-     * @return orderEntryParam
+     * @return \BSEStarMF\MFOrder\orderEntryParam
      */
     public function setUserID($UserID)
     {
@@ -287,7 +289,7 @@ class orderEntryParam
 
     /**
      * @param string $MemberId
-     * @return orderEntryParam
+     * @return \BSEStarMF\MFOrder\orderEntryParam
      */
     public function setMemberId($MemberId)
     {
@@ -305,7 +307,7 @@ class orderEntryParam
 
     /**
      * @param string $ClientCode
-     * @return orderEntryParam
+     * @return \BSEStarMF\MFOrder\orderEntryParam
      */
     public function setClientCode($ClientCode)
     {
@@ -323,7 +325,7 @@ class orderEntryParam
 
     /**
      * @param string $SchemeCd
-     * @return orderEntryParam
+     * @return \BSEStarMF\MFOrder\orderEntryParam
      */
     public function setSchemeCd($SchemeCd)
     {
@@ -341,7 +343,7 @@ class orderEntryParam
 
     /**
      * @param string $BuySell
-     * @return orderEntryParam
+     * @return \BSEStarMF\MFOrder\orderEntryParam
      */
     public function setBuySell($BuySell)
     {
@@ -359,7 +361,7 @@ class orderEntryParam
 
     /**
      * @param string $BuySellType
-     * @return orderEntryParam
+     * @return \BSEStarMF\MFOrder\orderEntryParam
      */
     public function setBuySellType($BuySellType)
     {
@@ -377,7 +379,7 @@ class orderEntryParam
 
     /**
      * @param string $DPTxn
-     * @return orderEntryParam
+     * @return \BSEStarMF\MFOrder\orderEntryParam
      */
     public function setDPTxn($DPTxn)
     {
@@ -395,7 +397,7 @@ class orderEntryParam
 
     /**
      * @param string $OrderVal
-     * @return orderEntryParam
+     * @return \BSEStarMF\MFOrder\orderEntryParam
      */
     public function setOrderVal($OrderVal)
     {
@@ -413,7 +415,7 @@ class orderEntryParam
 
     /**
      * @param string $Qty
-     * @return orderEntryParam
+     * @return \BSEStarMF\MFOrder\orderEntryParam
      */
     public function setQty($Qty)
     {
@@ -431,7 +433,7 @@ class orderEntryParam
 
     /**
      * @param string $AllRedeem
-     * @return orderEntryParam
+     * @return \BSEStarMF\MFOrder\orderEntryParam
      */
     public function setAllRedeem($AllRedeem)
     {
@@ -449,7 +451,7 @@ class orderEntryParam
 
     /**
      * @param string $FolioNo
-     * @return orderEntryParam
+     * @return \BSEStarMF\MFOrder\orderEntryParam
      */
     public function setFolioNo($FolioNo)
     {
@@ -467,7 +469,7 @@ class orderEntryParam
 
     /**
      * @param string $Remarks
-     * @return orderEntryParam
+     * @return \BSEStarMF\MFOrder\orderEntryParam
      */
     public function setRemarks($Remarks)
     {
@@ -485,7 +487,7 @@ class orderEntryParam
 
     /**
      * @param string $KYCStatus
-     * @return orderEntryParam
+     * @return \BSEStarMF\MFOrder\orderEntryParam
      */
     public function setKYCStatus($KYCStatus)
     {
@@ -503,7 +505,7 @@ class orderEntryParam
 
     /**
      * @param string $RefNo
-     * @return orderEntryParam
+     * @return \BSEStarMF\MFOrder\orderEntryParam
      */
     public function setRefNo($RefNo)
     {
@@ -521,7 +523,7 @@ class orderEntryParam
 
     /**
      * @param string $SubBrCode
-     * @return orderEntryParam
+     * @return \BSEStarMF\MFOrder\orderEntryParam
      */
     public function setSubBrCode($SubBrCode)
     {
@@ -539,7 +541,7 @@ class orderEntryParam
 
     /**
      * @param string $EUIN
-     * @return orderEntryParam
+     * @return \BSEStarMF\MFOrder\orderEntryParam
      */
     public function setEUIN($EUIN)
     {
@@ -557,7 +559,7 @@ class orderEntryParam
 
     /**
      * @param string $EUINVal
-     * @return orderEntryParam
+     * @return \BSEStarMF\MFOrder\orderEntryParam
      */
     public function setEUINVal($EUINVal)
     {
@@ -575,7 +577,7 @@ class orderEntryParam
 
     /**
      * @param string $MinRedeem
-     * @return orderEntryParam
+     * @return \BSEStarMF\MFOrder\orderEntryParam
      */
     public function setMinRedeem($MinRedeem)
     {
@@ -593,7 +595,7 @@ class orderEntryParam
 
     /**
      * @param string $DPC
-     * @return orderEntryParam
+     * @return \BSEStarMF\MFOrder\orderEntryParam
      */
     public function setDPC($DPC)
     {
@@ -611,7 +613,7 @@ class orderEntryParam
 
     /**
      * @param string $IPAdd
-     * @return orderEntryParam
+     * @return \BSEStarMF\MFOrder\orderEntryParam
      */
     public function setIPAdd($IPAdd)
     {
@@ -629,7 +631,7 @@ class orderEntryParam
 
     /**
      * @param string $Password
-     * @return orderEntryParam
+     * @return \BSEStarMF\MFOrder\orderEntryParam
      */
     public function setPassword($Password)
     {
@@ -647,7 +649,7 @@ class orderEntryParam
 
     /**
      * @param string $PassKey
-     * @return orderEntryParam
+     * @return \BSEStarMF\MFOrder\orderEntryParam
      */
     public function setPassKey($PassKey)
     {
@@ -665,7 +667,7 @@ class orderEntryParam
 
     /**
      * @param string $Parma1
-     * @return orderEntryParam
+     * @return \BSEStarMF\MFOrder\orderEntryParam
      */
     public function setParma1($Parma1)
     {
@@ -683,7 +685,7 @@ class orderEntryParam
 
     /**
      * @param string $Param2
-     * @return orderEntryParam
+     * @return \BSEStarMF\MFOrder\orderEntryParam
      */
     public function setParam2($Param2)
     {
@@ -701,7 +703,7 @@ class orderEntryParam
 
     /**
      * @param string $Param3
-     * @return orderEntryParam
+     * @return \BSEStarMF\MFOrder\orderEntryParam
      */
     public function setParam3($Param3)
     {

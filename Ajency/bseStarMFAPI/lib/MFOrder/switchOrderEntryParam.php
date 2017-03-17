@@ -1,5 +1,7 @@
 <?php
 
+namespace BSEStarMF\MFOrder;
+
 class switchOrderEntryParam
 {
 
@@ -208,7 +210,7 @@ class switchOrderEntryParam
 
     /**
      * @param string $TransCode
-     * @return switchOrderEntryParam
+     * @return \BSEStarMF\MFOrder\switchOrderEntryParam
      */
     public function setTransCode($TransCode)
     {
@@ -226,7 +228,7 @@ class switchOrderEntryParam
 
     /**
      * @param string $TransNo
-     * @return switchOrderEntryParam
+     * @return \BSEStarMF\MFOrder\switchOrderEntryParam
      */
     public function setTransNo($TransNo)
     {
@@ -244,7 +246,7 @@ class switchOrderEntryParam
 
     /**
      * @param string $OrderId
-     * @return switchOrderEntryParam
+     * @return \BSEStarMF\MFOrder\switchOrderEntryParam
      */
     public function setOrderId($OrderId)
     {
@@ -262,7 +264,7 @@ class switchOrderEntryParam
 
     /**
      * @param string $UserId
-     * @return switchOrderEntryParam
+     * @return \BSEStarMF\MFOrder\switchOrderEntryParam
      */
     public function setUserId($UserId)
     {
@@ -280,7 +282,7 @@ class switchOrderEntryParam
 
     /**
      * @param string $MemberId
-     * @return switchOrderEntryParam
+     * @return \BSEStarMF\MFOrder\switchOrderEntryParam
      */
     public function setMemberId($MemberId)
     {
@@ -298,7 +300,7 @@ class switchOrderEntryParam
 
     /**
      * @param string $ClientCode
-     * @return switchOrderEntryParam
+     * @return \BSEStarMF\MFOrder\switchOrderEntryParam
      */
     public function setClientCode($ClientCode)
     {
@@ -316,7 +318,7 @@ class switchOrderEntryParam
 
     /**
      * @param string $FromSchemeCd
-     * @return switchOrderEntryParam
+     * @return \BSEStarMF\MFOrder\switchOrderEntryParam
      */
     public function setFromSchemeCd($FromSchemeCd)
     {
@@ -334,7 +336,7 @@ class switchOrderEntryParam
 
     /**
      * @param string $ToSchemeCd
-     * @return switchOrderEntryParam
+     * @return \BSEStarMF\MFOrder\switchOrderEntryParam
      */
     public function setToSchemeCd($ToSchemeCd)
     {
@@ -352,7 +354,7 @@ class switchOrderEntryParam
 
     /**
      * @param string $BuySell
-     * @return switchOrderEntryParam
+     * @return \BSEStarMF\MFOrder\switchOrderEntryParam
      */
     public function setBuySell($BuySell)
     {
@@ -370,7 +372,7 @@ class switchOrderEntryParam
 
     /**
      * @param string $BuySellType
-     * @return switchOrderEntryParam
+     * @return \BSEStarMF\MFOrder\switchOrderEntryParam
      */
     public function setBuySellType($BuySellType)
     {
@@ -388,7 +390,7 @@ class switchOrderEntryParam
 
     /**
      * @param string $DPTxn
-     * @return switchOrderEntryParam
+     * @return \BSEStarMF\MFOrder\switchOrderEntryParam
      */
     public function setDPTxn($DPTxn)
     {
@@ -406,7 +408,7 @@ class switchOrderEntryParam
 
     /**
      * @param string $OrderVal
-     * @return switchOrderEntryParam
+     * @return \BSEStarMF\MFOrder\switchOrderEntryParam
      */
     public function setOrderVal($OrderVal)
     {
@@ -424,7 +426,7 @@ class switchOrderEntryParam
 
     /**
      * @param string $SwitchUnits
-     * @return switchOrderEntryParam
+     * @return \BSEStarMF\MFOrder\switchOrderEntryParam
      */
     public function setSwitchUnits($SwitchUnits)
     {
@@ -442,7 +444,7 @@ class switchOrderEntryParam
 
     /**
      * @param string $AllUnitsFlag
-     * @return switchOrderEntryParam
+     * @return \BSEStarMF\MFOrder\switchOrderEntryParam
      */
     public function setAllUnitsFlag($AllUnitsFlag)
     {
@@ -460,7 +462,7 @@ class switchOrderEntryParam
 
     /**
      * @param string $FolioNo
-     * @return switchOrderEntryParam
+     * @return \BSEStarMF\MFOrder\switchOrderEntryParam
      */
     public function setFolioNo($FolioNo)
     {
@@ -478,7 +480,7 @@ class switchOrderEntryParam
 
     /**
      * @param string $Remarks
-     * @return switchOrderEntryParam
+     * @return \BSEStarMF\MFOrder\switchOrderEntryParam
      */
     public function setRemarks($Remarks)
     {
@@ -496,7 +498,7 @@ class switchOrderEntryParam
 
     /**
      * @param string $KYCStatus
-     * @return switchOrderEntryParam
+     * @return \BSEStarMF\MFOrder\switchOrderEntryParam
      */
     public function setKYCStatus($KYCStatus)
     {
@@ -514,7 +516,7 @@ class switchOrderEntryParam
 
     /**
      * @param string $SubBrCode
-     * @return switchOrderEntryParam
+     * @return \BSEStarMF\MFOrder\switchOrderEntryParam
      */
     public function setSubBrCode($SubBrCode)
     {
@@ -532,7 +534,7 @@ class switchOrderEntryParam
 
     /**
      * @param string $EUIN
-     * @return switchOrderEntryParam
+     * @return \BSEStarMF\MFOrder\switchOrderEntryParam
      */
     public function setEUIN($EUIN)
     {
@@ -550,7 +552,7 @@ class switchOrderEntryParam
 
     /**
      * @param string $EUINVal
-     * @return switchOrderEntryParam
+     * @return \BSEStarMF\MFOrder\switchOrderEntryParam
      */
     public function setEUINVal($EUINVal)
     {
@@ -568,7 +570,7 @@ class switchOrderEntryParam
 
     /**
      * @param string $MinRedeem
-     * @return switchOrderEntryParam
+     * @return \BSEStarMF\MFOrder\switchOrderEntryParam
      */
     public function setMinRedeem($MinRedeem)
     {
@@ -586,7 +588,7 @@ class switchOrderEntryParam
 
     /**
      * @param string $IPAdd
-     * @return switchOrderEntryParam
+     * @return \BSEStarMF\MFOrder\switchOrderEntryParam
      */
     public function setIPAdd($IPAdd)
     {
@@ -604,7 +606,7 @@ class switchOrderEntryParam
 
     /**
      * @param string $Password
-     * @return switchOrderEntryParam
+     * @return \BSEStarMF\MFOrder\switchOrderEntryParam
      */
     public function setPassword($Password)
     {
@@ -622,7 +624,7 @@ class switchOrderEntryParam
 
     /**
      * @param string $PassKey
-     * @return switchOrderEntryParam
+     * @return \BSEStarMF\MFOrder\switchOrderEntryParam
      */
     public function setPassKey($PassKey)
     {
@@ -640,7 +642,7 @@ class switchOrderEntryParam
 
     /**
      * @param string $Parma1
-     * @return switchOrderEntryParam
+     * @return \BSEStarMF\MFOrder\switchOrderEntryParam
      */
     public function setParma1($Parma1)
     {
@@ -658,7 +660,7 @@ class switchOrderEntryParam
 
     /**
      * @param string $Param2
-     * @return switchOrderEntryParam
+     * @return \BSEStarMF\MFOrder\switchOrderEntryParam
      */
     public function setParam2($Param2)
     {
@@ -676,7 +678,7 @@ class switchOrderEntryParam
 
     /**
      * @param string $Param3
-     * @return switchOrderEntryParam
+     * @return \BSEStarMF\MFOrder\switchOrderEntryParam
      */
     public function setParam3($Param3)
     {

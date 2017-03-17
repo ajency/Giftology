@@ -1,5 +1,7 @@
 <?php
 
+namespace BSEStarMF\MFOrder;
+
 class Decrypt
 {
 
@@ -26,7 +28,7 @@ class Decrypt
 
     /**
      * @param string $pwd
-     * @return Decrypt
+     * @return \BSEStarMF\MFOrder\Decrypt
      */
     public function setPwd($pwd)
     {

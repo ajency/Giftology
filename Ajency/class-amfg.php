@@ -22,6 +22,12 @@ class Ajency_MFG {
 
         include 'users/class-amfg-users.php';
         new Ajency_MFG_Users($this->plugin_name,$this->version);
+
+
+        include 'frontend/class-amfg-frontend.php';
+        new Ajency_MFG_Frontend($this->plugin_name,$this->version);
+
+        include 'gift/class-amfg-gift.php';
     }
 
 }

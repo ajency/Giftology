@@ -1,5 +1,7 @@
 <?php
 
+namespace BSEStarMF\MFOrder;
+
 class spreadOrderEntryParam
 {
 
@@ -222,7 +224,7 @@ class spreadOrderEntryParam
 
     /**
      * @param string $TransactionCode
-     * @return spreadOrderEntryParam
+     * @return \BSEStarMF\MFOrder\spreadOrderEntryParam
      */
     public function setTransactionCode($TransactionCode)
     {
@@ -240,7 +242,7 @@ class spreadOrderEntryParam
 
     /**
      * @param string $UniqueRefNo
-     * @return spreadOrderEntryParam
+     * @return \BSEStarMF\MFOrder\spreadOrderEntryParam
      */
     public function setUniqueRefNo($UniqueRefNo)
     {
@@ -258,7 +260,7 @@ class spreadOrderEntryParam
 
     /**
      * @param string $OrderID
-     * @return spreadOrderEntryParam
+     * @return \BSEStarMF\MFOrder\spreadOrderEntryParam
      */
     public function setOrderID($OrderID)
     {
@@ -276,7 +278,7 @@ class spreadOrderEntryParam
 
     /**
      * @param string $UserID
-     * @return spreadOrderEntryParam
+     * @return \BSEStarMF\MFOrder\spreadOrderEntryParam
      */
     public function setUserID($UserID)
     {
@@ -294,7 +296,7 @@ class spreadOrderEntryParam
 
     /**
      * @param string $MemberId
-     * @return spreadOrderEntryParam
+     * @return \BSEStarMF\MFOrder\spreadOrderEntryParam
      */
     public function setMemberId($MemberId)
     {
@@ -312,7 +314,7 @@ class spreadOrderEntryParam
 
     /**
      * @param string $ClientCode
-     * @return spreadOrderEntryParam
+     * @return \BSEStarMF\MFOrder\spreadOrderEntryParam
      */
     public function setClientCode($ClientCode)
     {
@@ -330,7 +332,7 @@ class spreadOrderEntryParam
 
     /**
      * @param string $SchemeCode
-     * @return spreadOrderEntryParam
+     * @return \BSEStarMF\MFOrder\spreadOrderEntryParam
      */
     public function setSchemeCode($SchemeCode)
     {
@@ -348,7 +350,7 @@ class spreadOrderEntryParam
 
     /**
      * @param string $BuySell
-     * @return spreadOrderEntryParam
+     * @return \BSEStarMF\MFOrder\spreadOrderEntryParam
      */
     public function setBuySell($BuySell)
     {
@@ -366,7 +368,7 @@ class spreadOrderEntryParam
 
     /**
      * @param string $BuySellType
-     * @return spreadOrderEntryParam
+     * @return \BSEStarMF\MFOrder\spreadOrderEntryParam
      */
     public function setBuySellType($BuySellType)
     {
@@ -384,7 +386,7 @@ class spreadOrderEntryParam
 
     /**
      * @param string $DPTxn
-     * @return spreadOrderEntryParam
+     * @return \BSEStarMF\MFOrder\spreadOrderEntryParam
      */
     public function setDPTxn($DPTxn)
     {
@@ -402,7 +404,7 @@ class spreadOrderEntryParam
 
     /**
      * @param string $OrderValue
-     * @return spreadOrderEntryParam
+     * @return \BSEStarMF\MFOrder\spreadOrderEntryParam
      */
     public function setOrderValue($OrderValue)
     {
@@ -420,7 +422,7 @@ class spreadOrderEntryParam
 
     /**
      * @param string $RedemptionAmt
-     * @return spreadOrderEntryParam
+     * @return \BSEStarMF\MFOrder\spreadOrderEntryParam
      */
     public function setRedemptionAmt($RedemptionAmt)
     {
@@ -438,7 +440,7 @@ class spreadOrderEntryParam
 
     /**
      * @param string $AllUnitFlag
-     * @return spreadOrderEntryParam
+     * @return \BSEStarMF\MFOrder\spreadOrderEntryParam
      */
     public function setAllUnitFlag($AllUnitFlag)
     {
@@ -456,7 +458,7 @@ class spreadOrderEntryParam
 
     /**
      * @param string $RedeemDate
-     * @return spreadOrderEntryParam
+     * @return \BSEStarMF\MFOrder\spreadOrderEntryParam
      */
     public function setRedeemDate($RedeemDate)
     {
@@ -474,7 +476,7 @@ class spreadOrderEntryParam
 
     /**
      * @param string $FolioNo
-     * @return spreadOrderEntryParam
+     * @return \BSEStarMF\MFOrder\spreadOrderEntryParam
      */
     public function setFolioNo($FolioNo)
     {
@@ -492,7 +494,7 @@ class spreadOrderEntryParam
 
     /**
      * @param string $Remarks
-     * @return spreadOrderEntryParam
+     * @return \BSEStarMF\MFOrder\spreadOrderEntryParam
      */
     public function setRemarks($Remarks)
     {
@@ -510,7 +512,7 @@ class spreadOrderEntryParam
 
     /**
      * @param string $KYCStatus
-     * @return spreadOrderEntryParam
+     * @return \BSEStarMF\MFOrder\spreadOrderEntryParam
      */
     public function setKYCStatus($KYCStatus)
     {
@@ -528,7 +530,7 @@ class spreadOrderEntryParam
 
     /**
      * @param string $RefNo
-     * @return spreadOrderEntryParam
+     * @return \BSEStarMF\MFOrder\spreadOrderEntryParam
      */
     public function setRefNo($RefNo)
     {
@@ -546,7 +548,7 @@ class spreadOrderEntryParam
 
     /**
      * @param string $SubBroCode
-     * @return spreadOrderEntryParam
+     * @return \BSEStarMF\MFOrder\spreadOrderEntryParam
      */
     public function setSubBroCode($SubBroCode)
     {
@@ -564,7 +566,7 @@ class spreadOrderEntryParam
 
     /**
      * @param string $EUIN
-     * @return spreadOrderEntryParam
+     * @return \BSEStarMF\MFOrder\spreadOrderEntryParam
      */
     public function setEUIN($EUIN)
     {
@@ -582,7 +584,7 @@ class spreadOrderEntryParam
 
     /**
      * @param string $EUINVal
-     * @return spreadOrderEntryParam
+     * @return \BSEStarMF\MFOrder\spreadOrderEntryParam
      */
     public function setEUINVal($EUINVal)
     {
@@ -600,7 +602,7 @@ class spreadOrderEntryParam
 
     /**
      * @param string $MinRedeem
-     * @return spreadOrderEntryParam
+     * @return \BSEStarMF\MFOrder\spreadOrderEntryParam
      */
     public function setMinRedeem($MinRedeem)
     {
@@ -618,7 +620,7 @@ class spreadOrderEntryParam
 
     /**
      * @param string $DPC
-     * @return spreadOrderEntryParam
+     * @return \BSEStarMF\MFOrder\spreadOrderEntryParam
      */
     public function setDPC($DPC)
     {
@@ -636,7 +638,7 @@ class spreadOrderEntryParam
 
     /**
      * @param string $IPAddress
-     * @return spreadOrderEntryParam
+     * @return \BSEStarMF\MFOrder\spreadOrderEntryParam
      */
     public function setIPAddress($IPAddress)
     {
@@ -654,7 +656,7 @@ class spreadOrderEntryParam
 
     /**
      * @param string $Password
-     * @return spreadOrderEntryParam
+     * @return \BSEStarMF\MFOrder\spreadOrderEntryParam
      */
     public function setPassword($Password)
     {
@@ -672,7 +674,7 @@ class spreadOrderEntryParam
 
     /**
      * @param string $PassKey
-     * @return spreadOrderEntryParam
+     * @return \BSEStarMF\MFOrder\spreadOrderEntryParam
      */
     public function setPassKey($PassKey)
     {
@@ -690,7 +692,7 @@ class spreadOrderEntryParam
 
     /**
      * @param string $Param1
-     * @return spreadOrderEntryParam
+     * @return \BSEStarMF\MFOrder\spreadOrderEntryParam
      */
     public function setParam1($Param1)
     {
@@ -708,7 +710,7 @@ class spreadOrderEntryParam
 
     /**
      * @param string $Param2
-     * @return spreadOrderEntryParam
+     * @return \BSEStarMF\MFOrder\spreadOrderEntryParam
      */
     public function setParam2($Param2)
     {
@@ -726,7 +728,7 @@ class spreadOrderEntryParam
 
     /**
      * @param string $Param3
-     * @return spreadOrderEntryParam
+     * @return \BSEStarMF\MFOrder\spreadOrderEntryParam
      */
     public function setParam3($Param3)
     {

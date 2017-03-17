@@ -1,5 +1,7 @@
 <?php
 
+namespace BSEStarMF\MFOrder;
+
 class xsipOrderEntryParamResponse
 {
 
@@ -26,7 +28,7 @@ class xsipOrderEntryParamResponse
 
     /**
      * @param string $xsipOrderEntryParamResult
-     * @return xsipOrderEntryParamResponse
+     * @return \BSEStarMF\MFOrder\xsipOrderEntryParamResponse
      */
     public function setXsipOrderEntryParamResult($xsipOrderEntryParamResult)
     {

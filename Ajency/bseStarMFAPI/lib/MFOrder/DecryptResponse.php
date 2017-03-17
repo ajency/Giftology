@@ -1,5 +1,7 @@
 <?php
 
+namespace BSEStarMF\MFOrder;
+
 class DecryptResponse
 {
 
@@ -26,7 +28,7 @@ class DecryptResponse
 
     /**
      * @param string $DecryptResult
-     * @return DecryptResponse
+     * @return \BSEStarMF\MFOrder\DecryptResponse
      */
     public function setDecryptResult($DecryptResult)
     {

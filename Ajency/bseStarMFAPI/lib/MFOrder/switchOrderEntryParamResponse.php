@@ -1,5 +1,7 @@
 <?php
 
+namespace BSEStarMF\MFOrder;
+
 class switchOrderEntryParamResponse
 {
 
@@ -26,7 +28,7 @@ class switchOrderEntryParamResponse
 
     /**
      * @param string $switchOrderEntryParamResult
-     * @return switchOrderEntryParamResponse
+     * @return \BSEStarMF\MFOrder\switchOrderEntryParamResponse
      */
     public function setSwitchOrderEntryParamResult($switchOrderEntryParamResult)
     {

@@ -1,5 +1,7 @@
 <?php
 
+namespace BSEStarMF\MFOrder;
+
 class MFOrder extends \SoapClient
 {
 
@@ -7,20 +9,20 @@ class MFOrder extends \SoapClient
      * @var array $classmap The defined classes
      */
     private static $classmap = array (
-      'getPassword' => '\\getPassword',
-      'getPasswordResponse' => '\\getPasswordResponse',
-      'orderEntryParam' => '\\orderEntryParam',
-      'orderEntryParamResponse' => '\\orderEntryParamResponse',
-      'spreadOrderEntryParam' => '\\spreadOrderEntryParam',
-      'spreadOrderEntryParamResponse' => '\\spreadOrderEntryParamResponse',
-      'switchOrderEntryParam' => '\\switchOrderEntryParam',
-      'switchOrderEntryParamResponse' => '\\switchOrderEntryParamResponse',
-      'sipOrderEntryParam' => '\\sipOrderEntryParam',
-      'sipOrderEntryParamResponse' => '\\sipOrderEntryParamResponse',
-      'xsipOrderEntryParam' => '\\xsipOrderEntryParam',
-      'xsipOrderEntryParamResponse' => '\\xsipOrderEntryParamResponse',
-      'Decrypt' => '\\Decrypt',
-      'DecryptResponse' => '\\DecryptResponse',
+      'getPassword' => 'BSEStarMF\\MFOrder\\getPassword',
+      'getPasswordResponse' => 'BSEStarMF\\MFOrder\\getPasswordResponse',
+      'orderEntryParam' => 'BSEStarMF\\MFOrder\\orderEntryParam',
+      'orderEntryParamResponse' => 'BSEStarMF\\MFOrder\\orderEntryParamResponse',
+      'spreadOrderEntryParam' => 'BSEStarMF\\MFOrder\\spreadOrderEntryParam',
+      'spreadOrderEntryParamResponse' => 'BSEStarMF\\MFOrder\\spreadOrderEntryParamResponse',
+      'switchOrderEntryParam' => 'BSEStarMF\\MFOrder\\switchOrderEntryParam',
+      'switchOrderEntryParamResponse' => 'BSEStarMF\\MFOrder\\switchOrderEntryParamResponse',
+      'sipOrderEntryParam' => 'BSEStarMF\\MFOrder\\sipOrderEntryParam',
+      'sipOrderEntryParamResponse' => 'BSEStarMF\\MFOrder\\sipOrderEntryParamResponse',
+      'xsipOrderEntryParam' => 'BSEStarMF\\MFOrder\\xsipOrderEntryParam',
+      'xsipOrderEntryParamResponse' => 'BSEStarMF\\MFOrder\\xsipOrderEntryParamResponse',
+      'Decrypt' => 'BSEStarMF\\MFOrder\\Decrypt',
+      'DecryptResponse' => 'BSEStarMF\\MFOrder\\DecryptResponse',
     );
 
     /**

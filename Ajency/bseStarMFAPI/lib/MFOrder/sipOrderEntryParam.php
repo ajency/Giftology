@@ -1,5 +1,7 @@
 <?php
 
+namespace BSEStarMF\MFOrder;
+
 class sipOrderEntryParam
 {
 
@@ -215,7 +217,7 @@ class sipOrderEntryParam
 
     /**
      * @param string $TransactionCode
-     * @return sipOrderEntryParam
+     * @return \BSEStarMF\MFOrder\sipOrderEntryParam
      */
     public function setTransactionCode($TransactionCode)
     {
@@ -233,7 +235,7 @@ class sipOrderEntryParam
 
     /**
      * @param string $UniqueRefNo
-     * @return sipOrderEntryParam
+     * @return \BSEStarMF\MFOrder\sipOrderEntryParam
      */
     public function setUniqueRefNo($UniqueRefNo)
     {
@@ -251,7 +253,7 @@ class sipOrderEntryParam
 
     /**
      * @param string $SchemeCode
-     * @return sipOrderEntryParam
+     * @return \BSEStarMF\MFOrder\sipOrderEntryParam
      */
     public function setSchemeCode($SchemeCode)
     {
@@ -269,7 +271,7 @@ class sipOrderEntryParam
 
     /**
      * @param string $MemberCode
-     * @return sipOrderEntryParam
+     * @return \BSEStarMF\MFOrder\sipOrderEntryParam
      */
     public function setMemberCode($MemberCode)
     {
@@ -287,7 +289,7 @@ class sipOrderEntryParam
 
     /**
      * @param string $ClientCode
-     * @return sipOrderEntryParam
+     * @return \BSEStarMF\MFOrder\sipOrderEntryParam
      */
     public function setClientCode($ClientCode)
     {
@@ -305,7 +307,7 @@ class sipOrderEntryParam
 
     /**
      * @param string $UserID
-     * @return sipOrderEntryParam
+     * @return \BSEStarMF\MFOrder\sipOrderEntryParam
      */
     public function setUserID($UserID)
     {
@@ -323,7 +325,7 @@ class sipOrderEntryParam
 
     /**
      * @param string $InternalRefNo
-     * @return sipOrderEntryParam
+     * @return \BSEStarMF\MFOrder\sipOrderEntryParam
      */
     public function setInternalRefNo($InternalRefNo)
     {
@@ -341,7 +343,7 @@ class sipOrderEntryParam
 
     /**
      * @param string $TransMode
-     * @return sipOrderEntryParam
+     * @return \BSEStarMF\MFOrder\sipOrderEntryParam
      */
     public function setTransMode($TransMode)
     {
@@ -359,7 +361,7 @@ class sipOrderEntryParam
 
     /**
      * @param string $DpTxnMode
-     * @return sipOrderEntryParam
+     * @return \BSEStarMF\MFOrder\sipOrderEntryParam
      */
     public function setDpTxnMode($DpTxnMode)
     {
@@ -377,7 +379,7 @@ class sipOrderEntryParam
 
     /**
      * @param string $StartDate
-     * @return sipOrderEntryParam
+     * @return \BSEStarMF\MFOrder\sipOrderEntryParam
      */
     public function setStartDate($StartDate)
     {
@@ -395,7 +397,7 @@ class sipOrderEntryParam
 
     /**
      * @param string $FrequencyType
-     * @return sipOrderEntryParam
+     * @return \BSEStarMF\MFOrder\sipOrderEntryParam
      */
     public function setFrequencyType($FrequencyType)
     {
@@ -413,7 +415,7 @@ class sipOrderEntryParam
 
     /**
      * @param string $FrequencyAllowed
-     * @return sipOrderEntryParam
+     * @return \BSEStarMF\MFOrder\sipOrderEntryParam
      */
     public function setFrequencyAllowed($FrequencyAllowed)
     {
@@ -431,7 +433,7 @@ class sipOrderEntryParam
 
     /**
      * @param string $InstallmentAmount
-     * @return sipOrderEntryParam
+     * @return \BSEStarMF\MFOrder\sipOrderEntryParam
      */
     public function setInstallmentAmount($InstallmentAmount)
     {
@@ -449,7 +451,7 @@ class sipOrderEntryParam
 
     /**
      * @param string $NoOfInstallment
-     * @return sipOrderEntryParam
+     * @return \BSEStarMF\MFOrder\sipOrderEntryParam
      */
     public function setNoOfInstallment($NoOfInstallment)
     {
@@ -467,7 +469,7 @@ class sipOrderEntryParam
 
     /**
      * @param string $Remarks
-     * @return sipOrderEntryParam
+     * @return \BSEStarMF\MFOrder\sipOrderEntryParam
      */
     public function setRemarks($Remarks)
     {
@@ -485,7 +487,7 @@ class sipOrderEntryParam
 
     /**
      * @param string $FolioNo
-     * @return sipOrderEntryParam
+     * @return \BSEStarMF\MFOrder\sipOrderEntryParam
      */
     public function setFolioNo($FolioNo)
     {
@@ -503,7 +505,7 @@ class sipOrderEntryParam
 
     /**
      * @param string $FirstOrderFlag
-     * @return sipOrderEntryParam
+     * @return \BSEStarMF\MFOrder\sipOrderEntryParam
      */
     public function setFirstOrderFlag($FirstOrderFlag)
     {
@@ -521,7 +523,7 @@ class sipOrderEntryParam
 
     /**
      * @param string $SubberCode
-     * @return sipOrderEntryParam
+     * @return \BSEStarMF\MFOrder\sipOrderEntryParam
      */
     public function setSubberCode($SubberCode)
     {
@@ -539,7 +541,7 @@ class sipOrderEntryParam
 
     /**
      * @param string $Euin
-     * @return sipOrderEntryParam
+     * @return \BSEStarMF\MFOrder\sipOrderEntryParam
      */
     public function setEuin($Euin)
     {
@@ -557,7 +559,7 @@ class sipOrderEntryParam
 
     /**
      * @param string $EuinVal
-     * @return sipOrderEntryParam
+     * @return \BSEStarMF\MFOrder\sipOrderEntryParam
      */
     public function setEuinVal($EuinVal)
     {
@@ -575,7 +577,7 @@ class sipOrderEntryParam
 
     /**
      * @param string $DPC
-     * @return sipOrderEntryParam
+     * @return \BSEStarMF\MFOrder\sipOrderEntryParam
      */
     public function setDPC($DPC)
     {
@@ -593,7 +595,7 @@ class sipOrderEntryParam
 
     /**
      * @param string $RegId
-     * @return sipOrderEntryParam
+     * @return \BSEStarMF\MFOrder\sipOrderEntryParam
      */
     public function setRegId($RegId)
     {
@@ -611,7 +613,7 @@ class sipOrderEntryParam
 
     /**
      * @param string $IPAdd
-     * @return sipOrderEntryParam
+     * @return \BSEStarMF\MFOrder\sipOrderEntryParam
      */
     public function setIPAdd($IPAdd)
     {
@@ -629,7 +631,7 @@ class sipOrderEntryParam
 
     /**
      * @param string $Password
-     * @return sipOrderEntryParam
+     * @return \BSEStarMF\MFOrder\sipOrderEntryParam
      */
     public function setPassword($Password)
     {
@@ -647,7 +649,7 @@ class sipOrderEntryParam
 
     /**
      * @param string $PassKey
-     * @return sipOrderEntryParam
+     * @return \BSEStarMF\MFOrder\sipOrderEntryParam
      */
     public function setPassKey($PassKey)
     {
@@ -665,7 +667,7 @@ class sipOrderEntryParam
 
     /**
      * @param string $Param1
-     * @return sipOrderEntryParam
+     * @return \BSEStarMF\MFOrder\sipOrderEntryParam
      */
     public function setParam1($Param1)
     {
@@ -683,7 +685,7 @@ class sipOrderEntryParam
 
     /**
      * @param string $Param2
-     * @return sipOrderEntryParam
+     * @return \BSEStarMF\MFOrder\sipOrderEntryParam
      */
     public function setParam2($Param2)
     {
@@ -701,7 +703,7 @@ class sipOrderEntryParam
 
     /**
      * @param string $Param3
-     * @return sipOrderEntryParam
+     * @return \BSEStarMF\MFOrder\sipOrderEntryParam
      */
     public function setParam3($Param3)
     {

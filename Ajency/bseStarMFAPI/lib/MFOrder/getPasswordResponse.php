@@ -1,5 +1,7 @@
 <?php
 
+namespace BSEStarMF\MFOrder;
+
 class getPasswordResponse
 {
 
@@ -26,7 +28,7 @@ class getPasswordResponse
 
     /**
      * @param string $getPasswordResult
-     * @return getPasswordResponse
+     * @return \BSEStarMF\MFOrder\getPasswordResponse
      */
     public function setGetPasswordResult($getPasswordResult)
     {

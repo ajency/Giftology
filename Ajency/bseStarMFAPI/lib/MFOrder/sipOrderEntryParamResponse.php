@@ -1,5 +1,7 @@
 <?php
 
+namespace BSEStarMF\MFOrder;
+
 class sipOrderEntryParamResponse
 {
 
@@ -26,7 +28,7 @@ class sipOrderEntryParamResponse
 
     /**
      * @param string $sipOrderEntryParamResult
-     * @return sipOrderEntryParamResponse
+     * @return \BSEStarMF\MFOrder\sipOrderEntryParamResponse
      */
     public function setSipOrderEntryParamResult($sipOrderEntryParamResult)
     {

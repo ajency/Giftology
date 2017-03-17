@@ -28,6 +28,9 @@ class Ajency_MFG_Routing {
             print "Any user Can See This Message";
             do_action( 'wordpress_social_login' );
 
+        } else if ($wp->query_vars['page'] == 'login-via-auth') {
+            do_action( 'wordpress_social_login' );
+
         } else if ($wp->query_vars['page'] == 'test-auth') {
 
             if(is_user_logged_in()) {
@@ -121,11 +124,114 @@ class Ajency_MFG_Routing {
             print_r($response);
 
 
+        } else if($wp->query_vars['db'] == 'db') {
+
+            /* global $wpdb;
+             $table_name = $wpdb->prefix . "giftology_gifts";
+             $charset_collate = $wpdb->get_charset_collate();
+             $sql = "CREATE TABLE $table_name (
+   id int(10) NOT NULL AUTO_INCREMENT,
+   title varchar(55) NOT NULL,
+   contributors_note text DEFAULT '' NOT NULL,
+   receiver_id int(10) DEFAULT NULL,
+   receiver_name varchar(255) NOT NULL,
+   receiver_email varchar(55) NOT NULL,
+   receiver_mobile varchar(55) DEFAULT '' NOT NULL,
+   receiver_message text NOT NULL,
+   created_by int(10) DEFAULT NULL,
+   img varchar(55) DEFAULT NULL,
+   contrib_setting_id tinyint DEFAULT 1 NOT NULL,
+   template_id tinyint DEFAULT 1 NOT NULL,
+   fund_id int(10) NOT NULL,
+   claim_id int(10) DEFAULT NULL,
+   send_type tinyint DEFAULT 1 NOT NULL,
+   send_on datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+   email_sent_on datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+   status tinyint  DEFAULT 1 NOT NULL,
+   created datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+   updated datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+   PRIMARY KEY  (id)
+ ) $charset_collate;";
+             require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+             dbDelta( $sql );
+
+
+
+             global $wpdb;
+             $table_name = $wpdb->prefix . "giftology_acl";
+             $charset_collate = $wpdb->get_charset_collate();
+             $sql = "CREATE TABLE $table_name (
+   id int(10) NOT NULL AUTO_INCREMENT,
+   entity varchar(55) NOT NULL,
+   entity_id int(10) NOT NULL AUTO_INCREMENT,
+   action varchar(55) NOT NULL AUTO_INCREMENT,
+   is_all_users_allowed tinyint NOT NULL AUTO_INCREMENT,
+   created datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+   updated datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+   PRIMARY KEY  (id)
+ ) $charset_collate;";
+             require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+             dbDelta( $sql );*/
+
+
+            /*global $wpdb;
+            $table_name = $wpdb->prefix . "giftology_acl";
+            $charset_collate = $wpdb->get_charset_collate();
+            $sql = "CREATE TABLE $table_name (
+  id int(10) NOT NULL AUTO_INCREMENT,
+  entity varchar(55) NOT NULL,
+  entity_id int(10) NOT NULL,
+  action varchar(55) NOT NULL,
+  user_id int(10) DEFAULT NULL,
+  is_allowed tinyint NOT NULL,
+  created datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+  updated datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+  PRIMARY KEY  (id),
+  UNIQUE KEY pkey (entity,entity_id,action,user_id)
+) $charset_collate;";
+            require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+            dbDelta( $sql );*/
+
+
+            global $wpdb;
+            $table_name = $wpdb->prefix . "giftology_invites";
+            $charset_collate = $wpdb->get_charset_collate();
+            $sql = "CREATE TABLE $table_name (
+  id int(10) NOT NULL AUTO_INCREMENT,
+  email varchar(55) NOT NULL,
+  gift_id int(10) NOT NULL,
+  user_id int(10) DEFAULT NULL,
+  message_id int(10) NOT NULL,
+  invite_code varchar(100) NOT NULL,
+  status tinyint NOT NULL,
+  created datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+  updated datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+  PRIMARY KEY  (id)
+) $charset_collate;";
+            require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+            dbDelta( $sql );
+
+
+
+            /*global $wpdb;
+            $table_name = $wpdb->prefix . "giftology_invites_message";
+            $charset_collate = $wpdb->get_charset_collate();
+            $sql = "CREATE TABLE $table_name (
+  id int(10) NOT NULL AUTO_INCREMENT,
+  message text NOT NULL,
+  PRIMARY KEY  (id)
+) $charset_collate;";
+            require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+            dbDelta( $sql );*/
+
+
         }
     }
 
     function my_plugin_query_vars($vars) {
         $vars[] = 'page';
+        $vars[] = 'invite';
+        $vars[] = 'db';
         return $vars;
     }
 }

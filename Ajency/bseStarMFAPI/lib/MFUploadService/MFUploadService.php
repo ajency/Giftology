@@ -1,5 +1,7 @@
 <?php
 
+namespace BSEStarMF\MFUploadService;
+
 class MFUploadService extends \SoapClient
 {
 
@@ -7,10 +9,10 @@ class MFUploadService extends \SoapClient
      * @var array $classmap The defined classes
      */
     private static $classmap = array (
-      'getPassword' => '\\getPassword',
-      'getPasswordResponse' => '\\getPasswordResponse',
-      'MFAPI' => '\\MFAPI',
-      'MFAPIResponse' => '\\MFAPIResponse',
+      'getPassword' => 'BSEStarMF\\MFUploadService\\getPassword',
+      'getPasswordResponse' => 'BSEStarMF\\MFUploadService\\getPasswordResponse',
+      'MFAPI' => 'BSEStarMF\\MFUploadService\\MFAPI',
+      'MFAPIResponse' => 'BSEStarMF\\MFUploadService\\MFAPIResponse',
     );
 
     /**

@@ -1,5 +1,7 @@
 <?php
 
+namespace BSEStarMF\MFUploadService;
+
 class MFAPIResponse
 {
 
@@ -26,7 +28,7 @@ class MFAPIResponse
 
     /**
      * @param string $MFAPIResult
-     * @return MFAPIResponse
+     * @return \BSEStarMF\MFUploadService\MFAPIResponse
      */
     public function setMFAPIResult($MFAPIResult)
     {

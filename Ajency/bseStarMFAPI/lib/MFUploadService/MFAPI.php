@@ -1,5 +1,7 @@
 <?php
 
+namespace BSEStarMF\MFUploadService;
+
 class MFAPI
 {
 
@@ -47,7 +49,7 @@ class MFAPI
 
     /**
      * @param string $Flag
-     * @return MFAPI
+     * @return \BSEStarMF\MFUploadService\MFAPI
      */
     public function setFlag($Flag)
     {
@@ -65,7 +67,7 @@ class MFAPI
 
     /**
      * @param string $UserId
-     * @return MFAPI
+     * @return \BSEStarMF\MFUploadService\MFAPI
      */
     public function setUserId($UserId)
     {
@@ -83,7 +85,7 @@ class MFAPI
 
     /**
      * @param string $EncryptedPassword
-     * @return MFAPI
+     * @return \BSEStarMF\MFUploadService\MFAPI
      */
     public function setEncryptedPassword($EncryptedPassword)
     {
@@ -101,7 +103,7 @@ class MFAPI
 
     /**
      * @param string $param
-     * @return MFAPI
+     * @return \BSEStarMF\MFUploadService\MFAPI
      */
     public function setParam($param)
     {

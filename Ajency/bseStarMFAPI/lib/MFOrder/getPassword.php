@@ -1,5 +1,7 @@
 <?php
 
+namespace BSEStarMF\MFOrder;
+
 class getPassword
 {
 
@@ -40,7 +42,7 @@ class getPassword
 
     /**
      * @param string $UserId
-     * @return getPassword
+     * @return \BSEStarMF\MFOrder\getPassword
      */
     public function setUserId($UserId)
     {
@@ -58,7 +60,7 @@ class getPassword
 
     /**
      * @param string $Password
-     * @return getPassword
+     * @return \BSEStarMF\MFOrder\getPassword
      */
     public function setPassword($Password)
     {
@@ -76,7 +78,7 @@ class getPassword
 
     /**
      * @param string $PassKey
-     * @return getPassword
+     * @return \BSEStarMF\MFOrder\getPassword
      */
     public function setPassKey($PassKey)
     {

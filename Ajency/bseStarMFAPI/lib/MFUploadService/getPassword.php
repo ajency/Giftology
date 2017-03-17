@@ -1,5 +1,7 @@
 <?php
 
+namespace BSEStarMF\MFUploadService;
+
 class getPassword
 {
 
@@ -47,7 +49,7 @@ class getPassword
 
     /**
      * @param string $UserId
-     * @return getPassword
+     * @return \BSEStarMF\MFUploadService\getPassword
      */
     public function setUserId($UserId)
     {
@@ -65,7 +67,7 @@ class getPassword
 
     /**
      * @param string $MemberId
-     * @return getPassword
+     * @return \BSEStarMF\MFUploadService\getPassword
      */
     public function setMemberId($MemberId)
     {
@@ -83,7 +85,7 @@ class getPassword
 
     /**
      * @param string $Password
-     * @return getPassword
+     * @return \BSEStarMF\MFUploadService\getPassword
      */
     public function setPassword($Password)
     {
@@ -101,7 +103,7 @@ class getPassword
 
     /**
      * @param string $PassKey
-     * @return getPassword
+     * @return \BSEStarMF\MFUploadService\getPassword
      */
     public function setPassKey($PassKey)
     {

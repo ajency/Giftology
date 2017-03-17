@@ -1,5 +1,7 @@
 <?php
 
+namespace BSEStarMF\MFUploadService;
+
 class getPasswordResponse
 {
 
@@ -26,7 +28,7 @@ class getPasswordResponse
 
     /**
      * @param string $getPasswordResult
-     * @return getPasswordResponse
+     * @return \BSEStarMF\MFUploadService\getPasswordResponse
      */
     public function setGetPasswordResult($getPasswordResult)
     {

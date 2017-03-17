@@ -1,5 +1,7 @@
 <?php
 
+namespace BSEStarMF\MFOrder;
+
 class spreadOrderEntryParamResponse
 {
 
@@ -26,7 +28,7 @@ class spreadOrderEntryParamResponse
 
     /**
      * @param string $spreadOrderEntryParamResult
-     * @return spreadOrderEntryParamResponse
+     * @return \BSEStarMF\MFOrder\spreadOrderEntryParamResponse
      */
     public function setSpreadOrderEntryParamResult($spreadOrderEntryParamResult)
     {
