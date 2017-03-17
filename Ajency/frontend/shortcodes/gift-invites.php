@@ -4,15 +4,18 @@ function gift_invites($atts) {
 
     $gift_id = isset($atts['gift_id']) ? $atts['gift_id'] : $_GET['gift_id'];
     $template = isset($atts['template']) ? $atts['template'] : 1;
-    $limit = isset($atts['limit']) ? $atts['limit'] : 5;
+    $limit = isset($atts['limit']) ? $atts['limit'] : false;
+    $inv_group = isset($atts['inv_group']) ? $atts['inv_group'] : false;
 
-    $show_delete = isset($atts['show_delete']) ? $atts['show_delete'] : 0;
-    $recepients = Ajency_MFG_Gift::get_invitations($gift_id,$atts['status'],$limit);
+    $status = explode(',',$atts['status']);
+    $show_op_icon = isset($atts['show_op_icon']) ? $atts['show_op_icon'] : 0;
+    $recepients = Ajency_MFG_Gift::get_invitations($gift_id,$status,$limit,$inv_group);
 
     if($template == 2) {
         $classes = 'invit-emails';
     } else {
-        $classes = 'invit-emails center-email';
+/*        $classes = 'invit-emails center-email';*/
+        $classes = 'invit-emails';
     }
 
     if(count($recepients) > 5) {
@@ -49,8 +52,12 @@ function gift_invites($atts) {
                 $html .= $name;
             }
             $html .= '</span>';
-            if($show_delete) {
-                $html .= '<div class="remove-email"><a href="#"><i class="fa fa-times" aria-hidden="true"></i></a></div>';
+            if($show_op_icon) {
+                if($recepient->inv_status == 0) {
+                    $html .= '<div class="remove-email"><a href="#"><i class="fa fa-times" aria-hidden="true"></i></a></div>';
+                } else if($recepient->inv_status == 1) {
+                    $html .= '<div class="remove-email"><a href="#"><i class="fa fa-check" aria-hidden="true"></i></a></div>';
+                }
             }
             $html .= '</div>';
         }

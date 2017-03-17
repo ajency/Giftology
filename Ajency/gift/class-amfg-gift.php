@@ -84,17 +84,21 @@ class Ajency_MFG_Gift {
         );
     }
 
-    public static function get_invitations($gift_id, $status = [Ajency_MFG_Gift::STATUS_INVITE_QUEUED], $limit = false) {
+    public static function get_invitations($gift_id, $status = [Ajency_MFG_Gift::STATUS_INVITE_QUEUED], $limit = false, $inv_group = false) {
 
         //TODO make action optional, can be dangerous though
         global $wpdb;
-        $query = "select u.id, inv.invite_code, meta.meta_value as pic,u.display_name,inv.email,u.user_email from wp_giftology_invites inv left join wp_users u on inv.email = u.user_email left join wp_usermeta meta on u.id = meta.user_id and meta.meta_key = 'wsl_current_user_image' where inv.gift_id = '".$gift_id."'";
+        $query = "select inv.status as inv_status, u.id, inv.invite_code, meta.meta_value as pic,u.display_name,inv.email,u.user_email from wp_giftology_invites inv left join wp_users u on inv.email = u.user_email left join wp_usermeta meta on u.id = meta.user_id and meta.meta_key = 'wsl_current_user_image' where inv.gift_id = '".$gift_id."'";
         $query .= " and (";
         $last = count($status) - 1;
         for ($i = 0 ; $i < $last; $i++) {
             $query .= "inv.status = '".$status[$i]."' OR ";
         }
         $query .= "inv.status = '".$status[$last]."')";
+
+        if($inv_group) {
+            $query = " AND inv.invite_group = ".$inv_group;
+        }
 
 
         if($limit) {
@@ -134,7 +138,7 @@ class Ajency_MFG_Gift {
         ) //replaced %d with %s - I guess that your description field will hold strings not decimals
         );
 
-        return $wpdb->id(); //TODO return an id
+        return $wpdb->insert_id; //TODO return an id
     }
 
 
@@ -148,15 +152,12 @@ class Ajency_MFG_Gift {
             'invite_code' => uniqid(),
             'message_id' => $message_id,
             'status' => $status,
-            'created' => 'NOW()',
-            'updated' => 'NOW()',
         ),array(
             '%s',
             '%d',
             '%s',
             '%d',
-            '%s',
-            '%s',
+            '%d',
         ) //replaced %d with %s - I guess that your description field will hold strings not decimals
         );
 
@@ -180,9 +181,23 @@ class Ajency_MFG_Gift {
         $wpdb->query($wpdb->prepare("UPDATE wp_giftology_gifts SET status='%d' WHERE id='%d'", $status, $gift_id));
     }
 
-    public static function mark_gift_code_as_used($code, $user_id, $status = self::STATUS_INVITE_USED) {
+    public static function mark_gift_code_as_used($code, $user_id) {
+        $status = self::STATUS_INVITE_USED;
         global $wpdb;
-        $wpdb->query($wpdb->prepare("UPDATE wp_giftology_invites SET status='%d',user_id='%d' WHERE code='%s'", $status, $user_id, $code));
+        $wpdb->query($wpdb->prepare("UPDATE wp_giftology_invites SET accepted_on = '%d', status='%d',user_id='%d' WHERE invite_code='%s'", time(), $status, $user_id, $code));
+    }
+
+
+    public static function mark_gift_code_as_sent($code, $invite_group) {
+        global $wpdb;
+        $status = self::STATUS_INVITE_SENT;
+        $wpdb->query($wpdb->prepare("UPDATE wp_giftology_invites SET sent_on='%d', invite_group='%s',status ='%d' WHERE invite_code='%s' and status = 0", time(), $invite_group, $status, $code));
+    }
+
+    public static function mark_gift_code_as_sent_used($code, $invite_group, $user_id) {
+        global $wpdb;
+        $status = self::STATUS_INVITE_SENT_USED;
+        $wpdb->query($wpdb->prepare("UPDATE wp_giftology_invites SET sent_on='%d', invite_group='%s',status='%d',user_id='%d' WHERE invite_code='%s' and status = 0", time(), $invite_group, $status, $user_id, $code));
     }
 
 
@@ -237,7 +252,7 @@ class Ajency_MFG_Gift {
             ORDER BY {$ord}
         ";
 
-        $fund = $wpdb->get_results( $wpdb->prepare( $sql ), OBJECT );
+        $fund = $wpdb->get_results( $wpdb->prepare( $sql , []), OBJECT );
         return $fund[0];
 
     }

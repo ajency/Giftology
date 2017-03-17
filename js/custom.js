@@ -33,33 +33,40 @@
     jQuery(document).ready(function() {
 
 
+        function validateEmail(email)
+        {
+            var reg = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/
+            if (reg.test(email)){
+                return true; }
+            else{
+                return false;
+            }
+        }
 
         $('#email-tags').tagsinput({
         });
 
         $('#email-tags').on('beforeItemAdd', function(event) {
 
-
             var tag = event.item;
-            // Do some processing here
-
-            alert(tag);
-            /*if (!event.options || !event.options.preventPost) {
-                $.ajax('/ajax-url', ajaxData, function(response) {
-                    if (response.failure) {
-                        // Remove the tag since there was a failure
-                        // "preventPost" here will stop this ajax call from running when the tag is removed
-                        $('#tags-input').tagsinput('remove', tag, {preventPost: true});
-                    }
-                });
-            }*/
+            console.log(validateEmail(tag));
+            if (validateEmail(tag) == false) {
+                console.log('Entered');
+                $('#email-tags').tagsinput('remove', tag);
+            }
         });
 
 
         jQuery("#send-invites").click(function(){
+
+            var gift_id = $( '#gift_id' ).val();
+
             $.ajax({
                 type: "POST",
-                url: "/wp-json/giftology/v1/gifts/1/send-invites",
+                url: giftology_api.root + 'giftology/v1/gifts/'+ gift_id +'/send-invites',
+                beforeSend: function ( xhr ) {
+                    xhr.setRequestHeader( 'X-WP-Nonce', giftology_api.nonce );
+                },
                 data: {} ,
                 success: function(data){
                     /*                    $("#thanks").html(msg)
@@ -67,21 +74,40 @@
                     console.log(data);
                 },
                 error: function(){
-                    alert("failure");
+                    alert("Internal Server Error : Please contact Admin");
                 }
             });
         });
 
-
         jQuery('#confirm-emails').on('show.bs.modal', function (e) {
-            var loadurl = 'http://mfgiftology.dev/gift-invite/?gift_id=1';
+            var gift_id = $( '#gift_id' ).val();
+            var loadurl = giftology_api.homeUrl + '?gift-invites-step-1='+gift_id+'&modal=true';
+            $(this).find('.modal-body').load(loadurl);
+        });
+
+        jQuery('#confirmed-emails').on('show.bs.modal', function (e) {
+            var gift_id = $( '#gift_id' ).val();
+            var loadurl = giftology_api.homeUrl + '?gift-invites-step-2='+gift_id+'&modal=true';
             $(this).find('.modal-body').load(loadurl);
         });
 
         jQuery("#queue-invites").click(function(){
+
+            var gift_id = $( '#gift_id' ).val();
+
+
+            console.log(giftology_api.homeUrl);
+            var gift_id = $( '#gift_id' ).val();
+            console.log("gift_id" + gift_id);
+
+
             $.ajax({
                 type: "POST",
-                url: "/wp-json/giftology/v1/gifts/1/queue-invites",
+                url: giftology_api.root + 'giftology/v1/gifts/'+gift_id+'/queue-invites',
+                beforeSend: function ( xhr ) {
+                    xhr.setRequestHeader( 'X-WP-Nonce', giftology_api.nonce );
+                },
+
                 data: $('#invite').serialize() ,
                 success: function(data){
 /*                    $("#thanks").html(msg)
@@ -89,21 +115,20 @@
                     console.log(data);
                 },
                 error: function(){
-                    alert("failure");
+                    alert("Internal Server Error : Please contact Admin");
                 }
             });
         });
 
         jQuery("#change-settings").click(function(){
 
-            var security = $( '#change-settings-ajax-nonce' ).val();
-            console.log(security);
+            var gift_id = $( '#gift_id' ).val();
 
             $.ajax({
                 type: "POST",
-                url: POST_SUBMITTER.root + 'giftology/v1/gifts/1/change-settings',
+                url: giftology_api.root + 'giftology/v1/gifts/'+gift_id+'/change-settings',
                 beforeSend: function ( xhr ) {
-                    xhr.setRequestHeader( 'X-WP-Nonce', POST_SUBMITTER.nonce );
+                    xhr.setRequestHeader( 'X-WP-Nonce', giftology_api.nonce );
                 },
 
                 data: $('#settings').serialize() ,
@@ -111,10 +136,10 @@
                     /*                    $("#thanks").html(msg)
                      $("#form-content").modal('hide');*/
                     console.log(data);
-/*                    window.location.reload();*/
+                    window.location.reload();
                 },
                 error: function(){
-                    alert("failure");
+                    alert("Internal Server Error : Please contact Admin");
                 }
             });
         });

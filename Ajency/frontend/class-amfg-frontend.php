@@ -1,15 +1,10 @@
 <?php
-
-foreach(glob('shortcodes/*.php') as $file) {
-    include $file;
-}
-
-foreach(glob('custom_pages/*.php') as $file) {
-    include $file;
-}
-
 include 'shortcodes/gift-invites.php';
 include 'shortcodes/login.php';
+
+/*include 'modals/queued-gift-invites-modal.php';
+include 'custom_pages/accept-invite-page.php';
+include 'custom_pages/gift-page.php';*/
 
 class Ajency_MFG_Frontend
 {
@@ -47,16 +42,22 @@ class Ajency_MFG_Frontend
 
         if($wp->query_vars['gifts'])
         {
+            //Custom Page
             $gift_id = $wp->query_vars['gifts'];
             get_template_part( 'Ajency/frontend/custom_pages/gift', 'page' );
         }
-        else if($wp->query_vars['queued-gift-invites'])
+        else if($wp->query_vars['gift-invites-step-1'])
         {
-            get_template_part( 'Ajency/frontend/modals/queue-gift-invites', 'modal' );
-/*            echo do_shortcode( '[gift_invites show_delete=1 template=2 gift_id="1" status="0"]' );*/
+            echo do_shortcode( '[gift_invites inv_group="" show_op_icon=1 template=2 gift_id='.$wp->query_vars['gift-invites-step-1'].' status=0]' );
         }
-        else if($wp->query_vars['accept-gift-invite'])
+        else if($wp->query_vars['gift-invites-step-2'])
         {
+            echo do_shortcode( '[gift_invites inv_group="" show_op_icon=1 template=2 gift_id='.$wp->query_vars['gift-invites-step-2'].' status=1,3]' );
+        }
+        else if($wp->query_vars['accept-gift-invite']) //Step 3
+        {
+            //Page to accept invitaions and login
+            print "Hi";
             get_template_part( 'Ajency/frontend/custom_pages/accept-invite', 'page' );
             /*            echo do_shortcode( '[gift_invites show_delete=1 template=2 gift_id="1" status="0"]' );*/
         }
@@ -64,8 +65,10 @@ class Ajency_MFG_Frontend
 
     function my_plugin_query_vars($vars) {
         $vars[] = 'gifts';
-        $vars[] = 'queued-gift-invites';
+        $vars[] = 'gift-invites-step-1';
+        $vars[] = 'gift-invites-step-2';
         $vars[] = 'accept-gift-invite';
+        $vars[] = 'modal';
         return $vars;
     }
 }

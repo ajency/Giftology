@@ -4,12 +4,16 @@
 $gift_id = $_GET['gifts'];
 $gift = Ajency_MFG_Gift::get_gift_details($gift_id, true);
 $fund = $gift->fund;
-print_r($fund);
 $user_id = get_current_user_id();
 ?>
     <!-- Gift card section -->
 
     <section class="gift-card">
+
+        <?php
+        echo '<input type="hidden" name="gift_id" id="gift_id" value="' . $gift_id . '" />';
+        ?>
+
 
         <div class="container">
 
@@ -137,19 +141,19 @@ $user_id = get_current_user_id();
 
                                 <!-- only me setting -->
 
-                                <?php  if($gift->contrib_setting_id == Ajency_MFG_Gift::SETTING_CONTRIB_ONLY_ME || $gift->contrib_setting_id  == 0): ?>
+                                <?php  if($gift->created_by == $user_id && $gift->contrib_setting_id == Ajency_MFG_Gift::SETTING_CONTRIB_ONLY_ME || $gift->contrib_setting_id  == 0): ?>
                                     <div class="only-me">
                                         <p>You have selected <span class="link-color">Only me</span> option to change/update setting click <a href="#" data-toggle="modal" data-target="#change-email">here</a></p>
                                     </div>
                                 <?php  endif; ?>
 
-                                <?php  if($gift->contrib_setting_id == Ajency_MFG_Gift::SETTING_CONTRIB_SPECIFIC): ?>
+                                <?php  if($gift->created_by == $user_id && $gift->contrib_setting_id == Ajency_MFG_Gift::SETTING_CONTRIB_SPECIFIC): ?>
                                     <div class="only-me">
                                         <p>You have selected <span class="link-color">specific</span> option to change/update setting click <a href="#" data-toggle="modal" data-target="#change-email">here</a></p>
                                     </div>
                                 <?php  endif; ?>
 
-                                <?php  if($gift->contrib_setting_id == Ajency_MFG_Gift::SETTING_CONTRIB_EVERYONE): ?>
+                                <?php  if($gift->created_by == $user_id && $gift->contrib_setting_id == Ajency_MFG_Gift::SETTING_CONTRIB_EVERYONE): ?>
                                     <div class="only-me">
                                         <p>You have selected <span class="link-color">everyone</span> option to change/update setting click <a href="#" data-toggle="modal" data-target="#change-email">here</a></p>
                                     </div>
@@ -177,27 +181,7 @@ $user_id = get_current_user_id();
                                 <!--                                //If invitations have been sent and the user can see invitiaions-->
 
                                 <?php if(Ajency_MFG_Gift::get_acl_access_rule('gift',$gift_id,$user_id,'send-invites') == 1 && count($recepients) > 0) : ?>
-
-
-                                    <!--<div class="invit-emails">
-                                        <?php /*foreach ($recepients as $recepient) { */?>
-
-                                            <div class="col">
-                                                <span class="profile"><img src="<?php /*echo isset($recepient->pic) ? $recepient->pic : get_template_directory_uri().'/img/dummy.png'; */?>" class="img-responsive" width="50"></span>
-                                                <span class="profile-info">
-									<h5 class="name"><?php /*echo $recepient->display_name; */?> <span class="label"><?php /*echo $recepient->contributed; */?></span></h5>
-									<a href="" class="email"><?php /*echo $recepient->email; */?></a>
-									</span>
-                                            </div>
-
-                                        <?php /*} */?>
-                                        <div class="col view-all">
-                                            <a href="">View all</a>
-                                        </div>
-                                    </div>-->
-
-                                    <?php echo do_shortcode( '[gift_invites gift_id="'.$gift_id.'" status="1,2,3"]' ); ?>
-
+                                    <?php echo do_shortcode( '[gift_invites limit=4 gift_id="'.$gift_id.'" status="1,2,3"]' ); ?>
                                 <?php  endif; ?>
                             </div>
                             <div role="tabpanel" class="tab-pane" id="contributors">contributors</div>
@@ -236,11 +220,7 @@ $user_id = get_current_user_id();
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-
-
-                            <button type="submit" id="queue-invites" class="btn btn-primary site-btn-2" data-toggle="modal" data-load-url="/?queued-gift-invites=<?php echo $gift_id; ?>&modal=true" data-target="#confirm-emails" data-dismiss="modal">Save</button>
-
-                            <!--                        <button type="submit" id="submit-invites" class="btn btn-primary site-btn-2">Save</button>-->
+                            <button type="submit" id="queue-invites" class="btn btn-primary site-btn-2" data-toggle="modal" data-load-url="#" data-target="#confirm-emails" data-dismiss="modal">Save</button>
                         </div>
                     </form>
 
@@ -263,7 +243,23 @@ $user_id = get_current_user_id();
                     <div class="modal-body"></div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="send-invites" id="send-invites" class="btn btn-primary site-btn-2">Send Invites</button>
+                        <button type="submit" id="send-invites" class="btn btn-primary site-btn-2" data-toggle="modal" data-load-url="#" data-target="#confirmed-emails" data-dismiss="modal">Send Invites</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="add-email modal fade" id="confirmed-emails" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Invitations Sent</h4>
+                    </div>
+                    <div class="modal-body"></div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
@@ -281,10 +277,6 @@ $user_id = get_current_user_id();
                     </div>
                     <div class="modal-body">
                         <form class="" id="settings">
-
-                            <?php
-                            echo '<input type="hidden" name="change-settings-ajax-nonce" id="change-settings-ajax-nonce" value="' . wp_create_nonce( 'change-settings-ajax-nonce' ) . '" />';
-                            ?>
                             <div class="settings">
                                 <h6 class="settings-heading">Update your email settings</h6>
                                 <ul>
@@ -324,20 +316,5 @@ $user_id = get_current_user_id();
                 </div>
             </div>
         </div>
-
-        <script>
-
-
-
-            //twitter bootstrap script
-
-
-        </script>
-
-
-
-
-
     </section>
-
 <?php get_footer(); ?>

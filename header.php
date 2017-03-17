@@ -10,6 +10,14 @@
     <link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri() ?>/css/bootstrap-tagsinput.css">
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri() ?>/css/style.css">
+    <?php
+    /* Always have wp_head() just before the closing </head>
+     * tag of your theme, or you will break many plugins, which
+     * generally use this hook to add elements to <head> such
+     * as styles, scripts, and meta tags.
+     */
+    wp_head();
+    ?>
 </head>
 <body>
 

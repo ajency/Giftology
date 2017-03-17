@@ -1,7 +1,7 @@
 <?php
 
 
-class Ajency_MFG_Routing {
+class Ajency_MFG_Testing {
 
     private $plugin_name;
 
@@ -126,7 +126,7 @@ class Ajency_MFG_Routing {
 
         } else if($wp->query_vars['db'] == 'db') {
 
-            /* global $wpdb;
+            global $wpdb;
              $table_name = $wpdb->prefix . "giftology_gifts";
              $charset_collate = $wpdb->get_charset_collate();
              $sql = "CREATE TABLE $table_name (
@@ -157,24 +157,7 @@ class Ajency_MFG_Routing {
 
 
 
-             global $wpdb;
-             $table_name = $wpdb->prefix . "giftology_acl";
-             $charset_collate = $wpdb->get_charset_collate();
-             $sql = "CREATE TABLE $table_name (
-   id int(10) NOT NULL AUTO_INCREMENT,
-   entity varchar(55) NOT NULL,
-   entity_id int(10) NOT NULL AUTO_INCREMENT,
-   action varchar(55) NOT NULL AUTO_INCREMENT,
-   is_all_users_allowed tinyint NOT NULL AUTO_INCREMENT,
-   created datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
-   updated datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
-   PRIMARY KEY  (id)
- ) $charset_collate;";
-             require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
-             dbDelta( $sql );*/
-
-
-            /*global $wpdb;
+            global $wpdb;
             $table_name = $wpdb->prefix . "giftology_acl";
             $charset_collate = $wpdb->get_charset_collate();
             $sql = "CREATE TABLE $table_name (
@@ -190,7 +173,7 @@ class Ajency_MFG_Routing {
   UNIQUE KEY pkey (entity,entity_id,action,user_id)
 ) $charset_collate;";
             require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
-            dbDelta( $sql );*/
+            dbDelta( $sql );
 
 
             global $wpdb;
@@ -203,7 +186,10 @@ class Ajency_MFG_Routing {
   user_id int(10) DEFAULT NULL,
   message_id int(10) NOT NULL,
   invite_code varchar(100) NOT NULL,
+  invite_group varchar(100) DEFAULT '' NOT NULL,
   status tinyint NOT NULL,
+  sent_on int(10) DEFAULT NULL,
+  accepted_on int(10) DEFAULT NULL,
   created datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
   updated datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
   PRIMARY KEY  (id)
@@ -213,7 +199,7 @@ class Ajency_MFG_Routing {
 
 
 
-            /*global $wpdb;
+            global $wpdb;
             $table_name = $wpdb->prefix . "giftology_invites_message";
             $charset_collate = $wpdb->get_charset_collate();
             $sql = "CREATE TABLE $table_name (
@@ -222,7 +208,7 @@ class Ajency_MFG_Routing {
   PRIMARY KEY  (id)
 ) $charset_collate;";
             require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
-            dbDelta( $sql );*/
+            dbDelta( $sql );
 
 
         }
