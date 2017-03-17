@@ -68,8 +68,6 @@ class Ajency_MFG_Gift {
             $query .= "status = '".$status[$i]."' OR ";
         }
         $query .= "status = '".$status[$last]."')";
-
-        print $query;
         $result =  $wpdb->get_results($query)[0];
         return $result;
     }
