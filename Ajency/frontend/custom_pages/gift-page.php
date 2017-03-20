@@ -207,58 +207,74 @@ $user_id = get_current_user_id();
 
 
         <!-- Add modal -->
-
-
         <div class="add-email modal fade" id="add-email" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Invite via email to contribute</h4>
+                        <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Invite people to contribute</h4>
+                        <p class="modal-caption">Invitation is sent by email</p>
                     </div>
-                    <form class="form-horizontal" id="invite">
-                        <div class="modal-body">
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-2 control-label">Emails</label>
-                                <div class="col-sm-10">
-                                    <input name="email" class="form-control" id="email-tags" placeholder="Email" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="message" class="col-sm-2 control-label">Message</label>
-                                <div class="col-sm-10">
-                                    <textarea name="message" class="form-control" placeholder="Message" id="message" rows="5" required>[Default Message Template]</textarea>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="submit" id="queue-invites" class="btn btn-primary site-btn-2" data-toggle="modal" data-load-url="#" data-target="#confirm-emails" data-dismiss="modal">
-                                Send
-                            </button>
-                        </div>
-                    </form>
+                    <div class="modal-body">
 
+                        <!--<div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label">Emails</label>
+                            <div class="col-sm-10">
+                                <input name="email" class="form-control" id="email-tags" placeholder="Email" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="message" class="col-sm-2 control-label">Message</label>
+                            <div class="col-sm-10">
+                                <textarea name="message" class="form-control" placeholder="Message" id="message" rows="5" required>[Default Message Template]</textarea>
+                            </div>
+                        </div>-->
+
+                        <form id="invite">
+                            <div class="form-group email-address">
+                                <label for="email" class="control-label">Enter the email addresses seperated by comma</label>
+                                <p class="label-msg">You can invite any number of people</p>
+                                <input name="email" class="form-control" id="email-tags" placeholder="Email address" required>
+                            </div>
+                            <div class="form-group email-msg">
+                                <p class="label-msg">A message to the contributors</p>
+                                <textarea class="form-control" placeholder="Message" name="message" id="message" rows="5" required>Hi! Its Sarvesh's anniversary, Lets give him a gift that'll be really helpful for him in the future!</textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default cancel" data-dismiss="modal">Cancel</button>
+                        <span>
+	        	<button type="submit" id="queue-invites" class="btn btn-primary site-btn-2">Next</button>
+<!--	        	<button type="submit" id="queue-invites" class="btn btn-primary site-btn-2" data-toggle="modal" data-load-url="#" data-target="#confirm-emails" data-dismiss="modal">Next</button>-->
+	        </span>
+                    </div>
                 </div>
             </div>
         </div>
 
-
-
         <!-- List of Queued Emails   -->
 
 
-        <div class="add-email modal fade" id="confirm-emails" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+
+        <div class="add-email modal fade"  id="confirm-emails" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Confirm Invitations</h4>
+                        <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Invite people to contribute</h4>
+                        <p class="modal-caption">Invitation is sent by email</p>
                     </div>
-                    <div class="modal-body"></div>
+                    <div class="modal-body">
+                    </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="submit" id="send-invites" class="btn btn-primary site-btn-2" data-toggle="modal" data-load-url="#" data-target="#confirmed-emails" data-dismiss="modal">Send Invites</button>
+                        <button type="button" class="btn btn-default cancel" data-dismiss="modal">Cancel</button>
+                        <span>
+<!--                <button type="submit" class="btn btn-default cancel" data-toggle="modal" data-load-url="#" data-target="#add-email" data-dismiss="modal">Back</button>-->
+                <button type="submit" id="send-invites-prev" class="btn btn-default cancel">Back</button>
+	        	<button type="submit" id="send-invites" class="btn btn-primary site-btn-2">Next</button>
+<!--	        	<button type="submit" id="send-invites" class="btn btn-primary site-btn-2" data-toggle="modal" data-load-url="#" data-target="#confirmed-emails" data-dismiss="modal">Next</button>-->
+	        </span>
                     </div>
                 </div>
             </div>
@@ -268,29 +284,39 @@ $user_id = get_current_user_id();
         echo '<input type="hidden" name="invite_group" id="invite_group" value="" />';
         ?>
 
+
         <div class="add-email modal fade" id="confirmed-emails" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Invitations Sent</h4>
+                        <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Invite people to contribute</h4>
+                        <p class="modal-caption">Invitation is sent by email</p>
                     </div>
-                    <div class="modal-body"></div>
+                    <div class="modal-body">
+
+                    </div>
                     <div class="modal-footer">
-                        <button type="button" id="finish-invites" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-default cancel">Cancel</button>
+                        <span>
+	        	<!-- <button type="submit" class="btn btn-default cancel">Back</button> -->
+<!--	        	<button type="submit" class="btn btn-primary site-btn-2">Next</button>-->
+	        </span>
+                         <div class="done">
+                            <button type="submit" id="finish-invites" class="btn btn-primary site-btn-2">Done</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
+
         <!-- Email settings modal -->
-
-
         <div class="change-email modal fade" id="change-email" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <h4 class="modal-title" id="myModalLabel">Update Contribution Settings</h4>
                     </div>
                     <div class="modal-body">
@@ -328,7 +354,7 @@ $user_id = get_current_user_id();
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-default">Close</button>
                         <button type="submit" id="change-settings" class="btn btn-primary site-btn-2">Save</button>
                     </div>
                 </div>

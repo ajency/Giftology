@@ -1,0 +1,143 @@
+
+// ---------------------------
+// LOGIN STYLES -----------
+// --------------------------- 
+
+
+.login-container{
+	min-height: calc(~'100vh - 275.5px'); //Calcululated body-height - header - footer
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: rgba(238, 238, 238, 0.42);
+    .login-title{
+    	font-weight: 400;
+	    font-size: 1.4em;
+	    text-transform: uppercase;
+	    margin: 0 0 1em 0;
+	    border-bottom: 5px double #eee;
+	    padding-bottom: 0.5em;
+	    text-shadow: 1px 0px 1px rgba(0, 0, 0, 0.34);
+    }
+    .login-card{
+    	width: 450px;
+    	box-shadow: @brand-box-shadow;
+    	padding: 2.5em 1.5em;
+    	text-align: center;
+    	background-color: #fff;
+    	.site-name{
+    		margin: 0.8em 2em;
+		    font-size: 1.4em;
+		    font-weight: 400;
+		    position: relative;
+		    text-transform: uppercase;
+		    text-shadow: 1px 0px 1px rgba(0, 0, 0, 0.75);
+		    &:before,&:after{
+		    	content: '';
+		    	display: block;
+		    	border-bottom: 2px solid #d8d8d8;
+    			border-top: 2px solid #d8d8d8;
+			    position: absolute;
+    			height: 7px;
+			    width: 30%;
+    			top: 33%;
+		    }
+		    &:after{
+			    right: 0;
+		    }
+    	}
+    	.site-caption{
+    		font-size: 1.1em;
+    		color: #989898;
+    		text-transform: uppercase;
+    		margin: 0.5em 0;
+    		text-shadow: 1px 0px 1px rgba(0, 0, 0, 0.38);
+    	}
+    	.wp-social-login-provider-list{
+    		display: flex;
+    		flex-direction: column;
+    		padding: 0 2.5em;
+    		.wp-social-login-provider{
+    			margin: 1em 0 0 0;
+			    color: #fff;
+			    border-radius: 0;
+			    text-transform: uppercase;
+			    font-size: 1.05em;
+			    transition: all 0.5s ease;
+			    padding: 0.7em 0;
+    			display: flex;
+    			align-items: center;
+    			justify-content: center;
+    			text-decoration: none;
+			    // i{
+			    // 	padding-right: 0.5em;
+			    // }
+			    img{
+			    	display: none;
+			    }
+			    &:before{
+			    	content:'';
+			    	display: block;
+			    	font: normal normal normal 14px/1 FontAwesome;
+			    	padding-right: 0.5em;
+    				-webkit-font-smoothing: antialiased;
+			    }
+			    &-google{
+			    	background-color: #DB4A37;
+			    	// margin-bottom: 0;
+			    	&:hover{
+			    		background-color: lighten(#DB4A37,5%);
+			    	}
+			    	&:before{
+			    		content: "\f0d5";
+			    	}
+			    	&:after{
+			    		content: 'Google+';
+			    		text-transform: uppercase;
+			    	}
+			    }
+			    &-facebook{
+			    	background-color: #3b5998;
+			    	&:hover{
+			    		background-color: lighten(#527EBF,5%);
+			    	}
+			    	&:before{
+			    		content: '\f09a';
+			    	}
+			    	&:after{
+			    		content: 'Facebook';
+			    		text-transform: uppercase;
+			    	}
+			    }
+    		}
+    	}
+    }
+}	
+
+
+
+// ---------------------------
+// POPUP LOGIN -----------
+// --------------------------- 
+
+.modal.login{
+	.modal-dialog{
+		margin-top: 7em;
+	}
+	.modal-header{
+		padding: 0;
+	}
+	.login-container{
+		padding: 1.5em;
+		display: inherit;
+		background-color: transparent;
+		min-height: inherit;
+		.login-card{
+			box-shadow: none;
+			padding-top: 1em;
+			margin: 0 auto;
+		}
+	}
+}
+

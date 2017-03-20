@@ -158,8 +158,8 @@ function giftology_queue_invites($request_data) {
     //TODO change
     if (Ajency_MFG_Gift::get_acl_access_rule('gift',$gift_id,$user_id,'send-invites')) {
 
-        $emails = explode(',', $_POST['email']);
-        $message_id = Ajency_MFG_Gift::add_invitation_message($_POST['message']);
+        $emails = explode(',', $parameters['email']);
+        $message_id = Ajency_MFG_Gift::add_invitation_message($parameters['message']);
 
         $already_queued_emails = Ajency_MFG_Gift::check_if_invites_already_queued($gift_id, $emails, $user_id);
 

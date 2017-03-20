@@ -226,7 +226,7 @@ class Ajency_MFG_Gift {
     }
 
 
-    public static function mark_gift_code_usage($user_id, $code , $invite_id, $type = Ajency_MFG_Gift::STATUS_INVITE_TYPE_MANUAL,$invite_group)
+    public static function mark_gift_code_usage($user_id, $code , $invite_id, $type = Ajency_MFG_Gift::STATUS_INVITE_TYPE_MANUAL)
     {
         global $wpdb;
         //Add to usage tables also

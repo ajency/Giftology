@@ -87,9 +87,12 @@
                 success: function(data){
                     /*                    $("#thanks").html(msg)
                      $("#form-content").modal('hide');*/
-                    var invite_group = $( '#invite_group' ).val();
-                    console.log(data);
-                    console.log("sdfsdf" + invite_group);
+                    $('#confirm-emails').modal('hide');
+
+                    $('#confirm-emails').on('hidden.bs.modal', function () {
+                        // Load up a new modal...
+                        $('#confirmed-emails').modal('show')
+                    })
                 },
                 error: function(){
                     alert("Internal Server Error : Please contact Admin");
@@ -126,6 +129,19 @@
             $(this).find('.modal-body').load(loadurl);
         });
 
+        jQuery("#send-invites-prev").click(function(){
+
+
+            $('#confirm-emails').modal('hide');
+
+            /*                    $('#confirm-emails').modal('show')*/
+
+            $('#confirm-emails').on('hidden.bs.modal', function () {
+                // Load up a new modal...
+                $('#add-email').modal('show')
+            });
+        });
+
         jQuery("#queue-invites").click(function(){
 
             var gift_id = $( '#gift_id' ).val();
@@ -147,12 +163,32 @@
                 success: function(data){
 /*                    $("#thanks").html(msg)
                     $("#form-content").modal('hide');*/
+
+                    $('#add-email').modal('hide');
+
+/*                    $('#confirm-emails').modal('show')*/
+
+                    $('#add-email').on('hidden.bs.modal', function () {
+                        console.log('huih');
+                        // Load up a new modal...
+                        $('#confirm-emails').modal('show')
+                    })
+
                     console.log(data);
                 },
                 error: function(){
                     alert("Internal Server Error : Please contact Admin");
                 }
             });
+        });
+
+        jQuery('.close').click(function() {
+            $('.modal').modal('hide');
+        });
+
+
+        jQuery('.cancel').click(function() {
+            $('.modal').modal('hide');
         });
 
         jQuery("#change-settings").click(function(){
