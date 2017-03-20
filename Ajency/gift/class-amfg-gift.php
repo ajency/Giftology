@@ -86,13 +86,11 @@ class Ajency_MFG_Gift {
         return $results->is_allowed && is_user_logged_in();
     }
 
-    public static function remove_global_acls_for_entity($entity, $entity_id, $action) {
+    public static function update_global_acls_for_entity($entity, $entity_id, $action, $is_allowed) {
 
         //TODO make action optional, can be dangerous though
         global $wpdb;
-        $query = 'DELETE  FROM '.$wpdb->prefix.'giftology_acl
-               WHERE entity_id = "'.$entity_id.'" AND entity = "' . $entity . '" AND action = "' . $action . '" AND user_id = NULL';
-        print $query;
+        $query = 'Update '.$wpdb->prefix.'giftology_acl set is_allowed = "'.$is_allowed.'" where entity_id = "' . $entity_id . '" AND entity = "' . $entity . '" AND action = "' . $action . '" AND user_id IS NULL';
         $wpdb->query($query);
     }
 

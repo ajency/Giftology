@@ -100,21 +100,23 @@ function giftology_change_gift_settings($request_data)
     $gift_id = $parameters['gift_id'];
     $new_contrib_setting = $_POST['contribSetting'];
     $gift = Ajency_MFG_Gift::get_gift_details($gift_id);
+    $existing_contrib_setting = $gift->contrib_setting_id;
+
 
     if ($gift->created_by == $user_id) { //check if gift belongs to requesting user
 
-        if ($new_contrib_setting != $gift->contrib_setting_id) { //check if user made a change or simply just pressed save
+        if ($new_contrib_setting != $existing_contrib_setting) { //check if user made a change or simply just pressed save
             Ajency_MFG_Gift::update_gift_contrib_settings($gift_id, $new_contrib_setting); //Update the setting in DB
 
-            //Remove any existing ACLs for the gift, new invitaions would have to be sent
-            Ajency_MFG_Gift::remove_acls_for_entity('gift', $gift_id, 'send-invites');
-            Ajency_MFG_Gift::remove_acls_for_entity('gift', $gift_id, 'contribute');
-            Ajency_MFG_Gift::remove_acls_for_entity('gift', $gift_id, 'view-invites');
-
-            //Invalidate any unclaimed invites, claimed invites are taken care of by ACLS, leave those status as is. ie Claimed
-            Ajency_MFG_Gift::invalidate_invite_code($gift_id);
-
             if ($new_contrib_setting == Ajency_MFG_Gift::SETTING_CONTRIB_ONLY_ME) { // Only me
+
+                //Invalidate any unclaimed invites, claimed invites are taken care of by ACLS, leave those status as is. ie Claimed
+                Ajency_MFG_Gift::invalidate_invite_code($gift_id);
+
+                //Remove any existing ACLs for the gift, new invitaions would have to be sent
+                Ajency_MFG_Gift::remove_acls_for_entity('gift', $gift_id, 'send-invites');
+                Ajency_MFG_Gift::remove_acls_for_entity('gift', $gift_id, 'contribute');
+                Ajency_MFG_Gift::remove_acls_for_entity('gift', $gift_id, 'view-invites');
 
                 Ajency_MFG_Gift::add_acl_rule('gift', $gift_id, NULL, 'send-invites', 0); //No One is allowed to send invites
                 Ajency_MFG_Gift::add_acl_rule('gift', $gift_id, NULL, 'view-invites', 1); //EveryOne is allowed to view invites
@@ -125,22 +127,18 @@ function giftology_change_gift_settings($request_data)
 
             } else if ($new_contrib_setting == Ajency_MFG_Gift::SETTING_CONTRIB_SPECIFIC) {
 
+                Ajency_MFG_Gift::update_global_acls_for_entity('gift', $gift_id, 'view-invites', 1); //EveryOne is allowed to view invites
+                Ajency_MFG_Gift::update_global_acls_for_entity('gift', $gift_id, 'send-invites', 0); //No One is allowed to send invites
+                Ajency_MFG_Gift::update_global_acls_for_entity('gift', $gift_id, 'contribute', 0); //Only the gift contributor can contribute for now
 
-                Ajency_MFG_Gift::add_acl_rule('gift', $gift_id, NULL, 'view-invites', 1); //EveryOne is allowed to view invites
-
-                Ajency_MFG_Gift::add_acl_rule('gift', $gift_id, NULL, 'send-invites', 0); //No One is allowed to send invites
-                Ajency_MFG_Gift::add_acl_rule('gift', $gift_id, $user_id, 'send-invites', 1); //Except the gift creator for now
-                //And invited people but that logic has a flow on actual invite popup and using invite link
-
-                Ajency_MFG_Gift::add_acl_rule('gift', $gift_id, NULL, 'contribute', 0); //Only the gift contributor can contribute for now
-                Ajency_MFG_Gift::add_acl_rule('gift', $gift_id, $user_id, 'contribute', 1); //Only the gift contributor can contribute for now
+                Ajency_MFG_Gift::add_acl_rule('gift', $gift_id, $user_id, 'send-invites', 1); //Only the gift contributor can contribute for now
 
 
             } else if ($new_contrib_setting == Ajency_MFG_Gift::SETTING_CONTRIB_EVERYONE) {
 
-                Ajency_MFG_Gift::add_acl_rule('gift', $gift_id, NULL, 'send-invites', 1); //Everyone is allowed
-                Ajency_MFG_Gift::add_acl_rule('gift', $gift_id, NULL, 'view-invites', 1); //Everyone is allowed to view
-                Ajency_MFG_Gift::add_acl_rule('gift', $gift_id, NULL, 'contribute', 1); //Everyone is allowed to contribute also
+                Ajency_MFG_Gift::update_global_acls_for_entity('gift', $gift_id, 'view-invites', 1); //EveryOne is allowed to view invites
+                Ajency_MFG_Gift::update_global_acls_for_entity('gift', $gift_id, 'send-invites', 1); //No One is allowed to send invites
+                Ajency_MFG_Gift::update_global_acls_for_entity('gift', $gift_id, 'contribute', 1); //Only the gift contributor can contribute for now
 
             }
             return json_response(true, "Contribution Settings changes successfully");
