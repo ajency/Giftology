@@ -52,7 +52,7 @@ class Ajency_MFG_Frontend
         }
         else if($wp->query_vars['gift-invites-step-2'])
         {
-            echo do_shortcode( '[gift_invites inv_group="'.$wp->query_vars['invite-group'].'" show_op_icon=1 template=2 gift_id='.$wp->query_vars['gift-invites-step-2'].' status=1,3]' );
+            echo do_shortcode( '[gift_invites inv_group="'.$wp->query_vars['invite-group'].'" show_op_icon=1 template=2 gift_id='.$wp->query_vars['gift-invites-step-2'].' status=1]' );
         }
         else if($wp->query_vars['accept-gift-invite']) //Step 3
         {

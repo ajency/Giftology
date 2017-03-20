@@ -5,21 +5,17 @@ function gift_invites($atts) {
     $gift_id = isset($atts['gift_id']) ? $atts['gift_id'] : $_GET['gift_id'];
     $template = isset($atts['template']) ? $atts['template'] : 1;
     $limit = isset($atts['limit']) ? $atts['limit'] : false;
+    $status = isset($atts['status']) ? $atts['status'] : 1;
     $inv_group = isset($atts['inv_group']) ? $atts['inv_group'] : false;
     $view_all_link = isset($atts['view-all-link']) ? $atts['view-all-link'] : false;
 
-    $status = explode(',',$atts['status']);
+/*    $status = explode(',',$atts['status']);*/
     $show_op_icon = isset($atts['show_op_icon']) ? $atts['show_op_icon'] : 0;
     $recepients = Ajency_MFG_Gift::get_invitations($gift_id,$status,$limit,$inv_group);
 
-    if($template == 2) {
-        $classes = 'invit-emails center-email';
-    } else {
-/*        $classes = 'invit-emails center-email';*/
-        $classes = 'invit-emails';
-    }
+    $classes = 'invit-emails center-email';
 
-    if(count($recepients) > 5) {
+    if(count($recepients) > 5) { // Make config?
         $classes .= ' more-email';
     }
 
@@ -62,7 +58,7 @@ function gift_invites($atts) {
             }
             $html .= '</div>';
         }
-        if($view_all_link) {
+        if($view_all_link && count($recepients) > 5) {
             $html .= '<div class="col view-all">
 					    			<a href="/'.$view_all_link.'">View all</a>
 					    		</div>';

@@ -183,14 +183,12 @@ class Ajency_MFG_Testing {
   id int(10) NOT NULL AUTO_INCREMENT,
   email varchar(55) NOT NULL,
   gift_id int(10) NOT NULL,
-  user_id int(10) DEFAULT NULL,
   invited_by int(10) DEFAULT NULL,
   message_id int(10) NOT NULL,
   invite_code varchar(100) NOT NULL,
   invite_group varchar(100) DEFAULT '' NOT NULL,
   status tinyint NOT NULL,
-  sent_on int(10) DEFAULT NULL,
-  accepted_on int(10) DEFAULT NULL,
+  sent_on datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
   created datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
   updated datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
   PRIMARY KEY  (id)
@@ -199,18 +197,35 @@ class Ajency_MFG_Testing {
             dbDelta( $sql );
 
 
-/*
             global $wpdb;
-            $table_name = $wpdb->prefix . "giftology_invites_message";
+            $table_name = $wpdb->prefix . "giftology_invites_usage";
             $charset_collate = $wpdb->get_charset_collate();
             $sql = "CREATE TABLE $table_name (
   id int(10) NOT NULL AUTO_INCREMENT,
-  message text NOT NULL,
+  used_by int(10) NOT NULL,
+  invite_id int(10) NOT NULL,
+  invite_code varchar(100)  NOT NULL,
+  used_on datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+  type tinyint NOT NULL,
   PRIMARY KEY  (id)
 ) $charset_collate;";
             require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
             dbDelta( $sql );
-*/
+
+
+
+            /*
+                        global $wpdb;
+                        $table_name = $wpdb->prefix . "giftology_invites_message";
+                        $charset_collate = $wpdb->get_charset_collate();
+                        $sql = "CREATE TABLE $table_name (
+              id int(10) NOT NULL AUTO_INCREMENT,
+              message text NOT NULL,
+              PRIMARY KEY  (id)
+            ) $charset_collate;";
+                        require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+                        dbDelta( $sql );
+            */
 
         }
     }

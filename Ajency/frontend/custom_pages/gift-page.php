@@ -117,7 +117,7 @@ $user_id = get_current_user_id();
                        If the current user is allowed to view-invites show the tabs
                        -->
                     <?php
-                    $perms['recepients_count'] = count(Ajency_MFG_Gift::get_invitations($gift_id,[Ajency_MFG_Gift::STATUS_INVITE_SENT,Ajency_MFG_Gift::STATUS_INVITE_SENT_USED,Ajency_MFG_Gift::STATUS_INVITE_USED]));
+                    $perms['recepients_count'] = count(Ajency_MFG_Gift::get_invitations($gift_id,[Ajency_MFG_Gift::STATUS_INVITE_SENT]));
                     $perms['current_user_can_edit'] = $user_id == $gift->created_by ? true : false;
                     $perms['current_user_can_view_invites'] = Ajency_MFG_Gift::get_acl_access_rule('gift',$gift_id,$user_id,'view-invites');
                     $perms['current_user_can_send_invites'] = Ajency_MFG_Gift::get_acl_access_rule('gift',$gift_id,$user_id,'send-invites');
@@ -194,7 +194,7 @@ $user_id = get_current_user_id();
 -->
 
                                 <?php if($perms['current_user_can_view_invites'] && $perms['recepients_count'] > 0) : ?>
-                                    <?php echo do_shortcode( '[gift_invites view-all-link=# limit=4 gift_id="'.$gift_id.'" status="1,2,3"]' ); ?>
+                                    <?php echo do_shortcode( '[gift_invites view-all-link=# limit=4 gift_id="'.$gift_id.'" status="1"]' ); ?>
                                 <?php  endif; ?>
                             </div>
                             <div role="tabpanel" class="tab-pane" id="contributors">contributors</div>

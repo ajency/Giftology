@@ -157,26 +157,23 @@ function giftology_queue_invites($request_data) {
     $user_id = get_current_user_id();
     $gift_id = $parameters['gift_id'];
 
-    $gift = Ajency_MFG_Gift::get_gift_details($gift_id);
-
-
     //TODO change
     if (Ajency_MFG_Gift::get_acl_access_rule('gift',$gift_id,$user_id,'send-invites')) {
 
         $emails = explode(',', $_POST['email']);
         $message_id = Ajency_MFG_Gift::add_invitation_message($_POST['message']);
 
-        $already_queued_emails = Ajency_MFG_Gift::check_if_invites_already_queued($gift_id, $emails);
+        $already_queued_emails = Ajency_MFG_Gift::check_if_invites_already_queued($gift_id, $emails, $user_id);
 
         $emails_to_add = array_diff($emails, $already_queued_emails);
         foreach ($emails_to_add as $email) {
             if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                Ajency_MFG_Gift::add_invitation($email, $gift_id, $user_id, Ajency_MFG_Gift::STATUS_INVITE_QUEUED, $message_id);
+                return Ajency_MFG_Gift::add_invitation($email, $gift_id, $user_id, Ajency_MFG_Gift::STATUS_INVITE_QUEUED, $message_id);
             }
         }
         return json_response(true, 'Emails added to Invite queue for Gift' . $gift_id, $emails_to_add);
     }
-    return false;
+    return "Cannot";
 }
 
 
@@ -187,8 +184,6 @@ function giftology_send_invites($request_data){
     $gift_id = $parameters['gift_id'];
     $invite_group = $parameters['invite-group'];
 
-    $gift = Ajency_MFG_Gift::get_gift_details($gift_id);
-
     if (Ajency_MFG_Gift::get_acl_access_rule('gift',$gift_id,$user_id,'send-invites')) {
         $invites = Ajency_MFG_Gift::get_invitations($gift_id);
         foreach ($invites as $invite) {
@@ -197,10 +192,13 @@ function giftology_send_invites($request_data){
                 //check if email is in db and belongs to a user, assume if display name is there, belongs to a user in db
 
                 if ($invite->id) {
+                    //mark status as 3 for user, also send link to user, if they use it status gets changes to 2
+                    Ajency_MFG_Gift::mark_gift_code_as_used($invite->inv_id, $invite->invite_code, $invite->id, Ajency_MFG_Gift::STATUS_INVITE_TYPE_AUTO,$invite_group);
+
                     //make entry in acl table
                     Ajency_MFG_Gift::add_acl_rule('gift', $gift_id, $invite->id, 'send-invites', 1);
-                    //mark status as 3 for user, also send link to user, if they use it status gets changes to 2
-                    Ajency_MFG_Gift::mark_gift_code_as_sent_used($invite->invite_code, $invite_group, $invite->id);
+
+
                     //send gift url directly
 /*                    $message = file_get_contents( get_template_directory() . '/Ajency/users/welcome-email-template.html');*/
 
