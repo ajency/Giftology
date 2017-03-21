@@ -122,8 +122,6 @@
             $('#invite-submit').prop('disabled', true);
             $('#invite-submit').html('<i class="fa fa-spinner" aria-hidden="true"></i> Saving')
 
-            $(this).button('loading');
-
             console.log('Clicked step-0-submit');
             var gift_id = $( '#gift_id' ).val();
             console.log(gift_id);
