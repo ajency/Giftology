@@ -1,5 +1,29 @@
 <footer class="gift-footer">
 
+    <div class="login modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="login-container">
+                        <div class="login-card">
+                            <div class="logo">
+                                <img src="<?php echo get_template_directory_uri(); ?>/img/logo.jpg" class="img-responsive center-block">
+                            </div>
+                            <p class="site-caption">Login to unbox surprises</p>
+                            <div class="social-acc">
+
+                                <?php echo do_action( 'wordpress_social_login' ); ?>
+                            </div>
+                        </div>
+                    </div>'
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="container">
         <div class="row">
             <div class="col-sm-10">

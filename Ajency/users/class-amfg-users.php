@@ -13,6 +13,15 @@ class Ajency_MFG_Users {
         $this->load();
     }
 
+    public static function popup_login_form($message) {
+        echo "<script>";
+        echo "jQuery(document).ready(function() {";
+        echo "jQuery('#login').modal('show');";
+        echo "});";
+        echo "</script>";
+
+    }
+
     public function load() {
 
         add_filter( 'manage_users_columns', array($this, 'new_modify_user_table') );

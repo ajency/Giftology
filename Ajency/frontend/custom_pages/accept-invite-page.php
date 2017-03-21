@@ -17,7 +17,8 @@ $user_id = get_current_user_id();
         Ajency_MFG_Gift::add_acl_rule('gift', $gift_id, $user_id, 'contribute', 1);
         Ajency_MFG_Gift::mark_gift_code_usage($user_id, $code , $invite->id);
     } else {
-        $dest = $dest."&message=invalid";
+        $dest = home_url()."/?invite=invalid";
+
     }
     header("Location: ".$dest);
     exit;
@@ -27,10 +28,7 @@ $user_id = get_current_user_id();
 
 <?php if(!is_user_logged_in())
 {
-    $dest = home_url() .'/login?destination=/?accept-gift-invite='.$code;
-    header("Location: ".$dest);
-    exit;
-
+    Ajency_MFG_Users::popup_login_form($message);
 }
 ?>
 

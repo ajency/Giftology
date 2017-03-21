@@ -54,6 +54,10 @@ class Ajency_MFG_Frontend
         {
             echo do_shortcode( '[gift_invites inv_group="'.$wp->query_vars['invite-group'].'" show_op_icon=1 template=2 gift_id='.$wp->query_vars['gift-invites-step-2'].' status=1]' );
         }
+        else if($wp->query_vars['login'])
+        {
+            echo do_shortcode( '[login]' );
+        }
         else if($wp->query_vars['accept-gift-invite']) //Step 3
         {
             //Page to accept invitaions and login
@@ -69,6 +73,7 @@ class Ajency_MFG_Frontend
         $vars[] = 'accept-gift-invite';
         $vars[] = 'invite-group';
         $vars[] = 'modal';
+        $vars[] = 'login';
         return $vars;
     }
 }

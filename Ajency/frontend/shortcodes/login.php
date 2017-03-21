@@ -3,7 +3,6 @@ function login()
 {
     ?>
     <?php
-    $dest = home_url();
     if (is_user_logged_in()) {
         $dest = home_url() . $_GET['destination'];
         wp_redirect($dest);

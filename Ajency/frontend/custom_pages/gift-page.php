@@ -257,7 +257,7 @@ $user_id = get_current_user_id();
 
 
 
-        <div class="add-email modal fade"  id="confirm-emails" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="add-email modal fade"  id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -283,33 +283,6 @@ $user_id = get_current_user_id();
         <?php
         echo '<input type="hidden" name="invite_group" id="invite_group" value="" />';
         ?>
-
-
-        <div class="add-email modal fade" id="confirmed-emails" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Invite people to contribute</h4>
-                        <p class="modal-caption">Invitation is sent by email</p>
-                    </div>
-                    <div class="modal-body">
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default cancel">Cancel</button>
-                        <span>
-	        	<!-- <button type="submit" class="btn btn-default cancel">Back</button> -->
-<!--	        	<button type="submit" class="btn btn-primary site-btn-2">Next</button>-->
-	        </span>
-                         <div class="done">
-                            <button type="submit" id="finish-invites" class="btn btn-primary site-btn-2">Done</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
 
         <!-- Email settings modal -->
         <div class="change-email modal fade" id="change-email" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

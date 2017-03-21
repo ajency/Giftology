@@ -115,17 +115,15 @@
             jQuery('body').removeClass('modal-open');
         });
 
+/*        jQuery('#login').on('show.bs.modal', function (e) {
+            var gift_id = $( '#gift_id' ).val();
+            var loadurl = giftology_api.homeUrl + '?login=true&modal=true';
+            $(this).find('.modal-body').load(loadurl);
+        });*/
+
         jQuery('#confirm-emails').on('show.bs.modal', function (e) {
             var gift_id = $( '#gift_id' ).val();
             var loadurl = giftology_api.homeUrl + '?gift-invites-step-1='+gift_id+'&modal=true';
-            $(this).find('.modal-body').load(loadurl);
-        });
-
-        jQuery('#confirmed-emails').on('show.bs.modal', function (e) {
-            var invite_group = $( '#invite_group' ).val();
-            console.log("invite-group" + invite_group);
-            var gift_id = $( '#gift_id' ).val();
-            var loadurl = giftology_api.homeUrl + '?gift-invites-step-2='+gift_id+'&invite-group='+invite_group+'&modal=true';
             $(this).find('.modal-body').load(loadurl);
         });
 
@@ -161,18 +159,19 @@
 
                 data: $('#invite').serialize() ,
                 success: function(data){
-/*                    $("#thanks").html(msg)
-                    $("#form-content").modal('hide');*/
 
-                    $('#add-email').modal('hide');
+                    var loadurl = giftology_api.homeUrl + '?gift-invites-step-1='+gift_id+'&modal=true';
 
-/*                    $('#confirm-emails').modal('show')*/
 
-                    $('#add-email').on('hidden.bs.modal', function () {
-                        console.log('huih');
-                        // Load up a new modal...
-                        $('#confirm-emails').modal('show')
-                    })
+                    $('#myModal .modal-body').load(loadurl );
+
+
+  /*                  jQuery('#confirmed-emails').on('show.bs.modal', function (e) {
+                        var invite_group = $( '#invite_group' ).val();
+                        console.log("invite-group" + invite_group);
+                        var gift_id = $( '#gift_id' ).val();
+                        $(this).find('.modal-body').load(loadurl);
+                    });*/
 
                     console.log(data);
                 },
@@ -182,7 +181,7 @@
             });
         });
 
-        jQuery('.close').click(function() {
+      /*  jQuery('.close').click(function() {
             $('.modal').modal('hide');
         });
 
@@ -190,7 +189,7 @@
         jQuery('.cancel').click(function() {
             $('.modal').modal('hide');
         });
-
+*/
         jQuery("#change-settings").click(function(){
 
             var gift_id = $( '#gift_id' ).val();

@@ -57,7 +57,7 @@
         <ul class="nav navbar-nav navbar-right">
             <?php if(!is_user_logged_in()) : ?>
             <li><button class="btn btn-default invest-btn" type="button">Gift an investment</button></li>
-            <li><a href="/login">Login</a></li>
+            <li><a href="#" class="login" data-toggle="modal" data-target="#login">Login</a></li>
             <?php else : ?>
 
             <li class="dropdown">
