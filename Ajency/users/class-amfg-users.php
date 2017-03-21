@@ -13,7 +13,7 @@ class Ajency_MFG_Users {
         $this->load();
     }
 
-    public static function popup_login_form($message) {
+    public static function popup_login_form($message = false) {
         echo "<script>";
         echo "jQuery(document).ready(function() {";
         echo "jQuery('#login').modal('show');";
