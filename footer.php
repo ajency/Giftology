@@ -14,7 +14,6 @@
                             </div>
                             <p class="site-caption">Login to unbox surprises</p>
                             <div class="social-acc">
-
                                 <?php echo do_action( 'wordpress_social_login' ); ?>
                             </div>
                         </div>

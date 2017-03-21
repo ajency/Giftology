@@ -46,6 +46,20 @@ class Ajency_MFG_Frontend
             $gift_id = $wp->query_vars['gifts'];
             get_template_part( 'Ajency/frontend/custom_pages/gift', 'page' );
         }
+        else if($wp->query_vars['gift-invites-step-0'])
+        {
+            echo '<form id="invite">
+                            <div class="form-group email-address">
+                                <label for="email" class="control-label">Enter the email addresses seperated by comma</label>
+                                <p class="label-msg">You can invite any number of people</p>
+                                <input name="email" class="form-control" id="email-tags" placeholder="Email address" required>
+                            </div>
+                            <div class="form-group email-msg">
+                                <p class="label-msg">A message to the contributors</p>
+                                <textarea class="form-control" placeholder="Message" name="message" id="message" rows="5" required>Hi! Its Sarvesh\'s anniversary, Lets give him a gift that\'ll be really helpful for him in the future!</textarea>
+                            </div>
+                    </form>';
+        }
         else if($wp->query_vars['gift-invites-step-1'])
         {
             echo do_shortcode( '[gift_invites show_op_icon=1 template=2 gift_id='.$wp->query_vars['gift-invites-step-1'].' status=0]' );
@@ -68,6 +82,7 @@ class Ajency_MFG_Frontend
 
     function my_plugin_query_vars($vars) {
         $vars[] = 'gifts';
+        $vars[] = 'gift-invites-step-0';
         $vars[] = 'gift-invites-step-1';
         $vars[] = 'gift-invites-step-2';
         $vars[] = 'accept-gift-invite';

@@ -159,7 +159,7 @@ $user_id = get_current_user_id();
                                         If the current user is allowed to send-invites and recepients are more than 0, show the add button
                                         -->
                                         <?php  if($perms['current_user_can_send_invites'] && $perms['recepients_count'] > 0) : ?>
-                                            <a href="#" class="add" data-toggle="modal" data-target="#add-email">Add</a>
+                                            <a href="#" class="add invite-contributors" data-toggle="modal" data-target="#add-email">Add</a>
                                         <?php endif; ?>
                                     </a>
                                 </div>
@@ -183,7 +183,7 @@ $user_id = get_current_user_id();
 
                                     <div class="no-invit">
                                         <p>You have not invited any contributors to this gift yet</p>
-                                        <button class="btn btn-default site-btn-2" data-toggle="modal" data-target="#add-email">Invite contributors</button>
+                                        <button class="invite-contributors btn btn-default site-btn-2" data-toggle="modal" data-target="#add-email">Invite contributors</button>
                                     </div>
 
                                 <?php  endif; ?>
@@ -207,73 +207,22 @@ $user_id = get_current_user_id();
 
 
         <!-- Add modal -->
-        <div class="add-email modal fade" id="add-email" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="add-email modal fade" id="inviteModal" tabindex="-1" role="dialog" aria-labelledby="inviteModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Invite people to contribute</h4>
-                        <p class="modal-caption">Invitation is sent by email</p>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="inviteModalLabel">Modal Title</h4>
+                        <p class="modal-caption">Modal Caption</p>
                     </div>
                     <div class="modal-body">
-
-                        <!--<div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">Emails</label>
-                            <div class="col-sm-10">
-                                <input name="email" class="form-control" id="email-tags" placeholder="Email" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="message" class="col-sm-2 control-label">Message</label>
-                            <div class="col-sm-10">
-                                <textarea name="message" class="form-control" placeholder="Message" id="message" rows="5" required>[Default Message Template]</textarea>
-                            </div>
-                        </div>-->
-
-                        <form id="invite">
-                            <div class="form-group email-address">
-                                <label for="email" class="control-label">Enter the email addresses seperated by comma</label>
-                                <p class="label-msg">You can invite any number of people</p>
-                                <input name="email" class="form-control" id="email-tags" placeholder="Email address" required>
-                            </div>
-                            <div class="form-group email-msg">
-                                <p class="label-msg">A message to the contributors</p>
-                                <textarea class="form-control" placeholder="Message" name="message" id="message" rows="5" required>Hi! Its Sarvesh's anniversary, Lets give him a gift that'll be really helpful for him in the future!</textarea>
-                            </div>
-                        </form>
+                        //Dynamically Load Modal here
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default cancel" data-dismiss="modal">Cancel</button>
                         <span>
-	        	<button type="submit" id="queue-invites" class="btn btn-primary site-btn-2">Next</button>
-<!--	        	<button type="submit" id="queue-invites" class="btn btn-primary site-btn-2" data-toggle="modal" data-load-url="#" data-target="#confirm-emails" data-dismiss="modal">Next</button>-->
-	        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- List of Queued Emails   -->
-
-
-
-        <div class="add-email modal fade"  id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Invite people to contribute</h4>
-                        <p class="modal-caption">Invitation is sent by email</p>
-                    </div>
-                    <div class="modal-body">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default cancel" data-dismiss="modal">Cancel</button>
-                        <span>
-<!--                <button type="submit" class="btn btn-default cancel" data-toggle="modal" data-load-url="#" data-target="#add-email" data-dismiss="modal">Back</button>-->
-                <button type="submit" id="send-invites-prev" class="btn btn-default cancel">Back</button>
-	        	<button type="submit" id="send-invites" class="btn btn-primary site-btn-2">Next</button>
-<!--	        	<button type="submit" id="send-invites" class="btn btn-primary site-btn-2" data-toggle="modal" data-load-url="#" data-target="#confirmed-emails" data-dismiss="modal">Next</button>-->
+                <button type="submit" id="invite-back" class="btn btn-default cancel">Back</button>
+	        	<button type="submit" id="invite-submit" class="btn btn-primary site-btn-2">Next</button>
 	        </span>
                     </div>
                 </div>
@@ -289,6 +238,59 @@ $user_id = get_current_user_id();
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Contribution Settings</h4>
+                        <p class="modal-caption">Manage whether you want others to contribute</p>
+                    </div>
+                    <div class="modal-body">
+                        <form class="" id="settings">
+                            <div class="settings">
+                                <h6 class="settings-heading">Pick the type of contribution you wish to set</h6>
+                                <ul>
+                                    <li>
+                                        <label class="radio-inline">
+                                            <input name="contribSetting" id="radio1" value="<?php echo Ajency_MFG_Gift::SETTING_CONTRIB_ONLY_ME; ?>" <?php echo Ajency_MFG_Gift::SETTING_CONTRIB_ONLY_ME == $gift->contrib_setting_id ? 'checked' : ''; ?> type="radio">
+                                            <div class="radio-cont">
+                                                <span class="radio-label">Only me </span>
+                                                <p class="radio-detail">No one else can contribute</p>
+                                            </div>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="radio-inline">
+                                            <input name="contribSetting" id="radio1" value="<?php echo Ajency_MFG_Gift::SETTING_CONTRIB_SPECIFIC; ?>" <?php echo Ajency_MFG_Gift::SETTING_CONTRIB_SPECIFIC == $gift->contrib_setting_id ? 'checked' : ''; ?> type="radio" class="sub-option">
+
+                                            <div class="radio-cont">
+                                                <span class="radio-label">Private </span>
+                                                <p class="radio-detail">Only invited people can contribute</p>
+                                            </div>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="radio-inline">
+                                            <input name="contribSetting" id="radio2" value="<?php echo Ajency_MFG_Gift::SETTING_CONTRIB_EVERYONE; ?>" <?php echo Ajency_MFG_Gift::SETTING_CONTRIB_EVERYONE == $gift->contrib_setting_id ? 'checked' : ''; ?> type="radio" class="sub-option">
+                                            <div class="radio-cont">
+                                                <span class="radio-label">Public </span>
+                                                <p class="radio-detail">Anyone can see and contribute</p>
+                                            </div>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default cancel" data-dismiss="modal">Cancel</button>
+                        <button type="submit" id="change-settings" class="btn btn-primary site-btn-2">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<!--        <div class="change-email modal fade" id="change-email" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
                         <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <h4 class="modal-title" id="myModalLabel">Update Contribution Settings</h4>
                     </div>
@@ -299,7 +301,7 @@ $user_id = get_current_user_id();
                                 <ul>
                                     <li>
                                         <label class="radio-inline">
-                                            <input name="contribSetting" id="radio1" value="<?php echo Ajency_MFG_Gift::SETTING_CONTRIB_ONLY_ME; ?>" <?php echo Ajency_MFG_Gift::SETTING_CONTRIB_ONLY_ME == $gift->contrib_setting_id ? 'checked' : ''; ?> type="radio"> Only me (Private)
+                                            <input name="contribSetting" id="radio1" value="<?php /*echo Ajency_MFG_Gift::SETTING_CONTRIB_ONLY_ME; */?>" <?php /*echo Ajency_MFG_Gift::SETTING_CONTRIB_ONLY_ME == $gift->contrib_setting_id ? 'checked' : ''; */?> type="radio"> Only me (Private)
                                         </label>
                                     </li>
                                     <li>
@@ -309,12 +311,13 @@ $user_id = get_current_user_id();
                                         <ul>
                                             <li>
                                                 <label class="radio-inline">
-                                                    <input name="contribSetting" id="radio1" value="<?php echo Ajency_MFG_Gift::SETTING_CONTRIB_SPECIFIC; ?>" <?php echo Ajency_MFG_Gift::SETTING_CONTRIB_SPECIFIC == $gift->contrib_setting_id ? 'checked' : ''; ?> type="radio" class="sub-option"> Specific People
+                                                    <input name="contribSetting" id="radio1" value="<?php /*echo Ajency_MFG_Gift::SETTING_CONTRIB_SPECIFIC; */?>" <?php /*echo Ajency_MFG_Gift::SETTING_CONTRIB_SPECIFIC == $gift->contrib_setting_id ? 'checked' : ''; */?> type="radio" class="sub-option">
+                                                    Specific People
                                                 </label>
                                             </li>
                                             <li>
                                                 <label class="radio-inline">
-                                                    <input name="contribSetting" id="radio2" value="<?php echo Ajency_MFG_Gift::SETTING_CONTRIB_EVERYONE; ?>" <?php echo Ajency_MFG_Gift::SETTING_CONTRIB_EVERYONE == $gift->contrib_setting_id ? 'checked' : ''; ?> type="radio" class="sub-option"> Everyone (Public)
+                                                    <input name="contribSetting" id="radio2" value="<?php /*echo Ajency_MFG_Gift::SETTING_CONTRIB_EVERYONE; */?>" <?php /*echo Ajency_MFG_Gift::SETTING_CONTRIB_EVERYONE == $gift->contrib_setting_id ? 'checked' : ''; */?> type="radio" class="sub-option"> Everyone (Public)
                                                 </label>
                                             </li>
                                         </ul>
@@ -332,6 +335,7 @@ $user_id = get_current_user_id();
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
+
     </section>
 <?php get_footer(); ?>
