@@ -104,6 +104,21 @@ class Ajency_MFG_Gift {
         );
     }
 
+    public static function delete_queued_invite_by_email($gift_id,$email,$user_id) {
+        global $wpdb;
+        $wpdb->query(
+            'DELETE  FROM '.$wpdb->prefix.'giftology_invites WHERE gift_id = "'.$gift_id.'" AND email = "' . $email . '" AND invited_by = "' . $user_id . '"'
+        );
+    }
+
+    public static function delete_queued_invite($gift_id,$invite_id,$user_id) {
+        global $wpdb;
+        $wpdb->query(
+            'DELETE  FROM '.$wpdb->prefix.'giftology_invites WHERE gift_id = "'.$gift_id.'" AND id = "' . $invite_id . '" AND invited_by = "' . $user_id . '"'
+        );
+
+    }
+
     public static function get_invitations($gift_id, $status = Ajency_MFG_Gift::STATUS_INVITE_QUEUED, $limit = false, $inv_group = false) {
         //TODO make action optional, can be dangerous though
         global $wpdb;

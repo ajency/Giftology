@@ -46,7 +46,7 @@ function gift_invites($atts) {
 					<span class="close-holder"><a href="" class="email">'.$recepient->email.'</a>';
 
             if($recepient->inv_status == 0) {
-                $html .= '<span class="remove-email">&times;</span>';
+                $html .= '<span id="'.$recepient->inv_id.'" class="remove-email">&times;</span>';
             }
 
             $html .= '</span>

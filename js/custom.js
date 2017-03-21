@@ -103,6 +103,36 @@
             $('#invite-back').hide();
         }
 
+        $(document).on('click', '.remove-email', function (e) {
+            var gift_id = $( '#gift_id' ).val();
+            var id = $(this).attr('id');
+            var url = giftology_api.root + 'giftology/v1/gifts/'+gift_id+'/delete-invite/'+id;
+            $.ajax({
+                type: "POST",
+                url: url,
+                beforeSend: function ( xhr ) {
+                    xhr.setRequestHeader( 'X-WP-Nonce', giftology_api.nonce );
+                },
+                data: {} ,
+                success: function(data){
+
+                    var loadurl = giftology_api.homeUrl + '?gift-invites-step-1='+gift_id+'&modal=true';
+                    $('#inviteModal').modal('show').find('.modal-body').load(loadurl);
+
+                    $('.modal-title').text('Confirm Invitations');
+                    $('.modal-caption').text('You can go back to confirm email addresses');
+                    $('#invite-submit').text('Send');
+                    $('#invite-back').show();
+                    $('#invite-submit').removeClass('step-0-submit').addClass('step-1-submit');
+
+                },
+                error: function(error){
+                    console.log(error);
+                    alert("Internal Server Error : Please contact Admin");
+                }
+            });
+        });
+
         $(document).on('click', '.invite-contributors', function (e) {
             var gift_id = $( '#gift_id' ).val();
             var loadurl = giftology_api.homeUrl + '?gift-invites-step-0='+gift_id+'&modal=true';

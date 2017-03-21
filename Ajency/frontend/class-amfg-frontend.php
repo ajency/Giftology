@@ -49,7 +49,9 @@ class Ajency_MFG_Frontend
         else if($wp->query_vars['gift-invites-step-0'])
         {
 
-            $pending_Recepients = Ajency_MFG_Gift::get_invitations(1);
+            get_template_part( 'Ajency/frontend/modals/gift-invite', 'form' );
+
+/*            $pending_Recepients = Ajency_MFG_Gift::get_invitations(1);
             echo '<form id="invite">
                             <div class="form-group email-address">
                                 <label for="email" class="control-label">Enter the email addresses seperated by comma</label>
@@ -73,8 +75,8 @@ class Ajency_MFG_Frontend
             );";
             echo "});";
             echo "
-            
-            
+
+
         function validateEmail(email)
         {
             var reg = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/
@@ -84,8 +86,8 @@ class Ajency_MFG_Frontend
                 return false;
             }
         }
-       
-        
+
+
              jQuery('#email-tags').on('beforeItemAdd', function(event) {
 
 
@@ -96,15 +98,15 @@ class Ajency_MFG_Frontend
                 jQuery('#email-tags').tagsinput('remove', tag);
             }
         });
-            
-            
-            
+
+
+
             ";
 
             foreach ($pending_Recepients as $recepient) {
                 echo "jQuery('#email-tags').tagsinput('add', '".$recepient->email."');";
             }
-            echo "</script>";
+            echo "</script>";*/
         }
         else if($wp->query_vars['gift-invites-step-1'])
         {

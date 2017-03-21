@@ -80,6 +80,30 @@ function giftology_api() {
 
     register_rest_route(
         'giftology/v1',
+        '/gifts/(?P<gift_id>\d+)/delete-invite/(?P<invite_id>\d+)',
+        array(
+            'methods' => 'POST',
+            'callback' => 'giftology_delete_invite',
+            'permission_callback' => function () {
+                return is_user_logged_in();
+            }
+        )
+    );
+
+    register_rest_route(
+        'giftology/v1',
+        '/gifts/(?P<gift_id>\d+)/delete-invite-by-email',
+        array(
+            'methods' => 'POST',
+            'callback' => 'giftology_delete_invite_by_email',
+            'permission_callback' => function () {
+                return is_user_logged_in();
+            }
+        )
+    );
+
+    register_rest_route(
+        'giftology/v1',
         '/gifts/(?P<gift_id>\d+)/change-settings',
         array(
             'methods' => 'POST',
@@ -92,6 +116,22 @@ function giftology_api() {
 }
 
 
+function giftology_delete_invite($request_data){
+
+    $parameters = $request_data->get_params();
+    $gift_id = $parameters['gift_id'];
+    $invite_id = $parameters['invite_id'];
+    $user_id = get_current_user_id();
+    Ajency_MFG_Gift::delete_queued_invite($gift_id,$invite_id,$user_id);
+}
+
+function giftology_delete_invite_by_email($request_data){
+    $parameters = $request_data->get_params();
+    $gift_id = $parameters['gift_id'];
+    $email = $parameters['email'];
+    $user_id = get_current_user_id();
+    Ajency_MFG_Gift::delete_queued_invite_by_email($gift_id,$email,$user_id);
+}
 
 function giftology_change_gift_settings($request_data)
 {

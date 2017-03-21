@@ -287,55 +287,5 @@ $user_id = get_current_user_id();
             </div>
         </div>
 
-<!--        <div class="change-email modal fade" id="change-email" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Update Contribution Settings</h4>
-                    </div>
-                    <div class="modal-body">
-                        <form class="" id="settings">
-                            <div class="settings">
-                                <h6 class="settings-heading">Who can contribute to this gift?</h6>
-                                <ul>
-                                    <li>
-                                        <label class="radio-inline">
-                                            <input name="contribSetting" id="radio1" value="<?php /*echo Ajency_MFG_Gift::SETTING_CONTRIB_ONLY_ME; */?>" <?php /*echo Ajency_MFG_Gift::SETTING_CONTRIB_ONLY_ME == $gift->contrib_setting_id ? 'checked' : ''; */?> type="radio"> Only me (Private)
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label class="radio-inline select">
-                                            <input disabled name="contribSetting" id="radio2" value="others" type="radio"> Other than me
-                                        </label>
-                                        <ul>
-                                            <li>
-                                                <label class="radio-inline">
-                                                    <input name="contribSetting" id="radio1" value="<?php /*echo Ajency_MFG_Gift::SETTING_CONTRIB_SPECIFIC; */?>" <?php /*echo Ajency_MFG_Gift::SETTING_CONTRIB_SPECIFIC == $gift->contrib_setting_id ? 'checked' : ''; */?> type="radio" class="sub-option">
-                                                    Specific People
-                                                </label>
-                                            </li>
-                                            <li>
-                                                <label class="radio-inline">
-                                                    <input name="contribSetting" id="radio2" value="<?php /*echo Ajency_MFG_Gift::SETTING_CONTRIB_EVERYONE; */?>" <?php /*echo Ajency_MFG_Gift::SETTING_CONTRIB_EVERYONE == $gift->contrib_setting_id ? 'checked' : ''; */?> type="radio" class="sub-option"> Everyone (Public)
-                                                </label>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-
-
-
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default">Close</button>
-                        <button type="submit" id="change-settings" class="btn btn-primary site-btn-2">Save</button>
-                    </div>
-                </div>
-            </div>
-        </div>-->
-
     </section>
 <?php get_footer(); ?>
