@@ -18,7 +18,7 @@
                                 <?php echo do_action( 'wordpress_social_login' ); ?>
                             </div>
                         </div>
-                    </div>'
+                    </div>
                 </div>
             </div>
         </div>

@@ -730,6 +730,7 @@ input:focus,
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  text-decoration: none;
 }
 .login-container .login-card .wp-social-login-provider-list .wp-social-login-provider img {
   display: none;
@@ -751,7 +752,7 @@ input:focus,
   content: "\f0d5";
 }
 .login-container .login-card .wp-social-login-provider-list .wp-social-login-provider-google:after {
-  content: 'Google+';
+  content: 'login with Google';
   text-transform: uppercase;
 }
 .login-container .login-card .wp-social-login-provider-list .wp-social-login-provider-facebook {
@@ -764,8 +765,25 @@ input:focus,
   content: '\f09a';
 }
 .login-container .login-card .wp-social-login-provider-list .wp-social-login-provider-facebook:after {
-  content: 'Facebook';
+  content: 'Login with Facebook';
   text-transform: uppercase;
+}
+.modal.login .modal-dialog {
+  margin-top: 7em;
+}
+.modal.login .modal-header {
+  padding: 0;
+}
+.modal.login .login-container {
+  padding: 1.5em;
+  display: inherit;
+  background-color: transparent;
+  min-height: inherit;
+}
+.modal.login .login-container .login-card {
+  box-shadow: none;
+  padding-top: 1em;
+  margin: 0 auto;
 }
 .modal-open[style] {
   padding-right: 0px !important;
