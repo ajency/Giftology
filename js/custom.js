@@ -56,9 +56,6 @@
             }
         }
 
-        $('#email-tags').tagsinput({
-        });
-
         $('#email-tags').on('beforeItemAdd', function(event) {
 
             var tag = event.item;
@@ -120,6 +117,13 @@
         });
 
         $(document).on('click', '.step-0-submit', function () {
+
+            $('#invite-submit').addClass('disabled');
+            $('#invite-submit').prop('disabled', true);
+            $('#invite-submit').html('<i class="fa fa-spinner" aria-hidden="true"></i> Saving')
+
+            $(this).button('loading');
+
             console.log('Clicked step-0-submit');
             var gift_id = $( '#gift_id' ).val();
             console.log(gift_id);
@@ -133,7 +137,6 @@
 
                 data: $('#invite').serialize() ,
                 success: function(data){
-
                     //Loader button
                     var loadurl = giftology_api.homeUrl + '?gift-invites-step-1='+gift_id+'&modal=true';
                     $('#inviteModal').modal('show').find('.modal-body').load(loadurl);
@@ -142,8 +145,11 @@
                     $('.modal-caption').text('You can go back to confirm email addresses');
                     $('#invite-submit').text('Send');
                     $('#invite-back').show();
-
                     $('#invite-submit').removeClass('step-0-submit').addClass('step-1-submit');
+
+                    $('#invite-submit').removeClass('disabled');
+                    $('#invite-submit').prop('disabled', false);
+
 
                     console.log(data);
                 },
@@ -155,6 +161,12 @@
 
 
         $(document).on('click', '.step-1-submit', function () {
+
+
+            $('#invite-submit').addClass('disabled');
+            $('#invite-submit').prop('disabled', true);
+            $('#invite-submit').html('<i class="fa fa-spinner" aria-hidden="true"></i> Sending')
+
             var gift_id = $( '#gift_id' ).val();
             var invite_group = Math.random().toString(36).substring(7);
             document.getElementById("invite_group").value = invite_group;
@@ -167,6 +179,8 @@
                 },
                 data: {} ,
                 success: function(data){
+
+
                     //Loader button
                     var loadurl = giftology_api.homeUrl + '?gift-invites-step-2='+gift_id+'&modal=true&invite-group='+invite_group;
                     $('#inviteModal').modal('show').find('.modal-body').load(loadurl);
@@ -175,6 +189,10 @@
                     $('#invite-submit').text('Done');
                     $('#invite-submit').removeClass('step-1-submit').addClass('step-2-submit');
                     $('#invite-back').hide();
+
+                    $('#invite-submit').removeClass('disabled');
+                    $('#invite-submit').prop('disabled', false);
+
                     console.log(data);
                 },
                 error: function(){

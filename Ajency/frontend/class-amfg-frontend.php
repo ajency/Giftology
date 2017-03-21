@@ -48,6 +48,8 @@ class Ajency_MFG_Frontend
         }
         else if($wp->query_vars['gift-invites-step-0'])
         {
+
+            $pending_Recepients = Ajency_MFG_Gift::get_invitations(1);
             echo '<form id="invite">
                             <div class="form-group email-address">
                                 <label for="email" class="control-label">Enter the email addresses seperated by comma</label>
@@ -59,6 +61,50 @@ class Ajency_MFG_Frontend
                                 <textarea class="form-control" placeholder="Message" name="message" id="message" rows="5" required>Hi! Its Sarvesh\'s anniversary, Lets give him a gift that\'ll be really helpful for him in the future!</textarea>
                             </div>
                     </form>';
+
+            echo "<script>";
+            echo "jQuery(document).ready(function() {";
+            echo "jQuery('#email-tags').tagsinput(
+            {
+  onTagExists: function(item, tag) {
+    tag.hide().fadeIn();
+  }
+}
+            );";
+            echo "});";
+            echo "
+            
+            
+        function validateEmail(email)
+        {
+            var reg = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/
+            if (reg.test(email)){
+                return true; }
+            else{
+                return false;
+            }
+        }
+       
+        
+             jQuery('#email-tags').on('beforeItemAdd', function(event) {
+
+
+            var tag = event.item;
+            console.log(event);
+            if (validateEmail(tag) == false) {
+                console.log('Entered');
+                jQuery('#email-tags').tagsinput('remove', tag);
+            }
+        });
+            
+            
+            
+            ";
+
+            foreach ($pending_Recepients as $recepient) {
+                echo "jQuery('#email-tags').tagsinput('add', '".$recepient->email."');";
+            }
+            echo "</script>";
         }
         else if($wp->query_vars['gift-invites-step-1'])
         {
