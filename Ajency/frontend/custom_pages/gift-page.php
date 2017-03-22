@@ -1,13 +1,5 @@
 <?php get_header(); ?>
 
-<?php
-$gift_id = $_GET['gifts'];
-$gift = Ajency_MFG_Gift::get_gift_details($gift_id, true);
-$fund = $gift->fund;
-$user_id = get_current_user_id();
-?>
-    <!-- Gift card section -->
-
     <section class="gift-card">
 
         <?php
@@ -154,12 +146,12 @@ $user_id = get_current_user_id();
                             <li role="presentation" class="active">
                                 <div class="invitees">
                                     <a href="#invitees" aria-controls="invitees" role="tab" data-toggle="tab" class="tab-link">
-                                        <span><b><?php echo $perms['recepients_count'] ?></b> Invitees</span>
+                                        <span><b><?php echo $perms['recepients_count']; ?></b> <?php echo $perms['recepients_count'] == 1 ? "Invitee" : "Invitees" ?></span>
                                         <!--
                                         If the current user is allowed to send-invites and recepients are more than 0, show the add button
                                         -->
                                         <?php  if($perms['current_user_can_send_invites'] && $perms['recepients_count'] > 0) : ?>
-                                            <a href="#" class="add invite-contributors" data-toggle="modal" data-target="#add-email">Add</a>
+                                            <a href="#" class="add invite-contributors">Add</a>
                                         <?php endif; ?>
                                     </a>
                                 </div>
@@ -183,7 +175,7 @@ $user_id = get_current_user_id();
 
                                     <div class="no-invit">
                                         <p>You have not invited any contributors to this gift yet</p>
-                                        <button class="invite-contributors btn btn-default site-btn-2" data-toggle="modal" data-target="#add-email">Invite contributors</button>
+                                        <button class="invite-contributors btn btn-default site-btn-2" data-target="#add-email">Invite contributors</button>
                                     </div>
 
                                 <?php  endif; ?>
@@ -194,7 +186,7 @@ $user_id = get_current_user_id();
 -->
 
                                 <?php if($perms['current_user_can_view_invites'] && $perms['recepients_count'] > 0) : ?>
-                                    <?php echo do_shortcode( '[gift_invites view-all-link=# limit=4 gift_id="'.$gift_id.'" status="1"]' ); ?>
+                                    <?php echo do_shortcode( '[gift_invites view-all-link=# gift_id="'.$gift_id.'" status="1"]' ); ?>
                                 <?php  endif; ?>
                             </div>
                             <div role="tabpanel" class="tab-pane" id="contributors">contributors</div>

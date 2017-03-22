@@ -206,10 +206,10 @@ function giftology_queue_invites($request_data) {
         $emails_to_add = array_diff($emails, $already_queued_emails);
         foreach ($emails_to_add as $email) {
             if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                return Ajency_MFG_Gift::add_invitation($email, $gift_id, $user_id, Ajency_MFG_Gift::STATUS_INVITE_QUEUED, $message_id);
+                Ajency_MFG_Gift::add_invitation($email, $gift_id, $user_id, Ajency_MFG_Gift::STATUS_INVITE_QUEUED, $message_id);
             }
         }
-        return json_response(true, 'Emails added to Invite queue for Gift' . $gift_id, $emails_to_add);
+        return json_response(true, 'Emails added to Invite queue for Gift ID : ' . $gift_id, [$parameters['email'],$_POST['email'], $emails_to_add]);
     }
     return "Cannot";
 }

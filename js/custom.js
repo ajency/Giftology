@@ -140,6 +140,23 @@
             show_invite_contributors_form(loadurl);
         });
 
+        jQuery(".view-all-invites").click(function(){
+
+            var gift_id = $( '#gift_id' ).val();
+            var loadurl = giftology_api.homeUrl + '?gift-invites-view-all='+gift_id+'&modal=true';
+
+            $('#inviteModal').modal('show').find('.modal-body').load(loadurl);
+
+            $('.modal-title').text('Invitations');
+            $('.modal-caption').text('Following is the list of Invitees');
+            $('#invite-submit').text('Invite');
+            $('#invite-back').hide();
+            $('#invite-submit').removeClass('step-0-submit').removeClass('step-1-submit')
+                .removeClass('step-2-submit').addClass('invite-contributors');
+        });
+
+
+
         jQuery("#invite-back").click(function(){
             var gift_id = $( '#gift_id' ).val();
             var loadurl = giftology_api.homeUrl + '?gift-invites-step-0='+gift_id+'&modal=true';
@@ -154,7 +171,7 @@
 
             console.log('Clicked step-0-submit');
             var gift_id = $( '#gift_id' ).val();
-            console.log(gift_id);
+            console.log($('#invite').serialize());
 
             $.ajax({
                 type: "POST",
@@ -179,7 +196,7 @@
                     $('#invite-submit').prop('disabled', false);
 
 
-                    console.log(data);
+                    console.log("Data 2 "+ data);
                 },
                 error: function(){
                     alert("Internal Server Error : Please contact Admin");
@@ -193,6 +210,8 @@
 
             $('#invite-submit').addClass('disabled');
             $('#invite-submit').prop('disabled', true);
+            $('#invite-back').addClass('disabled');
+            $('#invite-back').prop('disabled', true);
             $('#invite-submit').html('<i class="fa fa-spinner" aria-hidden="true"></i> Sending')
 
             var gift_id = $( '#gift_id' ).val();

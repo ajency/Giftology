@@ -17,7 +17,8 @@
                 onTagExists: function(item, tag) {
                     tag.hide().fadeIn();
                 },
-                trimValue: true
+                trimValue: true,
+                confirmKeys: [13]
             }
         );
     });
@@ -43,7 +44,7 @@
     });
 
 
-    <?php foreach (Ajency_MFG_Gift::get_invitations(1) as $rec) {  ?>
+    <?php foreach (Ajency_MFG_Gift::get_invitations($gift_id) as $rec) {  ?>
             jQuery('#email-tags').tagsinput('add', "<?php echo $rec->email; ?>" );
             console.log("<?php echo $rec->email; ?>");
     <?php    } ?>

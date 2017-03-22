@@ -119,11 +119,18 @@ class Ajency_MFG_Gift {
 
     }
 
-    public static function get_invitations($gift_id, $status = Ajency_MFG_Gift::STATUS_INVITE_QUEUED, $limit = false, $inv_group = false) {
+    public static function get_invitations($gift_id, $status = Ajency_MFG_Gift::STATUS_INVITE_QUEUED, $limit = false, $inv_group = false, $user_id = false) {
+
+        if($user_id == false) {
+            $user_id = get_current_user_id();
+        }
         //TODO make action optional, can be dangerous though
         global $wpdb;
-        $user_id = get_current_user_id();
-        $query = "select inv.id as inv_id, inv.email,inv.status as inv_status, u.id, inv.invite_code, meta.meta_value as pic,u.display_name,u.user_email from wp_giftology_invites inv left join wp_users u on inv.email = u.user_email left join wp_usermeta meta on u.id = meta.user_id and meta.meta_key = 'wsl_current_user_image' where inv.invited_by = '".$user_id."' and inv.gift_id = '".$gift_id."'";
+        $query = "select inv.id as inv_id, inv.email,inv.status as inv_status, u.id, inv.invite_code, meta.meta_value as pic,u.display_name,u.user_email from wp_giftology_invites inv left join wp_users u on inv.email = u.user_email left join wp_usermeta meta on u.id = meta.user_id and meta.meta_key = 'wsl_current_user_image' where inv.gift_id = '".$gift_id."'";
+
+        if($user_id){
+            $query .= " and inv.invited_by = '".$user_id."'";
+        }
         if(is_array($status)) {
             $query .= " and (";
             $last = count($status) - 1;
@@ -269,9 +276,12 @@ class Ajency_MFG_Gift {
     }*/
 
 
-    public static function get_gift_details($gift_id, $include_fund = false) {
+    public static function get_gift_details($gift_id, $include_fund = false, $by_field = 'id') {
         global $wpdb;
-        $gift_query = "SELECT * from wp_giftology_gifts where id = $gift_id";
+
+/*        $gift_query = "SELECT * from wp_giftology_gifts where slug = '".$gift_id."'";*/
+
+        $gift_query = "select * from wp_giftology_gifts where ".$by_field." = '".$gift_id."'";
 
         $gift = $wpdb->get_results($gift_query)[0];
 

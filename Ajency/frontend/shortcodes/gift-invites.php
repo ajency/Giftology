@@ -15,7 +15,7 @@ function gift_invites($atts) {
 
     $classes = 'invit-emails';
 
-    if(count($recepients) > 5) { // Make config?
+    if(count($recepients) > 4) { // Make config?
         $classes .= ' more-email';
     }
 
@@ -49,8 +49,8 @@ function gift_invites($atts) {
                 $html .= '<span id="'.$recepient->inv_id.'" class="remove-email">&times;</span>';
             }
 
-            $html .= '</span>
-					<h5 class="name"><span>'.$name.'</span>';
+            $html .= '</span>';
+            $html .= '<h5 class="name"><span>'.$name.'</span>';
 
             if($recepient->inv_status == 1) {
                 $html .= '<span class="label"><i class="fa fa-check" aria-hidden="true"></i> Invited</span>';
@@ -59,9 +59,14 @@ function gift_invites($atts) {
             $html .= '</h5></span></div>';
 
         }
-        if($view_all_link && count($recepients) > 5) {
-            $html .= '<div class="col view-all"><a href="/'.$view_all_link.'">View all</a></div>';
-        }
+/*        if($view_all_link && count($recepients) > 5) {*/
+
+if($limit) {
+    $html .= '<div class="col view-all"><a href="#" class="add view-all-invites">View all</a></div>';
+}
+/*
+            $html .= '<div class="col view-all"><a href="/'.$view_all_link.'">View all</a></div>';*/
+//        }
         $html .= '</div>';
     } else {
         $html = "No Invitations Found";
