@@ -42,9 +42,7 @@ class Ajency_MFG_Funds {
         add_action('edit_form_advanced', 'fund_sidebar_editor');
 
 
-        function wo_save_postdata($post_id, $post, $update) {
-
-            //...
+        function fund_sidebar_save_data($post_id, $post) {
 
             if (!empty($_POST['_fund_sidebar_content'])) {
                 $data=htmlspecialchars($_POST['_fund_sidebar_content']);
@@ -52,7 +50,6 @@ class Ajency_MFG_Funds {
             }
         }
 
-        add_action('save_post', 'wo_save_postdata');
 
 
 

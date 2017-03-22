@@ -61,7 +61,7 @@ class Ajency_MFG_Frontend
             if(is_numeric($gift_id)) {
                 $gift = Ajency_MFG_Gift::get_gift_details($gift_id, true);
                 if($gift->id){
-                    $found = true;
+                    //If found redirect to slug url coz its the right thing todo
                     header("Location: ".home_url().'/gifts/'.$gift->slug);
                 }
             } else {
@@ -77,7 +77,7 @@ class Ajency_MFG_Frontend
                 $user_id = get_current_user_id();
                 include locate_template('Ajency/frontend/custom_pages/gift-page.php', false, false);
             } else {
-                //TODO Not found
+                echo "TODO Not found"; //TODO
             }
 
         }
