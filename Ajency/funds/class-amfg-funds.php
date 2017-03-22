@@ -34,12 +34,12 @@ class Ajency_MFG_Funds {
 #http://stackoverflow.com/posts/31703821/revisions
         function fund_sidebar_editor($post) {
 
-            echo "<h3>Write here your text for the blue box on the right:</h3>";
+            echo "<h4>Content for the right sidebar for the fund</h4>";
             $content = get_post_meta($post->ID, '_fund_sidebar_content' , true ) ;
             wp_editor( htmlspecialchars_decode($content), '_fund_sidebar_content', array("media_buttons" => true) );
         }
 
-        add_action('edit_form_advanced', 'fund_sidebar_editor');
+        add_action('edit_form_after_editor', 'fund_sidebar_editor');
 
 
         function fund_sidebar_save_data($post_id, $post) {
