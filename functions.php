@@ -223,7 +223,7 @@ function giftology_send_invites($request_data){
     $invite_group = $parameters['invite-group'];
 
     if (Ajency_MFG_Gift::get_acl_access_rule('gift',$gift_id,$user_id,'send-invites')) {
-        $invites = Ajency_MFG_Gift::get_invitations($gift_id);
+        $invites = Ajency_MFG_Gift::get_invitations($gift_id, Ajency_MFG_Gift::STATUS_INVITE_QUEUED,false,false,get_current_user_id());
         foreach ($invites as $invite) {
             if (filter_var($invite->email, FILTER_VALIDATE_EMAIL)) { //still check again - paracodeania
 

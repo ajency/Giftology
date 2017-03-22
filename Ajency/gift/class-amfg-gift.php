@@ -83,7 +83,7 @@ class Ajency_MFG_Gift {
         global $wpdb;
         $query = "SELECT is_allowed from wp_giftology_acl where entity = '".$entity."' and entity_id = $entity_id and (user_id = $user_id || user_id IS NULL) and action = '".$action."' and is_allowed = 1";
         $results =  $wpdb->get_results($query)[0];
-        return $results->is_allowed && is_user_logged_in();
+        return $results->is_allowed;
     }
 
     public static function update_global_acls_for_entity($entity, $entity_id, $action, $is_allowed) {
@@ -121,9 +121,9 @@ class Ajency_MFG_Gift {
 
     public static function get_invitations($gift_id, $status = Ajency_MFG_Gift::STATUS_INVITE_QUEUED, $limit = false, $inv_group = false, $user_id = false) {
 
-        if($user_id == false) {
+/*        if($user_id == false) {
             $user_id = get_current_user_id();
-        }
+        }*/
         //TODO make action optional, can be dangerous though
         global $wpdb;
         $query = "select inv.id as inv_id, inv.email,inv.status as inv_status, u.id, inv.invite_code, meta.meta_value as pic,u.display_name,u.user_email from wp_giftology_invites inv left join wp_users u on inv.email = u.user_email left join wp_usermeta meta on u.id = meta.user_id and meta.meta_key = 'wsl_current_user_image' where inv.gift_id = '".$gift_id."'";

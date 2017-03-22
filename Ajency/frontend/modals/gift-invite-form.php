@@ -44,7 +44,7 @@
     });
 
 
-    <?php foreach (Ajency_MFG_Gift::get_invitations($gift_id) as $rec) {  ?>
+    <?php foreach (Ajency_MFG_Gift::get_invitations($gift_id, Ajency_MFG_Gift::STATUS_INVITE_QUEUED,false,false,get_current_user_id()) as $rec) {  ?>
             jQuery('#email-tags').tagsinput('add', "<?php echo $rec->email; ?>" );
             console.log("<?php echo $rec->email; ?>");
     <?php    } ?>

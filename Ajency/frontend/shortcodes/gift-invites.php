@@ -8,10 +8,11 @@ function gift_invites($atts) {
     $status = isset($atts['status']) ? $atts['status'] : 1;
     $inv_group = isset($atts['inv_group']) ? $atts['inv_group'] : false;
     $view_all_link = isset($atts['view-all-link']) ? $atts['view-all-link'] : false;
+    $filter_by_user = isset($atts['filter-by-user']) ? $atts['filter-by-user'] : false;
 
 /*    $status = explode(',',$atts['status']);*/
     $show_op_icon = isset($atts['show_op_icon']) ? $atts['show_op_icon'] : 0;
-    $recepients = Ajency_MFG_Gift::get_invitations($gift_id,$status,$limit,$inv_group);
+    $recepients = Ajency_MFG_Gift::get_invitations($gift_id,$status,$limit,$inv_group,$filter_by_user);
 
     $classes = 'invit-emails';
 
