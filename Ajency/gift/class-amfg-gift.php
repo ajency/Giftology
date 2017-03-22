@@ -67,13 +67,13 @@ class Ajency_MFG_Gift {
 
     public static function get_invite_by_code($code,$status = [Ajency_MFG_Gift::STATUS_INVITE_SENT]) {
         global $wpdb;
-        $query = "SELECT * from wp_giftology_invites where invite_code = '".$code."'";
+        $query = "SELECT inv.*,g.slug from wp_giftology_invites inv INNER JOIN wp_giftology_gifts g on inv.gift_id = g.id  where inv.invite_code = '".$code."'";
         $query .= " and (";
         $last = count($status) - 1;
         for ($i = 0 ; $i < $last; $i++) {
-            $query .= "status = '".$status[$i]."' OR ";
+            $query .= "inv.status = '".$status[$i]."' OR ";
         }
-        $query .= "status = '".$status[$last]."')";
+        $query .= "inv.status = '".$status[$last]."')";
         $result =  $wpdb->get_results($query)[0];
         return $result;
     }
