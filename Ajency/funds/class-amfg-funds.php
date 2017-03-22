@@ -166,6 +166,11 @@ class Ajency_MFG_Funds {
                 'id' => '_fund_min_investment' ,'title' => 'Fund Min Investment','type' => 'number',
                 'validations' => [ 'required' => ['required' => true ]],
                 'is_custom_field' => true
+            ],
+            [
+                'id' => '_fund_min_increment' ,'title' => 'Fund Min Increment Amount','type' => 'number',
+                'validations' => [ 'required' => ['required' => true ]],
+                'is_custom_field' => true
             ]
         ];
         $meta_boxes = new Ajencypress_Post_Type_Metaboxes();

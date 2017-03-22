@@ -8,9 +8,9 @@
             <div class="row breadcrums">
                 <div class="col-sm-7">
                     <ul class="steps">
-                        <li><a href="">Home</a></li>
+                        <li><a href="/">Home</a></li>
                         <li>/</li>
-                        <li><a href="">List of Funds</a></li>
+                        <li><a href="#">List of Funds</a></li>
                         <li>/</li>
                         <li><a href=""><?php echo get_the_title(); ?></a></li>
                     </ul>
@@ -25,9 +25,21 @@
                         <h1 class="fund__heading"><?php echo get_the_title(); ?></h1>
                         <div class="fund__type">
                             <?php
-                             $buckets = (get_option('_amfg_bucket_settings'));
+                            $buckets = (get_option('_amfg_bucket_settings'));
+                            $amc = get_the_terms( get_the_ID(), 'amc')[0];
+
+                            //Never delete code, always comment coz life changes
+                            /* $amc_image_id = get_term_meta($amc->term_id,'image');
+                            if($amc_image_id) {
+                                $amc_url = wp_get_attachment_thumb_url( $amc_image_id[0] );
+                            } else {
+                                $amc_url = get_template_directory_uri().'/img/dummy.png';
+                            }*/
+
+                            $amc_url = get_the_post_thumbnail();
+
                             ?>
-                            <span>AMC - <?php echo get_the_terms( get_the_ID(), 'amc')[0]->name; ?></span>
+                            <span>AMC - <?php echo $amc->name; ?></span>
                             <span><?php echo $buckets['_amfg_bucket_1_singular']; ?> <b><?php echo get_the_terms( get_the_ID(), 'bucket-1')[0]->name; ?></b></span>
                         </div>
                     </div>
@@ -94,7 +106,7 @@
                             </div>
                             <div class="investment">
                                 <p class="data min">Minimum investment <b>Rs. <?php echo get_post_meta(get_the_ID(),'_fund_min_investment')[0]; ?></b></p>
-                                <p class="data mult">in multiples of <b>Rs. 1000</b> thereafter</p>
+                                <p class="data mult">in multiples of <b>Rs. <?php echo get_post_meta(get_the_ID(),'_fund_min_increment')[0]; ?></b> thereafter</p>
                             </div>
                             <button type="button" class="btn btn-lg site-btn-2 buy-fund" data-toggle="modal" data-target="#fund-modal">Buy/Gift this fund</button>
                             <p class="why-buy">Find out <a href="#" class="underline">why gifting mutual fund is a good idea.</a></p>

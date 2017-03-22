@@ -113,12 +113,14 @@ class Ajencypress_Post_Type_Metaboxes {
                 unset($errors[$key]);
             }
 
+
             if($field['is_custom_field']) {
                 $existing_value = get_post_meta( $post->ID, $field['id'], true );
 
-                if(empty($value) && $existing_value) {
+/*                if(empty($value) && $existing_value) {
                     delete_post_meta( $post->ID, $key );
-                } else if ($existing_value && !empty($value)) {
+                } else*/
+                    if ($existing_value && !empty($value)) {
                     update_post_meta( $post->ID, $key, $value );
                 } else if(!empty($value)) {
                     add_post_meta( $post->ID, $key, $value );
