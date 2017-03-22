@@ -56,16 +56,30 @@ class Ajency_MFG_Frontend
 
         if($wp->query_vars['gifts'])
         {
+            $found = false;
             $gift_id = $wp->query_vars['gifts'];
             if(is_numeric($gift_id)) {
                 $gift = Ajency_MFG_Gift::get_gift_details($gift_id, true);
+                if($gift->id){
+                    $found = true;
+                    header("Location: ".home_url().'/gifts/'.$gift->slug);
+                }
             } else {
                 $gift = Ajency_MFG_Gift::get_gift_details($gift_id, true, $by_field = 'slug');
+                if($gift->id){
+                    $found = true;
+                }
             }
-            $gift_id = $gift->id;
-            $fund = $gift->fund;
-            $user_id = get_current_user_id();
-            include locate_template('Ajency/frontend/custom_pages/gift-page.php', false, false);
+
+            if($found) {
+                $gift_id = $gift->id;
+                $fund = $gift->fund;
+                $user_id = get_current_user_id();
+                include locate_template('Ajency/frontend/custom_pages/gift-page.php', false, false);
+            } else {
+                //TODO Not found
+            }
+
         }
         else if($wp->query_vars['gift-invites-step-0'])
         {
