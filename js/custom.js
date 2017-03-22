@@ -238,13 +238,13 @@
 
         });
 
-        jQuery('.modal').on('shown.bs.modal', function (e) {
+/*        jQuery('.modal').on('shown.bs.modal', function (e) {
             jQuery('body').addClass('modal-open');
         });
 
         jQuery('.modal').on('hidden.bs.modal', function (e) {
             jQuery('body').removeClass('modal-open');
-        });
+        });*/
 
     });
 

@@ -31,6 +31,30 @@ class Ajency_MFG_Funds {
             }
         }*/
 
+#http://stackoverflow.com/posts/31703821/revisions
+        function fund_sidebar_editor($post) {
+
+            echo "<h3>Write here your text for the blue box on the right:</h3>";
+            $content = get_post_meta($post->ID, '_fund_sidebar_content' , true ) ;
+            wp_editor( htmlspecialchars_decode($content), '_fund_sidebar_content', array("media_buttons" => true) );
+        }
+
+        add_action('edit_form_advanced', 'fund_sidebar_editor');
+
+
+        function wo_save_postdata($post_id, $post, $update) {
+
+            //...
+
+            if (!empty($_POST['_fund_sidebar_content'])) {
+                $data=htmlspecialchars($_POST['_fund_sidebar_content']);
+                update_post_meta($post_id, '_fund_sidebar_content', $data );
+            }
+        }
+
+        add_action('save_post', 'wo_save_postdata');
+
+
 
         new Ajencypress_Admin_Errors( $this->plugin_name);
 
@@ -129,6 +153,15 @@ class Ajency_MFG_Funds {
                     'required' => ['required' => true ],
                     'min' => ['min' => 0 , 'message' => 'Fund Returns has to be a percentage' ],
                     'max' => ['max' => 100 , 'message' => 'Fund Returns has to be a percentage' ]
+                ],
+                'is_custom_field' => true
+            ],
+            [
+                'id' => '_fund_crisil_rating' ,'title' => 'Fund Crisil Rating', 'type' => 'number',
+                'validations' => [
+                    'required' => ['required' => true ],
+                    'min' => ['min' => 1 , 'message' => 'Fund Rating has to be between 1 - 5' ],
+                    'max' => ['max' => 5 , 'message' => 'Fund Rating has to be between 1 - 5' ]
                 ],
                 'is_custom_field' => true
             ],
