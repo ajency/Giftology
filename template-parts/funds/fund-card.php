@@ -1,4 +1,5 @@
 <?php
+$bucket_2 = $bucket_3 = [];
 $bucket_2_terms = get_the_terms( get_the_ID(), 'bucket-2' );
 $bucket_3_terms = get_the_terms( get_the_ID(), 'bucket-3' );
 if ( $bucket_2_terms && ! is_wp_error( $bucket_2_terms ) ) {
@@ -50,7 +51,6 @@ $fund_url = get_post_meta(get_the_ID(), '_fund_url')[0];
         </div>
         <div class="fund-desc">
             <p class="read-more"><?php the_excerpt() ?></p>
-            <a href="<?php echo get_the_permalink(); ?>" class="more-detail underline">More details</a>
         </div>
     </div>
     <div class="gray body">
@@ -67,7 +67,7 @@ $fund_url = get_post_meta(get_the_ID(), '_fund_url')[0];
         </div>
         <div class="percent">
             <!-- <i class="fa fa-percent" aria-hidden="true"></i> -->
-            <img src="img/returns.png" class="img-responsive" width="45">
+            <img src="<?php echo get_template_directory_uri(); ?>/img/returns.png" class="img-responsive" width="45">
             <div class="number">
                 <h1 class="return-no"><?php echo get_post_meta(get_the_ID(),'_fund_returns')[0]; ?>%</h1>
                 <p class="p-terms">Returns <i class="fa fa-exclamation-triangle" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Disclaimer: Mutual fund investments are subject to market risks. Please read the scheme information and other related documents before investing."></i></p>

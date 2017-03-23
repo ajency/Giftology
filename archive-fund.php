@@ -1,4 +1,4 @@
-<?php get_header(); ?>
+<?php get_header();  ?>
 <section class="gift-card single-bg">
 
     <div class="container">
@@ -95,7 +95,7 @@
                 <div class="card-holder">
                     <?php
                     $params = $_GET;
-                    $filters = ['amc','b1','b2','b3'];
+                    $filters = ['amc','bucket-1','bucket-2','bucket-3'];
                     foreach($filters as $filter) {
                         if(isset($params[$filter]) && !empty($params[$filter]))
                         {
@@ -103,17 +103,27 @@
                             $q[] = [ 'taxonomy' => $filter, 'field' => 'slug', 'terms' => $params[$filter] ];
                         }
                     }
+
                     $tax_query = array(
                         'relation' => 'AND',
                         $q
                     );
-                        $loop = new WP_Query( array(
-                            'post_type' => 'fund',
-                            'tax_query' => $tax_query ,
-                            'paged' => $paged ,
-                            'status' => 'publish'
-                            )
-                        );
+
+                    $query = array(
+                        'post_type' => 'fund',
+                        'paged' => $paged ,
+                        'status' => 'publish',
+                        'tax_query' => $tax_query/*
+                        'orderby'     => 'title',
+                        'order'       => 'ASC'*/
+                    );
+
+                    if($params['search']) {
+                        $query['s'] = $params['search'];
+                    }
+
+                    $loop = new WP_Query( $query );
+
                     ?>
                     <?php while ( $loop->have_posts() ) : $loop->the_post(); // standard WordPress loop. ?>
                         <?php get_template_part( 'template-parts/funds/fund', 'card' ); ?>
