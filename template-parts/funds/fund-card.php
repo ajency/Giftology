@@ -66,7 +66,8 @@ $fund_url = get_post_meta(get_the_ID(), '_fund_url')[0];
             <p>Crisil MF Rank</p>
         </div>
         <div class="percent">
-            <i class="fa fa-percent" aria-hidden="true"></i>
+            <!-- <i class="fa fa-percent" aria-hidden="true"></i> -->
+            <img src="img/returns.png" class="img-responsive" width="45">
             <div class="number">
                 <h1 class="return-no"><?php echo get_post_meta(get_the_ID(),'_fund_returns')[0]; ?>%</h1>
                 <p class="p-terms">Returns <i class="fa fa-exclamation-triangle" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Disclaimer: Mutual fund investments are subject to market risks. Please read the scheme information and other related documents before investing."></i></p>
