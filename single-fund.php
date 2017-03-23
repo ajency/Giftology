@@ -37,7 +37,6 @@
                             }*/
 
                             $amc_url = get_the_post_thumbnail();
-
                             ?>
                             <span>AMC - <?php echo $amc->name; ?></span>
                             <span><?php echo $buckets['_amfg_bucket_1_singular']; ?> <b><?php echo get_the_terms( get_the_ID(), 'bucket-1')[0]->name; ?></b></span>

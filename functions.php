@@ -294,5 +294,14 @@ function logout_redirect_home(){
 }
 add_action('wp_logout', 'logout_redirect_home');
 
+function add_custom_query_var( $vars ){
+    $vars[] = "amc[]";
+    $vars[] = "b1[]";
+    $vars[] = "b2[]";
+    $vars[] = "b3[]";
+    return $vars;
+}
+add_filter( 'query_vars', 'add_custom_query_var' );
+
 $run = new Ajency_MFG('mfgiftology','1.0.0');
 $run->load();

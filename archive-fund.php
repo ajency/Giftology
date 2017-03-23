@@ -58,52 +58,63 @@
                         <a href="#" class="reset underline">Reset</a>
                     </div>
                     <div class="card body">
-                        <h6 class="filter-title">Filter by amc</h6>
-                        <ul class="selection">
-                            <li><label><input type="checkbox" class="checkbox-inline"> <p class="label-name">Show All</p></label></li>
-                            <li><label><input type="checkbox" class="checkbox-inline"> <p class="label-name">Axis assets</p></label></li>
-                            <li><label><input type="checkbox" class="checkbox-inline"> <p class="label-name">Tata asset management</p></label></li>
-                            <li><label><input type="checkbox" class="checkbox-inline"> <p class="label-name">Baroda Pioneer asset management</p></label></li>
-                            <li><label><input type="checkbox" class="checkbox-inline"> <p class="label-name">Birla sun life mutual fund</p></label></li>
-                            <li><label><input type="checkbox" class="checkbox-inline"> <p class="label-name">BOI AXA investment management</p></label></li>
-                            <li class="showAll"><a href="" class="show-all underline">Show all</a></li>
-                        </ul>
+                        <?php
+                        $show_all_link = true;
+                        $filter_title = 'Fulter by AMC';
+                        $terms = get_terms('amc');
+                        include locate_template('template-parts/funds/filters.php', false, false);
+                        ?>
                     </div>
                     <div class="card body">
-                        <h6 class="filter-title">Filter by age</h6>
-                        <ul class="selection">
-                            <li><label><input type="checkbox" class="checkbox-inline"> <p class="label-name">Show All</p></label></li>
-                            <li><label><input type="checkbox" class="checkbox-inline"> <p class="label-name">25 - 30 years</p></label></li>
-                            <li><label><input type="checkbox" class="checkbox-inline"> <p class="label-name">31 - 40 years</p></label></li>
-                            <li><label><input type="checkbox" class="checkbox-inline"> <p class="label-name">41 - 50 years</p></label></li>
-                            <li><label><input type="checkbox" class="checkbox-inline"> <p class="label-name">51+ years</p></label></li>
-                        </ul>
+                        <?php
+                        $show_all_link = false;
+                        $filter_title = 'Fulter by Bucket 1';
+                        $terms = get_terms('bucket-1');
+                        include locate_template('template-parts/funds/filters.php', false, false);
+                        ?>
                     </div>
                     <div class="card body">
-                        <h6 class="filter-title">Bucket</h6>
-                        <ul class="selection">
-                            <li><label><input type="checkbox" class="checkbox-inline"> <p class="label-name">Show All</p></label></li>
-                            <li><label><input type="checkbox" class="checkbox-inline"> <p class="label-name">Content 1</p></label></li>
-                            <li><label><input type="checkbox" class="checkbox-inline"> <p class="label-name">Content 2</p></label></li>
-                            <li><label><input type="checkbox" class="checkbox-inline"> <p class="label-name">Content 3</p></label></li>
-                            <li><label><input type="checkbox" class="checkbox-inline"> <p class="label-name">Content 4</p></label></li>
-                        </ul>
+                        <?php
+                        $show_all_link = false;
+                        $filter_title = 'Fulter by Bucket 2';
+                        $terms = get_terms('bucket-2');
+                        include locate_template('template-parts/funds/filters.php', false, false);
+                        ?>
                     </div>
                     <div class="card body">
-                        <h6 class="filter-title">Bucket</h6>
-                        <ul class="selection">
-                            <li><label><input type="checkbox" class="checkbox-inline"> <p class="label-name">Show All</p></label></li>
-                            <li><label><input type="checkbox" class="checkbox-inline"> <p class="label-name">Content 1</p></label></li>
-                            <li><label><input type="checkbox" class="checkbox-inline"> <p class="label-name">Content 2</p></label></li>
-                            <li><label><input type="checkbox" class="checkbox-inline"> <p class="label-name">Content 3</p></label></li>
-                            <li><label><input type="checkbox" class="checkbox-inline"> <p class="label-name">Content 4</p></label></li>
-                        </ul>
+                        <?php
+                        $show_all_link = false;
+                        $filter_title = 'Fulter by Bucket 3';
+                        $terms = get_terms('bucket-3');
+                        include locate_template('template-parts/funds/filters.php', false, false);
+                        ?>
                     </div>
                 </div>
             </div>
             <div class="col-sm-8 c-style">
                 <div class="card-holder">
-                    <?php $loop = new WP_Query( array( 'post_type' => 'fund', 'paged' => $paged , 'status' => 'publish') ); ?>
+                    <?php
+                    $params = $_GET;
+                    $filters = ['amc','b1','b2','b3'];
+                    foreach($filters as $filter) {
+                        if(isset($params[$filter]) && !empty($params[$filter]))
+                        {
+                            //TODO - can also check if the term exists for the respective category
+                            $q[] = [ 'taxonomy' => $filter, 'field' => 'slug', 'terms' => $params[$filter] ];
+                        }
+                    }
+                    $tax_query = array(
+                        'relation' => 'AND',
+                        $q
+                    );
+                        $loop = new WP_Query( array(
+                            'post_type' => 'fund',
+                            'tax_query' => $tax_query ,
+                            'paged' => $paged ,
+                            'status' => 'publish'
+                            )
+                        );
+                    ?>
                     <?php while ( $loop->have_posts() ) : $loop->the_post(); // standard WordPress loop. ?>
                         <?php get_template_part( 'template-parts/funds/fund', 'card' ); ?>
                         <!-- 2nd -->

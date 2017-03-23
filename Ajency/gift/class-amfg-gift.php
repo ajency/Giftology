@@ -79,11 +79,17 @@ class Ajency_MFG_Gift {
     }
 
 
-    public static function get_acl_access_rule($entity, $entity_id, $user_id, $action) {
+    public static function get_acl_access_rule($entity, $entity_id, $user_id, $action, $check_if_logged_in = true) {
+
+        if($check_if_logged_in && !is_user_logged_in()) {
+            return false;
+        }
+
         global $wpdb;
         $query = "SELECT is_allowed from wp_giftology_acl where entity = '".$entity."' and entity_id = $entity_id and (user_id = $user_id || user_id IS NULL) and action = '".$action."' and is_allowed = 1";
         $results =  $wpdb->get_results($query)[0];
         return $results->is_allowed;
+
     }
 
     public static function update_global_acls_for_entity($entity, $entity_id, $action, $is_allowed) {
