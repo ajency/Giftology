@@ -381,9 +381,6 @@ textarea:focus {
   margin-right: 5px;
   border-radius: 5px;
 }
-.breadcrums {
-  padding-top: 1.5em;
-}
 .breadcrums .steps {
   padding: 0;
   margin: 0;
