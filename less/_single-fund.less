@@ -553,24 +553,26 @@
     					.fund-name{
     						margin-top: 0;
     						font-size: 1.2em;
-    						white-space: nowrap;
-    						overflow: hidden;
-    						text-overflow: ellipsis;
+    						// white-space: nowrap;
+    						// overflow: hidden;
+    						// text-overflow: ellipsis;
+    						line-height: 1.5;
     					}
     					.fund-subname{
-    						font-size: 0.95em;
+    						font-size: 1.05em;
     						margin-bottom: 1em;
-    						display: none;
+    						// display: none;
     						.title{
     							margin-bottom: 0;
     						}
     					}
     					.section{
     						display: flex;
-    						align-items: center;
+    						// align-items: center;
     						font-size: 1.05em;
+    						padding-bottom: 0.3em;
     						.title{
-    							display: none;
+    							// display: none;
     							margin-bottom: 0;
     							padding-right: 0.5em;
     						}
@@ -584,17 +586,26 @@
     					right: -15px;
     					top: -15px;
     				}
+    				a{
+    					&:not(.fund-link){
+    						color: #000;
+    						&:hover{
+    							color: @link-color;
+    						}
+    					}
+    					
+    				}
     			}
     			.fund-desc{
     				margin-top: 1em;
     				font-size: 1.05em;
-    				display: flex;
+    				// display: flex;
     				p{
     					margin-bottom: 0;
-    					white-space: nowrap;
+    					// white-space: nowrap;
     					overflow: hidden;
-    					text-overflow: ellipsis;
-    					flex: 1;
+    					// text-overflow: ellipsis;
+    					// flex: 1;
     				}
     			}
     		}
