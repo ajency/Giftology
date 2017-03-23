@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>Document</title>
+	<link href="https://fonts.googleapis.com/css?family=Maven+Pro:400,500,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,400i,500,500i,600,600i" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-tagsinput.css">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+	
+<!-- header -->
+
+<nav class="gift-header navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"><img src="img/logo.jpg" class="img-responsive"></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class=""><a href="#">How it works <!-- <span class="sr-only">(current)</span> --></a></li>
+        <li><a href="#">All funds</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Explore <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">One more separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><button class="btn btn-default invest-btn" type="button">Gift an investment</button></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle option-profile" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+          	<img src="img/profile.jpg" class="img-responsive option-pic" width="40"> <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
+<!-- Gift card section -->
+
+<section class="gift-card single-bg">
+	
+	<div class="container">
+		<!-- breadcrums -->
+		<div class="row breadcrums">
+			<div class="col-sm-12">
+				<ul class="steps">
+					<li><a href="">Home</a></li>
+					<li>/</li>
+					<li><a href="">All Funds</a></li>
+				</ul>
+			</div>
+		</div>		
+
+		<!-- Fund heading -->
+
+		<div class="row m-t-1">
+			<div class="col-sm-9">
+				<div class="fund-list">
+					<h1 class="fund-list__heading">All Funds <div class="search"><input type="search" class="input-search"><span class="search-icon"><i class="fa fa-search" aria-hidden="true"></i></span></div></h1>
+				</div>
+			</div>
+			<div class="col-sm-3">
+				<div class="popular">
+					<p class="sort">Sort by : </p>
+					<div class="dropdown">
+					  <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					    Popularity
+					    <span class="caret"></span>
+					  </button>
+					  <ul class="dropdown-menu" aria-labelledby="dLabel">
+					    <li>
+					    	<a href="">High</a>
+					    </li>
+					    <li>
+					    	<a href="">Low</a>
+					    </li>
+					    <li>
+					    	<a href="">High</a>
+					    </li>
+					    <li>
+					    	<a href="">High</a>
+					    </li>
+					  </ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- List view cards and filter -->
+	
+		<div class="row list-data">
+			<div class="col-sm-4 filter">
+				<div class="filter-bar">
+					<div class="card header">
+						<p class="filter-name"><i class="fa fa-filter" aria-hidden="true"></i> <b>Filters</b></p>
+						<a href="#" class="reset underline">Reset</a>
+					</div>
+					<div class="card body">
+						<h6 class="filter-title">Filter by amc</h6>
+						<ul class="selection">
+							<li><label><input type="checkbox" class="checkbox-inline"> <p class="label-name">Show All</p></label></li>
+							<li><label><input type="checkbox" class="checkbox-inline"> <p class="label-name">Axis assets</p></label></li>
+							<li><label><input type="checkbox" class="checkbox-inline"> <p class="label-name">Tata asset management</p></label></li>
+							<li><label><input type="checkbox" class="checkbox-inline"> <p class="label-name">Baroda Pioneer asset management</p></label></li>
+							<li><label><input type="checkbox" class="checkbox-inline"> <p class="label-name">Birla sun life mutual fund</p></label></li>
+							<li><label><input type="checkbox" class="checkbox-inline"> <p class="label-name">BOI AXA investment management</p></label></li>
+							<li class="showAll"><a href="" class="show-all underline">Show all</a></li>
+						</ul>
+					</div>
+					<div class="card body">
+						<h6 class="filter-title">Filter by age</h6>
+						<ul class="selection">
+							<li><label><input type="checkbox" class="checkbox-inline"> <p class="label-name">Show All</p></label></li>
+							<li><label><input type="checkbox" class="checkbox-inline"> <p class="label-name">25 - 30 years</p></label></li>
+							<li><label><input type="checkbox" class="checkbox-inline"> <p class="label-name">31 - 40 years</p></label></li>
+							<li><label><input type="checkbox" class="checkbox-inline"> <p class="label-name">41 - 50 years</p></label></li>
+							<li><label><input type="checkbox" class="checkbox-inline"> <p class="label-name">51+ years</p></label></li>
+						</ul>
+					</div>
+					<div class="card body">
+						<h6 class="filter-title">Bucket</h6>
+						<ul class="selection">
+							<li><label><input type="checkbox" class="checkbox-inline"> <p class="label-name">Show All</p></label></li>
+							<li><label><input type="checkbox" class="checkbox-inline"> <p class="label-name">Content 1</p></label></li>
+							<li><label><input type="checkbox" class="checkbox-inline"> <p class="label-name">Content 2</p></label></li>
+							<li><label><input type="checkbox" class="checkbox-inline"> <p class="label-name">Content 3</p></label></li>
+							<li><label><input type="checkbox" class="checkbox-inline"> <p class="label-name">Content 4</p></label></li>
+						</ul>
+					</div>
+					<div class="card body">
+						<h6 class="filter-title">Bucket</h6>
+						<ul class="selection">
+							<li><label><input type="checkbox" class="checkbox-inline"> <p class="label-name">Show All</p></label></li>
+							<li><label><input type="checkbox" class="checkbox-inline"> <p class="label-name">Content 1</p></label></li>
+							<li><label><input type="checkbox" class="checkbox-inline"> <p class="label-name">Content 2</p></label></li>
+							<li><label><input type="checkbox" class="checkbox-inline"> <p class="label-name">Content 3</p></label></li>
+							<li><label><input type="checkbox" class="checkbox-inline"> <p class="label-name">Content 4</p></label></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-8 c-style">
+				<div class="card-holder">
+				
+					<!-- 1st -->
+
+					<div class="cards">
+						<div class="gray header">
+							<div class="flex-col">
+								<div class="funds-detail">
+									<h2 class="fund-name">Axis long term equity fund management</h2>
+									<div class="fund-subname">
+										<p class="title">AMC Axis assets</p>
+										<a href="#" class="fund-link underline">axismf.com</a>
+									</div>
+									<div class="box-divider"></div>
+									<div class="bucket-data">
+										<div class="section">
+											<p class="title">Age group</p><b>25 - 40 years</b>
+										</div>
+										<div class="section">
+											<p class="title">Categories</p><b>Bucket 1, Bucket 2</b>
+										</div>
+									</div>
+								</div>
+								<div class="brand-box">
+									<span class="medal"></span>
+									<img src="img/axis.jpg" class="img-responsive center-block">
+								</div>
+							</div>
+							<div class="fund-desc">
+								<p class="read-more">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem harum ut magni tempore, dolorum accusantium cumque distinctio similique quia eveniet modi saepe hic ad, incidunt iure, pariatur dolorem ratione nemo.</p>
+								<a href="#" class="more-detail underline">More details</a>
+							</div>
+						</div>
+						<div class="gray body">
+							<div class="rating">
+								<div class="stars">
+									<i class="fa fa-star" aria-hidden="true"></i>
+									<i class="fa fa-star" aria-hidden="true"></i>
+									<i class="fa fa-star" aria-hidden="true"></i>
+									<i class="fa fa-star" aria-hidden="true"></i>	
+									<i class="fa fa-star-o" aria-hidden="true"></i>
+								</div>
+								<p>Crisil MF Rank</p>
+							</div>
+							<div class="percent">
+								<i class="fa fa-percent" aria-hidden="true"></i>
+								<div class="number">
+									<h1 class="return-no">20%</h1>
+									<p class="p-terms">Returns <i class="fa fa-exclamation-triangle" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Disclaimer: Mutual fund investments are subject to market risks. Please read the scheme information and other related documents before investing."></i></p>
+								</div>
+							</div>
+						</div>
+						<div class="footer hidden">
+							<div class="actions">
+								<button type="button" class="btn view-close">Close <i class="fa fa-angle-up" aria-hidden="true"></i></button>
+								<button type="button" class="btn buy site-btn-2">Buy/gift</button>
+							</div>
+						</div>
+						<div class="sub-footer">
+							<p class="q-view">Quick view <i class="fa fa-angle-down" aria-hidden="true"></i></p>
+						</div>
+					</div>
+					
+					<!-- 2nd -->
+
+					<div class="cards">
+						<div class="gray header">
+							<div class="flex-col">
+								<div class="funds-detail">
+									<h2 class="fund-name">Tata retirement savings fund</h2>
+									<div class="fund-subname">
+										<p class="title">AMC Axis assets</p>
+										<a href="#" class="fund-link underline">axismf.com</a>
+									</div>
+									<div class="box-divider"></div>
+									<div class="bucket-data">
+										<div class="section">
+											<p class="title">Age group</p><b>25 - 40 years</b>
+										</div>
+										<div class="section">
+											<p class="title">Categories</p><b>Bucket 1, Bucket 2</b>
+										</div>
+									</div>
+								</div>
+								<div class="brand-box">
+									<span class="medal"></span>
+									<img src="img/Tata-mutual-fund.jpg" class="img-responsive center-block">
+								</div>
+							</div>
+							<div class="fund-desc">
+								<p class="read-more">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem harum ut magni tempore, dolorum accusantium cumque distinctio similique quia eveniet modi saepe hic ad, incidunt iure, pariatur dolorem ratione nemo.</p>
+								<a href="#" class="more-detail underline">More details</a>
+							</div>
+						</div>
+						<div class="gray body">
+							<div class="rating">
+								<div class="stars">
+									<i class="fa fa-star" aria-hidden="true"></i>
+									<i class="fa fa-star" aria-hidden="true"></i>
+									<i class="fa fa-star" aria-hidden="true"></i>
+									<i class="fa fa-star" aria-hidden="true"></i>	
+									<i class="fa fa-star-o" aria-hidden="true"></i>
+								</div>
+								<p>Crisil MF Rank</p>
+							</div>
+							<div class="percent">
+								<i class="fa fa-percent" aria-hidden="true"></i>
+								<div class="number">
+									<h1 class="return-no">22%</h1>
+									<p class="p-terms">Returns <i class="fa fa-exclamation-triangle" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Disclaimer: Mutual fund investments are subject to market risks. Please read the scheme information and other related documents before investing."></i></p>
+								</div>
+							</div>
+						</div>
+						<div class="footer hidden">
+							<div class="actions">
+								<button type="button" class="btn view-close">Close <i class="fa fa-angle-up" aria-hidden="true"></i></button>
+								<button type="button" class="btn buy site-btn-2">Buy/gift</button>
+							</div>
+						</div>
+						<div class="sub-footer">
+							<p class="q-view">Quick view <i class="fa fa-angle-down" aria-hidden="true"></i></p>
+						</div>
+					</div>	
+
+					<!-- 3rd -->
+
+					<div class="cards">
+						<div class="gray header">
+							<div class="flex-col">
+								<div class="funds-detail">
+									<h2 class="fund-name">Axis long term equity fund management</h2>
+									<div class="fund-subname">
+										<p class="title">AMC Axis assets</p>
+										<a href="#" class="fund-link underline">axismf.com</a>
+									</div>
+									<div class="box-divider"></div>
+									<div class="bucket-data">
+										<div class="section">
+											<p class="title">Age group</p><b>25 - 40 years</b>
+										</div>
+										<div class="section">
+											<p class="title">Categories</p><b>Bucket 1, Bucket 2</b>
+										</div>
+									</div>
+								</div>
+								<div class="brand-box">
+									<span class="medal"></span>
+									<img src="img/axis.jpg" class="img-responsive center-block">
+								</div>
+							</div>
+							<div class="fund-desc">
+								<p class="read-more">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem harum ut magni tempore, dolorum accusantium cumque distinctio similique quia eveniet modi saepe hic ad, incidunt iure, pariatur dolorem ratione nemo.</p>
+								<a href="#" class="more-detail underline">More details</a>
+							</div>
+						</div>
+						<div class="gray body">
+							<div class="rating">
+								<div class="stars">
+									<i class="fa fa-star" aria-hidden="true"></i>
+									<i class="fa fa-star" aria-hidden="true"></i>
+									<i class="fa fa-star" aria-hidden="true"></i>
+									<i class="fa fa-star" aria-hidden="true"></i>	
+									<i class="fa fa-star-o" aria-hidden="true"></i>
+								</div>
+								<p>Crisil MF Rank</p>
+							</div>
+							<div class="percent">
+								<i class="fa fa-percent" aria-hidden="true"></i>
+								<div class="number">
+									<h1 class="return-no">20%</h1>
+									<p class="p-terms">Returns <i class="fa fa-exclamation-triangle" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Disclaimer: Mutual fund investments are subject to market risks. Please read the scheme information and other related documents before investing."></i></p>
+								</div>
+							</div>
+						</div>
+						<div class="footer hidden">
+							<div class="actions">
+								<button type="button" class="btn view-close">Close <i class="fa fa-angle-up" aria-hidden="true"></i></button>
+								<button type="button" class="btn buy site-btn-2">Buy/gift</button>
+							</div>
+						</div>
+						<div class="sub-footer">
+							<p class="q-view">Quick view <i class="fa fa-angle-down" aria-hidden="true"></i></p>
+						</div>
+					</div>
+
+					<!-- 4th -->
+
+					<div class="cards">
+						<div class="gray header">
+							<div class="flex-col">
+								<div class="funds-detail">
+									<h2 class="fund-name">Tata retirement savings fund</h2>
+									<div class="fund-subname">
+										<p class="title">AMC Axis assets</p>
+										<a href="#" class="fund-link underline">axismf.com</a>
+									</div>
+									<div class="box-divider"></div>
+									<div class="bucket-data">
+										<div class="section">
+											<p class="title">Age group</p><b>25 - 40 years</b>
+										</div>
+										<div class="section">
+											<p class="title">Categories</p><b>Bucket 1, Bucket 2</b>
+										</div>
+									</div>
+								</div>
+								<div class="brand-box">
+									<span class="medal"></span>
+									<img src="img/axis.jpg" class="img-responsive center-block">
+								</div>
+							</div>
+							<div class="fund-desc">
+								<p class="read-more">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem harum ut magni tempore, dolorum accusantium cumque distinctio similique quia eveniet modi saepe hic ad, incidunt iure, pariatur dolorem ratione nemo.</p>
+								<a href="#" class="more-detail underline">More details</a>
+							</div>
+						</div>
+						<div class="gray body">
+							<div class="rating">
+								<div class="stars">
+									<i class="fa fa-star" aria-hidden="true"></i>
+									<i class="fa fa-star" aria-hidden="true"></i>
+									<i class="fa fa-star" aria-hidden="true"></i>
+									<i class="fa fa-star" aria-hidden="true"></i>	
+									<i class="fa fa-star-o" aria-hidden="true"></i>
+								</div>
+								<p>Crisil MF Rank</p>
+							</div>
+							<div class="percent">
+								<i class="fa fa-percent" aria-hidden="true"></i>
+								<div class="number">
+									<h1 class="return-no">22%</h1>
+									<p class="p-terms">Returns <i class="fa fa-exclamation-triangle" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Disclaimer: Mutual fund investments are subject to market risks. Please read the scheme information and other related documents before investing."></i></p>
+								</div>
+							</div>
+						</div>
+						<div class="footer hidden">
+							<div class="actions">
+								<button type="button" class="btn view-close">Close <i class="fa fa-angle-up" aria-hidden="true"></i></button>
+								<button type="button" class="btn buy site-btn-2">Buy/gift</button>
+							</div>
+						</div>
+						<div class="sub-footer">
+							<p class="q-view">Quick view <i class="fa fa-angle-down" aria-hidden="true"></i></p>
+						</div>
+					</div>
+				</div>
+
+				<!-- View all -->
+
+				<div class="view-all">
+					<a href="" class="underline">View More</a>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+
+<!-- Overlay for larger card view -->
+
+<div class="card-overlay"></div>
+
+
+</section>
+
+
+
+<!-- Footer section -->
+
+<footer class="gift-footer">
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-10">
+				<div class="content contact">
+					<div class="logo">
+						<a href="#" class="inline"><img src="img/logo-dark.png" class="img-responsive"></a>
+					</div>
+					<div class="number">
+						<p>Get in touch</p>
+						<ul>
+							<li><a href="mailto:giveagift@giftology.com">giveagift@giftology.com</a></li>
+							<li class="dot">.</li>
+							<li><a href="callto:022-890765445">022-890765445</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-2">
+				<div class="content social">
+					<p>We are social</p>
+					<ul>
+						<li><a href=""><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+						<li><a href=""><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+						<li><a href=""><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+						<li><a href=""><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- Sub-footer/Copyright -->
+
+	<div class="sub-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="copyright">
+						<p>&copy; Copyright 2017, all right reserved</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</footer>
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/custom.js"></script>
+<script type="text/javascript" src="js/bootstrap-tagsinput.min.js"></script>
+<script type="text/javascript" src="js/readmore.min.js"></script>
+</body>
+</html>
