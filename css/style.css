@@ -2015,6 +2015,9 @@ textarea:focus {
     max-width: calc(50% - 2em);
   }
 }
+.tooltip-inner {
+  text-align: left;
+}
 .fund-modal .modal-header {
   display: -webkit-box;
   display: -webkit-flex;
