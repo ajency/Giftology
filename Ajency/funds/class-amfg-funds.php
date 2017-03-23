@@ -52,6 +52,8 @@ class Ajency_MFG_Funds {
 
 
 
+        add_action('save_post', 'fund_sidebar_save_data');
+
 
         new Ajencypress_Admin_Errors( $this->plugin_name);
 

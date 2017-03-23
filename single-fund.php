@@ -10,7 +10,7 @@
                     <ul class="steps">
                         <li><a href="/">Home</a></li>
                         <li>/</li>
-                        <li><a href="#">List of Funds</a></li>
+                        <li><a href="#">All Funds</a></li>
                         <li>/</li>
                         <li><a href=""><?php echo get_the_title(); ?></a></li>
                     </ul>
