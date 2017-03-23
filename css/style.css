@@ -1863,6 +1863,9 @@ textarea:focus {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.6);
 }
+.filter-trigger {
+  display: none;
+}
 @media screen and (min-width: 992px) and (max-width: 1024px) {
   .list-data .filter-bar {
     left: -15px;
@@ -1893,6 +1896,7 @@ textarea:focus {
     margin-top: 1em;
   }
   .filter-trigger {
+    display: block;
     width: 50px;
     height: 50px;
     background-color: #9c1bef;
