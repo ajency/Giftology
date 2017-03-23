@@ -399,6 +399,9 @@ textarea:focus {
 .breadcrums .steps li a {
   color: #9c9c9c;
 }
+.breadcrums .steps li:first-child {
+  padding-left: 0;
+}
 .breadcrums .cont-note > a {
   color: #9c1bef;
   text-decoration: underline;
