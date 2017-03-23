@@ -60,32 +60,32 @@
                     <div class="card body">
                         <?php
                         $show_all_link = true;
-                        $filter_title = 'Fulter by AMC';
-                        $terms = get_terms('amc');
+                        $filter_title = 'Filter by AMC';
+                        $filter = 'amc';
                         include locate_template('template-parts/funds/filters.php', false, false);
                         ?>
                     </div>
                     <div class="card body">
                         <?php
                         $show_all_link = false;
-                        $filter_title = 'Fulter by Bucket 1';
-                        $terms = get_terms('bucket-1');
+                        $filter_title = 'Filter by Bucket 1';
+                        $filter = 'bucket-1';
                         include locate_template('template-parts/funds/filters.php', false, false);
                         ?>
                     </div>
                     <div class="card body">
                         <?php
                         $show_all_link = false;
-                        $filter_title = 'Fulter by Bucket 2';
-                        $terms = get_terms('bucket-2');
+                        $filter_title = 'Filter by Bucket 2';
+                        $filter = 'bucket-2';
                         include locate_template('template-parts/funds/filters.php', false, false);
                         ?>
                     </div>
                     <div class="card body">
                         <?php
                         $show_all_link = false;
-                        $filter_title = 'Fulter by Bucket 3';
-                        $terms = get_terms('bucket-3');
+                        $filter_title = 'Filter by Bucket 3';
+                        $filter = 'bucket-3';
                         include locate_template('template-parts/funds/filters.php', false, false);
                         ?>
                     </div>
