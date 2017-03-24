@@ -50,7 +50,7 @@ $fund_url = get_post_meta(get_the_ID(), '_fund_url')[0];
             </div>
         </div>
         <div class="fund-desc">
-            <p class="read-more"><?php the_excerpt() ?></p>
+            <p class="read-more"><?php echo get_the_excerpt() ?></p>
         </div>
     </div>
     <div class="gray body">
