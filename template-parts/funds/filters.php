@@ -3,7 +3,7 @@
 
 <!--    <li><label><input type="checkbox" class="checkbox-inline"> <p class="label-name">Show All</p></label></li>-->
 
-    <?php foreach (get_terms($filter) as $term) :  ?>
+    <?php foreach (get_terms($filters[$filter]) as $term) :  ?>
     <li><label>
             <?php
             $params1 = $filter_params;
@@ -26,9 +26,10 @@
 
             ?>
             <?php if(is_array($filter_params_input[$filter]) && in_array($term->slug,$filter_params_input[$filter])) {; ?>
+
             <a href="<?php echo $remove_url; ?>" class="label-name">
-                <input disabled type="checkbox" class="checkbox-inline" checked>
-                <?php print $term->name; ?>
+                <input disabled type="checkbox" class="checkbox-inline" checked="checked">
+                <b><?php print $term->name; ?></b>
             </a>
 
             <?php } else { ?>
