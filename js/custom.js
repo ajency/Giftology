@@ -268,6 +268,15 @@
         });*/
 
 
+        // To add read more link(Requires read-more.js to be included)
+
+         $('.fund-desc .read-more').readmore({
+           speed: 25,
+           collapsedHeight: 22,
+           moreLink: '<a href="#">More</a>',
+           lessLink: '<a href="#">Less</a>'
+         });
+
         // Filter mobile flyout
 
 
@@ -282,6 +291,7 @@
                 $('.filter').toggleClass('active');
             });
         }
+
 
 
 
