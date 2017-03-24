@@ -1375,9 +1375,21 @@ textarea:focus {
 .fund-risk {
   width: 95%;
 }
+.fund-risk img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
 @media screen and (min-width: 992px) and (max-width: 1199px) {
   .fund-detail {
     top: -15px;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  .fund__type,
+  .brand-data .bucket {
+    padding-right: 0;
+    padding-left: 0;
   }
 }
 @media screen and (min-width: 768px) and (max-width: 991px) {
