@@ -39,7 +39,7 @@
                             $amc_url = get_the_post_thumbnail();
                             ?>
                             <span>AMC - <?php echo $amc->name; ?></span>
-                            <span><?php echo $buckets['_amfg_bucket_1_singular']; ?> <b><?php echo get_the_terms( get_the_ID(), 'bucket-1')[0]->name; ?></b></span>
+                            <span><?php echo $buckets['_amfg_bucket_1_singular']; ?> <b><?php echo $bucket_1s; ?></b></span>
                         </div>
                     </div>
                 </div>
@@ -58,6 +58,7 @@
                                 <?php
                                 $bucket_2_terms = get_the_terms( get_the_ID(), 'bucket-2' );
                                 $bucket_3_terms = get_the_terms( get_the_ID(), 'bucket-3' );
+                                $bucket_1_terms = get_the_terms( get_the_ID(), 'bucket-1' );
                                 if ( $bucket_2_terms && ! is_wp_error( $bucket_2_terms ) ) {
 
                                     $bucket_2 = array();
@@ -75,6 +76,15 @@
                                     }
 
                                     $bucket_3s = join( ", ", $bucket_3 );
+                                }
+                                if ( $bucket_1_terms && ! is_wp_error( $bucket_1_terms ) ) {
+
+                                    $bucket_1 = array();
+                                    foreach ( $bucket_1_terms as $term ) {
+                                        $bucket_1[] = $term->name;
+                                    }
+
+                                    $bucket_1s = join( ", ", $bucket_1 );
                                 }
                                 ?>
                                 <p class="occ-title"><?php echo $buckets['_amfg_bucket_2_plural']; ?></p>
@@ -159,7 +169,7 @@
                             <h4 class="modal-title" id="myModalLabel"><?php echo get_the_title(); ?></h4>
                             <div class="caption">
                                 <span>AMC - <?php echo $amc->name; ?></span>
-                                <span><?php echo $buckets['_amfg_bucket_1_singular']; ?> <b><?php echo get_the_terms( get_the_ID(), 'bucket-1')[0]->name; ?></b></span>
+                                <span><?php echo $buckets['_amfg_bucket_1_singular']; ?> <b><?php echo $bucket_1s; ?></b></span>
                             </div>
                         </div>
                     </div>
