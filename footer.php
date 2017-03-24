@@ -1,3 +1,4 @@
+<?php wp_footer(); ?>
 <footer class="gift-footer">
 
     <div class="login modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -70,9 +71,3 @@
 
 </footer>
 <?php do_action('wp_enqueue_scripts') ?>
-<!--<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>-->
-<script type="text/javascript" src="<?php echo get_template_directory_uri() ?>/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="<?php echo get_template_directory_uri() ?>/js/bootstrap-tagsinput.min.js"></script>
-<script type="text/javascript" src="<?php echo get_template_directory_uri()."/js/readmore.min.js" ?>"></script>
-
-<!--<script type="text/javascript" src="<?php /*echo get_template_directory_uri() */?>/js/custom.js"></script>-->

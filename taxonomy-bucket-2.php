@@ -9,6 +9,8 @@
                     <li><a href="">Home</a></li>
                     <li>/</li>
                     <li><a href="">All Funds</a></li>
+                    <li>/</li>
+                    <li><a href=""><?php echo get_queried_object()->name; ?></a></li>
                 </ul>
             </div>
         </div>
@@ -22,14 +24,19 @@
         $parsed = parse_url($current_url);
         $query = $parsed['query'];
         parse_str($query, $params);
-        $path = '/'.explode('/',$parsed['path'])[1].'/';
+        $path = '/'.explode('/',$parsed['path'])[1].'/'.explode('/',$parsed['path'])[2].'/';
+
+        if(empty($params)) {
+            $params['b2'][] = get_queried_object()->slug;
+        }
+
         ?>
         <div class="row list-data">
             <div class="col-sm-4 filter">
-               <?php
-               $filter_params_input = $params;
-               include locate_template('template-parts/funds/filter-section.php', false, false);
-               ?>
+                <?php
+                $filter_params_input = $params;
+                include locate_template('template-parts/funds/filter-section.php', false, false);
+                ?>
             </div>
             <div class="col-sm-8 c-style">
                 <?php
@@ -41,4 +48,4 @@
     </div>
     <div class="card-overlay"></div>
 </section>
-<?php get_footer(); ?>
+<?php get_footer();  ?>
