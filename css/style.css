@@ -2139,9 +2139,90 @@ textarea:focus {
 }
 .fund-modal .modal-body .fund-stats {
   padding: 1.5em;
+  font-size: 1.05em;
 }
 .fund-modal .modal-body .fund-stats .fund-name {
+  margin-bottom: 1.2em;
+}
+.fund-modal .modal-body .fund-stats .occasion {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.fund-modal .modal-body .fund-stats .occasion__type b {
+  padding-left: 0.5em;
+}
+.fund-modal .modal-body .fund-stats .gift-note {
+  margin: 1.5em 0 0 0;
+  padding: 1em;
+}
+.fund-modal .modal-body .fund-stats .gift-note .data {
+  padding: 0;
+  font-size: 1em;
+}
+.fund-modal .modal-body .recepient-details {
+  padding: 1.5em;
+  box-shadow: inset 0 5px 26px 0px rgba(0, 0, 0, 0.05);
+  background-color: rgba(248, 246, 247, 0.17);
+}
+.fund-modal .modal-body .recepient-details .input-label {
   font-size: 1.05em;
+}
+.fund-modal .modal-body .recepient-details .input-box {
+  font-size: 1em;
+}
+.fund-modal .modal-body .recepient-details .data-box {
+  margin: 1.5em 0;
+}
+.fund-modal .modal-body .recepient-details .cols {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.fund-modal .modal-body .recepient-details .cols .fields {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 0 0;
+      -ms-flex: 1 0 0;
+          flex: 1 0 0;
+}
+.fund-modal .modal-body .recepient-details .cols .fields.occasion {
+  padding-right: 1em;
+}
+.fund-modal .modal-body .recepient-details .cols .fields.contribute {
+  padding-left: 1em;
+  position: relative;
+}
+.fund-modal .modal-body .recepient-details .cols .fields.contribute .input-box {
+  text-indent: 25px;
+}
+.fund-modal .modal-body .recepient-details .cols .fields.contribute:after {
+  content: 'Rs.';
+  display: inline-block;
+  position: absolute;
+  bottom: 5px;
+  left: 15px;
+  font-weight: 500;
+  font-size: 1.1em;
+  padding: 10px 8px;
+  background-color: #fff;
 }
 .name-box {
   background-color: #ee275f;
@@ -2240,6 +2321,10 @@ textarea:focus {
   font-size: 0.95em;
   font-weight: 300;
   font-family: 'Montserrat', sans-serif;
+}
+.input-box.select-box {
+  height: 50px;
+  border-radius: 0;
 }
 .template {
   display: -webkit-box;
