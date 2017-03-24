@@ -50,6 +50,11 @@
 
         <!-- List view cards and filter -->
 
+        <div class="filter-trigger">
+            <i class="fa fa-filter" aria-hidden="true"></i>
+        </div>
+        
+
         <div class="row list-data">
             <div class="col-sm-4 filter">
                 <div class="filter-bar">
