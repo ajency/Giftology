@@ -1732,21 +1732,6 @@ textarea:focus {
 .c-style .card-holder .cards .header .flex-col .funds-detail .fund-subname .title {
   margin-bottom: 0;
 }
-.c-style .card-holder .cards .header .flex-col .funds-detail .section {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  font-size: 1.05em;
-  padding-bottom: 0.3em;
-}
-.c-style .card-holder .cards .header .flex-col .funds-detail .section .title {
-  margin-bottom: 0;
-  padding-right: 0.5em;
-}
-.c-style .card-holder .cards .header .flex-col .funds-detail .section b {
-  font-weight: 500;
-}
 .c-style .card-holder .cards .header .flex-col .brand-box {
   position: absolute;
   right: -15px;
@@ -1757,6 +1742,27 @@ textarea:focus {
 }
 .c-style .card-holder .cards .header .flex-col a:not(.fund-link):hover {
   color: #9c1bef;
+}
+.c-style .card-holder .cards .header .section {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 1.05em;
+  padding-bottom: 0.3em;
+}
+.c-style .card-holder .cards .header .section .title {
+  margin-bottom: 0;
+  padding-right: 0.5em;
+}
+.c-style .card-holder .cards .header .section a {
+  color: #000;
+}
+.c-style .card-holder .cards .header .section a:hover {
+  color: #9c1bef;
+}
+.c-style .card-holder .cards .header .section b {
+  font-weight: 500;
 }
 .c-style .card-holder .cards .header .fund-desc {
   margin-top: 1em;
@@ -1872,10 +1878,10 @@ textarea:focus {
 .c-style .card-holder .cards.full-view .flex-col .funds-detail .bucket-data {
   margin-top: 2.5em;
 }
-.c-style .card-holder .cards.full-view .flex-col .funds-detail .section {
+.c-style .card-holder .cards.full-view .section {
   font-size: 0.95em;
 }
-.c-style .card-holder .cards.full-view .flex-col .funds-detail .section .title {
+.c-style .card-holder .cards.full-view .section .title {
   display: block;
 }
 .c-style .card-holder .cards.full-view .fund-desc {
