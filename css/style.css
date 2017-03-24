@@ -420,6 +420,9 @@ textarea:focus {
 .dropdown-menu.right:before {
   left: 70%;
 }
+.dropdown-menu li {
+  margin: 0.5em 0;
+}
 .dropdown-menu li.username {
   margin: 0.5em 0;
   padding: 3px 0 0 28px;
