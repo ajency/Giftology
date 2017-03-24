@@ -1759,7 +1759,7 @@ textarea:focus {
   margin-top: 1em;
   font-size: 1.05em;
 }
-.c-style .card-holder .cards .header .fund-desc p {
+.c-style .card-holder .cards .header .fund-desc .read-more {
   margin-bottom: 0;
   overflow: hidden;
 }
