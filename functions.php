@@ -6,7 +6,7 @@ function register_api_calls_js() {
     wp_enqueue_script( 'readmore', get_template_directory_uri() . '/js/readmore.min.js', '', '' , true );
     wp_enqueue_script( 'giftology-api', get_template_directory_uri() . '/js/custom.js', array( 'jquery' ), '' , true );
     wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array( 'jquery' ), '' , true );
-    wp_enqueue_script( 'bootstrap-tagsinput', get_template_directory_uri() . '/js/bootstrap.tagsinput.min.js', array( 'jquery' ), '' , true );
+    wp_enqueue_script( 'bootstrap-tagsinput', get_template_directory_uri() . '/js/bootstrap-tagsinput.min.js', array( 'jquery' ), '' , true );
 
 
     //localize data for script
