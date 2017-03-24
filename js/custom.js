@@ -277,6 +277,11 @@
            lessLink: '<a href="#">Less</a>'
          });
 
+        $("#fund-search").on('keyup', function (e) {
+            if (e.keyCode == 13) {
+                window.location = giftology_api.homeUrl + "/funds/?search=" +  $( '#fund-search' ).val();
+            }
+        });
 
     });
 

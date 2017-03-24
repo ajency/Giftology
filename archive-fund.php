@@ -18,7 +18,7 @@
         <div class="row m-t-1">
             <div class="col-sm-9">
                 <div class="fund-list">
-                    <h1 class="fund-list__heading">All Funds <div class="search"><input type="search" class="input-search"><span class="search-icon"><i class="fa fa-search" aria-hidden="true"></i></span></div></h1>
+                    <h1 class="fund-list__heading">All Funds <div class="search"><input id="fund-search" type="search" class="input-search"><span class="search-icon"><i class="fa fa-search" aria-hidden="true"></i></span></div></h1>
                 </div>
             </div>
             <div class="col-sm-3">
@@ -26,22 +26,11 @@
                     <p class="sort">Sort by : </p>
                     <div class="dropdown">
                         <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Popularity
+                            <?php echo $params['order']; ?>
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dLabel">
-                            <li>
-                                <a href="">High</a>
-                            </li>
-                            <li>
-                                <a href="">Low</a>
-                            </li>
-                            <li>
-                                <a href="">High</a>
-                            </li>
-                            <li>
-                                <a href="">High</a>
-                            </li>
+                            <?php include locate_template('template-parts/funds/sort.php', false, false); ?>
                         </ul>
                     </div>
                 </div>
@@ -122,6 +111,29 @@
                         $query['s'] = $params['search'];
                     }
 
+                    if($params['sort'] == 'latest') {
+
+                        $query['orderby'] = 'created';
+                        $query['order'] = 'DESC';
+
+                    } else if ($params['sort'] == 'rating'){
+
+                        $query['meta_key'] = '_fund_crisil_rating';
+                        $query['orderby'] = 'meta_value_num';
+                        $query['order'] = 'DESC';
+
+                    } else if ($params['sort'] == 'popular'){
+
+                        $query['meta_key'] = '_fund_featured';
+                        $query['orderby'] = 'meta_value_num';
+                        $query['order'] = 'DESC';
+
+                    } else if ($params['sort'] == 'last-updated'){
+
+                        $query['orderby'] = 'updated';
+                        $query['order'] = 'DESC';
+                    }
+
                     $loop = new WP_Query( $query );
 
                     ?>
@@ -135,9 +147,10 @@
 
                 <!-- View all -->
 
-                <div class="view-all">
-                    <a href="" class="underline">View More</a>
-                </div>
+                <?php giftology_numeric_posts_nav($loop) ?>
+                <!--                <div class="view-all">
+                                    <a href="" class="underline">View More</a>
+                                </div>-->
 
             </div>
         </div>

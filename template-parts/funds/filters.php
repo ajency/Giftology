@@ -11,26 +11,34 @@
             $parsed = parse_url($current_url);
             $query = $parsed['query'];
             parse_str($query, $params);
-
             $check = $params[$filter];
-            $key = array_search ($term->slug, $check);
-
-
-            unset($params[$filter][$key]);
-            $string = http_build_query($params);
-            $remove_url = $parsed['scheme'].'://'.$parsed['host'].$parsed['path'];
-            if($string) {
-                $remove_url = $parsed['scheme'].'://'.$parsed['host'].$parsed['path'].'?'.$string;
+            if($check) {
+                $remove_parames = $params;
+                $key = array_search ($term->slug, $check);
+                unset($remove_parames[$filter][$key]);
             }
+            $remove_url_params = http_build_query($remove_parames);
+            $path = '/funds/';
+            $remove_url = $parsed['scheme'].'://'.$parsed['host'].$path;
+            if($remove_url_params) {
+                $remove_url = $parsed['scheme'].'://'.$parsed['host'].$path.'?'.$remove_url_params;
+            }
+            $params[$filter][] = $term->slug;
+            $add_url_params = http_build_query($params);
+            $add_url = $parsed['scheme'].'://'.$parsed['host'].$path;
+            if($add_url_params) {
+                $add_url = $parsed['scheme'].'://'.$parsed['host'].$path.'?'.$add_url_params;
+            }
+
             ?>
-            <?php if(in_array($term->slug,$_GET[$filter])) {; ?>
+            <?php if(is_array($_GET[$filter]) && in_array($term->slug,$_GET[$filter])) {; ?>
             <a href="<?php echo $remove_url; ?>" class="label-name">
                 <input disabled type="checkbox" class="checkbox-inline" checked>
                 <?php print $term->name; ?>
             </a>
 
             <?php } else { ?>
-                <a href="<?php echo esc_url( add_query_arg( $filter.'[]', $term->slug ) )?>" class="label-name">
+                <a href="<?php echo $add_url; ?>" class="label-name">
                     <input disabled type="checkbox" class="checkbox-inline">
                     <?php print $term->name; ?>
                 </a>
