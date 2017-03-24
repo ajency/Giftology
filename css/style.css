@@ -387,14 +387,14 @@ textarea:focus {
   margin-right: 5px;
   border-radius: 5px;
 }
-.dropdown-menu {
+.gift-header .dropdown-menu {
   border: 0;
   border-radius: 0;
   box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.175);
   top: 120%;
 }
-.dropdown-menu:after,
-.dropdown-menu:before {
+.gift-header .dropdown-menu:after,
+.gift-header .dropdown-menu:before {
   bottom: 100%;
   left: 23%;
   border: solid transparent;
@@ -404,26 +404,26 @@ textarea:focus {
   position: absolute;
   pointer-events: none;
 }
-.dropdown-menu:before {
+.gift-header .dropdown-menu:before {
   border-color: rgba(194, 225, 245, 0);
   border-bottom-color: #ececec;
   border-width: 13px;
   margin-left: -13px;
 }
-.dropdown-menu:after {
+.gift-header .dropdown-menu:after {
   border-color: rgba(136, 183, 213, 0);
   border-bottom-color: #fff;
   border-width: 10px;
   margin-left: -10px;
 }
-.dropdown-menu.right:after,
-.dropdown-menu.right:before {
+.gift-header .dropdown-menu.right:after,
+.gift-header .dropdown-menu.right:before {
   left: 70%;
 }
-.dropdown-menu li {
+.gift-header .dropdown-menu li {
   margin: 0.5em 0;
 }
-.dropdown-menu li.username {
+.gift-header .dropdown-menu li.username {
   margin: 0.5em 0;
   padding: 3px 0 0 28px;
   font-size: 1.05em;
@@ -806,6 +806,9 @@ textarea:focus {
   font-size: 1.1em;
   text-decoration: underline;
 }
+.invit-emails .col:first-child {
+  padding-top: 0;
+}
 .invit-emails.more-email {
   height: 520px;
   overflow: auto;
@@ -867,7 +870,7 @@ textarea:focus {
   top: 4px;
 }
 .change-email .settings > ul .radio-inline input[type='radio']:checked + .radio-cont .radio-label {
-  font-weight: 500;
+  font-weight: 600;
 }
 .change-email .settings > ul .radio-inline .radio-cont {
   padding-left: 0.3em;
