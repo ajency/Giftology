@@ -49,11 +49,11 @@
                 <div class="filter-bar">
                     <div class="card header">
                         <p class="filter-name"><i class="fa fa-filter" aria-hidden="true"></i> <b>Filters</b></p>
-                        <a href="#" class="reset underline">Reset</a>
+                        <a href="/funds/" class="reset underline">Reset</a>
                     </div>
                     <div class="card body">
                         <?php
-                        $show_all_link = true;
+                        $show_all_link = false;
                         $filter_title = 'Filter by AMC';
                         $filter = 'amc';
                         include locate_template('template-parts/funds/filters.php', false, false);
@@ -151,6 +151,7 @@
                 </div>
 
                 <!-- View all -->
+
 
                 <?php giftology_numeric_posts_nav($loop) ?>
                 <!--                <div class="view-all">
