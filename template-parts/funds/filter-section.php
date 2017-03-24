@@ -5,9 +5,10 @@
     </div>
     <div class="card body">
         <?php
+        $filters = ['a' => 'amc','b1' => 'bucket-1','b2' => 'bucket-2','b3' => 'bucket-3'];
         $show_all_link = false;
         $filter_title = 'Filter by AMC';
-        $filter = 'amc';
+        $filter = 'a';
         $filter_params = $filter_params_input;
         include locate_template('template-parts/funds/filters.php', false, false);
         ?>
@@ -16,7 +17,7 @@
         <?php
         $show_all_link = false;
         $filter_title = 'Filter by Bucket 1';
-        $filter = 'bucket-1';
+        $filter = 'b1';
         $filter_params = $filter_params_input;
         include locate_template('template-parts/funds/filters.php', false, false);
         ?>
@@ -25,7 +26,7 @@
         <?php
         $show_all_link = false;
         $filter_title = 'Filter by Bucket 2';
-        $filter = 'bucket-2';
+        $filter = 'b2';
         $filter_params = $filter_params_input;
         include locate_template('template-parts/funds/filters.php', false, false);
         ?>
@@ -34,7 +35,7 @@
         <?php
         $show_all_link = false;
         $filter_title = 'Filter by Bucket 3';
-        $filter = 'bucket-3';
+        $filter = 'b3';
         $filter_params = $filter_params_input;
         include locate_template('template-parts/funds/filters.php', false, false);
         ?>

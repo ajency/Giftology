@@ -27,7 +27,7 @@
         $path = '/'.explode('/',$parsed['path'])[1].'/'.explode('/',$parsed['path'])[2].'/';
 
         if(empty($params)) {
-            $params['amc'][] = get_queried_object()->slug;
+            $params['a'][] = get_queried_object()->slug;
         }
 
         ?>
@@ -48,3 +48,4 @@
     </div>
     <div class="card-overlay"></div>
 </section>
+<?php get_footer();  ?>

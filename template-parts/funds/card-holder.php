@@ -1,12 +1,11 @@
 <div class="card-holder">
     <?php
-    $filters = ['amc','bucket-1','bucket-2','bucket-3'];
 
-    foreach($filters as $filter) {
-        if(isset($content_params_input[$filter]) && !empty($content_params_input[$filter]))
+    foreach($filters as $key => $filter) {
+        if(isset($content_params_input[$key]) && !empty($content_params_input[$key]))
         {
             //TODO - can also check if the term exists for the respective category
-            $q[] = [ 'taxonomy' => $filter, 'field' => 'slug', 'terms' => $content_params_input[$filter] ];
+            $q[] = [ 'taxonomy' => $filter, 'field' => 'slug', 'terms' => $content_params_input[$key] ];
         }
     }
 
