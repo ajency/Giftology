@@ -867,7 +867,7 @@ textarea:focus {
   top: 4px;
 }
 .change-email .settings > ul .radio-inline input[type='radio']:checked + .radio-cont .radio-label {
-  font-weight: 500;
+  font-weight: 600;
 }
 .change-email .settings > ul .radio-inline .radio-cont {
   padding-left: 0.3em;
