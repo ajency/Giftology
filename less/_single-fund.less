@@ -13,6 +13,8 @@
 	background-color: @link-color-2;
     color: #fff;
     padding: 1.5em;
+    position: relative;
+    z-index: 1;
     &__heading{
     	margin-top: 0;
     	text-transform: capitalize;
@@ -37,6 +39,16 @@
 .fund-detail{
 	position: relative;
     top: -35px;
+    z-index: 1;
+    .white-overlay{
+    	position: absolute;
+	    top: 36px;
+	    left: 15px;
+	    width: 78%;
+	    height: calc(~'100% - 36px');
+	    background-color: #fff;
+	    z-index: -1;
+    }
 }
 
 // Brand name box
@@ -63,6 +75,7 @@
     .brand-box{
     	position: relative;
     	left: -15px;
+    	z-index: 1;
     }
 	.bucket{
 		padding-left: 0.5em;
@@ -78,6 +91,7 @@
 }
 
 .fund-stats{
+	padding: 1.5em;
 	.title{
 		font-size: 2.15em;
     	line-height: 1.3;
@@ -87,7 +101,7 @@
 		padding: 0.5em 0;
 		p{
 			margin-bottom: 1em;
-			color: #777777;
+			color: rgba(0, 0, 0, 0.7);
 			a{
 				text-decoration: underline;
 			}
@@ -102,7 +116,7 @@
 			}
 			li{
 				margin-bottom: 5px;
-				color: #777777;
+				color: rgba(0, 0, 0, 0.7);
 			}
 		}
 	}
@@ -110,6 +124,8 @@
 
 .fund-card{
 	width: 95%;
+	position: relative;
+    z-index: 1;
     // margin: 0 auto;
 	.c-obj{
 		background-color: #fff;
@@ -213,7 +229,16 @@
 			font-size: 1.05em;
 			margin-bottom: 0;
 			.fa{
-				color: @warning-color;
+				// color: @warning-color;
+				color: #717171;
+			    height: 20px;
+			    width: 20px;
+			    background-color: #fff;
+			    border-radius: 50%;
+			    border: 1px solid #717171;
+			    line-height: 20px;
+			    text-align: center;
+			    font-size: 0.9em;
 			}
 		}
 	}
@@ -250,6 +275,11 @@
 	.fund__type,.brand-data .bucket{
 		padding-right: 0;
 		padding-left: 0
+	}
+	.fund-detail{
+		.white-overlay{
+			top: 15px;
+		}
 	}
 }
 
@@ -332,6 +362,7 @@
 		}
 	}
 	.fund-stats{
+		background-color: #fff;
 		.title{
 			font-size: 1.7em;
 		}
@@ -342,6 +373,9 @@
 				font-size: 2em;
 			}
 		}
+	}
+	.white-overlay{
+		display: none;
 	}
 }
 
@@ -1039,7 +1073,52 @@
 
 
 
-
+@media screen and (max-width: 500px){
+	.fund-modal{
+		.modal-header{
+		    .brand-box{
+		    	display: none;
+		    }
+		    .fund-head{
+		    	padding: 0;
+		    	.modal-title{
+		    		font-size: 1.25em;
+		    		text-align: center;
+		    	}
+		    	.caption{
+		    		flex-direction: column;
+    				align-items: center;
+		    	}
+		    }
+		}
+		.modal-body{
+			.fund-stats{
+				.occasion{
+					flex-direction: column;
+    				align-items: baseline;
+				}
+			}
+			.recepient-details{
+	    		.cols{
+	    			flex-direction: column;
+    				align-items: inherit;
+	    			.fields{
+	    				margin: 1em 0;
+	    				&.occasion{
+	    					padding-right: 0;
+	    				}
+	    				&.contribute{
+	    					padding-left: 0;
+	    					.input-box{
+	    						text-indent: 50px;
+	    					}
+	    				}
+	    			}
+	    		}
+			}
+		}
+	}
+}
 
 
 
