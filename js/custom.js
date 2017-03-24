@@ -204,7 +204,6 @@
             });
         });
 
-
         $(document).on('click', '.step-1-submit', function () {
 
 
@@ -299,19 +298,42 @@
             });
         }
 
-        jQuery(".input-search").on('focus', function () {
+       /* jQuery(".input-search").on('focus', function () {
             console.log('test');
             jQuery('.search').addClass('active');
         });
 
-        if (jQuery('.input-search').val().length != 0)
+        if (jQuery('.input-search').val().length !== 0)
             jQuery('.search').addClass('active');
 
         jQuery(".input-search").on('blur', function () {
-            if (jQuery('.input-search').val().length == 0)
+            if (jQuery('.input-search').val().length === 0)
                 jQuery('.search').removeClass('active');
-        });
+        });*/
 
+
+        $(document).on('click', '#create-gift-minimal', function () {
+
+            $.ajax({
+                type: "POST",
+                url: giftology_api.root + 'giftology/v1/gifts/create-gift-minimal',
+                beforeSend: function ( xhr ) {
+                    xhr.setRequestHeader( 'X-WP-Nonce', giftology_api.nonce );
+                },
+                data: $('#create-gift').serialize() ,
+                success: function(data){
+                    console.log(data);
+                    if(data.success) {
+                        window.location.reload();
+                    } else {
+                        $('#contribution_amount_error').html('<div class="alert alert-danger">' + data.message + '</div>');
+                    }
+                },
+                error: function(){
+                    alert("Internal Server Error : Please contact Admin");
+                }
+            });
+        });
 
     });
 

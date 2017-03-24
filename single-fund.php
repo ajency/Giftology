@@ -146,42 +146,86 @@
 
         <!-- Fund modal -->
 
-
-        <!-- 	<div class="fund-modal modal fade" id="fund-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-              <div class="modal-dialog" role="document">
+        <div class="fund-modal modal fade" id="fund-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <div class="brand-box">
-                        <img src="img/axis.jpg" class="img-responsive center-block" width="50">
-                    </div>
-                    <div class="fund-head">
-                        <h4 class="modal-title" id="myModalLabel">Axis long term equity fund - regular growth</h4>
-                        <div class="caption">
-                            <span>AMC - Axis Asset Management</span>
-                            <span>Age group <b>25 - 40 years</b></span>
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <div class="brand-box">
+                            <img src="<?php echo get_the_post_thumbnail_url(); ?>" class="img-responsive center-block" width="50">
+                        </div>
+                        <div class="fund-head">
+                            <h4 class="modal-title" id="myModalLabel"><?php echo get_the_title(); ?></h4>
+                            <div class="caption">
+                                <span>AMC - <?php echo $amc->name; ?></span>
+                                <span><?php echo $buckets['_amfg_bucket_1_singular']; ?> <b><?php echo get_the_terms( get_the_ID(), 'bucket-1')[0]->name; ?></b></span>
+                            </div>
                         </div>
                     </div>
-                  </div>
-                  <div class="modal-body">
-                    <div class="fund-stats">
-                        <p class="fund-name">Crisil MF Rank <span class="stars">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
+                    <div class="modal-body">
+                        <div class="fund-stats">
+                            <p class="fund-name">Crisil MF Rank <span class="stars">
+                                        <?php for($i = 1; $i <= get_post_meta( get_the_ID(), '_fund_crisil_rating')[0]; $i++  ) : ?>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                        <?php endfor; ?>
+                            <?php for($i = 5; $i > get_post_meta( get_the_ID(), '_fund_crisil_rating')[0]; $i--  ) : ?>
                                 <i class="fa fa-star-o" aria-hidden="true"></i>
-                            </span>
-                        </p>
+                            <?php endfor; ?>
+                                </span>
+                            </p>
+                            <div class="occasion">
+                                <div class="occasion__type">
+
+                                    <p class="first"><?php echo $buckets['_amfg_bucket_2_plural']; ?> <b><?php echo $bucket_2s; ?></b></p>
+                                    <p class="bucket"><?php echo $buckets['_amfg_bucket_3_plural']; ?> <b><?php echo $bucket_3s; ?></b></p>
+                                </div>
+                                <div class="percent">
+                                    <img src="<?php echo get_template_directory_uri(); ?>/img/returns.png" class="img-reponsive" width="45">
+                                    <div class="number">
+                                        <h1 class="return-no"><?php echo get_post_meta(get_the_ID(),'_fund_returns')[0]; ?>%</h1>
+                                        <p class="p-terms">Returns <i class="fa fa-exclamation-triangle" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Disclaimer: Mutual fund investments are subject to market risks. Please read the scheme information and other related documents before investing."></i></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="gift-note">
+                                <p class="data">Mimimum investment <b>Rs. <?php echo get_post_meta(get_the_ID(),'_fund_min_investment')[0]; ?></b></p>
+                                <p class="data">In multiples of <b>Rs. <?php echo get_post_meta(get_the_ID(),'_fund_min_increment')[0]; ?></b> thereafter</p>
+                            </div>
+                        </div>
+                        <div class="recepient-details">
+                            <label class="input-label">Please give us some basic details about the gift recipient</label>
+                            <div id="contribution_amount_error"></div>
+                            <form id="create-gift">
+                                <input type="hidden" value="<?php echo get_the_ID(); ?>" name="fund_id" >
+                            <div class="data-box">
+                                <label class="input-label required">Who is the gift for?</label>
+                                <input name="receiver_name" type="text" class="input-box" placeholder="The recepient's name">
+                            </div>
+                            <div class="data-box cols">
+                                <div class="fields occasion">
+                                    <label class="input-label required">What is the occasion?</label>
+                                    <select name="receiver_occasion" class="input-box select-box">
+                                        <option>-- Please select --</option>
+                                        <option>Birthday</option>
+                                        <option>Anniversary</option>
+                                    </select>
+                                </div>
+                                <div class="fields contribute">
+                                    <label class="input-label required">Amount you wish to contribute</label>
+                                    <input min="<?php echo get_post_meta(get_the_ID(),'_fund_min_investment')[0]; ?>" name="contribution_amount" type="number" class="input-box" placeholder="The amount">
+                                </div>
+                            </div>
+                            </form>
+
+                        </div>
                     </div>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-default cancel" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-primary site-btn-2">Save</button>
-                  </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default cancel" data-dismiss="modal">Cancel</button>
+                        <button id="create-gift-minimal" type="submit" class="btn btn-primary site-btn-2">Create gift</button>
+                    </div>
                 </div>
-              </div>
-            </div> -->
+            </div>
+        </div>
 
 
 

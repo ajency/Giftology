@@ -340,6 +340,22 @@ class Ajency_MFG_Gift {
         return $fund[0];
 
     }
+
+    public static function create_gift_minimal($user_id, $fund_id, $recepient_name, $occasion, $contribution_amount) {
+
+        global $wpdb;
+        $table_name = $wpdb->prefix . "giftology_gifts";
+        $wpdb->insert($table_name, array(
+            'receiver_name' => $recepient_name,
+            'created_by' => $user_id,
+            'fund_id' => $fund_id,
+            'contribution_amount' => $contribution_amount,
+            'receiver_occasion' => $occasion,
+            'created' => current_time( 'mysql' ),
+            'updated' => current_time( 'mysql' ),
+        ));
+        return $wpdb->print_error();
+    }
 }
 
 #Close current modal open new
