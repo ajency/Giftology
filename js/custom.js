@@ -268,6 +268,22 @@
         });*/
 
 
+        // Filter mobile flyout
+
+
+        if($(window).width() < 991) {
+            $('.filter-title').click(function(){
+                $(this).siblings('.selection').slideToggle();
+                $(this).toggleClass('arrow');
+            });
+            $('.filter-trigger').click(function(){
+                $('body').toggleClass('blocked');
+                $(this).toggleClass('active');
+                $('.filter').toggleClass('active');
+            });
+        }
+
+
 
     });
 
