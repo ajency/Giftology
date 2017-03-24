@@ -6,7 +6,7 @@ function register_api_calls_js() {
     wp_enqueue_script( 'readmore', get_template_directory_uri() . '/js/readmore.min.js', '', '' , true );
     wp_enqueue_script( 'giftology-api', get_template_directory_uri() . '/js/custom.js', array( 'jquery' ), '' , true );
     wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array( 'jquery' ), '' , true );
-    wp_enqueue_script( 'bootstrap-tagsinput', get_template_directory_uri() . '/js/bootstrap.tagsinput.min.js', array( 'jquery' ), '' , true );
+    wp_enqueue_script( 'bootstrap-tagsinput', get_template_directory_uri() . '/js/bootstrap-tagsinput.min.js', array( 'jquery' ), '' , true );
 
 
     //localize data for script
@@ -110,8 +110,40 @@ function giftology_api() {
             }
         )
     );
+
+    register_rest_route(
+        'giftology/v1',
+        '/gifts/create-gift-minimal',
+        array(
+            'methods' => 'POST',
+            'callback' => 'giftology_create_gift_minimal',
+            'permission_callback' => function () {
+                return is_user_logged_in();
+            }
+        )
+    );
 }
 
+function giftology_create_gift_minimal($request_data) {
+
+    $parameters = $request_data->get_params();
+
+    if(
+        !isset($parameters['fund_id']) ||
+        !isset($parameters['contribution_amount']) ||
+        !isset($parameters['receiver_name']) ||
+        !isset($parameters['receiver_occasion'])
+    ){
+        return json_response(false, "All fields are required",false);
+    }
+
+    $min_investment = get_post_meta($parameters['fund_id'],'_fund_min_investment',true);
+    if($min_investment > $parameters['contribution_amount']) {
+        return json_response(false, "Please enter a contribution amount greater than the min fund investment needed",false);
+    }
+    $res = Ajency_MFG_Gift::create_gift_minimal(get_current_user_id(),$parameters['fund_id'],$parameters['receiver_name'],$parameters['receiver_occasion'],$parameters['contribution_amount']);
+    return json_response(true, "Gift Created Successfully",$res);
+}
 
 function giftology_delete_invite($request_data){
 
