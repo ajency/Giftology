@@ -13,6 +13,8 @@
 	background-color: @link-color-2;
     color: #fff;
     padding: 1.5em;
+    position: relative;
+    z-index: 1;
     &__heading{
     	margin-top: 0;
     	text-transform: capitalize;
@@ -37,6 +39,16 @@
 .fund-detail{
 	position: relative;
     top: -35px;
+    z-index: 1;
+    .white-overlay{
+    	position: absolute;
+	    top: 36px;
+	    left: 15px;
+	    width: 78%;
+	    height: calc(~'100% - 36px');
+	    background-color: #fff;
+	    z-index: -1;
+    }
 }
 
 // Brand name box
@@ -63,6 +75,7 @@
     .brand-box{
     	position: relative;
     	left: -15px;
+    	z-index: 1;
     }
 	.bucket{
 		padding-left: 0.5em;
@@ -78,6 +91,7 @@
 }
 
 .fund-stats{
+	padding: 1.5em;
 	.title{
 		font-size: 2.15em;
     	line-height: 1.3;
@@ -87,7 +101,7 @@
 		padding: 0.5em 0;
 		p{
 			margin-bottom: 1em;
-			color: #777777;
+			color: rgba(0, 0, 0, 0.7);
 			a{
 				text-decoration: underline;
 			}
@@ -102,7 +116,7 @@
 			}
 			li{
 				margin-bottom: 5px;
-				color: #777777;
+				color: rgba(0, 0, 0, 0.7);
 			}
 		}
 	}
@@ -110,6 +124,8 @@
 
 .fund-card{
 	width: 95%;
+	position: relative;
+    z-index: 1;
     // margin: 0 auto;
 	.c-obj{
 		background-color: #fff;
