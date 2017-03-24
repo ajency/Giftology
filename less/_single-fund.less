@@ -276,6 +276,11 @@
 		padding-right: 0;
 		padding-left: 0
 	}
+	.fund-detail{
+		.white-overlay{
+			top: 15px;
+		}
+	}
 }
 
 
@@ -357,6 +362,7 @@
 		}
 	}
 	.fund-stats{
+		background-color: #fff;
 		.title{
 			font-size: 1.7em;
 		}
@@ -367,6 +373,9 @@
 				font-size: 2em;
 			}
 		}
+	}
+	.white-overlay{
+		display: none;
 	}
 }
 
@@ -1064,7 +1073,52 @@
 
 
 
-
+@media screen and (max-width: 500px){
+	.fund-modal{
+		.modal-header{
+		    .brand-box{
+		    	display: none;
+		    }
+		    .fund-head{
+		    	padding: 0;
+		    	.modal-title{
+		    		font-size: 1.25em;
+		    		text-align: center;
+		    	}
+		    	.caption{
+		    		flex-direction: column;
+    				align-items: center;
+		    	}
+		    }
+		}
+		.modal-body{
+			.fund-stats{
+				.occasion{
+					flex-direction: column;
+    				align-items: baseline;
+				}
+			}
+			.recepient-details{
+	    		.cols{
+	    			flex-direction: column;
+    				align-items: inherit;
+	    			.fields{
+	    				margin: 1em 0;
+	    				&.occasion{
+	    					padding-right: 0;
+	    				}
+	    				&.contribute{
+	    					padding-left: 0;
+	    					.input-box{
+	    						text-indent: 50px;
+	    					}
+	    				}
+	    			}
+	    		}
+			}
+		}
+	}
+}
 
 
 

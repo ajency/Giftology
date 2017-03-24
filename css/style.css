@@ -1420,6 +1420,9 @@ textarea:focus {
     padding-right: 0;
     padding-left: 0;
   }
+  .fund-detail .white-overlay {
+    top: 15px;
+  }
 }
 @media screen and (min-width: 768px) and (max-width: 991px) {
   .fullWidth,
@@ -1501,11 +1504,17 @@ textarea:focus {
   .brand-data .brand-box {
     left: 0;
   }
+  .fund-stats {
+    background-color: #fff;
+  }
   .fund-stats .title {
     font-size: 1.7em;
   }
   .percent .number .return-no {
     font-size: 2em;
+  }
+  .white-overlay {
+    display: none;
   }
 }
 @media screen and (min-width: 500px) and (max-width: 767px) {
@@ -2249,6 +2258,63 @@ textarea:focus {
   font-size: 1.1em;
   padding: 10px 8px;
   background-color: #fff;
+}
+@media screen and (max-width: 500px) {
+  .fund-modal .modal-header .brand-box {
+    display: none;
+  }
+  .fund-modal .modal-header .fund-head {
+    padding: 0;
+  }
+  .fund-modal .modal-header .fund-head .modal-title {
+    font-size: 1.25em;
+    text-align: center;
+  }
+  .fund-modal .modal-header .fund-head .caption {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .fund-modal .modal-body .fund-stats .occasion {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: baseline;
+    -webkit-align-items: baseline;
+        -ms-flex-align: baseline;
+            align-items: baseline;
+  }
+  .fund-modal .modal-body .recepient-details .cols {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: inherit;
+    -webkit-align-items: inherit;
+        -ms-flex-align: inherit;
+            align-items: inherit;
+  }
+  .fund-modal .modal-body .recepient-details .cols .fields {
+    margin: 1em 0;
+  }
+  .fund-modal .modal-body .recepient-details .cols .fields.occasion {
+    padding-right: 0;
+  }
+  .fund-modal .modal-body .recepient-details .cols .fields.contribute {
+    padding-left: 0;
+  }
+  .fund-modal .modal-body .recepient-details .cols .fields.contribute .input-box {
+    text-indent: 50px;
+  }
 }
 .name-box {
   background-color: #ee275f;
