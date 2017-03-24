@@ -272,16 +272,32 @@
 
          $('.fund-desc .read-more').readmore({
            speed: 25,
-           collapsedHeight: 22,
+           collapsedHeight: 42,
            moreLink: '<a href="#">More</a>',
            lessLink: '<a href="#">Less</a>'
          });
+
 
         $("#fund-search").on('keyup', function (e) {
             if (e.keyCode == 13) {
                 window.location = giftology_api.homeUrl + "/funds/?search=" +  $( '#fund-search' ).val();
             }
         });
+
+        // Filter mobile flyout
+
+
+        if($(window).width() < 991) {
+            $('.filter-title').click(function(){
+                $(this).siblings('.selection').slideToggle();
+                $(this).toggleClass('arrow');
+            });
+            $('.filter-trigger').click(function(){
+                $('body').toggleClass('blocked');
+                $(this).toggleClass('active');
+                $('.filter').toggleClass('active');
+            });
+        }
 
     });
 

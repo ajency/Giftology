@@ -122,6 +122,7 @@
                 <div class="col-sm-8 col-sm-pull-4">
                     <div class="brand-data">
                         <div class="brand-box">
+                            <span class="medal"></span>
                             <img src="<?php echo get_the_post_thumbnail_url(); ?>" class="img-responsive center-block" width="50">
                         </div>
                         <div class="bucket">

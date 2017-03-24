@@ -31,14 +31,6 @@ $fund_url = get_post_meta(get_the_ID(), '_fund_url')[0];
                     <a href="<?php echo $fund_url; ?>" class="fund-link underline"><?php echo $fund_url; ?></a>
                 </div>
                 <div class="box-divider"></div>
-                <div class="bucket-data">
-                    <div class="section">
-                        <p class="title">Age group</p><a href="#"><b><?php echo get_the_terms( get_the_ID(), 'bucket-1')[0]->name; ?></b></a>
-                    </div>
-                    <div class="section">
-                        <p class="title">Categories</p><a href="#"><b><?php echo $bucket_line; ?></b></a>
-                    </div>
-                </div>
             </div>
             <a href="<?php echo get_the_permalink(); ?>">
                 <div class="brand-box">
@@ -48,6 +40,14 @@ $fund_url = get_post_meta(get_the_ID(), '_fund_url')[0];
                     <img src="<?php echo get_the_post_thumbnail_url(); ?>" class="img-responsive center-block">
                 </div>
             </a>
+        </div>
+        <div class="bucket-data">
+            <div class="section">
+                <p class="title">Age group</p><a href="#"><b><?php echo get_the_terms( get_the_ID(), 'bucket-1')[0]->name; ?></b></a>
+            </div>
+            <div class="section">
+                <p class="title">Categories</p><a href="#"><b><?php echo $bucket_line; ?></b></a>
+            </div>
         </div>
         <div class="fund-desc">
             <p class="read-more"><?php the_excerpt() ?></p>

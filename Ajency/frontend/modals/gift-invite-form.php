@@ -5,7 +5,7 @@
         <input name="email" class="form-control" id="email-tags" placeholder="Email address" required>
     </div>
     <div class="form-group email-msg">
-        <p class="label-msg">A message to the contributors</p>
+        <label for="message" class="control-label">A message to the contributors</label>
         <textarea class="form-control" placeholder="Message" name="message" id="message" rows="5" required>Hi! Its Sarvesh's anniversary, Lets give him a gift that'll be really helpful for him in the future!</textarea>
     </div>
 </form>

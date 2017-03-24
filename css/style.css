@@ -334,6 +334,12 @@ textarea:focus {
   font-weight: 300;
   color: #696969;
 }
+.gift-header .navbar-nav li .dropdown-menu li a {
+  font-size: 1em;
+}
+.gift-header .navbar-nav li .dropdown-menu li i {
+  padding-right: 0.2em;
+}
 .gift-header .navbar-nav li.active > a,
 .gift-header .navbar-nav li.open > a {
   background-color: transparent;
@@ -380,6 +386,52 @@ textarea:focus {
 .gift-header .option-profile .option-pic {
   margin-right: 5px;
   border-radius: 5px;
+}
+.dropdown-menu {
+  border: 0;
+  border-radius: 0;
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.175);
+  top: 120%;
+}
+.dropdown-menu:after,
+.dropdown-menu:before {
+  bottom: 100%;
+  left: 23%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+.dropdown-menu:before {
+  border-color: rgba(194, 225, 245, 0);
+  border-bottom-color: #ececec;
+  border-width: 13px;
+  margin-left: -13px;
+}
+.dropdown-menu:after {
+  border-color: rgba(136, 183, 213, 0);
+  border-bottom-color: #fff;
+  border-width: 10px;
+  margin-left: -10px;
+}
+.dropdown-menu.right:after,
+.dropdown-menu.right:before {
+  left: 70%;
+}
+.dropdown-menu li {
+  margin: 0.5em 0;
+}
+.dropdown-menu li.username {
+  margin: 0.5em 0;
+  padding: 3px 0 0 28px;
+  font-size: 1.05em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 150px;
+  font-weight: 600;
 }
 .breadcrums .steps {
   padding: 0;
@@ -1103,7 +1155,7 @@ textarea:focus {
   text-transform: capitalize;
   font-size: 1.15em;
   margin-top: 1em;
-  padding-right: 5em;
+  padding-right: 9em;
   color: rgba(255, 255, 255, 0.75);
 }
 .fund__type b {
@@ -1148,7 +1200,7 @@ textarea:focus {
   left: -15px;
 }
 .brand-data .bucket {
-  padding-left: 1.5em;
+  padding-left: 0.5em;
   font-size: 1.1em;
   margin-bottom: 0.2em;
 }
@@ -1323,9 +1375,21 @@ textarea:focus {
 .fund-risk {
   width: 95%;
 }
+.fund-risk img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
 @media screen and (min-width: 992px) and (max-width: 1199px) {
   .fund-detail {
     top: -15px;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  .fund__type,
+  .brand-data .bucket {
+    padding-right: 0;
+    padding-left: 0;
   }
 }
 @media screen and (min-width: 768px) and (max-width: 991px) {
@@ -1680,21 +1744,6 @@ textarea:focus {
 .c-style .card-holder .cards .header .flex-col .funds-detail .fund-subname .title {
   margin-bottom: 0;
 }
-.c-style .card-holder .cards .header .flex-col .funds-detail .section {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  font-size: 1.05em;
-  padding-bottom: 0.3em;
-}
-.c-style .card-holder .cards .header .flex-col .funds-detail .section .title {
-  margin-bottom: 0;
-  padding-right: 0.5em;
-}
-.c-style .card-holder .cards .header .flex-col .funds-detail .section b {
-  font-weight: 500;
-}
 .c-style .card-holder .cards .header .flex-col .brand-box {
   position: absolute;
   right: -15px;
@@ -1706,11 +1755,32 @@ textarea:focus {
 .c-style .card-holder .cards .header .flex-col a:not(.fund-link):hover {
   color: #9c1bef;
 }
+.c-style .card-holder .cards .header .section {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 1.05em;
+  padding-bottom: 0.3em;
+}
+.c-style .card-holder .cards .header .section .title {
+  margin-bottom: 0;
+  padding-right: 0.5em;
+}
+.c-style .card-holder .cards .header .section a {
+  color: #000;
+}
+.c-style .card-holder .cards .header .section a:hover {
+  color: #9c1bef;
+}
+.c-style .card-holder .cards .header .section b {
+  font-weight: 500;
+}
 .c-style .card-holder .cards .header .fund-desc {
   margin-top: 1em;
   font-size: 1.05em;
 }
-.c-style .card-holder .cards .header .fund-desc p {
+.c-style .card-holder .cards .header .fund-desc .read-more {
   margin-bottom: 0;
   overflow: hidden;
 }
@@ -1820,10 +1890,10 @@ textarea:focus {
 .c-style .card-holder .cards.full-view .flex-col .funds-detail .bucket-data {
   margin-top: 2.5em;
 }
-.c-style .card-holder .cards.full-view .flex-col .funds-detail .section {
+.c-style .card-holder .cards.full-view .section {
   font-size: 0.95em;
 }
-.c-style .card-holder .cards.full-view .flex-col .funds-detail .section .title {
+.c-style .card-holder .cards.full-view .section .title {
   display: block;
 }
 .c-style .card-holder .cards.full-view .fund-desc {
@@ -1856,6 +1926,9 @@ textarea:focus {
 }
 .filter-trigger {
   display: none;
+}
+.blocked {
+  overflow: hidden;
 }
 @media screen and (min-width: 992px) and (max-width: 1024px) {
   .list-data .filter-bar {

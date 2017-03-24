@@ -25,7 +25,7 @@
 	    text-transform: capitalize;
 	    font-size: 1.15em;
     	margin-top: 1em;
-    	padding-right: 5em;
+    	padding-right: 9em;
     	color: rgba(255, 255, 255, 0.75);
     	b{
     		font-weight: 500;
@@ -65,7 +65,7 @@
     	left: -15px;
     }
 	.bucket{
-		padding-left: 1.5em;
+		padding-left: 0.5em;
     	font-size: 1.1em;
     	margin-bottom: 0.2em;
     	&__name{
@@ -230,6 +230,11 @@
 
 .fund-risk{
 	width: 95%;
+	img{
+		display: block;
+    	max-width: 100%;
+    	height: auto;
+	}
 }
 
 
@@ -237,6 +242,14 @@
 @media screen and (min-width: 992px) and (max-width: 1199px){
 	.fund-detail{
 		top: -15px;
+	}
+}
+
+
+@media screen and (min-width: 768px) and (max-width: 1199px){
+	.fund__type,.brand-data .bucket{
+		padding-right: 0;
+		padding-left: 0
 	}
 }
 
@@ -566,26 +579,13 @@
     							margin-bottom: 0;
     						}
     					}
-    					.section{
-    						display: flex;
-    						// align-items: center;
-    						font-size: 1.05em;
-    						padding-bottom: 0.3em;
-    						.title{
-    							// display: none;
-    							margin-bottom: 0;
-    							padding-right: 0.5em;
-    						}
-    						b{
-    							font-weight: 500;
-    						}
-    					}
     				}
     				.brand-box{
     					position: absolute;
     					right: -15px;
     					top: -15px;
     				}
+    				// mimicing link as text
     				a{
     					&:not(.fund-link){
     						color: #000;
@@ -596,11 +596,31 @@
     					
     				}
     			}
+		    	.section{
+					display: flex;
+					// align-items: center;
+					font-size: 1.05em;
+					padding-bottom: 0.3em;
+					.title{
+						// display: none;
+						margin-bottom: 0;
+						padding-right: 0.5em;
+					}
+					a{
+						color: #000;
+						&:hover{
+							color: @link-color;
+						}
+    				}
+					b{
+						font-weight: 500;
+					}
+				}
     			.fund-desc{
     				margin-top: 1em;
     				font-size: 1.05em;
     				// display: flex;
-    				p{
+    				.read-more{
     					margin-bottom: 0;
     					// white-space: nowrap;
     					overflow: hidden;
@@ -691,14 +711,14 @@
     					.bucket-data{
     						margin-top: 2.5em;
     					}
-    					.section{
-    						font-size: 0.95em;
-    						.title{
-    							display: block;
-    						}
-    					}
     				}
     			}
+				.section{
+					font-size: 0.95em;
+					.title{
+						display: block;
+					}
+				}
     			.fund-desc{
     				font-size: 0.95em;
     				.read-more{
@@ -741,6 +761,11 @@
 	display: none;
 }
 
+// Added overflow hidden to body when filter active
+
+.blocked{
+	overflow: hidden;
+}
 
 @media screen and (min-width: 992px) and (max-width: 1024px){
 	.list-data{

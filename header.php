@@ -64,7 +64,8 @@
                 <a href="#" class="dropdown-toggle option-profile" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                     <img src="<?php echo wsl_get_user_custom_avatar(get_current_user_id()) ?>" class="img-responsive option-pic" width="40"> <span class="caret"></span>
                 </a>
-                <ul class="dropdown-menu">
+                <ul class="dropdown-menu right">
+                    <li class="username"></li>
                     <li><a href="#">My Gifts</a></li>
                     <li><a href="#">My Account</a></li>
                     <li role="separator" class="divider"></li>
