@@ -54,27 +54,30 @@
         ?>
 
 
-        <ul class="nav navbar-nav navbar-right">
-            <?php if(!is_user_logged_in()) : ?>
-            <li><button class="btn btn-default invest-btn" type="button">Gift an investment</button></li>
-            <li><a href="#" class="login" data-toggle="modal" data-target="#login">Login</a></li>
-            <?php else : ?>
+            <ul class="nav navbar-nav navbar-right">
+                <?php if(!is_user_logged_in()) : ?>
+                <li><button href="/funds" class="btn btn-default invest-btn" type="button">Gift an investment</button></li>
+                <li><a href="/login"><i class="fa fa-gift" aria-hidden="true"></i> Login</a></li>
+                <?php else : ?>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle option-profile" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <img src="<?php echo wsl_get_user_custom_avatar(get_current_user_id()) ?>" class="img-responsive option-pic" width="40"> <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu right">
+                        <li class="username">
+                            <?php echo wp_get_current_user()->display_name; ?>
+                        </li>
+                        <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i> My Account</a></li>
+                        <li><a href="#"><i class="fa fa-gift" aria-hidden="true"></i> My Gifts</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="<?php echo wp_logout_url() ?>"><i class="fa fa-power-off" aria-hidden="true"></i>
+                                Log Out</a></li>
+                    </ul>
+                </li>
+                <?php endif; ?>
+            </ul>
 
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle option-profile" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                    <img src="<?php echo wsl_get_user_custom_avatar(get_current_user_id()) ?>" class="img-responsive option-pic" width="40"> <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu right">
-                    <li class="username"></li>
-                    <li><a href="#">My Gifts</a></li>
-                    <li><a href="#">My Account</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li><a href="<?php echo wp_logout_url() ?>">Log Out</a></li>
-                </ul>
-            </li>
-            <?php endif; ?>
 
-        </ul>
         </div>
         <?php
 /*        wp_nav_menu( array(

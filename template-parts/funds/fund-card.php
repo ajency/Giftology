@@ -1,7 +1,16 @@
 <?php
-$bucket_2 = $bucket_3 = [];
+$bucket_1 = $bucket_2 = $bucket_3 = [];
+$bucket_1_terms = get_the_terms( get_the_ID(), 'bucket-1' );
 $bucket_2_terms = get_the_terms( get_the_ID(), 'bucket-2' );
 $bucket_3_terms = get_the_terms( get_the_ID(), 'bucket-3' );
+if ( $bucket_1_terms && ! is_wp_error( $bucket_1_terms ) ) {
+
+    $bucket_1 = array();
+    foreach ( $bucket_1_terms as $term ) {
+        $bucket_1[] = $term->name;
+    }
+}
+
 if ( $bucket_2_terms && ! is_wp_error( $bucket_2_terms ) ) {
 
     $bucket_2 = array();
@@ -18,6 +27,7 @@ if ( $bucket_3_terms && ! is_wp_error( $bucket_3_terms ) ) {
 }
 $bucket_array = array_merge($bucket_2,$bucket_3);
 $bucket_line = join( ", ", $bucket_array );
+$bucket_1s = join( ", ", $bucket_1 );
 $amc = get_the_terms( get_the_ID(), 'amc')[0];
 $fund_url = get_post_meta(get_the_ID(), '_fund_url')[0];
 ?>
@@ -43,7 +53,7 @@ $fund_url = get_post_meta(get_the_ID(), '_fund_url')[0];
         </div>
         <div class="bucket-data">
             <div class="section">
-                <p class="title">Age group</p><a href="#"><b><?php echo get_the_terms( get_the_ID(), 'bucket-1')[0]->name; ?></b></a>
+                <p class="title">Age group</p><a href="#"><b><?php echo $bucket_1s; ?></b></a>
             </div>
             <div class="section">
                 <p class="title">Categories</p><a href="#"><b><?php echo $bucket_line; ?></b></a>
