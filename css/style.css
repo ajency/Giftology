@@ -1155,7 +1155,7 @@ textarea:focus {
   text-transform: capitalize;
   font-size: 1.15em;
   margin-top: 1em;
-  padding-right: 5em;
+  padding-right: 9em;
   color: rgba(255, 255, 255, 0.75);
 }
 .fund__type b {
@@ -1200,7 +1200,7 @@ textarea:focus {
   left: -15px;
 }
 .brand-data .bucket {
-  padding-left: 1.5em;
+  padding-left: 0.5em;
   font-size: 1.1em;
   margin-bottom: 0.2em;
 }
