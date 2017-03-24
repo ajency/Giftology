@@ -278,9 +278,9 @@
          });
 
 
-        $("#fund-search").on('keyup', function (e) {
+        $(".input-search").on('keyup', function (e) {
             if (e.keyCode == 13) {
-                window.location = giftology_api.homeUrl + "/funds/?search=" +  $( '#fund-search' ).val();
+                window.location = "?search=" +  $( '.input-search' ).val();
             }
         });
 
@@ -298,6 +298,20 @@
                 $('.filter').toggleClass('active');
             });
         }
+
+        jQuery(".input-search").on('focus', function () {
+            console.log('test');
+            jQuery('.search').addClass('active');
+        });
+
+        if (jQuery('.input-search').val().length != 0)
+            jQuery('.search').addClass('active');
+
+        jQuery(".input-search").on('blur', function () {
+            if (jQuery('.input-search').val().length == 0)
+                jQuery('.search').removeClass('active');
+        });
+
 
     });
 

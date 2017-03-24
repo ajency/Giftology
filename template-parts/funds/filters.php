@@ -3,38 +3,33 @@
 
 <!--    <li><label><input type="checkbox" class="checkbox-inline"> <p class="label-name">Show All</p></label></li>-->
 
-    <?php foreach (get_terms($filter) as $term) :  ?>
+    <?php foreach (get_terms($filters[$filter]) as $term) :  ?>
     <li><label>
             <?php
-            $check = [];
-            $current_url="http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-            $parsed = parse_url($current_url);
-            $query = $parsed['query'];
-            parse_str($query, $params);
-            $check = $params[$filter];
-            if($check) {
-                $remove_parames = $params;
-                $key = array_search ($term->slug, $check);
-                unset($remove_parames[$filter][$key]);
+            $params1 = $filter_params;
+            if($params1[$filter]) {
+                $remove_params = $filter_params;
+                $key = array_search ($term->slug, $filter_params[$filter]);
+                unset($remove_params[$filter][$key]);
             }
-            $remove_url_params = http_build_query($remove_parames);
-            $path = '/funds/';
             $remove_url = $parsed['scheme'].'://'.$parsed['host'].$path;
-            if($remove_url_params) {
+            if($remove_params) {
+                $remove_url_params = http_build_query($remove_params);
                 $remove_url = $parsed['scheme'].'://'.$parsed['host'].$path.'?'.$remove_url_params;
             }
-            $params[$filter][] = $term->slug;
-            $add_url_params = http_build_query($params);
+            $params1[$filter][] = $term->slug;
+            $add_url_params = http_build_query($params1);
             $add_url = $parsed['scheme'].'://'.$parsed['host'].$path;
             if($add_url_params) {
                 $add_url = $parsed['scheme'].'://'.$parsed['host'].$path.'?'.$add_url_params;
             }
 
             ?>
-            <?php if(is_array($_GET[$filter]) && in_array($term->slug,$_GET[$filter])) {; ?>
+            <?php if(is_array($filter_params_input[$filter]) && in_array($term->slug,$filter_params_input[$filter])) {; ?>
+
             <a href="<?php echo $remove_url; ?>" class="label-name">
-                <input disabled type="checkbox" class="checkbox-inline" checked>
-                <?php print $term->name; ?>
+                <input disabled type="checkbox" class="checkbox-inline" checked="checked">
+                <b><?php print $term->name; ?></b>
             </a>
 
             <?php } else { ?>
