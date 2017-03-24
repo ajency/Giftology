@@ -806,6 +806,9 @@ textarea:focus {
   font-size: 1.1em;
   text-decoration: underline;
 }
+.invit-emails .col:first-child {
+  padding-top: 0;
+}
 .invit-emails.more-email {
   height: 520px;
   overflow: auto;
