@@ -37,6 +37,39 @@
                             }*/
 
                             $amc_url = get_the_post_thumbnail();
+
+                            $bucket_2_terms = get_the_terms( get_the_ID(), 'bucket-2' );
+                            $bucket_3_terms = get_the_terms( get_the_ID(), 'bucket-3' );
+                            $bucket_1_terms = get_the_terms( get_the_ID(), 'bucket-1' );
+
+                            if ( $bucket_2_terms && ! is_wp_error( $bucket_2_terms ) ) {
+
+                                $bucket_2 = array();
+                                foreach ( $bucket_2_terms as $term ) {
+                                    $bucket_2[] = $term->name;
+                                }
+
+                                $bucket_2s = join( ", ", $bucket_2 );
+                            }
+                            if ( $bucket_3_terms && ! is_wp_error( $bucket_3_terms ) ) {
+
+                                $bucket_3 = array();
+                                foreach ( $bucket_3_terms as $term ) {
+                                    $bucket_3[] = $term->name;
+                                }
+
+                                $bucket_3s = join( ", ", $bucket_3 );
+                            }
+                            if ( $bucket_1_terms && ! is_wp_error( $bucket_1_terms ) ) {
+
+                                $bucket_1 = array();
+                                foreach ( $bucket_1_terms as $term ) {
+                                    $bucket_1[] = $term->name;
+                                }
+
+                                $bucket_1s = join( ", ", $bucket_1 );
+
+                            }
                             ?>
                             <span>AMC - <?php echo $amc->name; ?></span>
                             <span><?php echo $buckets['_amfg_bucket_1_singular']; ?> <b><?php echo $bucket_1s; ?></b></span>
@@ -55,38 +88,6 @@
                             </div>
                             <div class="occ-data">
 
-                                <?php
-                                $bucket_2_terms = get_the_terms( get_the_ID(), 'bucket-2' );
-                                $bucket_3_terms = get_the_terms( get_the_ID(), 'bucket-3' );
-                                $bucket_1_terms = get_the_terms( get_the_ID(), 'bucket-1' );
-                                if ( $bucket_2_terms && ! is_wp_error( $bucket_2_terms ) ) {
-
-                                    $bucket_2 = array();
-                                    foreach ( $bucket_2_terms as $term ) {
-                                        $bucket_2[] = $term->name;
-                                    }
-
-                                    $bucket_2s = join( ", ", $bucket_2 );
-                                }
-                                if ( $bucket_3_terms && ! is_wp_error( $bucket_3_terms ) ) {
-
-                                    $bucket_3 = array();
-                                    foreach ( $bucket_3_terms as $term ) {
-                                        $bucket_3[] = $term->name;
-                                    }
-
-                                    $bucket_3s = join( ", ", $bucket_3 );
-                                }
-                                if ( $bucket_1_terms && ! is_wp_error( $bucket_1_terms ) ) {
-
-                                    $bucket_1 = array();
-                                    foreach ( $bucket_1_terms as $term ) {
-                                        $bucket_1[] = $term->name;
-                                    }
-
-                                    $bucket_1s = join( ", ", $bucket_1 );
-                                }
-                                ?>
                                 <p class="occ-title"><?php echo $buckets['_amfg_bucket_2_plural']; ?></p>
                                 <b class="occ-name"><?php echo $bucket_2s; ?></b>
                             </div>

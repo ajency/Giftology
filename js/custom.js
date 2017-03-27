@@ -298,18 +298,18 @@
             });
         }
 
-       /* jQuery(".input-search").on('focus', function () {
+        jQuery(".input-search").on('focus', function () {
             console.log('test');
             jQuery('.search').addClass('active');
         });
 
-        if (jQuery('.input-search').val().length !== 0)
+        if (jQuery('.input-search').val().length > 0)
             jQuery('.search').addClass('active');
 
         jQuery(".input-search").on('blur', function () {
             if (jQuery('.input-search').val().length === 0)
                 jQuery('.search').removeClass('active');
-        });*/
+        });
 
 
         $(document).on('click', '#create-gift-minimal', function () {
