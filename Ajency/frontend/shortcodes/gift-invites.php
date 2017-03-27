@@ -44,7 +44,7 @@ function gift_invites($atts) {
 	    		<div class="col">
 	    			<span class="profile"><img src="'.$pic.'" class="img-responsive" width="50"></span>
 					<span class="profile-info">
-					<span class="close-holder"><a href="" class="email">'.$recepient->email.'</a>';
+					<span class="close-holder"><a href="" class="email">'.$recepient->email.'</a><a href="#" class="resend" data-toggle="tooltip" data-placement="right" title="Resend email"><i class="fa fa-paper-plane" aria-hidden="true"></i></a>';
 
             if($recepient->inv_status == 0) {
                 $html .= '<span id="'.$recepient->inv_id.'" class="remove-email">&times;</span>';

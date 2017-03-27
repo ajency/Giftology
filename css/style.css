@@ -782,6 +782,9 @@ textarea:focus {
       -ms-flex-align: center;
           align-items: center;
 }
+.invit-emails .col .profile-info .resend {
+  padding-left: 0.5em;
+}
 .invit-emails .col .remove-email {
   padding-left: 0.5em;
   color: #c1c1c1;
