@@ -122,27 +122,37 @@ function giftology_api() {
             }
         )
     );
+
+    register_rest_route(
+        'giftology/v1',
+        '/gifts/(?P<gift_id>\d+)/resend-email/(?P<invite_id>\d+)',
+        array(
+            'methods' => 'POST',
+            'callback' => 'giftology_resend_invite_email',
+            'permission_callback' => function () {
+                return is_user_logged_in();
+            }
+        )
+    );
+}
+
+function giftology_resend_invite_email($gift_id, $invite_id) {
+
 }
 
 function giftology_create_gift_minimal($request_data) {
-
     $parameters = $request_data->get_params();
-
-    if(
-        !isset($parameters['fund_id']) ||
-        !isset($parameters['contribution_amount']) ||
-        !isset($parameters['receiver_name']) ||
-        !isset($parameters['receiver_occasion'])
-    ){
-        return json_response(false, "All fields are required",false);
+    if($parameters['fund_id'] && $parameters['contribution_amount'] && $parameters['receiver_name'] && $parameters['receiver_occasion'])
+    {
+        $min_investment = get_post_meta($parameters['fund_id'],'_fund_min_investment',true);
+        if($min_investment > $parameters['contribution_amount']) {
+            return json_response(false, "Please enter a contribution amount greater than the min fund investment needed",false);
+        }
+        $res = Ajency_MFG_Gift::create_gift_minimal(get_current_user_id(),$parameters['fund_id'],$parameters['receiver_name'],$parameters['receiver_occasion'],$parameters['contribution_amount']);
+        return json_response(true, "Gift Created Successfully",$res);
     }
 
-    $min_investment = get_post_meta($parameters['fund_id'],'_fund_min_investment',true);
-    if($min_investment > $parameters['contribution_amount']) {
-        return json_response(false, "Please enter a contribution amount greater than the min fund investment needed",false);
-    }
-    $res = Ajency_MFG_Gift::create_gift_minimal(get_current_user_id(),$parameters['fund_id'],$parameters['receiver_name'],$parameters['receiver_occasion'],$parameters['contribution_amount']);
-    return json_response(true, "Gift Created Successfully",$res);
+    return json_response(false, "All fields are required",false);
 }
 
 function giftology_delete_invite($request_data){
@@ -357,11 +367,13 @@ function giftology_send_invites($request_data){
 
                 $link = home_url().'/?accept-gift-invite='.$invite->invite_code;
                 $vars = [
-                    'recepient_name' => $gift->recepient_name,
-                    'inviter' => get_current_user()->first_name,
+                    'recepient_name' => $gift->receiver_name,
+                    'inviter' => wp_get_current_user()->display_name,
                     'occasion' => $gift->receiver_occasion,
                     'link' => $link,
                 ];
+
+/*                return [$vars,wp_get_current_user(),$gift];*/
 
                 $message = file_get_contents( get_template_directory() . '/Ajency/gift/invite-email-template.html');
                 foreach ($vars as $k => $v) {
