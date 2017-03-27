@@ -10,9 +10,13 @@
             <p class="sort">Sort by : </p>
             <?php
             $sort_by = [
+                'popular' => 'Featured',
                 'latest' => 'Newest',
-                'popular' => 'Popular',
-                'rating' => 'Rating',
+                'oldest' => 'Oldest',
+                'rating-up' => 'Highest Crisil Rank',
+                'rating-down' => 'Lowest Crisil Rank',
+                'highest-returns' => 'Highest Returns',
+                'lowest-returns' => 'Lowest Returns',
                 'last-updated' => 'Last Updated',
 
             ];

@@ -39,19 +39,19 @@ class Ajencypress_Post_Type_Metaboxes {
         /*        add_action('transition_post_status', array($this, 'post_status_transition'), 1, 3);*/
     }
 
- /*   public function check_if_post_something($post_id){
+    /*   public function check_if_post_something($post_id){
 
-        global $post;
-        // verify if this is an auto save routine.
-        // If it is our form has not been submitted, so we dont want to do anything
-        if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
-            return;
-        }
+           global $post;
+           // verify if this is an auto save routine.
+           // If it is our form has not been submitted, so we dont want to do anything
+           if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+               return;
+           }
 
-        if ($post->post_status == "publish") {
-            //do update stuff here.
-        }
-    }*/
+           if ($post->post_status == "publish") {
+               //do update stuff here.
+           }
+       }*/
 
     function remove_post_published_admin_message( $messages )
     {
@@ -117,14 +117,24 @@ class Ajencypress_Post_Type_Metaboxes {
             if($field['is_custom_field']) {
                 $existing_value = get_post_meta( $post->ID, $field['id'], true );
 
-/*                if(empty($value) && $existing_value) {
-                    delete_post_meta( $post->ID, $key );
-                } else*/
+                /*                if(empty($value) && $existing_value) {
+                                    delete_post_meta( $post->ID, $key );
+                                } else*/
+
+                if($field['type'] == 'checkbox') {
+                    if($value) {
+                        update_post_meta( $post->ID, $key, 1 );
+                    } else {
+                        update_post_meta( $post->ID, $key, 0 );
+                    }
+                } else {
                     if ($existing_value && !empty($value)) {
-                    update_post_meta( $post->ID, $key, $value );
-                } else if(!empty($value)) {
-                    add_post_meta( $post->ID, $key, $value );
+                        update_post_meta( $post->ID, $key, $value );
+                    } else if(!empty($value)) {
+                        add_post_meta( $post->ID, $key, $value );
+                    }
                 }
+
             }
         }
 

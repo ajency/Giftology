@@ -13,6 +13,7 @@
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri() ?>/css/style.css">
 
+    <link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/favicon.ico" />
     <!--[if lt IE 9]>
     <script src="<?php echo esc_url( get_template_directory_uri() ); ?>/js/html5.js"></script>
     <![endif]-->
@@ -52,7 +53,6 @@
                 'walker'            => new WP_Bootstrap_Navwalker())
         );
         ?>
-
 
             <ul class="nav navbar-nav navbar-right">
                 <?php if(!is_user_logged_in()) : ?>

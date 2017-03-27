@@ -28,13 +28,13 @@
             <?php if(is_array($filter_params_input[$filter]) && in_array($term->slug,$filter_params_input[$filter])) {; ?>
 
             <a href="<?php echo $remove_url; ?>" class="label-name">
-                <input disabled type="checkbox" class="checkbox-inline" checked="checked">
+                <i class="fa fa-check-circle-o checkbox-inline" aria-hidden="true"></i>
                 <b><?php print $term->name; ?></b>
             </a>
 
             <?php } else { ?>
                 <a href="<?php echo $add_url; ?>" class="label-name">
-                    <input disabled type="checkbox" class="checkbox-inline">
+                    <i class="fa fa-circle-thin checkbox-inline" aria-hidden="true"></i>
                     <?php print $term->name; ?>
                 </a>
             <?php } ?>

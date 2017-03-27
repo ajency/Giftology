@@ -7,7 +7,7 @@ if ( $bucket_1_terms && ! is_wp_error( $bucket_1_terms ) ) {
 
     $bucket_1 = array();
     foreach ( $bucket_1_terms as $term ) {
-        $bucket_1[] = $term->name;
+        $bucket_1[] = '<a href='.get_term_link($term).'>'.$term->name.'</a>';
     }
 }
 
@@ -15,14 +15,14 @@ if ( $bucket_2_terms && ! is_wp_error( $bucket_2_terms ) ) {
 
     $bucket_2 = array();
     foreach ( $bucket_2_terms as $term ) {
-        $bucket_2[] = $term->name;
+        $bucket_2[] = '<a href='.get_term_link($term).'>'.$term->name.'</a>';
     }
 }
 if ( $bucket_3_terms && ! is_wp_error( $bucket_3_terms ) ) {
 
     $bucket_3 = array();
     foreach ( $bucket_3_terms as $term ) {
-        $bucket_3[] = $term->name;
+        $bucket_3[] = '<a href='.get_term_link($term).'>'.$term->name.'</a>';
     }
 }
 $bucket_array = array_merge($bucket_2,$bucket_3);
