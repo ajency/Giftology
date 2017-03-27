@@ -401,5 +401,20 @@ function add_custom_query_var( $vars ){
 }
 add_filter( 'query_vars', 'add_custom_query_var' );
 
+
+function funds_search_title_filter($where){
+    global $wpdb;
+
+    if($search_term = $_GET['search']){
+        $search_term = $wpdb->esc_like($search_term);
+        $search_term = ' \'%' . $search_term . '%\'';
+        $where .= ' AND ' . $wpdb->posts . '.post_title LIKE '.$search_term;
+    }
+
+    return $where;
+}
+add_filter( 'posts_search', 'funds_search_title_filter' );
+
+
 $run = new Ajency_MFG('mfgiftology','1.0.0');
 $run->load();

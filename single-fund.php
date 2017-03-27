@@ -138,7 +138,11 @@
                                 <p class="data min">Minimum investment <b>Rs. <?php echo get_post_meta(get_the_ID(),'_fund_min_investment')[0]; ?></b></p>
                                 <p class="data mult">in multiples of <b>Rs. <?php echo get_post_meta(get_the_ID(),'_fund_min_increment')[0]; ?></b> thereafter</p>
                             </div>
+                            <?php if(is_user_logged_in()) : ?>
                             <button type="button" class="btn btn-lg site-btn-2 buy-fund" data-toggle="modal" data-target="#fund-modal">Buy/Gift this fund</button>
+                            <?php else: ?>
+                            <button type="button" class="btn btn-lg site-btn-2 buy-fund" data-toggle="modal" data-target="#login">Buy/Gift this fund</button>
+                            <?php endif; ?>
                             <p class="why-buy">Find out <a href="#" class="underline">why gifting mutual fund is a good idea.</a></p>
                         </div>
                     </div>
