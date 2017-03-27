@@ -186,7 +186,7 @@
 -->
 
                                 <?php if($perms['current_user_can_view_invites'] && $perms['recepients_count'] > 0) : ?>
-                                    <?php echo do_shortcode( '[gift_invites view-all-link=# gift_id="'.$gift_id.'" status="1"]' ); ?>
+                                    <?php echo do_shortcode( '[gift_invites show-resend=1 view-all-link=# gift_id="'.$gift_id.'" status="1"]' ); ?>
                                 <?php  endif; ?>
                             </div>
                             <div role="tabpanel" class="tab-pane" id="contributors">contributors</div>

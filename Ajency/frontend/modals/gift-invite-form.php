@@ -1,6 +1,6 @@
 <form id="invite">
     <div class="form-group email-address">
-        <label for="email" class="control-label">Enter the email addresses seperated by comma</label>
+        <label for="email" class="control-label">Type the email addresses and hit Enter</label>
         <p class="label-msg">You can invite any number of people</p>
         <input name="email" class="form-control" id="email-tags" placeholder="Email address" required>
     </div>

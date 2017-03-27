@@ -9,6 +9,7 @@ function gift_invites($atts) {
     $inv_group = isset($atts['inv_group']) ? $atts['inv_group'] : false;
     $view_all_link = isset($atts['view-all-link']) ? $atts['view-all-link'] : false;
     $filter_by_user = isset($atts['filter-by-user']) ? $atts['filter-by-user'] : false;
+    $show_resend = isset($atts['show-resend']) ? $atts['show-resend'] : false;
 
 /*    $status = explode(',',$atts['status']);*/
     $show_op_icon = isset($atts['show_op_icon']) ? $atts['show_op_icon'] : 0;
@@ -43,21 +44,35 @@ function gift_invites($atts) {
             $html .= '
 	    		<div class="col">
 	    			<span class="profile"><img src="'.$pic.'" class="img-responsive" width="50"></span>
-					<span class="profile-info">
-					<span class="close-holder"><a href="" class="email">'.$recepient->email.'</a><a href="#" class="resend" data-toggle="tooltip" data-placement="right" title="Resend email"><i class="fa fa-paper-plane" aria-hidden="true"></i></a>';
+					<span class="profile-info">';
+
+            $html .= '<h5 class="name"><span>'.$name.'</span>';
+
+            if($recepient->inv_status == 1) {
+                $html .= '<span class="label"><i class="fa fa-check" aria-hidden="true"></i> Invited</span>';
+            }
+
+            $html .= '</h5>';
+
+
+            $html .= '<span class="close-holder">
+					<a href="" class="email">'.$recepient->email.'</a>';
+
+            //TODO only already invited
+            if($show_resend) {
+                $html .= '<a href="#" class="resend" data-toggle="tooltip" data-placement="right" title="Resend email">';
+            }
+
+            $html .= '<i class="fa fa-paper-plane" aria-hidden="true"></i>
+					</a>';
 
             if($recepient->inv_status == 0) {
                 $html .= '<span id="'.$recepient->inv_id.'" class="remove-email">&times;</span>';
             }
 
             $html .= '</span>';
-            $html .= '<h5 class="name"><span>'.$name.'</span>';
 
-            if($recepient->inv_status == 1) {
-                $html .= '<span class="label"><i class="fa fa-check" aria-hidden="true"></i> Invited</span>';
-            }
-					
-            $html .= '</h5></span></div>';
+            $html .= '</span></div>';
 
         }
 /*        if($view_all_link && count($recepients) > 5) {*/
