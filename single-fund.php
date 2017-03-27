@@ -46,7 +46,7 @@
 
                                 $bucket_2 = array();
                                 foreach ( $bucket_2_terms as $term ) {
-                                    $bucket_2[] = '<a href='.get_term_link($term).'>'.$term->name.'</a>';
+                                    $bucket_2[] = '<b><a href='.get_term_link($term).'>'.$term->name.'</a></b>';
                                 }
 
                                 $bucket_2s = join( ", ", $bucket_2 );
@@ -55,7 +55,7 @@
 
                                 $bucket_3 = array();
                                 foreach ( $bucket_3_terms as $term ) {
-                                    $bucket_3[] = '<a href='.get_term_link($term).'>'.$term->name.'</a>';
+                                    $bucket_3[] = '<b><a href='.get_term_link($term).'>'.$term->name.'</a></b>';
                                 }
 
                                 $bucket_3s = join( ", ", $bucket_3 );
@@ -64,7 +64,7 @@
 
                                 $bucket_1 = array();
                                 foreach ( $bucket_1_terms as $term ) {
-                                    $bucket_1[] = '<a href='.get_term_link($term).'>'.$term->name.'</a>';
+                                    $bucket_1[] = '<b><a href='.get_term_link($term).'>'.$term->name.'</a></b>';
                                 }
 
                                 $bucket_1s = join( ", ", $bucket_1 );
@@ -72,7 +72,7 @@
                             }
                             ?>
                             <span>AMC - <?php echo $amc->name; ?></span>
-                            <span><?php echo $buckets['_amfg_bucket_1_singular']; ?> <b><?php echo $bucket_1s; ?></b></span>
+                            <span><?php echo $buckets['_amfg_bucket_1_singular']; ?> <p><?php echo $bucket_1s; ?></p></span>
                         </div>
                     </div>
                 </div>
@@ -109,7 +109,7 @@
                             <div class="occ-data">
 
                                 <p class="occ-title"><?php echo $buckets['_amfg_bucket_2_plural']; ?></p>
-                                <b class="occ-name"><?php echo $bucket_2s; ?></b>
+                                <p class="occ-name"><?php echo $bucket_2s; ?></p>
                             </div>
                         </div>
                         <div class="c-obj fund-card__body">
@@ -195,8 +195,8 @@
                             <div class="occasion">
                                 <div class="occasion__type">
 
-                                    <p class="first"><?php echo $buckets['_amfg_bucket_2_plural']; ?> <b><?php echo $bucket_2s; ?></b></p>
-                                    <p class="bucket"><?php echo $buckets['_amfg_bucket_3_plural']; ?> <b><?php echo $bucket_3s; ?></b></p>
+                                    <p class="first"><?php echo $buckets['_amfg_bucket_2_plural']; ?> <p><?php echo $bucket_2s; ?></p></p>
+                                    <p class="bucket"><?php echo $buckets['_amfg_bucket_3_plural']; ?> <p><?php echo $bucket_3s; ?></p></p>
                                 </div>
                                 <div class="percent">
                                     <img src="<?php echo get_template_directory_uri(); ?>/img/returns.png" class="img-reponsive" width="45">
