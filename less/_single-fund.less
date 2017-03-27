@@ -230,15 +230,15 @@
 			margin-bottom: 0;
 			.fa{
 				// color: @warning-color;
-				color: #717171;
-			    height: 20px;
-			    width: 20px;
+			    color: #717171;
+			    height: 18px;
+			    width: 18px;
 			    background-color: #fff;
 			    border-radius: 50%;
 			    border: 1px solid #717171;
-			    line-height: 20px;
+			    line-height: 18px;
 			    text-align: center;
-			    font-size: 0.9em;
+			    font-size: 0.85em;
 			}
 		}
 	}
@@ -665,6 +665,7 @@ label{
 						// display: none;
 						margin-bottom: 0;
 						padding-right: 0.5em;
+						min-width: 80px;
 					}
 					a{
 						color: #000;
@@ -968,6 +969,21 @@ label{
 	}
 }
 
+
+@media screen and (min-width: 992px) and (max-width: 1320px){
+	.list-data{
+		.c-style{
+			.card-holder{
+				width: 100%;
+				.cards{
+					flex: 1 0 calc(~'50% - 2em');
+	    			max-width: calc(~'50% - 2em');
+	    			width: calc(~'500% - 2em');
+				}
+			}
+		}		
+	}
+}
 
 @media screen and (min-width: 550px) and (max-width: 991px) {
 	.list-data{
