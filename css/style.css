@@ -1443,12 +1443,10 @@ textarea:focus {
     top: -15px;
   }
   .fund-detail .col-sm-4 {
-    left: 58.33%;
-    width: 41.66%;
+    width: 44.66%;
   }
   .fund-detail .col-sm-8 {
-    right: 41.666%;
-    width: 58.33%;
+    width: 55.33%;
   }
 }
 @media screen and (max-width: 767px) {
@@ -1497,12 +1495,6 @@ textarea:focus {
   }
   .fund-risk img {
     margin: 0 auto;
-  }
-  .brand-data {
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-        -ms-flex-align: center;
-            align-items: center;
   }
   .brand-data .brand-box {
     left: 0;
@@ -2819,6 +2811,25 @@ textarea:focus {
   height: 0;
   border-width: 9px;
   border-color: #ee275f #ee275f transparent #ee275f;
+}
+label {
+  position: relative;
+}
+label:before {
+  content: "\f1db";
+  font-family: 'FontAwesome';
+  background-color: #fff;
+  padding: 0;
+  position: absolute;
+  top: -4px;
+  left: -1px;
+  color: #ccc;
+  font-size: 18px;
+  cursor: pointer;
+  z-index: 2;
+}
+label.ff-check:before {
+  content: "\f058";
 }
 input[type=radio],
 input[type=checkbox] {

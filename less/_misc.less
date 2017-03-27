@@ -214,6 +214,32 @@
 // --------------------------- 
 
 
+label{
+    position: relative;
+     &:before {
+        content: "\f1db";
+        font-family: 'FontAwesome';
+        background-color: #fff;
+        padding: 0;
+        position: absolute;
+        top: -4px;
+        left: -1px;
+        color: #ccc;
+        font-size: 18px;
+        cursor: pointer;
+        z-index: 2;
+    }
+
+    &.ff-check{
+        &:before {
+            content: "\f058";
+        }
+    }
+  
+}
+
+
+
 input[type=radio],input[type=checkbox] {
     margin-right: 8px;
     position: relative;

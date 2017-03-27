@@ -80,7 +80,27 @@
 
             <div class="row fund-detail">
 
-                <div class="col-sm-4 col-sm-push-8">
+
+                <div class="col-sm-8">
+                    <div class="brand-data">
+                        <div class="brand-box">
+                            <span class="medal"></span>
+                            <img src="<?php echo get_the_post_thumbnail_url(); ?>" class="img-responsive center-block" width="50">
+                        </div>
+                        <div class="bucket">
+                            <p class="bucket__name"><?php echo $buckets['_amfg_bucket_3_singular']; ?></p>
+                            <b class="bucket__value"><?php echo $bucket_3s; ?></b>
+                        </div>
+                    </div>
+
+                    <div class="fund-stats">
+                        <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+                            <?php the_content(); ?>
+                        <?php endwhile; endif; ?>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
                     <div class="fund-card">
                         <div class="c-obj fund-card__header">
                             <div class="occ-img">
@@ -130,24 +150,7 @@
 
                     </div>
                 </div>
-                <div class="col-sm-8 col-sm-pull-4">
-                    <div class="brand-data">
-                        <div class="brand-box">
-                            <span class="medal"></span>
-                            <img src="<?php echo get_the_post_thumbnail_url(); ?>" class="img-responsive center-block" width="50">
-                        </div>
-                        <div class="bucket">
-                            <p class="bucket__name"><?php echo $buckets['_amfg_bucket_3_singular']; ?></p>
-                            <b class="bucket__value"><?php echo $bucket_3s; ?></b>
-                        </div>
-                    </div>
 
-                    <div class="fund-stats">
-                        <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-                            <?php the_content(); ?>
-                        <?php endwhile; endif; ?>
-                    </div>
-                </div>
                 <div class="white-overlay"></div>
             </div>
 
