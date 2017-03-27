@@ -30,11 +30,34 @@
         $query['orderby'] = 'created';
         $query['order'] = 'DESC';
 
-    } else if ($content_params_input['sort'] == 'rating'){
+    } else if($content_params_input['sort'] == 'oldest') {
+
+        $query['orderby'] = 'created';
+        $query['order'] = 'ASC';
+
+    } else if ($content_params_input['sort'] == 'rating-up'){
 
         $query['meta_key'] = '_fund_crisil_rating';
         $query['orderby'] = 'meta_value_num';
         $query['order'] = 'DESC';
+
+    } else if ($content_params_input['sort'] == 'rating-down'){
+
+        $query['meta_key'] = '_fund_crisil_rating';
+        $query['orderby'] = 'meta_value_num';
+        $query['order'] = 'ASC';
+
+    } else if ($content_params_input['sort'] == 'highest-returns'){
+
+        $query['meta_key'] = '_fund_returns';
+        $query['orderby'] = 'meta_value_num';
+        $query['order'] = 'ASC';
+
+    } else if ($content_params_input['sort'] == 'lowest-returns'){
+
+        $query['meta_key'] = '_fund_returns';
+        $query['orderby'] = 'meta_value_num';
+        $query['order'] = 'ASC';
 
     } else if ($content_params_input['sort'] == 'popular'){
 

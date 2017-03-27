@@ -60,11 +60,9 @@ function gift_invites($atts) {
 
             //TODO only already invited
             if($show_resend) {
-                $html .= '<a href="#" class="resend" data-toggle="tooltip" data-placement="right" title="Resend email">';
-            }
-
-            $html .= '<i class="fa fa-paper-plane" aria-hidden="true"></i>
+                $html .= '<a href="#" class="resend" data-toggle="tooltip" data-placement="right" title="Resend email"><i class="fa fa-paper-plane" aria-hidden="true"></i>
 					</a>';
+            }
 
             if($recepient->inv_status == 0) {
                 $html .= '<span id="'.$recepient->inv_id.'" class="remove-email">&times;</span>';
