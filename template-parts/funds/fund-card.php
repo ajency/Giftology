@@ -35,7 +35,7 @@ $fund_url = get_post_meta(get_the_ID(), '_fund_url')[0];
     <div class="gray header">
         <div class="flex-col">
             <div class="funds-detail">
-                <a href="<?php echo get_the_permalink(); ?>"><h2 class="fund-name"><?php echo get_the_title(); ?></h2></a>
+                <a href="<?php echo get_the_permalink(); ?>"><h2 class="fund-name"><?php echo  strlen(get_the_title()) > 50 ? substr(get_the_title(),0,50)."..." : get_the_title();  ?></h2></a>
                 <div class="fund-subname">
                     <p class="title"><?php echo $amc->name; ?></p>
                     <a href="<?php echo $fund_url; ?>" class="fund-link underline"><?php echo $fund_url; ?></a>
@@ -53,13 +53,13 @@ $fund_url = get_post_meta(get_the_ID(), '_fund_url')[0];
         </div>
         <div class="bucket-data">
             <div class="section">
-                <p class="title"><?php echo $buckets['_amfg_bucket_1_singular']; ?></p><?php echo $bucket_1s; ?></a>
+                <p class="title"><?php echo $buckets['_amfg_bucket_1_singular']; ?></p><p><?php echo $bucket_1s; ?></p></a>
             </div>
             <div class="section">
-                <p class="title"><?php echo $buckets['_amfg_bucket_2_singular']; ?></p><?php echo $bucket_2s; ?></a>
+                <p class="title"><?php echo $buckets['_amfg_bucket_2_singular']; ?></p><p><?php echo $bucket_2s; ?></p></a>
             </div>
             <div class="section">
-                <p class="title"><?php echo $buckets['_amfg_bucket_3_singular']; ?></p><?php echo $bucket_3s; ?></a>
+                <p class="title"><?php echo $buckets['_amfg_bucket_3_singular']; ?></p><p><?php echo $bucket_3s; ?></p></a>
             </div>
         </div>
         <div class="fund-desc">
