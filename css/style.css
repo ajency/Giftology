@@ -289,18 +289,23 @@ textarea:focus {
   color: #fff;
   outline: 0;
 }
-.site-btn-2 {
+.site-btn-2,
+.site-btn-2:focus {
   color: #fff;
   background-color: #9c1bef;
   border-color: #9c1bef;
   -webkit-transition: all 0.5s ease;
           transition: all 0.5s ease;
+  outline: 0;
 }
 .site-btn-2:hover,
+.site-btn-2:focus:hover,
 .site-btn-2:active,
-.site-btn-2:focus,
+.site-btn-2:focus:active,
 .site-btn-2:active:focus,
-.site-btn-2[disabled]:hover {
+.site-btn-2:focus:active:focus,
+.site-btn-2[disabled]:hover,
+.site-btn-2:focus[disabled]:hover {
   color: #9c1bef;
   background-color: #fff;
   border-color: #9c1bef;

@@ -46,12 +46,13 @@ input,.form-control,textarea{
 	}
 }
 
-.site-btn-2{
+.site-btn-2,.site-btn-2:focus{
 	color: #fff;
 	background-color: @link-color;
 	border-color: @link-color;
 	transition: all 0.5s ease;
-	&:hover,&:active,&:focus,&:active:focus,&[disabled]:hover{
+	outline: 0;
+	&:hover,&:active,&:active:focus,&[disabled]:hover{
 		color: @link-color;
 		background-color: #fff;
 		border-color: @link-color;
