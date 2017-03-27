@@ -9,6 +9,7 @@
         <div class="popular">
             <p class="sort">Sort by : </p>
             <?php
+            $buckets = (get_option('_amfg_bucket_settings'));
             $sort_by = [
                 'popular' => 'Featured',
                 'latest' => 'Newest',

@@ -10,7 +10,6 @@
         $filter_title = 'Filter by AMC';
         $filter = 'a';
         $filter_params = $filter_params_input;
-        $buckets = (get_option('_amfg_bucket_settings'));
         include locate_template('template-parts/funds/filters.php', false, false);
         ?>
     </div>

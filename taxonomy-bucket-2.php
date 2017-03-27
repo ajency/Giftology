@@ -6,15 +6,14 @@
         <div class="row breadcrums">
             <div class="col-sm-12">
                 <ul class="steps">
-                    <li><a href="">Home</a></li>
+                    <li><a href="/">Home</a></li>
                     <li>/</li>
-                    <li><a href="">All Funds</a></li>
+                    <li><a href="/funds/">All Funds</a></li>
                     <li>/</li>
                     <li><a href=""><?php echo get_queried_object()->name; ?></a></li>
                 </ul>
             </div>
         </div>
-
         <!-- Fund heading -->
         <?php include locate_template('template-parts/funds/funds-heading.php', false, false); ?>
 
