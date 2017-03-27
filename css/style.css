@@ -1804,6 +1804,12 @@ label .fa.checkbox-inline.fa-check-circle {
 .c-style .card-holder .cards .header .flex-col .funds-detail .fund-subname .title {
   margin-bottom: 0;
 }
+.c-style .card-holder .cards .header .flex-col .funds-detail .fund-subname .fund-link {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: block;
+}
 .c-style .card-holder .cards .header .flex-col .brand-box {
   position: absolute;
   right: -15px;
@@ -1826,7 +1832,6 @@ label .fa.checkbox-inline.fa-check-circle {
 .c-style .card-holder .cards .header .section .title {
   margin-bottom: 0;
   padding-right: 0.5em;
-  min-width: 80px;
 }
 .c-style .card-holder .cards .header .section a {
   color: #000;
