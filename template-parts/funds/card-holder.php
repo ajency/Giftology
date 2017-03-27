@@ -51,7 +51,7 @@
 
         $query['meta_key'] = '_fund_returns';
         $query['orderby'] = 'meta_value_num';
-        $query['order'] = 'DESC';
+        $query['order'] = 'ASC';
 
     } else if ($content_params_input['sort'] == 'lowest-returns'){
 
@@ -71,11 +71,13 @@
         $query['order'] = 'DESC';
     }
 
+
     $loop = new WP_Query( $query );
 
     ?>
     <?php while ( $loop->have_posts() ) : $loop->the_post(); // standard WordPress loop. ?>
-        <?php get_template_part( 'template-parts/funds/fund', 'card' ); ?>
+
+        <?php        include locate_template('template-parts/funds/fund-card.php', false, false); ?>
         <!-- 2nd -->
 
     <?php endwhile; // end of the loop. ?>

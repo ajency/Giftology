@@ -7,7 +7,7 @@ if ( $bucket_1_terms && ! is_wp_error( $bucket_1_terms ) ) {
 
     $bucket_1 = array();
     foreach ( $bucket_1_terms as $term ) {
-        $bucket_1[] = '<a href='.get_term_link($term).'>'.$term->name.'</a>';
+        $bucket_1[] = '<b><a href='.get_term_link($term).'>'.$term->name.'</a></b>';
     }
 }
 
@@ -15,19 +15,19 @@ if ( $bucket_2_terms && ! is_wp_error( $bucket_2_terms ) ) {
 
     $bucket_2 = array();
     foreach ( $bucket_2_terms as $term ) {
-        $bucket_2[] = '<a href='.get_term_link($term).'>'.$term->name.'</a>';
+        $bucket_2[] = '<b><a href='.get_term_link($term).'>'.$term->name.'</a></b>';
     }
 }
 if ( $bucket_3_terms && ! is_wp_error( $bucket_3_terms ) ) {
 
     $bucket_3 = array();
     foreach ( $bucket_3_terms as $term ) {
-        $bucket_3[] = '<a href='.get_term_link($term).'>'.$term->name.'</a>';
+        $bucket_3[] = '<b><a href='.get_term_link($term).'>'.$term->name.'</a></b>';
     }
 }
-$bucket_array = array_merge($bucket_2,$bucket_3);
-$bucket_line = join( ", ", $bucket_array );
 $bucket_1s = join( ", ", $bucket_1 );
+$bucket_2s = join( ", ", $bucket_2 );
+$bucket_3s = join( ", ", $bucket_3 );
 $amc = get_the_terms( get_the_ID(), 'amc')[0];
 $fund_url = get_post_meta(get_the_ID(), '_fund_url')[0];
 ?>
@@ -53,10 +53,13 @@ $fund_url = get_post_meta(get_the_ID(), '_fund_url')[0];
         </div>
         <div class="bucket-data">
             <div class="section">
-                <p class="title">Age group</p><a href="#"><b><?php echo $bucket_1s; ?></b></a>
+                <p class="title"><?php echo $buckets['_amfg_bucket_1_singular']; ?></p><?php echo $bucket_1s; ?></a>
             </div>
             <div class="section">
-                <p class="title">Categories</p><a href="#"><b><?php echo $bucket_line; ?></b></a>
+                <p class="title"><?php echo $buckets['_amfg_bucket_2_singular']; ?></p><?php echo $bucket_2s; ?></a>
+            </div>
+            <div class="section">
+                <p class="title"><?php echo $buckets['_amfg_bucket_3_singular']; ?></p><?php echo $bucket_3s; ?></a>
             </div>
         </div>
         <div class="fund-desc">
