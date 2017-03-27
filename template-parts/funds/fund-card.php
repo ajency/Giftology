@@ -53,13 +53,13 @@ $fund_url = get_post_meta(get_the_ID(), '_fund_url')[0];
         </div>
         <div class="bucket-data">
             <div class="section">
-                <p class="title"><?php echo $buckets['_amfg_bucket_1_singular']; ?></p><p><?php echo $bucket_1s; ?></p></a>
+                <p class="title"><?php echo $buckets['_amfg_bucket_1_singular']; ?></p><span><?php echo $bucket_1s; ?></span>
             </div>
             <div class="section">
-                <p class="title"><?php echo $buckets['_amfg_bucket_2_singular']; ?></p><p><?php echo $bucket_2s; ?></p></a>
+                <p class="title" style="min-width: 128px;"><?php echo $buckets['_amfg_bucket_2_singular']; ?></p><span><?php echo $bucket_2s; ?></span>
             </div>
             <div class="section">
-                <p class="title"><?php echo $buckets['_amfg_bucket_3_singular']; ?></p><p><?php echo $bucket_3s; ?></p></a>
+                <p class="title"><?php echo $buckets['_amfg_bucket_3_singular']; ?></p><span><?php echo $bucket_3s; ?></span>
             </div>
         </div>
         <div class="fund-desc">
