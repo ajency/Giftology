@@ -2111,6 +2111,7 @@ label .fa.checkbox-inline.fa-check-circle {
         -ms-flex: 1 0 calc(100% - 2em);
             flex: 1 0 calc(100% - 2em);
     max-width: calc(100% - 2em);
+    width: calc(100% - 2em);
     margin: 0 1em 3em 1em;
   }
   .list-data .c-style .card-holder .cards:nth-child(odd) {
@@ -2140,6 +2141,7 @@ label .fa.checkbox-inline.fa-check-circle {
         -ms-flex: 1 0 calc(50% - 2em);
             flex: 1 0 calc(50% - 2em);
     max-width: calc(50% - 2em);
+    width: calc(500% - 2em);
   }
 }
 .tooltip-inner {
