@@ -8,13 +8,42 @@
     <div class="col-sm-3">
         <div class="popular">
             <p class="sort">Sort by : </p>
+            <?php
+            $sort_by = [
+                'latest' => 'Newest',
+                'popular' => 'Popular',
+                'rating' => 'Rating',
+                'last-updated' => 'Last Updated',
+
+            ];
+            ?>
             <div class="dropdown">
                 <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <?php echo isset($_GET['sort']) ? ucfirst(esc_html($_GET['sort'])) : 'Popular'; ?>
+                    <?php echo isset($_GET['sort']) ? ucfirst(esc_html($sort_by[$_GET['sort']])) : $sort_by['latest']; ?>
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dLabel">
-                    <?php include locate_template('template-parts/funds/sort.php', false, false); ?>
+                    <?php
+                    $current_url="http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+                    $parsed = parse_url($current_url);
+                    $query = $parsed['query'];
+                    parse_str($query, $params);
+                    function sort_url ($current_sort_option,$parsed,$params) {
+                        $check = $params['sort'];
+                        if($check) {
+                            unset($params['sort']);
+                        }
+                        $params['sort'] = $current_sort_option;
+                        $sort_params = http_build_query($params);
+                        return $parsed['scheme'].'://'.$parsed['host'].$parsed['path'].'?'.$sort_params;
+                    }
+                    ?>
+                    <?php foreach ($sort_by as $key=> $value) : ?>
+                        <li>
+                            <a id="sort-<?php echo $key ?>" href="<?php echo sort_url($key,$parsed,$params) ?>"><?php echo $value; ?></a>
+                        </li>
+                    <?php endforeach; ?>
+
                 </ul>
             </div>
         </div>
