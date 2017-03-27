@@ -1134,7 +1134,7 @@ textarea:focus {
   margin: 0 auto;
 }
 .single-bg {
-  background-color: #f8f6f7;
+  background-color: rgba(248, 246, 247, 0.41);
 }
 .fund {
   background-color: #ee275f;
@@ -1406,6 +1406,8 @@ textarea:focus {
 }
 .fund-risk {
   width: 95%;
+  background-color: #fff;
+  padding: 1em;
 }
 .fund-risk img {
   display: block;
@@ -2631,6 +2633,7 @@ textarea:focus {
 .section-number.affix {
   position: fixed !important;
   top: 0;
+  padding-left: 0.3em;
 }
 .modal-open[style] {
   padding-right: 0px !important;
