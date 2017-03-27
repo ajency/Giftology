@@ -214,9 +214,10 @@
 // --------------------------- 
 
 
-// label{
+
+// label {
 //     position: relative;
-//      &:before {
+//     &:before {
 //         content: "\f1db";
 //         font-family: 'FontAwesome';
 //         background-color: #fff;
@@ -229,14 +230,23 @@
 //         cursor: pointer;
 //         z-index: 2;
 //     }
-
-//     &.ff-check{
+//     &.ff-check {
 //         &:before {
 //             content: "\f058";
+//             color: #26e7b0;
 //         }
 //     }
-  
+//     input[type=radio],input[type=checkbox] {
+//         &.disabled{
+//             pointer-events: none;
+//             &:before{
+//                 content: '\f10c';
+//                 color: #ccc;
+//             }
+//         }
+//     }
 // }
+
 
 
 

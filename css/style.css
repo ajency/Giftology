@@ -1703,6 +1703,9 @@ textarea:focus {
 .list-data .filter-bar .body .selection label .checkbox-inline:checked + .label-name {
   font-weight: 500;
 }
+.list-data .filter-bar .body .selection label.disabled {
+  pointer-events: none;
+}
 .list-data .filter-bar .body .selection .showAll {
   margin-top: 1.5em;
   font-size: 1.05em;
