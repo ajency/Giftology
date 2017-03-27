@@ -303,14 +303,20 @@
             jQuery('.search').addClass('active');
         });
 
-        if (jQuery('.input-search').val().length > 0)
-            jQuery('.search').addClass('active');
+
+        if (typeof jQuery('.input-search').val() !== typeof undefined)
+        {
+            console.log("Entered 29");
+            if(jQuery('.input-search').val().length > 0)
+            {
+                jQuery('.search').addClass('active');
+            }
+        }
 
         jQuery(".input-search").on('blur', function () {
             if (jQuery('.input-search').val().length === 0)
                 jQuery('.search').removeClass('active');
         });
-
 
         $(document).on('click', '#create-gift-minimal', function () {
 
