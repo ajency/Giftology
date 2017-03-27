@@ -319,6 +319,7 @@ function giftology_send_invites($request_data){
     $user_id = get_current_user_id();
     $gift_id = $parameters['gift_id'];
     $invite_group = $parameters['invite-group'];
+    $gift = Ajency_MFG_Gift::get_gift_details($gift_id);
 
     if (Ajency_MFG_Gift::get_acl_access_rule('gift',$gift_id,$user_id,'send-invites')) {
         $invites = Ajency_MFG_Gift::get_invitations($gift_id, Ajency_MFG_Gift::STATUS_INVITE_QUEUED,false,false,get_current_user_id());
@@ -353,7 +354,21 @@ function giftology_send_invites($request_data){
                     Ajency_MFG_Gift::mark_gift_code_as_sent($invite->invite_code,$invite_group);
 
                 }
-                $text = $message = 'Copy Paste the following link in browser : '.home_url().'/?accept-gift-invite='.$invite->invite_code;
+
+                $link = home_url().'/?accept-gift-invite='.$invite->invite_code;
+                $vars = [
+                    'recepient_name' => $gift->recepient_name,
+                    'inviter' => get_current_user()->first_name,
+                    'occasion' => $gift->receiver_occasion,
+                    'link' => $link,
+                ];
+
+                $message = file_get_contents( get_template_directory() . '/Ajency/gift/invite-email-template.html');
+                foreach ($vars as $k => $v) {
+                    $message = str_replace('{{'.$k.'}}', $v, $message);
+                }
+
+                $text = 'Copy and Paste the following link in your browser : '.$link;
                 $email_subject = "A user has invited you to contribute to a Gift on Giftology!";
                 Ajency_MFG_Users::send_email($email_subject, $message, $text, $invite->email, 'invite-email');
 

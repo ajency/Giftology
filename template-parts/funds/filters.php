@@ -28,7 +28,7 @@
             <?php if(is_array($filter_params_input[$filter]) && in_array($term->slug,$filter_params_input[$filter])) {; ?>
 
             <a href="<?php echo $remove_url; ?>" class="label-name">
-                <i class="fa fa-check-circle-o checkbox-inline" aria-hidden="true"></i>
+                <i class="fa fa-check-circle checkbox-inline" aria-hidden="true"></i>
                 <b><?php print $term->name; ?></b>
             </a>
 
