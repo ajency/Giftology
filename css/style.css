@@ -289,18 +289,23 @@ textarea:focus {
   color: #fff;
   outline: 0;
 }
-.site-btn-2 {
+.site-btn-2,
+.site-btn-2:focus {
   color: #fff;
   background-color: #9c1bef;
   border-color: #9c1bef;
   -webkit-transition: all 0.5s ease;
           transition: all 0.5s ease;
+  outline: 0;
 }
 .site-btn-2:hover,
+.site-btn-2:focus:hover,
 .site-btn-2:active,
-.site-btn-2:focus,
+.site-btn-2:focus:active,
 .site-btn-2:active:focus,
-.site-btn-2[disabled]:hover {
+.site-btn-2:focus:active:focus,
+.site-btn-2[disabled]:hover,
+.site-btn-2:focus[disabled]:hover {
   color: #9c1bef;
   background-color: #fff;
   border-color: #9c1bef;
@@ -1713,6 +1718,17 @@ textarea:focus {
   font-size: 1.05em;
   text-align: center;
 }
+label .fa.checkbox-inline {
+  padding-left: 0;
+  font-size: 18px;
+  padding-right: 5px;
+}
+label .fa.checkbox-inline.fa-circle-thin {
+  color: #ccc;
+}
+label .fa.checkbox-inline.fa-check-circle {
+  color: #26e7b0;
+}
 .c-style .card-holder {
   display: -webkit-box;
   display: -webkit-flex;
@@ -2391,7 +2407,7 @@ textarea:focus {
   border-radius: 3px;
   text-indent: 5px;
   font-size: 1.05em;
-  color: #989898;
+  color: #808080;
   outline: 0;
 }
 .input-box::-webkit-input-placeholder {
