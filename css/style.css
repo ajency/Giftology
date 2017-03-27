@@ -2812,25 +2812,6 @@ textarea:focus {
   border-width: 9px;
   border-color: #ee275f #ee275f transparent #ee275f;
 }
-label {
-  position: relative;
-}
-label:before {
-  content: "\f1db";
-  font-family: 'FontAwesome';
-  background-color: #fff;
-  padding: 0;
-  position: absolute;
-  top: -4px;
-  left: -1px;
-  color: #ccc;
-  font-size: 18px;
-  cursor: pointer;
-  z-index: 2;
-}
-label.ff-check:before {
-  content: "\f058";
-}
 input[type=radio],
 input[type=checkbox] {
   margin-right: 8px;
