@@ -208,7 +208,7 @@
                             </div>
                         </div>
                         <div class="recepient-details">
-                            <label class="input-label">Please give us some basic details about the gift recipient</label>
+                            <label class="input-label">Please give us some basic details about the gift recipient's</label>
                             <div id="contribution_amount_error"></div>
                             <form id="create-gift">
                                 <input type="hidden" value="<?php echo get_the_ID(); ?>" name="fund_id" >
