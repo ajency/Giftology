@@ -43,7 +43,16 @@ class Ajency_MFG_Users {
         $first_login = get_user_meta($user_id, 'last_login', true);
         if( $first_login == 0 || $first_login == '0' ) {
 
+
+            $vars = [
+                'name' => $user->first_name,
+            ];
+
             $message = file_get_contents( get_template_directory() . '/Ajency/users/welcome-email-template.html');
+            foreach ($vars as $k => $v) {
+                $message = str_replace('{{'.$k.'}}', $v, $message);
+            }
+
             $text = 'Welcome to Giftology';
             $email_subject = "Welcome to Giftology!";
             $user_wsl = wsl_get_stored_hybridauth_user_profiles_by_user_id($user_id);

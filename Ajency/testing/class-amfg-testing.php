@@ -124,6 +124,21 @@ class Ajency_MFG_Testing {
             print_r($response);
 
 
+        } else if($wp->query_vars['db'] == 'email') {
+
+            $vars = [
+                'name' => 'Anton',
+            ];
+
+            $message = file_get_contents( get_template_directory() . '/Ajency/users/welcome-email-template.html');
+            foreach ($vars as $k => $v) {
+                print '{{'.$vars[$k].'}}';
+                $message = str_replace('{{'.$k.'}}', $v, $message);
+            }
+
+            echo $message;
+
+
         } else if($wp->query_vars['db'] == 'db') {
 /*
             global $wpdb;
