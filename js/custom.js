@@ -269,19 +269,19 @@
 
         // To add read more link(Requires read-more.js to be included)
 
-         $('.fund-desc .read-more').readmore({
+         $('.read-more').readmore({
            speed: 25,
-           collapsedHeight: 22,
+           collapsedHeight: 233,
            moreLink: '<a href="#">More</a>',
            lessLink: '<a href="#">Less</a>'
          });
-
 
         $(".input-search").on('keyup', function (e) {
             if (e.keyCode == 13) {
                 window.location = "?search=" +  $( '.input-search' ).val();
             }
         });
+
 
         // Filter mobile flyout
 
