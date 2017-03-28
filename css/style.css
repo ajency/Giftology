@@ -2034,6 +2034,14 @@ label .fa.checkbox-inline.fa-check-circle {
 .c-style .card-holder .cards.full-view .body .percent {
   font-size: 0.95em;
 }
+.c-style .card-holder .no-data {
+  font-size: 1.3em;
+  font-weight: 400;
+  padding: 15em 1em;
+  margin-top: 0;
+  color: #9c1bef;
+  text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.43);
+}
 .c-style .card-holder .read-more {
   overflow: hidden;
 }
