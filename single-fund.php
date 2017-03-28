@@ -25,7 +25,9 @@
                         <h1 class="fund__heading"><?php echo get_the_title(); ?></h1>
                         <div class="brand-data equal-col">
                             <div class="brand-box">
-                                <span class="medal"></span>
+                                <?php if(get_post_meta(get_the_ID(),'_fund_featured')[0]) : ?>
+                                    <span class="medal"></span>
+                                <?php endif; ?>
                                 <img src="<?php echo get_the_post_thumbnail_url(); ?>" class="img-responsive center-block" width="50">
                             </div>
                             <div class="fund__type">
@@ -76,7 +78,7 @@
 
                                 }
                                 ?>
-                                <span>AMC - <?php echo $amc->name; ?></span>
+                                <span>AMC - <a href="<?php echo get_term_link($amc); ?>"><?php echo $amc->name; ?></a></span>
                                 <span><?php echo $buckets['_amfg_bucket_1_singular']; ?> <p><?php echo $bucket_1s; ?></p></span>
                             </div>
                         </div>
@@ -90,7 +92,9 @@
                 <div class="col-sm-8">
                     <div class="brand-data">
                         <div class="brand-box">
-                            <span class="medal"></span>
+                            <?php if(get_post_meta(get_the_ID(),'_fund_featured')[0]) : ?>
+                                <span class="medal"></span>
+                            <?php endif; ?>
                             <img src="<?php echo get_the_post_thumbnail_url(); ?>" class="img-responsive center-block">
                         </div>
                         <div class="bucket">
@@ -182,7 +186,7 @@
                         <div class="fund-head">
                             <h4 class="modal-title" id="myModalLabel"><?php echo get_the_title(); ?></h4>
                             <div class="caption">
-                                <span>AMC - <?php echo $amc->name; ?></span>
+                                <span>AMC - <a href="<?php echo get_term_link($amc); ?>"><?php echo $amc->name; ?></a></span>
                                 <span><?php echo $buckets['_amfg_bucket_1_singular']; ?> <b><?php echo $bucket_1s; ?></b></span>
                             </div>
                         </div>
