@@ -2257,6 +2257,15 @@ label .fa.checkbox-inline.fa-check-circle {
   font-size: 1.05em;
   color: rgba(255, 255, 255, 0.75);
 }
+.fund-modal .modal-header .fund-head .caption span {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+.fund-modal .modal-header .fund-head .caption a {
+  color: rgba(255, 255, 255, 0.75);
+}
 .fund-modal .modal-header .fund-head .caption b {
   font-weight: 500;
 }
@@ -2373,6 +2382,12 @@ label .fa.checkbox-inline.fa-check-circle {
   font-size: 1.1em;
   padding: 10px 8px;
   background-color: #fff;
+}
+@media screen and (min-width: 601px) and (max-width: 767px) {
+  .fund-modal {
+    width: 90%;
+    margin: 0 auto;
+  }
 }
 @media screen and (max-width: 600px) {
   .fund-modal .modal-header .brand-box {
