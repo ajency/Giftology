@@ -119,7 +119,7 @@
                             <div class="occ-data">
 
                                 <p class="occ-title"><?php echo $buckets['_amfg_bucket_2_plural']; ?></p>
-                                <p class="occ-name"><?php echo $bucket_2s; ?></p>
+                                <span class="occ-name"><?php echo $bucket_2s; ?></span>
                             </div>
                         </div>
                         <div class="c-obj fund-card__body">

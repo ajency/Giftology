@@ -1350,6 +1350,13 @@ textarea:focus {
 }
 .fund-card__header .occ-data .occ-name {
   font-size: 0.95em;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
 }
 .fund-card__header .occ-data .occ-name a {
   color: #000;
