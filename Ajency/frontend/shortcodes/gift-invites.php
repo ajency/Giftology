@@ -1,4 +1,5 @@
 <?php
+if( !defined( 'ABSPATH' ) ) exit;
 
 function gift_invites($atts) {
 

@@ -1,3 +1,7 @@
+<?php
+if( !defined( 'ABSPATH' ) ) exit;
+?>
+
 <h6 class="filter-title"><?php echo $filter_title; ?></h6>
 <ul class="selection">
 

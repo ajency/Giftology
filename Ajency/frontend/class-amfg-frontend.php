@@ -1,4 +1,6 @@
 <?php
+if( !defined( 'ABSPATH' ) ) exit;
+
 include 'shortcodes/gift-invites.php';
 include 'shortcodes/login.php';
 

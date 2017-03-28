@@ -1,4 +1,8 @@
 <?php
+if( !defined( 'ABSPATH' ) ) exit;
+?>
+
+<?php
 
 add_action( 'wp_enqueue_scripts', 'register_api_calls_js' );
 function register_api_calls_js() {

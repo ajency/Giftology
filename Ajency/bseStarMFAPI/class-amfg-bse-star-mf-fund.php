@@ -1,4 +1,5 @@
 <?php
+if( !defined( 'ABSPATH' ) ) exit;
 include 'lib/MFOrder/autoload.php';
 
 class AMFG_BSE_Star_MF_Fund extends AMFG_BSE_Star_MF {

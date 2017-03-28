@@ -1,3 +1,6 @@
+<?php
+if( !defined( 'ABSPATH' ) ) exit;
+?>
 <form id="invite">
     <div class="form-group email-address">
         <label for="email" class="control-label">Type the email addresses and hit Enter</label>

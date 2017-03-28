@@ -1,3 +1,7 @@
+<?php
+if( !defined( 'ABSPATH' ) ) exit;
+?>
+
 <?php get_header();  ?>
 <section class="gift-card single-bg">
 

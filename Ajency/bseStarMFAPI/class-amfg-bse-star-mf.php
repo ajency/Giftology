@@ -1,5 +1,5 @@
 <?php
-
+if( !defined( 'ABSPATH' ) ) exit;
 class AMFG_BSE_Star_MF {
 
     static function amfg_starmf_set_debug_option ($debug) {
