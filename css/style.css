@@ -1284,6 +1284,9 @@ textarea:focus {
 .brand-data .bucket__value a {
   color: #000;
 }
+.brand-data .bucket__value a:hover {
+  color: #9c1bef;
+}
 .fund-stats {
   padding: 1.5em;
 }
@@ -1347,6 +1350,9 @@ textarea:focus {
 }
 .fund-card__header .occ-data .occ-name a {
   color: #000;
+}
+.fund-card__header .occ-data .occ-name a:hover {
+  color: #9c1bef;
 }
 .fund-card__header .occ-data .occ-title {
   margin-bottom: 0;
@@ -2309,6 +2315,9 @@ label .fa.checkbox-inline.fa-check-circle {
 }
 .fund-modal .modal-body .fund-stats .occasion__type a {
   color: #000;
+}
+.fund-modal .modal-body .fund-stats .occasion__type a:hover {
+  color: #9c1bef;
 }
 .fund-modal .modal-body .fund-stats .occasion__type .modal-title {
   display: -webkit-box;
