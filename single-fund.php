@@ -23,56 +23,62 @@
                 <div class="col-sm-10">
                     <div class="fund">
                         <h1 class="fund__heading"><?php echo get_the_title(); ?></h1>
-                        <div class="fund__type">
-                            <?php
-                            $buckets = (get_option('_amfg_bucket_settings'));
-                            $amc = get_the_terms( get_the_ID(), 'amc')[0];
+                        <div class="brand-data equal-col">
+                            <div class="brand-box">
+                                <span class="medal"></span>
+                                <img src="<?php echo get_the_post_thumbnail_url(); ?>" class="img-responsive center-block" width="50">
+                            </div>
+                            <div class="fund__type">
+                                <?php
+                                $buckets = (get_option('_amfg_bucket_settings'));
+                                $amc = get_the_terms( get_the_ID(), 'amc')[0];
 
-                            //Never delete code, always comment coz life changes
-                            /* $amc_image_id = get_term_meta($amc->term_id,'image');
-                            if($amc_image_id) {
-                                $amc_url = wp_get_attachment_thumb_url( $amc_image_id[0] );
-                            } else {
-                                $amc_url = get_template_directory_uri().'/img/dummy.png';
-                            }*/
+                                //Never delete code, always comment coz life changes
+                                /* $amc_image_id = get_term_meta($amc->term_id,'image');
+                                if($amc_image_id) {
+                                    $amc_url = wp_get_attachment_thumb_url( $amc_image_id[0] );
+                                } else {
+                                    $amc_url = get_template_directory_uri().'/img/dummy.png';
+                                }*/
 
-                            $amc_url = get_the_post_thumbnail();
+                                $amc_url = get_the_post_thumbnail();
 
-                            $bucket_2_terms = get_the_terms( get_the_ID(), 'bucket-2' );
-                            $bucket_3_terms = get_the_terms( get_the_ID(), 'bucket-3' );
-                            $bucket_1_terms = get_the_terms( get_the_ID(), 'bucket-1' );
+                                $bucket_2_terms = get_the_terms( get_the_ID(), 'bucket-2' );
+                                $bucket_3_terms = get_the_terms( get_the_ID(), 'bucket-3' );
+                                $bucket_1_terms = get_the_terms( get_the_ID(), 'bucket-1' );
 
-                            if ( $bucket_2_terms && ! is_wp_error( $bucket_2_terms ) ) {
+                                if ( $bucket_2_terms && ! is_wp_error( $bucket_2_terms ) ) {
 
-                                $bucket_2 = array();
-                                foreach ( $bucket_2_terms as $term ) {
-                                    $bucket_2[] = '<b><a href='.get_term_link($term).'>'.$term->name.'</a></b>';
+                                    $bucket_2 = array();
+                                    foreach ( $bucket_2_terms as $term ) {
+                                        $bucket_2[] = '<b><a href='.get_term_link($term).'>'.$term->name.'</a></b>';
+                                    }
+
+                                    $bucket_2s = join( ", ", $bucket_2 );
                                 }
+                                if ( $bucket_3_terms && ! is_wp_error( $bucket_3_terms ) ) {
 
-                                $bucket_2s = join( ", ", $bucket_2 );
-                            }
-                            if ( $bucket_3_terms && ! is_wp_error( $bucket_3_terms ) ) {
+                                    $bucket_3 = array();
+                                    foreach ( $bucket_3_terms as $term ) {
+                                        $bucket_3[] = '<b><a href='.get_term_link($term).'>'.$term->name.'</a></b>';
+                                    }
 
-                                $bucket_3 = array();
-                                foreach ( $bucket_3_terms as $term ) {
-                                    $bucket_3[] = '<b><a href='.get_term_link($term).'>'.$term->name.'</a></b>';
+                                    $bucket_3s = join( ", ", $bucket_3 );
                                 }
+                                if ( $bucket_1_terms && ! is_wp_error( $bucket_1_terms ) ) {
 
-                                $bucket_3s = join( ", ", $bucket_3 );
-                            }
-                            if ( $bucket_1_terms && ! is_wp_error( $bucket_1_terms ) ) {
+                                    $bucket_1 = array();
+                                    foreach ( $bucket_1_terms as $term ) {
+                                        $bucket_1[] = '<b><a href='.get_term_link($term).'>'.$term->name.'</a></b>';
+                                    }
 
-                                $bucket_1 = array();
-                                foreach ( $bucket_1_terms as $term ) {
-                                    $bucket_1[] = '<b><a href='.get_term_link($term).'>'.$term->name.'</a></b>';
+                                    $bucket_1s = join( ", ", $bucket_1 );
+
                                 }
-
-                                $bucket_1s = join( ", ", $bucket_1 );
-
-                            }
-                            ?>
-                            <span>AMC - <?php echo $amc->name; ?></span>
-                            <span><?php echo $buckets['_amfg_bucket_1_singular']; ?> <p><?php echo $bucket_1s; ?></p></span>
+                                ?>
+                                <span>AMC - <?php echo $amc->name; ?></span>
+                                <span><?php echo $buckets['_amfg_bucket_1_singular']; ?> <p><?php echo $bucket_1s; ?></p></span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -85,7 +91,7 @@
                     <div class="brand-data">
                         <div class="brand-box">
                             <span class="medal"></span>
-                            <img src="<?php echo get_the_post_thumbnail_url(); ?>" class="img-responsive center-block" width="50">
+                            <img src="<?php echo get_the_post_thumbnail_url(); ?>" class="img-responsive center-block">
                         </div>
                         <div class="bucket">
                             <p class="bucket__name"><?php echo $buckets['_amfg_bucket_3_singular']; ?></p>
@@ -115,7 +121,7 @@
                         <div class="c-obj fund-card__body">
                             <div class="rank">
                                 <div class="percent">
-                                    <i class="fa fa-percent" aria-hidden="true"></i>
+                                    <img src="<?php echo get_template_directory_uri(); ?>/img/returns.png" class="img-responsive" width="45">
                                     <div class="number">
                                         <h1 class="return-no"><?php echo get_post_meta(get_the_ID(),'_fund_returns')[0]; ?>%</h1>
                                         <p class="p-terms">Returns <i class="fa fa-info" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Disclaimer: Mutual fund investments are subject to market risks. Please read the scheme information and other related documents before investing."></i></p>
@@ -195,8 +201,8 @@
                             <div class="occasion">
                                 <div class="occasion__type">
 
-                                    <p class="first"><?php echo $buckets['_amfg_bucket_2_plural']; ?> <p><?php echo $bucket_2s; ?></p></p>
-                                    <p class="bucket"><?php echo $buckets['_amfg_bucket_3_plural']; ?> <p><?php echo $bucket_3s; ?></p></p>
+                                    <p class="modal-title first"><span><?php echo $buckets['_amfg_bucket_2_plural']; ?></span> <span><?php echo $bucket_2s; ?></span></p>
+                                    <p class="modal-title bucket"><span><?php echo $buckets['_amfg_bucket_3_plural']; ?></span> <span><?php echo $bucket_3s; ?></span></p>
                                 </div>
                                 <div class="percent">
                                     <img src="<?php echo get_template_directory_uri(); ?>/img/returns.png" class="img-reponsive" width="45">

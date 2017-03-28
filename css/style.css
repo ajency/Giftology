@@ -1159,6 +1159,22 @@ textarea:focus {
   text-transform: capitalize;
   font-size: 1.8em;
 }
+.fund .equal-col {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0 -15px;
+}
+.fund .equal-col .brand-box {
+  height: 0;
+  opacity: 0;
+}
+@media screen and (max-width: 767px) {
+  .fund .equal-col .brand-box {
+    display: none;
+  }
+}
 .fund__type {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1173,9 +1189,35 @@ textarea:focus {
           justify-content: space-around;
   text-transform: capitalize;
   font-size: 1.15em;
-  margin-top: 1em;
   padding-right: 9em;
   color: rgba(255, 255, 255, 0.75);
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+.fund__type span {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+.fund__type span p {
+  margin-bottom: 0;
+}
+.fund__type span:last-child {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+.fund__type span a {
+  color: rgba(255, 255, 255, 0.75);
+  padding-left: 5px;
 }
 .fund__type b {
   font-weight: 500;
@@ -1240,6 +1282,9 @@ textarea:focus {
 .brand-data .bucket__value {
   font-weight: 500;
 }
+.brand-data .bucket__value a {
+  color: #000;
+}
 .fund-stats {
   padding: 1.5em;
 }
@@ -1300,6 +1345,9 @@ textarea:focus {
 }
 .fund-card__header .occ-data .occ-name {
   font-size: 0.95em;
+}
+.fund-card__header .occ-data .occ-name a {
+  color: #000;
 }
 .fund-card__header .occ-data .occ-title {
   margin-bottom: 0;
@@ -1473,7 +1521,7 @@ textarea:focus {
     line-height: 1.3;
   }
   .fund__type {
-    padding: 0 0 2em 0;
+    padding: 0 0 1.5em 0;
     margin-top: 0.5em;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -1832,6 +1880,12 @@ label .fa.checkbox-inline.fa-check-circle {
 .c-style .card-holder .cards .header .section .title {
   margin-bottom: 0;
   padding-right: 0.5em;
+}
+.c-style .card-holder .cards .header .section span {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 .c-style .card-holder .cards .header .section a {
   color: #000;
@@ -2209,6 +2263,15 @@ label .fa.checkbox-inline.fa-check-circle {
   font-size: 1.05em;
   color: rgba(255, 255, 255, 0.75);
 }
+.fund-modal .modal-header .fund-head .caption span {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+.fund-modal .modal-header .fund-head .caption a {
+  color: rgba(255, 255, 255, 0.75);
+}
 .fund-modal .modal-header .fund-head .caption b {
   font-weight: 500;
 }
@@ -2227,17 +2290,41 @@ label .fa.checkbox-inline.fa-check-circle {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
+.fund-modal .modal-body .fund-stats .occasion__type {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
 .fund-modal .modal-body .fund-stats .occasion__type b {
-  padding-left: 0.5em;
+  padding-left: 0.1em;
+}
+.fund-modal .modal-body .fund-stats .occasion__type a {
+  color: #000;
+}
+.fund-modal .modal-body .fund-stats .occasion__type .modal-title {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 10px;
+}
+.fund-modal .modal-body .fund-stats .occasion__type .modal-title span {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+.fund-modal .modal-body .fund-stats .occasion__type .modal-title span:first-child {
+  -webkit-box-flex: 0.5;
+  -webkit-flex: 0.5;
+      -ms-flex: 0.5;
+          flex: 0.5;
 }
 .fund-modal .modal-body .fund-stats .gift-note {
   margin: 1.5em 0 0 0;
@@ -2301,6 +2388,12 @@ label .fa.checkbox-inline.fa-check-circle {
   font-size: 1.1em;
   padding: 10px 8px;
   background-color: #fff;
+}
+@media screen and (min-width: 601px) and (max-width: 767px) {
+  .fund-modal {
+    width: 90%;
+    margin: 0 auto;
+  }
 }
 @media screen and (max-width: 600px) {
   .fund-modal .modal-header .brand-box {
