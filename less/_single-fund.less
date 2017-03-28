@@ -675,6 +675,19 @@ label{
     		.header{
     			box-shadow: 0px 2px 0px 0px rgba(158, 1, 45, 0.21);
     			margin-bottom: 1px;
+    			.read-more{
+    				overflow: hidden;
+    			}
+    			a[data-readmore-toggle]{
+    				padding: 0.5em 0;
+    				background-color: #fff;
+    				text-align: center;
+    				width: 100%;
+    				display: block;
+    				position: relative;
+    				top: -5px;
+    				font-size: 1.05em;
+    			}
     			.flex-col{
     				display: flex;
     				.funds-detail{
@@ -723,6 +736,7 @@ label{
 					display: flex;
 					// align-items: center;
 					font-size: 1.05em;
+					flex-direction: column;
 					padding-bottom: 0.3em;
 					.title{
 						// display: none;
@@ -733,6 +747,7 @@ label{
 					}
 					span{
 						flex: 1;
+						// overflow: hidden;
 					}
 					a{
 						color: #000;
@@ -748,10 +763,10 @@ label{
     				margin-top: 1em;
     				font-size: 1.05em;
     				// display: flex;
-    				.read-more{
+    				.p{
     					margin-bottom: 0;
     					// white-space: nowrap;
-    					overflow: hidden;
+    					// overflow: hidden;
     					// text-overflow: ellipsis;
     					// flex: 1;
     				}
