@@ -330,7 +330,9 @@
                 success: function(data){
                     console.log(data);
                     if(data.success) {
-                        window.location.reload();
+                        var redirect = giftology_api.homeUrl + '?complete-gift=' + data.data.id;
+                        console.log(redirect);
+                        window.location = redirect;
                     } else {
                         $('#contribution_amount_error').html('<div class="alert alert-danger">' + data.message + '</div>');
                     }

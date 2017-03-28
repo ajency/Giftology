@@ -108,6 +108,10 @@ class Ajency_MFG_Frontend
             get_template_part( 'Ajency/frontend/custom_pages/accept-invite', 'page' );
             /*            echo do_shortcode( '[gift_invites show_delete=1 template=2 gift_id="1" status="0"]' );*/
         }
+        else if($wp->query_vars['complete-gift']) //Step 3
+        {
+            get_template_part( 'Ajency/frontend/custom_pages/complete-gift', 'page' );
+        }
     }
 
     function my_plugin_query_vars($vars) {
@@ -120,6 +124,7 @@ class Ajency_MFG_Frontend
         $vars[] = 'modal';
         $vars[] = 'login';
         $vars[] = 'gift-invites-view-all';
+        $vars[] = 'complete-gift';
         return $vars;
     }
 }

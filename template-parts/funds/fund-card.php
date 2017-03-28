@@ -7,22 +7,38 @@ if ( $bucket_1_terms && ! is_wp_error( $bucket_1_terms ) ) {
 
     $bucket_1 = array();
     foreach ( $bucket_1_terms as $term ) {
-        $bucket_1[] = '<b><a href='.get_term_link($term).'>'.$term->name.'</a></b>';
+        $params1 = [];
+        $params1['b1'][] = $term->slug;
+        $add_url_params = http_build_query($params1);
+        $add_url = $parsed['scheme'].'://'.$parsed['host'].$path.'?'.$add_url_params;
+        $term_name = $term->name;
+        $bucket_1[] = '<b><a href='.$add_url.'>'.$term_name.'</a></b>';
     }
 }
 
 if ( $bucket_2_terms && ! is_wp_error( $bucket_2_terms ) ) {
-
     $bucket_2 = array();
     foreach ( $bucket_2_terms as $term ) {
-        $bucket_2[] = '<b><a href='.get_term_link($term).'>'.$term->name.'</a></b>';
+        $params1 = [];
+        if($term->parent > 0) {
+            $params1['b2'][] = $term->slug;
+            $add_url_params = http_build_query($params1);
+            $add_url = $parsed['scheme'].'://'.$parsed['host'].$path.'?'.$add_url_params;
+            $parent = get_term($term->parent);
+            $term_name = $parent->name.' > '.$term->name;
+            $bucket_2[] = '<b><a href='.$add_url.'>'.$term_name.'</a></b>';
+        }
     }
 }
 if ( $bucket_3_terms && ! is_wp_error( $bucket_3_terms ) ) {
 
     $bucket_3 = array();
     foreach ( $bucket_3_terms as $term ) {
-        $bucket_3[] = '<b><a href='.get_term_link($term).'>'.$term->name.'</a></b>';
+        $params1 = [];
+        $params1['b3'][] = $term->slug;
+        $add_url_params = http_build_query($params1);
+        $add_url = $parsed['scheme'].'://'.$parsed['host'].$path.'?'.$add_url_params;
+        $bucket_3[] = '<b><a href='.$add_url.'>'.$term->name.'</a></b>';
     }
 }
 $bucket_1s = join( ", ", $bucket_1 );
