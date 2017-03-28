@@ -1881,6 +1881,12 @@ label .fa.checkbox-inline.fa-check-circle {
   margin-bottom: 0;
   padding-right: 0.5em;
 }
+.c-style .card-holder .cards .header .section span {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
 .c-style .card-holder .cards .header .section a {
   color: #000;
 }
