@@ -121,7 +121,7 @@
                         <div class="c-obj fund-card__body">
                             <div class="rank">
                                 <div class="percent">
-                                    <i class="fa fa-percent" aria-hidden="true"></i>
+                                    <img src="<?php echo get_template_directory_uri(); ?>/img/returns.png" class="img-responsive" width="45">
                                     <div class="number">
                                         <h1 class="return-no"><?php echo get_post_meta(get_the_ID(),'_fund_returns')[0]; ?>%</h1>
                                         <p class="p-terms">Returns <i class="fa fa-info" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Disclaimer: Mutual fund investments are subject to market risks. Please read the scheme information and other related documents before investing."></i></p>
