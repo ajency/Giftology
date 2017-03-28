@@ -1953,7 +1953,7 @@ label .fa.checkbox-inline.fa-check-circle {
   font-weight: 500;
 }
 .c-style .card-holder .cards .header .fund-desc {
-  margin-top: 1em;
+  margin-top: 0.5em;
   font-size: 1.05em;
 }
 .c-style .card-holder .cards .header .fund-desc .p {
