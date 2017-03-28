@@ -875,6 +875,27 @@ label{
     		overflow: hidden;
     	}
 	}
+	.navigation{
+		text-align: center;
+		.pagination{
+			border: 1px solid @link-color;
+			a{
+				color: #9c1bef;
+				&:hover{
+					color: #fff;
+    				background-color: rgba(156, 27, 239, 0.52);
+    				border-color: rgba(156, 27, 239, 0.52);
+				}
+			}
+			.active{
+				a{
+					border-color: transparent;
+					color: #fff;
+    				background-color: @link-color;
+				}
+			}
+		}
+	}
     .view-all{
 		text-align: center;
 		font-size: 1.05em;

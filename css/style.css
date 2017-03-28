@@ -2077,6 +2077,25 @@ label .fa.checkbox-inline.fa-check-circle {
 .c-style .card-holder .read-more {
   overflow: hidden;
 }
+.c-style .navigation {
+  text-align: center;
+}
+.c-style .navigation .pagination {
+  border: 1px solid #9c1bef;
+}
+.c-style .navigation .pagination a {
+  color: #9c1bef;
+}
+.c-style .navigation .pagination a:hover {
+  color: #fff;
+  background-color: rgba(156, 27, 239, 0.52);
+  border-color: rgba(156, 27, 239, 0.52);
+}
+.c-style .navigation .pagination .active a {
+  border-color: transparent;
+  color: #fff;
+  background-color: #9c1bef;
+}
 .c-style .view-all {
   text-align: center;
   font-size: 1.05em;
