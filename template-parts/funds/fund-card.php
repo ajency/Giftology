@@ -37,7 +37,7 @@ $fund_url = get_post_meta(get_the_ID(), '_fund_url')[0];
             <div class="funds-detail">
                 <a href="<?php echo get_the_permalink(); ?>"><h2 class="fund-name" title="<?php echo get_the_title(); ?>"><?php echo  strlen(get_the_title()) > 50 ? substr(get_the_title(),0,50)."..." : get_the_title();  ?></h2></a>
                 <div class="fund-subname">
-                    <p class="title"><?php echo $amc->name; ?></p>
+                    <p class="title"><a href="<?php echo get_term_link($amc); ?>"><?php echo $amc->name; ?></a></p>
                     <a href="<?php echo $fund_url; ?>" class="fund-link underline" title="<?php echo $fund_url; ?>"><?php echo $fund_url; ?></a>
                 </div>
                 <div class="box-divider"></div>
