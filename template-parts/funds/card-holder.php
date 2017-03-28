@@ -68,7 +68,7 @@
 
     } else if ($content_params_input['sort'] == 'last-updated'){
 
-        $query['orderby'] = 'updated';
+        $query['orderby'] = 'modified';
         $query['order'] = 'DESC';
     }
 
