@@ -100,7 +100,7 @@
                                 ?>
                                 <span>AMC - <a href="<?php
                                     $params1 = [];
-                                    $params1['amc'][] = $amc->slug;
+                                    $params1['a'][] = $amc->slug;
                                     $add_url_params = http_build_query($params1);
                                     $add_url = '/funds?'.$add_url_params;
                                     echo $add_url;

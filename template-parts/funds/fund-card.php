@@ -56,7 +56,7 @@ $fund_url = get_post_meta(get_the_ID(), '_fund_url')[0];
                     <p class="title"><a href="<?php
 
                         $params1 = [];
-                        $params1['amc'][] = $amc->slug;
+                        $params1['a'][] = $amc->slug;
                         $add_url_params = http_build_query($params1);
                         $add_url = '/funds?'.$add_url_params;
                         echo $add_url;
