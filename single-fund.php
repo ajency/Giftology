@@ -91,7 +91,7 @@
                     <div class="brand-data">
                         <div class="brand-box">
                             <span class="medal"></span>
-                            <img src="<?php echo get_the_post_thumbnail_url(); ?>" class="img-responsive center-block" width="50">
+                            <img src="<?php echo get_the_post_thumbnail_url(); ?>" class="img-responsive center-block">
                         </div>
                         <div class="bucket">
                             <p class="bucket__name"><?php echo $buckets['_amfg_bucket_3_singular']; ?></p>
