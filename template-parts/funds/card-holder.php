@@ -52,7 +52,7 @@
 
         $query['meta_key'] = '_fund_returns';
         $query['orderby'] = 'meta_value_num';
-        $query['order'] = 'ASC';
+        $query['order'] = 'DESC';
 
     } else if ($content_params_input['sort'] == 'lowest-returns'){
 

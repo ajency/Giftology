@@ -60,7 +60,6 @@ class Ajency_MFG_Funds {
         //Create Custom post type for fund
         $funds_post_type = new Ajencypress_Post_Type();
         $funds_post_type->setCustomPostTypeName('fund');
-        $funds_post_type->setPluralLabel('All Funds');
         $funds_post_type->setL10nDomain($this->plugin_name);
         $funds_post_type->create_post_type();
 
