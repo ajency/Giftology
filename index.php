@@ -1,3 +1,7 @@
+<?php
+if( !defined( 'ABSPATH' ) ) exit;
+?>
+
 <?php if($_GET['modal']) : ?>
 <?php get_header('modal'); ?>
 <?php else : ?>

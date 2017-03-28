@@ -1,3 +1,7 @@
+<?php
+if( !defined( 'ABSPATH' ) ) exit;
+?>
+
 <?php wp_footer(); ?>
 <footer class="gift-footer">
 

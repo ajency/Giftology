@@ -1,4 +1,8 @@
 <?php
+if( !defined( 'ABSPATH' ) ) exit;
+?>
+
+<?php
 /**
  * The template for displaying all pages
  *

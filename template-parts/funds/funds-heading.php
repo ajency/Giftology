@@ -1,3 +1,7 @@
+<?php
+if( !defined( 'ABSPATH' ) ) exit;
+?>
+
 <div class="row m-t-1">
     <div class="col-sm-9">
         <div class="fund-list">

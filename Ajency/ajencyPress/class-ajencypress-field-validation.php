@@ -1,5 +1,5 @@
 <?php
-
+if( !defined( 'ABSPATH' ) ) exit;
 
 class Ajencypress_Field_Validation_New {
 

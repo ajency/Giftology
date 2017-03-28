@@ -1,3 +1,7 @@
+<?php
+if( !defined( 'ABSPATH' ) ) exit;
+?>
+
 <div class="filter-bar">
     <div class="card header">
         <p class="filter-name"><i class="fa fa-filter" aria-hidden="true"></i> <b>Filters</b></p>

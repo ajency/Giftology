@@ -1,4 +1,9 @@
 <?php
+if( !defined( 'ABSPATH' ) ) exit;
+?>
+
+
+<?php
 $bucket_1 = $bucket_2 = $bucket_3 = [];
 $bucket_1_terms = get_the_terms( get_the_ID(), 'bucket-1' );
 $bucket_2_terms = get_the_terms( get_the_ID(), 'bucket-2' );

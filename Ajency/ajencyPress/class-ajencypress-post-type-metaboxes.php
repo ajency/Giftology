@@ -1,4 +1,5 @@
 <?php
+if( !defined( 'ABSPATH' ) ) exit;
 
 class Ajencypress_Post_Type_Metaboxes {
 
