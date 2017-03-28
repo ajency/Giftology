@@ -369,6 +369,18 @@
 		    margin-top: 0.5em;
 		    flex-direction: column;
 		    line-height: 1.8;
+		    align-items: center;
+		    & > span{
+		    	&:last-child{
+    				align-items: center;
+    				flex-direction: column;
+		    	}
+		    	span{
+		    		&:last-child{
+		    			justify-content: center;
+		    		}
+		    	}
+		    }
 	    }
 	}
 	.fund-card{
@@ -1095,7 +1107,7 @@ label{
 	    	}
 	    	.caption{
 	    		display: flex;
-			    align-items: center;
+			    // align-items: center;
 			    justify-content: space-between;
 			    margin-top: 0.2em;
 			    font-size: 1.05em;
@@ -1231,6 +1243,13 @@ label{
 		    	.caption{
 		    		flex-direction: column;
     				align-items: center;
+    				span{
+    					&:last-child{
+    						display: flex;
+    						flex-direction: column;
+    						align-items: center;
+    					}
+    				}
 		    	}
 		    }
 		}

@@ -187,7 +187,7 @@
                             <h4 class="modal-title" id="myModalLabel"><?php echo get_the_title(); ?></h4>
                             <div class="caption">
                                 <span>AMC - <a href="<?php echo get_term_link($amc); ?>"><?php echo $amc->name; ?></a></span>
-                                <span><?php echo $buckets['_amfg_bucket_1_singular']; ?> <b><?php echo $bucket_1s; ?></b></span>
+                                <span><?php echo $buckets['_amfg_bucket_1_singular']; ?> - <b><?php echo $bucket_1s; ?></b></span>
                             </div>
                         </div>
                     </div>
