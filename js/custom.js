@@ -343,8 +343,27 @@
             });
         });
 
+        $(document).on('click', '.resend', function () {
 
-        jQuery("#loading-screen").html('Supp man');
+            var gift_id = $( '#gift_id' ).val();
+            $.ajax({
+                type: "POST",
+                url: giftology_api.root + 'giftology/v1/gifts/' + gift_id + '/resend-invite/' +  this.id ,
+                beforeSend: function ( xhr ) {
+                    xhr.setRequestHeader( 'X-WP-Nonce', giftology_api.nonce );
+                },
+                data: $('#create-gift').serialize() ,
+                success: function(data){
+                    console.log(data);
+                    if(data.success) {
+
+                    }
+                },
+                error: function(){
+                    alert("Internal Server Error : Please contact Admin");
+                }
+            });
+        });
 
 
     });

@@ -66,6 +66,13 @@ class Ajency_MFG_Gift {
         }*/
 
 
+    public static function get_invite_by_id($gift_id,$invite_id) {
+        global $wpdb;
+        $query = "SELECT inv.*,g.* from wp_giftology_invites inv INNER JOIN wp_giftology_gifts g on inv.gift_id = g.id  where inv.status = 1 and inv.id = '".$invite_id."' and g.id = '".$gift_id."'";
+        $result =  $wpdb->get_results($query)[0];
+        return $result;
+    }
+
     public static function get_invite_by_code($code,$status = [Ajency_MFG_Gift::STATUS_INVITE_SENT]) {
         global $wpdb;
         $query = "SELECT inv.*,g.slug from wp_giftology_invites inv INNER JOIN wp_giftology_gifts g on inv.gift_id = g.id  where inv.invite_code = '".$code."'";
@@ -339,6 +346,12 @@ class Ajency_MFG_Gift {
 
         $fund = $wpdb->get_results( $wpdb->prepare( $sql , []), OBJECT );
         return $fund[0];
+
+    }
+
+    public static function update_gift($data) {
+
+        $gift_id = $data['gift_id'];
 
     }
 

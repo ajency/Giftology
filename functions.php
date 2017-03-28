@@ -130,7 +130,19 @@ function giftology_api() {
 
     register_rest_route(
         'giftology/v1',
-        '/gifts/(?P<gift_id>\d+)/resend-email/(?P<invite_id>\d+)',
+        '/gifts/(?P<gift_id>\d+)/update',
+        array(
+            'methods' => 'POST',
+            'callback' => 'giftology_update_gift',
+            'permission_callback' => function () {
+                     return is_user_logged_in();
+             }
+        )
+    );
+
+    register_rest_route(
+        'giftology/v1',
+        '/gifts/(?P<gift_id>\d+)/resend-invite/(?P<invite_id>\d+)',
         array(
             'methods' => 'POST',
             'callback' => 'giftology_resend_invite_email',
@@ -141,7 +153,37 @@ function giftology_api() {
     );
 }
 
-function giftology_resend_invite_email($gift_id, $invite_id) {
+function giftology_update_gift($request_data) {
+
+    Ajency_MFG_Gift::create_gift_minimal($request_data);
+
+}
+
+function giftology_resend_invite_email($request_data) {
+
+    $parameters = $request_data->get_params();
+    $gift_id = $parameters['gift_id'];
+    $invite_id = $parameters['invite_id'];
+    $invite = Ajency_MFG_Gift::get_invite_by_id($gift_id,$invite_id);
+
+    $link = home_url().'/?accept-gift-invite='.$invite->invite_code;
+    $vars = [
+        'recepient_name' => $invite->receiver_name,
+        'inviter' => wp_get_current_user()->display_name,
+        'occasion' => $invite->receiver_occasion,
+        'link' => $link,
+    ];
+
+    /*                return [$vars,wp_get_current_user(),$gift];*/
+
+    $message = file_get_contents( get_template_directory() . '/Ajency/gift/invite-email-template.html');
+    foreach ($vars as $k => $v) {
+        $message = str_replace('{{'.$k.'}}', $v, $message);
+    }
+
+    $text = 'Copy and Paste the following link in your browser : '.$link;
+    $email_subject = "A user has invited you to contribute to a Gift on Giftology!";
+    Ajency_MFG_Users::send_email($email_subject, $message, $text, $invite->email, 'invite-email');
 
 }
 
