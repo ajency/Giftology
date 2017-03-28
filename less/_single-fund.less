@@ -55,6 +55,9 @@
     		a{
     			color: rgba(255, 255, 255, 0.75);
     			padding-left: 5px;
+    			&:hover{
+    				color: @link-color;
+    			}
     		}
     	}
     	b{
@@ -177,6 +180,8 @@
     		font-size: 1.1em;
     		.occ-name{
     			font-size: 0.95em;
+    			display: flex;
+    			flex-wrap: wrap;
     			a{
     				color: #000;
     				&:hover{
@@ -364,6 +369,18 @@
 		    margin-top: 0.5em;
 		    flex-direction: column;
 		    line-height: 1.8;
+		    align-items: center;
+		    & > span{
+		    	&:last-child{
+    				align-items: center;
+    				flex-direction: column;
+		    	}
+		    	span{
+		    		&:last-child{
+		    			justify-content: center;
+		    		}
+		    	}
+		    }
 	    }
 	}
 	.fund-card{
@@ -712,7 +729,7 @@ label{
 						margin-bottom: 0;
 						padding-right: 0.5em;
 						// flex: 1;
-						// min-width: 80px;
+						min-width: 80px;
 					}
 					span{
 						flex: 1;
@@ -846,9 +863,38 @@ label{
     			}
     		}
     	}
+    	.no-data{
+    		font-size: 1.3em;
+		    font-weight: 400;
+		    padding: 15em 1em;
+		    margin-top: 0;
+		    color: #9c1bef;
+		    text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.43);
+    	}
     	.read-more{
     		overflow: hidden;
     	}
+	}
+	.navigation{
+		text-align: center;
+		.pagination{
+			border: 1px solid @link-color;
+			a{
+				color: #9c1bef;
+				&:hover{
+					color: #fff;
+    				background-color: rgba(156, 27, 239, 0.52);
+    				border-color: rgba(156, 27, 239, 0.52);
+				}
+			}
+			.active{
+				a{
+					border-color: transparent;
+					color: #fff;
+    				background-color: @link-color;
+				}
+			}
+		}
 	}
     .view-all{
 		text-align: center;
@@ -1082,7 +1128,7 @@ label{
 	    	}
 	    	.caption{
 	    		display: flex;
-			    align-items: center;
+			    // align-items: center;
 			    justify-content: space-between;
 			    margin-top: 0.2em;
 			    font-size: 1.05em;
@@ -1218,6 +1264,13 @@ label{
 		    	.caption{
 		    		flex-direction: column;
     				align-items: center;
+    				span{
+    					&:last-child{
+    						display: flex;
+    						flex-direction: column;
+    						align-items: center;
+    					}
+    				}
 		    	}
 		    }
 		}

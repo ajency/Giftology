@@ -79,7 +79,7 @@
                                 }
                                 ?>
                                 <span>AMC - <a href="<?php echo get_term_link($amc); ?>"><?php echo $amc->name; ?></a></span>
-                                <span><?php echo $buckets['_amfg_bucket_1_singular']; ?> <p><?php echo $bucket_1s; ?></p></span>
+                                <span><?php echo $buckets['_amfg_bucket_1_singular']; ?> - <span><?php echo $bucket_1s; ?></span></span>
                             </div>
                         </div>
                     </div>
@@ -119,7 +119,7 @@
                             <div class="occ-data">
 
                                 <p class="occ-title"><?php echo $buckets['_amfg_bucket_2_plural']; ?></p>
-                                <p class="occ-name"><?php echo $bucket_2s; ?></p>
+                                <span class="occ-name"><?php echo $bucket_2s; ?></span>
                             </div>
                         </div>
                         <div class="c-obj fund-card__body">
@@ -181,7 +181,7 @@
                             <h4 class="modal-title" id="myModalLabel"><?php echo get_the_title(); ?></h4>
                             <div class="caption">
                                 <span>AMC - <a href="<?php echo get_term_link($amc); ?>"><?php echo $amc->name; ?></a></span>
-                                <span><?php echo $buckets['_amfg_bucket_1_singular']; ?> <b><?php echo $bucket_1s; ?></b></span>
+                                <span><?php echo $buckets['_amfg_bucket_1_singular']; ?> - <b><?php echo $bucket_1s; ?></b></span>
                             </div>
                         </div>
                     </div>
