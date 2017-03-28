@@ -77,7 +77,7 @@
                                 }
                                 ?>
                                 <span>AMC - <?php echo $amc->name; ?></span>
-                                <span><?php echo $buckets['_amfg_bucket_1_singular']; ?> <p><?php echo $bucket_1s; ?></p></span>
+                                <span><?php echo $buckets['_amfg_bucket_1_singular']; ?> <span><?php echo $bucket_1s; ?></span></span>
                             </div>
                         </div>
                     </div>
