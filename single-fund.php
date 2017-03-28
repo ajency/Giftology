@@ -53,7 +53,17 @@
 
                                     $bucket_2 = array();
                                     foreach ( $bucket_2_terms as $term ) {
-                                        $bucket_2[] = '<b><a href='.get_term_link($term).'>'.$term->name.'</a></b>';
+                                        $params1 = [];
+                                        if($term->parent > 0) {
+
+                                            $params1['b2'][] = $term->slug;
+                                            $add_url_params = http_build_query($params1);
+                                            $add_url = '/funds/?'.$add_url_params;
+                                            $parent = get_term($term->parent);
+                                            $term_name = $parent->name.' > '.$term->name;
+                                            $bucket_2[] = '<b><a href='.$add_url.'>'.$term_name.'</a></b>';
+
+                                        }
                                     }
 
                                     $bucket_2s = join( ", ", $bucket_2 );
@@ -62,7 +72,12 @@
 
                                     $bucket_3 = array();
                                     foreach ( $bucket_3_terms as $term ) {
-                                        $bucket_3[] = '<b><a href='.get_term_link($term).'>'.$term->name.'</a></b>';
+                                        $params1 = [];
+
+                                        $params1['b3'][] = $term->slug;
+                                        $add_url_params = http_build_query($params1);
+                                        $add_url = '/funds?'.$add_url_params;
+                                        $bucket_3[] = '<b><a href='.$add_url.'>'.$term->name.'</a></b>';
                                     }
 
                                     $bucket_3s = join( ", ", $bucket_3 );
@@ -71,14 +86,25 @@
 
                                     $bucket_1 = array();
                                     foreach ( $bucket_1_terms as $term ) {
-                                        $bucket_1[] = '<b><a href='.get_term_link($term).'>'.$term->name.'</a></b>';
+                                        $params1 = [];
+
+                                        $params1['b1'][] = $term->slug;
+                                        $add_url_params = http_build_query($params1);
+                                        $add_url = '/funds?'.$add_url_params;
+                                        $bucket_1[] = '<b><a href='.$add_url.'>'.$term->name.'</a></b>';
                                     }
 
                                     $bucket_1s = join( ", ", $bucket_1 );
 
                                 }
                                 ?>
-                                <span>AMC - <a href="<?php echo get_term_link($amc); ?>"><?php echo $amc->name; ?></a></span>
+                                <span>AMC - <a href="<?php
+                                    $params1 = [];
+                                    $params1['amc'][] = $amc->slug;
+                                    $add_url_params = http_build_query($params1);
+                                    $add_url = '/funds?'.$add_url_params;
+                                    echo $add_url;
+                                ?>"><?php echo $amc->name; ?></a></span>
                                 <span><?php echo $buckets['_amfg_bucket_1_singular']; ?> - <span><?php echo $bucket_1s; ?></span></span>
                             </div>
                         </div>
