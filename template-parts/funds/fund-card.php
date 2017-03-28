@@ -80,7 +80,7 @@ $fund_url = get_post_meta(get_the_ID(), '_fund_url')[0];
                     <p class="title"><?php echo $buckets['_amfg_bucket_1_singular']; ?></p><span><?php echo $bucket_1s; ?></span>
                 </div>
                 <div class="section">
-                    <p class="title"><?php echo $buckets['_amfg_bucket_2_singular']; ?></p><span class="read-more"><?php echo $bucket_2s; ?></span>
+                    <p class="title"><?php echo $buckets['_amfg_bucket_2_singular']; ?></p><span><?php echo $bucket_2s; ?></span>
                 </div>
                 <div class="section">
                     <p class="title"><?php echo $buckets['_amfg_bucket_3_singular']; ?></p><span><?php echo $bucket_3s; ?></span>
