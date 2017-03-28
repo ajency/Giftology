@@ -91,7 +91,6 @@ class Ajencypress_Post_Type {
     }
 
     function _create_post_type_action() {
-
         $labels = array(
             'name'                => _x( $this->plural_label, $this->plural_label, $this->l10n_domain ),
             'singular_name'       => _x( $this->singular_label, $this->singular_label, $this->l10n_domain ),
