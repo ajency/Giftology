@@ -1,4 +1,5 @@
 <div class="card-holder">
+
     <?php
 
     foreach($filters as $key => $filter) {
@@ -72,15 +73,20 @@
     }
 
 
+
     $loop = new WP_Query( $query );
 
-    ?>
-    <?php while ( $loop->have_posts() ) : $loop->the_post(); // standard WordPress loop. ?>
+    if ($loop->have_posts() ) :
+        while ( $loop->have_posts() ) : $loop->the_post(); // standard WordPress loop. ?>
 
-        <?php        include locate_template('template-parts/funds/fund-card.php', false, false); ?>
-        <!-- 2nd -->
+            <?php        include locate_template('template-parts/funds/fund-card.php', false, false); ?>
+            <!-- 2nd -->
 
-    <?php endwhile; // end of the loop. ?>
+        <?php endwhile;
+    else :
+        ?>
 
+        <h1 class="no-data">No results found. Try being a little less specific.</h1>
+    <?php endif; ?>
 </div>
 <?php giftology_numeric_posts_nav($loop) ?>

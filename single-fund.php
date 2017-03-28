@@ -148,11 +148,7 @@
                                 <p class="data min">Minimum investment <b>Rs. <?php echo get_post_meta(get_the_ID(),'_fund_min_investment')[0]; ?></b></p>
                                 <p class="data mult">in multiples of <b>Rs. <?php echo get_post_meta(get_the_ID(),'_fund_min_increment')[0]; ?></b> thereafter</p>
                             </div>
-                            <?php if(is_user_logged_in()) : ?>
                             <button type="button" class="btn btn-lg site-btn-2 buy-fund" data-toggle="modal" data-target="#fund-modal">Buy/Gift this fund</button>
-                            <?php else: ?>
-                            <button type="button" class="btn btn-lg site-btn-2 buy-fund" data-toggle="modal" data-target="#login">Buy/Gift this fund</button>
-                            <?php endif; ?>
                             <p class="why-buy">Find out <a href="#" class="underline">why gifting mutual fund is a good idea.</a></p>
                         </div>
                     </div>
@@ -170,8 +166,6 @@
 
 
         </div>
-
-
 
         <!-- Fund modal -->
 
@@ -197,9 +191,9 @@
                                         <?php for($i = 1; $i <= get_post_meta( get_the_ID(), '_fund_crisil_rating')[0]; $i++  ) : ?>
                                             <i class="fa fa-star" aria-hidden="true"></i>
                                         <?php endfor; ?>
-                            <?php for($i = 5; $i > get_post_meta( get_the_ID(), '_fund_crisil_rating')[0]; $i--  ) : ?>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                            <?php endfor; ?>
+                                    <?php for($i = 5; $i > get_post_meta( get_the_ID(), '_fund_crisil_rating')[0]; $i--  ) : ?>
+                                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                                    <?php endfor; ?>
                                 </span>
                             </p>
                             <div class="occasion">
@@ -226,24 +220,32 @@
                             <div id="contribution_amount_error"></div>
                             <form id="create-gift">
                                 <input type="hidden" value="<?php echo get_the_ID(); ?>" name="fund_id" >
-                            <div class="data-box">
-                                <label class="input-label required">Who is the gift for?</label>
-                                <input name="receiver_name" type="text" class="input-box" placeholder="The recipient's name">
-                            </div>
-                            <div class="data-box cols">
-                                <div class="fields occasion">
-                                    <label class="input-label required">What is the occasion?</label>
-                                    <select name="receiver_occasion" class="input-box select-box">
-                                        <option>-- Please select --</option>
-                                        <option>Birthday</option>
-                                        <option>Anniversary</option>
-                                    </select>
+                                <div class="data-box">
+                                    <label class="input-label required">Who is the gift for?</label>
+                                    <input name="receiver_name" type="text" class="input-box" placeholder="The recepient's name">
                                 </div>
-                                <div class="fields contribute">
-                                    <label class="input-label required">Amount you wish to contribute</label>
-                                    <input min="<?php echo get_post_meta(get_the_ID(),'_fund_min_investment')[0]; ?>" name="contribution_amount" type="number" class="input-box" placeholder="The amount">
+                                <div class="data-box cols">
+                                    <div class="fields occasion">
+                                        <label class="input-label required">What is the occasion?</label>
+                                        <select name="receiver_occasion" class="input-box select-box">
+                                            <option>-- Please select --</option>
+                                            <?php
+                                            $options_object = get_terms('bucket-2');
+                                            foreach ( $options_object as $term) {
+                                                $seperator = ' >> ';
+                                                if($term->parent != 0) {
+                                                    $parent_key = array_search($term->parent, array_map(function($o){ return $o->term_id; }, $options_object));
+                                                    ?>
+                                                    <option value="<?php echo $term->name; ?>"><?php echo $options_object[$parent_key]->name.$seperator.$term->name; ?></option>
+                                                <?php                                             }
+                                            } ?>
+                                        </select>
+                                    </div>
+                                    <div class="fields contribute">
+                                        <label class="input-label required">Amount you wish to contribute</label>
+                                        <input min="<?php echo get_post_meta(get_the_ID(),'_fund_min_investment')[0]; ?>" name="contribution_amount" type="number" class="input-box" placeholder="The amount">
+                                    </div>
                                 </div>
-                            </div>
                             </form>
 
                         </div>

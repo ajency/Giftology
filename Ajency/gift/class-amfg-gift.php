@@ -354,7 +354,7 @@ class Ajency_MFG_Gift {
             'created' => current_time( 'mysql' ),
             'updated' => current_time( 'mysql' ),
         ));
-        return $wpdb->print_error();
+        return $wpdb->insert_id;
     }
 }
 

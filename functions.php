@@ -116,10 +116,11 @@ function giftology_api() {
         '/gifts/create-gift-minimal',
         array(
             'methods' => 'POST',
-            'callback' => 'giftology_create_gift_minimal',
+            'callback' => 'giftology_create_gift_minimal'
+       /* ,
             'permission_callback' => function () {
                 return is_user_logged_in();
-            }
+            }*/
         )
     );
 
@@ -149,9 +150,8 @@ function giftology_create_gift_minimal($request_data) {
             return json_response(false, "Please enter a contribution amount greater than the min fund investment needed",false);
         }
         $res = Ajency_MFG_Gift::create_gift_minimal(get_current_user_id(),$parameters['fund_id'],$parameters['receiver_name'],$parameters['receiver_occasion'],$parameters['contribution_amount']);
-        return json_response(true, "Gift Created Successfully",$res);
+        return json_response(true, "Gift Created Successfully",['id' => $res]);
     }
-
     return json_response(false, "All fields are required",false);
 }
 
