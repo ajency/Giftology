@@ -1218,6 +1218,9 @@ textarea:focus {
   color: rgba(255, 255, 255, 0.75);
   padding-left: 5px;
 }
+.fund__type span a:hover {
+  color: #9c1bef;
+}
 .fund__type b {
   font-weight: 500;
 }
@@ -1885,6 +1888,7 @@ label .fa.checkbox-inline.fa-check-circle {
 .c-style .card-holder .cards .header .section .title {
   margin-bottom: 0;
   padding-right: 0.5em;
+  min-width: 80px;
 }
 .c-style .card-holder .cards .header .section span {
   -webkit-box-flex: 1;
