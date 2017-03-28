@@ -256,13 +256,14 @@
                                         <select name="receiver_occasion" class="input-box select-box">
                                             <option>-- Please select --</option>
                                             <?php
-                                            $options_object = get_terms('bucket-2');
+                                            $options_object = $bucket_2_terms;
                                             foreach ( $options_object as $term) {
-                                                $seperator = ' >> ';
+                                                $seperator = ' > ';
                                                 if($term->parent != 0) {
-                                                    $parent_key = array_search($term->parent, array_map(function($o){ return $o->term_id; }, $options_object));
+                                                    $parent = get_term($term->parent);
+                                                    $term_name =  $parent->name.$seperator.$term->name;
                                                     ?>
-                                                    <option value="<?php echo $term->name; ?>"><?php echo $options_object[$parent_key]->name.$seperator.$term->name; ?></option>
+                                                    <option value="<?php echo $term->name; ?>"><?php echo $term_name; ?></option>
                                                 <?php                                             }
                                             } ?>
                                         </select>
