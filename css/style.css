@@ -2626,6 +2626,16 @@ label .fa.checkbox-inline.fa-check-circle {
   max-width: 80%;
   margin: 0 auto;
 }
+@media screen and (min-width: 768px) and (max-width: 1200px) {
+  .create_Card .cards {
+    max-width: 100%;
+  }
+}
+@media screen and (max-width: 767px) {
+  .create_Card .cards {
+    max-width: 450px;
+  }
+}
 .gift-note {
   background-color: #feeaa1;
   padding: 1.5em;
@@ -3042,7 +3052,7 @@ label .fa.checkbox-inline.fa-check-circle {
     display: none;
   }
   .gift-note {
-    margin: 7em 0 1em 0;
+    margin: 7em auto 1em auto;
   }
   .section-number {
     display: none;
@@ -3177,6 +3187,11 @@ label .fa.checkbox-inline.fa-check-circle {
     width: 65%;
   }
 }
+@media screen and (max-width: 767px) {
+  .gift-note {
+    width: 450px;
+  }
+}
 @media screen and (max-width: 500px) {
   .name-box .voucher {
     bottom: -118px;
@@ -3220,7 +3235,8 @@ label .fa.checkbox-inline.fa-check-circle {
     display: block;
   }
   .gift-note {
-    margin: 9em 0 1em 0;
+    margin: 9em auto 1em auto;
+    width: 90%;
   }
 }
 .modal-open[style] {
