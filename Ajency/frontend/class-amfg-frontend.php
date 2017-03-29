@@ -33,16 +33,16 @@ class Ajency_MFG_Frontend
     }
 
     function custom_rewrite_basic() {
-        // Remember to flush the rules once manually after you added this code!
+
         add_rewrite_rule(
-        // The regex to match the incoming URL
+            'gifts/([^/]+)/update?',
+            'index.php?update-gift=$matches[1]',
+            'top' );
+
+
+        add_rewrite_rule(
             'gifts/([^/]+)?',
-            // The resulting internal URL: `index.php` because we still use WordPress
-            // `pagename` because we use this WordPress page
-            // `designer_slug` because we assign the first captured regex part to this variable
             'index.php?gifts=$matches[1]',
-            // This is a rather specific URL, so we add it to the top of the list
-            // Otherwise, the "catch-all" rules at the bottom (for pages and attachments) will "win"
             'top' );
     }
 
@@ -110,7 +110,7 @@ class Ajency_MFG_Frontend
             get_template_part( 'Ajency/frontend/custom_pages/accept-invite', 'page' );
             /*            echo do_shortcode( '[gift_invites show_delete=1 template=2 gift_id="1" status="0"]' );*/
         }
-        else if($wp->query_vars['complete-gift']) //Step 3
+        else if($wp->query_vars['update-gift']) //Step 3
         {
             get_template_part( 'Ajency/frontend/custom_pages/complete-gift', 'page' );
         }
@@ -126,7 +126,7 @@ class Ajency_MFG_Frontend
         $vars[] = 'modal';
         $vars[] = 'login';
         $vars[] = 'gift-invites-view-all';
-        $vars[] = 'complete-gift';
+        $vars[] = 'update-gift';
         return $vars;
     }
 }
