@@ -1,0 +1,8 @@
+#: widgets/wsl.loading.screens.php:82
+#, php-format
+msgid "Contacting <b>%s</b>, please wait..."
+msgstr ""
+
+#: widgets/wsl.loading.screens.php:187
+msgid "Processing, please wait..."
+msgstr ""
