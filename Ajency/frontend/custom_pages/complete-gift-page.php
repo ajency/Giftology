@@ -68,7 +68,7 @@ if(is_user_logged_in()){
                     <div class="col-sm-5">
 
 
-                        <div class="card-holder">
+                        <div class="card-holder create_Card">
 
                         <?php
                         $query = [

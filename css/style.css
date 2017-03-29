@@ -569,6 +569,11 @@ textarea:focus {
           flex: 1.5 0 0;
 }
 .voucher .col.occasion {
+  -webkit-box-align: baseline;
+  -webkit-align-items: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+  padding-left: 2em;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -webkit-flex-direction: column;
@@ -2589,7 +2594,7 @@ label .fa.checkbox-inline.fa-check-circle {
 }
 .name-box {
   background-color: #ee275f;
-  padding: 1.5em 1.5em 2.5em 1.5em;
+  padding: 1.5em 2.3em 2.5em 2.3em;
   color: #fff;
   position: relative;
 }
@@ -2616,6 +2621,10 @@ label .fa.checkbox-inline.fa-check-circle {
 }
 .name-box .voucher .col.voucher-name span {
   margin-left: 6px;
+}
+.create_Card .cards {
+  max-width: 80%;
+  margin: 0 auto;
 }
 .gift-note {
   background-color: #feeaa1;
@@ -3124,6 +3133,7 @@ label .fa.checkbox-inline.fa-check-circle {
   }
   .name-box .voucher .col.occasion {
     min-width: 200px;
+    padding-left: 1em;
   }
 }
 @media screen and (min-width: 550px) and (max-width: 1023px) {
@@ -3132,6 +3142,7 @@ label .fa.checkbox-inline.fa-check-circle {
   }
   .name-box .voucher .col.occasion {
     min-width: 200px;
+    padding-left: 1em;
   }
   .template {
     -webkit-box-orient: horizontal;
@@ -3186,6 +3197,11 @@ label .fa.checkbox-inline.fa-check-circle {
         -ms-flex: inherit;
             flex: inherit;
     width: 100%;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding-left: 0;
   }
   .name-box .voucher .col.voucher-name {
     margin-bottom: 1em;
