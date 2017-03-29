@@ -1865,7 +1865,7 @@ label .fa.checkbox-inline.fa-check-circle {
   padding: 1.5em;
 }
 .c-style .card-holder .cards .header {
-  box-shadow: 0px 2px 0px 0px rgba(158, 1, 45, 0.21);
+  border-bottom: 2px solid rgba(158, 1, 45, 0.1);
   margin-bottom: 1px;
 }
 .c-style .card-holder .cards .header .read-more {
