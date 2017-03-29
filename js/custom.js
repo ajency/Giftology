@@ -317,6 +317,13 @@
             });
         }
 
+        if($(window).width() < 600) {
+            $('.occasion .fa-info').tooltip('destroy');
+            $('.occasion .fa-info').tooltip({
+                placement : 'top'
+            });
+        }
+
         jQuery(".input-search").on('focus', function () {
             console.log('test');
             jQuery('.search').addClass('active');
