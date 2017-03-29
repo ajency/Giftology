@@ -283,6 +283,25 @@
         });
 
 
+        // Disabled field validation
+
+
+        $('.valid-fields').keyup(function() {
+            var empty = false;
+            $('.valid-fields').each(function() {
+                if ($(this).val() == '') {
+                    empty = true;
+                }
+            });
+
+            if (empty) {
+                $('#update-gift').attr('disabled', 'disabled');
+            } else {
+                $('#update-gift').removeAttr('disabled');
+            }
+        });
+
+
         // Filter mobile flyout
 
 

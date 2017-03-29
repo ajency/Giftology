@@ -2614,6 +2614,9 @@ label .fa.checkbox-inline.fa-check-circle {
       -ms-flex: 1.2 0 0;
           flex: 1.2 0 0;
 }
+.name-box .voucher .col.voucher-name span {
+  margin-left: 6px;
+}
 .gift-note {
   background-color: #feeaa1;
   padding: 1.5em;
@@ -2866,10 +2869,10 @@ label .fa.checkbox-inline.fa-check-circle {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
   margin-bottom: 10em;
 }
 .send-actions .btn {
