@@ -669,17 +669,18 @@ label{
     			margin-right: 0;
     		}
     		.gray{
-    			padding: 1.5em;
+    			padding: 1.5em 1.5em 0.8em 1.5em;
     			// background-color: rgba(238, 238, 238, 0.51);
     		}
     		.header{
-    			box-shadow: 0px 2px 0px 0px rgba(158, 1, 45, 0.21);
+    			// box-shadow: 0px 2px 0px 0px rgba(158, 1, 45, 0.21);
+    			border-bottom: 2px solid rgba(158, 1, 45, 0.1);
     			margin-bottom: 1px;
     			.read-more{
     				overflow: hidden;
     			}
     			a[data-readmore-toggle]{
-    				padding: 0.5em 0;
+    				padding: 0.5em 0 0 0;
     				background-color: #fff;
     				text-align: center;
     				width: 100%;
@@ -691,6 +692,7 @@ label{
     			}
     			.flex-col{
     				display: flex;
+    				min-height: 100px;
     				.funds-detail{
     					min-width: 0;
     					padding-right: 6em;
@@ -704,7 +706,7 @@ label{
     					}
     					.fund-subname{
     						font-size: 1.05em;
-    						margin-bottom: 1em;
+    						margin-bottom: 0;
     						// display: none;
     						.title{
     							margin-bottom: 0;
@@ -733,6 +735,10 @@ label{
     					
     				}
     			}
+    			.block-divider{
+    				border-top: 2px solid rgba(158, 1, 45, 0.1);
+    				margin: 1em -1.5em;
+    			}
 		    	.section{
 					display: flex;
 					// align-items: center;
@@ -741,10 +747,15 @@ label{
 					padding-bottom: 0.3em;
 					.title{
 						// display: none;
-						margin-bottom: 0;
+						margin-bottom: 5px;
 						padding-right: 0.5em;
 						// flex: 1;
 						min-width: 80px;
+					    text-transform: uppercase;
+					    font-weight: 500;
+					    color: #a0a0a0;
+					    letter-spacing: 0.5px;
+    					font-size: 0.95em;
 					}
 					span{
 						flex: 1;
@@ -886,6 +897,13 @@ label{
 		    margin-top: 0;
 		    color: #9c1bef;
 		    text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.43);
+		    @media screen and (max-width: 991px){
+		    	padding: 2em 0;
+		    	font-size: 1.2em;
+    			text-align: center;
+    			line-height: 1.4;
+    			width: 100%;
+		    }
     	}
     	.read-more{
     		overflow: hidden;
