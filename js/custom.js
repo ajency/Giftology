@@ -283,6 +283,25 @@
         });
 
 
+        // Disabled field validation
+
+
+        $('.valid-fields').keyup(function() {
+            var empty = false;
+            $('.valid-fields').each(function() {
+                if ($(this).val() == '') {
+                    empty = true;
+                }
+            });
+
+            if (empty) {
+                $('.save-data').attr('disabled', 'disabled');
+            } else {
+                $('.save-data').removeAttr('disabled');
+            }
+        });
+
+
         // Filter mobile flyout
 
 
@@ -295,6 +314,13 @@
                 $('body').toggleClass('blocked');
                 $(this).toggleClass('active');
                 $('.filter').toggleClass('active');
+            });
+        }
+
+        if($(window).width() < 600) {
+            $('.occasion .fa-info').tooltip('destroy');
+            $('.occasion .fa-info').tooltip({
+                placement : 'top'
             });
         }
 
