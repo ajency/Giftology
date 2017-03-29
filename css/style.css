@@ -2622,6 +2622,10 @@ label .fa.checkbox-inline.fa-check-circle {
 .name-box .voucher .col.voucher-name span {
   margin-left: 6px;
 }
+.create_Card .cards {
+  max-width: 80%;
+  margin: 0 auto;
+}
 .gift-note {
   background-color: #feeaa1;
   padding: 1.5em;
