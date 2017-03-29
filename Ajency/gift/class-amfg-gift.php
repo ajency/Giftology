@@ -351,8 +351,14 @@ class Ajency_MFG_Gift {
 
     public static function update_gift($data) {
 
-        $gift_id = $data['gift_id'];
+        $gift = self::get_gift_details($data['gift_id']);
+        if($gift->created_by > 0 && ($gift->created_by != $data->created_by))
+        {
+            return false;
+        } else {
 
+            //Save the data
+        }
     }
 
     public static function create_gift_minimal($user_id, $fund_id, $recepient_name, $occasion, $contribution_amount) {

@@ -330,7 +330,7 @@
                 success: function(data){
                     console.log(data);
                     if(data.success) {
-                        var redirect = giftology_api.homeUrl + '?complete-gift=' + data.data.id;
+                        var redirect = giftology_api.homeUrl + '?update-gift=' + data.data.id;
                         console.log(redirect);
                         window.location = redirect;
                     } else {
@@ -365,6 +365,101 @@
             });
         });
 
+
+
+        $('.section-number').affix({
+            offset: {
+                top: $('.gift-name').offset().top,
+                bottom: function() {
+                    return this.bottom = $('.gift-footer').outerHeight(true);
+                }
+            }
+        });
+
+
+        var first = $('.template').offset().top;
+        var second = $('.send-details').offset().top;
+        var third = $('.contribute').offset().top;
+
+        $(window).scroll(function(){
+            var trigger = $(this).scrollTop() + 40;
+            if (trigger < second){
+                $('.points .first').addClass('active').siblings().removeClass('active');
+            }
+            else if ((trigger > second) && (trigger < third)){
+                $('.points .second').addClass('active').siblings().removeClass('active');
+            }
+            else{
+                $('.points .third').addClass('active').siblings().removeClass('active');
+            }
+        });
+
+
+        $('#template-modal').on('shown.bs.modal', function () {
+            $('.templates .read-more').readmore({
+                speed: 25,
+                collapsedHeight: 80,
+                moreLink: '<a href="#">More</a>',
+                lessLink: '<a href="#">Less</a>'
+            });
+            $('.templates .read-more .string').each(function(){
+                var count = $(this).text().length;
+                $(this).parent().siblings('.count').children('.number').text(count);
+                // console.log(count);
+            });
+            $('.radio-select').on('change',function(){
+                if($('.radio-select:checked')){
+                    $('.site-btn-2').removeClass('disabled');
+                }
+                else{
+                    $('.site-btn-2').addClass('disabled');
+                }
+
+            });
+        });
+
+        $('input[name="gift-send"]').on('change',function(){
+            $('input:not(:checked)').parent().removeClass("date-style");
+            $('input:checked').parent().addClass("date-style");
+        });
+
+
+        $('#update-gift').on('click', function () {
+
+          var gift_id = $( '#gift_id' ).val();
+            /*              var data = {};
+            data.title = $( '#title' ).val();
+            data.receiver_email = $( '#receiver_email' ).val();
+            data.receiver_mobile = $( '#receiver_mobile' ).val();
+            data.receiver_message = $( '#receiver_message' ).val();
+            data.contrib_setting_id = $( '#contrib_setting_id' ).val();
+            data.send_type = $( '#send_type' ).val();
+            data.send_on = $( '#send_on' ).val();*/
+
+            var data = $('#update-gift1').serialize();
+            console.log(data);
+            $.ajax({
+                type: "POST",
+                url: giftology_api.root + 'giftology/v1/gifts/' + gift_id + '/update',
+                beforeSend: function ( xhr ) {
+                    xhr.setRequestHeader( 'X-WP-Nonce', giftology_api.nonce );
+                },
+                data: data ,
+                success: function(data){
+                    console.log(data);
+                   /* if(data.success) {
+                        var redirect = giftology_api.homeUrl + '?complete-gift=' + data.data.id;
+                        console.log(redirect);
+                        window.location = redirect;
+                    } else {
+                        $('#contribution_amount_error').html('<div class="alert alert-danger">' + data.message + '</div>');
+                    }*/
+                },
+                error: function(){
+                    alert("Internal Server Error : Please contact Admin");
+                }
+            });
+        });
 
     });
 

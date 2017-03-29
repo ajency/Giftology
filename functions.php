@@ -155,7 +155,28 @@ function giftology_api() {
 
 function giftology_update_gift($request_data) {
 
-    Ajency_MFG_Gift::create_gift_minimal($request_data);
+    $parameters = $request_data->get_params();
+    if( $parameters['title'] &&
+        $parameters['contributors_note'] &&
+        $parameters['receiver_email'] &&
+        $parameters['receiver_mobile'] &&
+        $parameters['contrib_setting_id'] &&
+        $parameters['template_id'] &&
+        $parameters['img'] &&
+        $parameters['send_type'] &&
+        $parameters['send_on'] &&
+        $parameters['gift_id']
+    )
+    {
+        $parameters['created_by'] = get_current_user_id();
+        $result = Ajency_MFG_Gift::update_gift($parameters);
+        if($result) {
+            return json_response(false, "Gift updated",true);
+        } else {
+            return json_response(false, "Gift could not be updated",false);
+        }
+    }
+    return json_response(false, "All fields are required",false);
 
 }
 
