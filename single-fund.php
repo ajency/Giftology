@@ -205,6 +205,12 @@ if( !defined( 'ABSPATH' ) ) exit;
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <div class="brand-box">
+
+                            
+                            <?php if(get_post_meta(get_the_ID(),'_fund_featured')[0]) : ?>
+                                <span class="medal"></span>
+                            <?php endif; ?>
+
                             <img src="<?php echo get_the_post_thumbnail_url(); ?>" class="img-responsive center-block" width="50">
                         </div>
                         <div class="fund-head">
@@ -242,6 +248,7 @@ if( !defined( 'ABSPATH' ) ) exit;
                             </div>
                             <div class="gift-note">
                                 <p class="data">Mimimum investment <b>Rs. <?php echo get_post_meta(get_the_ID(),'_fund_min_investment')[0]; ?></b></p>
+
                                 <p class="data">In multiples of <b>Rs. <?php echo get_post_meta(get_the_ID(),'_fund_min_increment')[0]; ?></b> thereafter</p>
                             </div>
                         </div>
