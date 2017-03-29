@@ -206,7 +206,7 @@ if( !defined( 'ABSPATH' ) ) exit;
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <div class="brand-box">
 
-                            
+
                             <?php if(get_post_meta(get_the_ID(),'_fund_featured')[0]) : ?>
                                 <span class="medal"></span>
                             <?php endif; ?>
