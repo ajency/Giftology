@@ -2104,6 +2104,15 @@ label .fa.checkbox-inline.fa-check-circle {
   color: #9c1bef;
   text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.43);
 }
+@media screen and (max-width: 991px) {
+  .c-style .card-holder .no-data {
+    padding: 2em 0;
+    font-size: 1.2em;
+    text-align: center;
+    line-height: 1.4;
+    width: 100%;
+  }
+}
 .c-style .card-holder .read-more {
   overflow: hidden;
 }
