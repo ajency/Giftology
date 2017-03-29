@@ -61,7 +61,7 @@ if(is_user_logged_in()){
                             </div>
                             <div class="gift-note">
                                 <h6 class="title">please note</h6>
-                                <p class="data">The minimum amount to be contributed by you for this gift to be ready is <b>Rs. <?php echo $fund->_fund_min_investment; ?>.</b></p>
+                                <p class="data">The minimum amount to be contributed by you for this gift to be ready is <b>Rs. <?php echo $gift->contribution_amount; ?>.</b></p>
                             </div>
                         </div>
                     </div>
