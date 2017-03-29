@@ -54,32 +54,33 @@ $fund_url = get_post_meta(get_the_ID(), '_fund_url')[0];
 ?>
 <div class="cards">
     <div class="gray header">
-        <div class="read-more">
-            <div class="flex-col">
-                <div class="funds-detail">
-                    <a href="<?php echo get_the_permalink(); ?>"><h2 class="fund-name" title="<?php echo get_the_title(); ?>"><?php echo  strlen(get_the_title()) > 50 ? substr(get_the_title(),0,50)."..." : get_the_title();  ?></h2></a>
-                    <div class="fund-subname">
-                        <p class="title"><a href="<?php
+        <div class="flex-col">
+            <div class="funds-detail">
+                <a href="<?php echo get_the_permalink(); ?>"><h2 class="fund-name" title="<?php echo get_the_title(); ?>"><?php echo  strlen(get_the_title()) > 50 ? substr(get_the_title(),0,50)."..." : get_the_title();  ?></h2></a>
+                <div class="fund-subname">
+                    <p class="title"><a href="<?php
 
-                            $params1 = [];
-                            $params1['a'][] = $amc->slug;
-                            $add_url_params = http_build_query($params1);
-                            $add_url = '/funds?'.$add_url_params;
-                            echo $add_url;
+                        $params1 = [];
+                        $params1['a'][] = $amc->slug;
+                        $add_url_params = http_build_query($params1);
+                        $add_url = '/funds?'.$add_url_params;
+                        echo $add_url;
 
-                            ?>"><?php echo $amc->name; ?></a></p>
-                        <a href="<?php echo $fund_url; ?>" class="fund-link underline" title="<?php echo $fund_url; ?>"><?php echo $fund_url; ?></a>
-                    </div>
-                    <a href="<?php echo get_the_permalink(); ?>">
-                        <div class="brand-box">
-                            <?php if(get_post_meta(get_the_ID(),'_fund_featured')[0]) : ?>
-                            <span class="medal"></span>
-                            <?php endif; ?>
-                            <img src="<?php echo get_the_post_thumbnail_url(); ?>" class="img-responsive center-block">
-                        </div>
-                    </a>
+                        ?>"><?php echo $amc->name; ?></a></p>
+                    <a href="<?php echo $fund_url; ?>" class="fund-link underline" title="<?php echo $fund_url; ?>"><?php echo $fund_url; ?></a>
                 </div>
+                <a href="<?php echo get_the_permalink(); ?>">
+                    <div class="brand-box">
+                        <?php if(get_post_meta(get_the_ID(),'_fund_featured')[0]) : ?>
+                        <span class="medal"></span>
+                        <?php endif; ?>
+                        <img src="<?php echo get_the_post_thumbnail_url(); ?>" class="img-responsive center-block">
+                    </div>
+                </a>
             </div>
+        </div>
+        <hr class="block-divider">
+        <div class="read-more">
             <div class="bucket-data">
                 <div class="section">
                     <p class="title"><?php echo $buckets['_amfg_bucket_1_singular']; ?></p><span><?php echo $bucket_1s; ?></span>

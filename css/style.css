@@ -1862,7 +1862,7 @@ label .fa.checkbox-inline.fa-check-circle {
   margin-right: 0;
 }
 .c-style .card-holder .cards .gray {
-  padding: 1.5em;
+  padding: 1.5em 1.5em 0.8em 1.5em;
 }
 .c-style .card-holder .cards .header {
   border-bottom: 2px solid rgba(158, 1, 45, 0.1);
@@ -1872,7 +1872,7 @@ label .fa.checkbox-inline.fa-check-circle {
   overflow: hidden;
 }
 .c-style .card-holder .cards .header a[data-readmore-toggle] {
-  padding: 0.5em 0;
+  padding: 0.5em 0 0 0;
   background-color: #fff;
   text-align: center;
   width: 100%;
@@ -1887,6 +1887,7 @@ label .fa.checkbox-inline.fa-check-circle {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  min-height: 100px;
 }
 .c-style .card-holder .cards .header .flex-col .funds-detail {
   min-width: 0;
@@ -1899,7 +1900,7 @@ label .fa.checkbox-inline.fa-check-circle {
 }
 .c-style .card-holder .cards .header .flex-col .funds-detail .fund-subname {
   font-size: 1.05em;
-  margin-bottom: 1em;
+  margin-bottom: 0;
 }
 .c-style .card-holder .cards .header .flex-col .funds-detail .fund-subname .title {
   margin-bottom: 0;
@@ -1920,6 +1921,10 @@ label .fa.checkbox-inline.fa-check-circle {
 }
 .c-style .card-holder .cards .header .flex-col a:not(.fund-link):hover {
   color: #9c1bef;
+}
+.c-style .card-holder .cards .header .block-divider {
+  border-top: 2px solid rgba(158, 1, 45, 0.1);
+  margin: 1em -1.5em;
 }
 .c-style .card-holder .cards .header .section {
   display: -webkit-box;

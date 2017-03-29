@@ -669,7 +669,7 @@ label{
     			margin-right: 0;
     		}
     		.gray{
-    			padding: 1.5em;
+    			padding: 1.5em 1.5em 0.8em 1.5em;
     			// background-color: rgba(238, 238, 238, 0.51);
     		}
     		.header{
@@ -680,7 +680,7 @@ label{
     				overflow: hidden;
     			}
     			a[data-readmore-toggle]{
-    				padding: 0.5em 0;
+    				padding: 0.5em 0 0 0;
     				background-color: #fff;
     				text-align: center;
     				width: 100%;
@@ -692,6 +692,7 @@ label{
     			}
     			.flex-col{
     				display: flex;
+    				min-height: 100px;
     				.funds-detail{
     					min-width: 0;
     					padding-right: 6em;
@@ -705,7 +706,7 @@ label{
     					}
     					.fund-subname{
     						font-size: 1.05em;
-    						margin-bottom: 1em;
+    						margin-bottom: 0;
     						// display: none;
     						.title{
     							margin-bottom: 0;
@@ -733,6 +734,10 @@ label{
     					}
     					
     				}
+    			}
+    			.block-divider{
+    				border-top: 2px solid rgba(158, 1, 45, 0.1);
+    				margin: 1em -1.5em;
     			}
 		    	.section{
 					display: flex;
