@@ -295,9 +295,9 @@
             });
 
             if (empty) {
-                $('#update-gift').attr('disabled', 'disabled');
+                $('.save-data').attr('disabled', 'disabled');
             } else {
-                $('#update-gift').removeAttr('disabled');
+                $('.save-data').removeAttr('disabled');
             }
         });
 

@@ -196,7 +196,7 @@ if(is_user_logged_in()){
                        <div class="send-actions">
                     <!-- <button type="button" class="btn btn-default cancel">Cancel</button>-->
                         <!-- <div class="group"> -->
-                            <button type="submit" id="update-gift" class="btn btn-default site-btn-2" disabled>Contribute</button>
+                            <button type="submit" id="update-gift" class="btn btn-default site-btn-2 save-data" disabled>Contribute</button>
                             <!-- </div> -->
                         </div>
 
@@ -223,10 +223,10 @@ if(is_user_logged_in()){
                                 <span class="caption">Contributors</span>
                             </li>
                         </ul>
-<!--                        <div class="save-changes">
+                        <!-- <div class="save-changes">
                             <p class="title">Make sure to save your changes regularly</p>
-                            <button type="button" class="btn btn-default site-btn save-draft">Save as draft</button>
-                        </div>-->
+                            <button type="button" id="update-gift" class="btn btn-default site-btn save-draft save-data" disabled>Contribute</button>
+                        </div> -->
                     </div>
 
                 </div>
