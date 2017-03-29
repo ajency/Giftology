@@ -1935,9 +1935,14 @@ label .fa.checkbox-inline.fa-check-circle {
   padding-bottom: 0.3em;
 }
 .c-style .card-holder .cards .header .section .title {
-  margin-bottom: 0;
+  margin-bottom: 5px;
   padding-right: 0.5em;
   min-width: 80px;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: #a0a0a0;
+  letter-spacing: 0.5px;
+  font-size: 0.95em;
 }
 .c-style .card-holder .cards .header .section span {
   -webkit-box-flex: 1;
