@@ -103,7 +103,7 @@ if(is_user_logged_in()){
 
                     <div class="gift-name width-box">
                         <label class="input-label required">What do you want to call this gift?</label>
-                        <input name="title" type="text" class="input-box name-text" placeholder="Name this gift">
+                        <input name="title" type="text" class="input-box name-text valid-fields" placeholder="Name this gift" required>
                     </div>
                     <!-- <div class="cover width-box">
                         <label class="input-label required">Add a cover image to this gift</label>
@@ -144,15 +144,15 @@ if(is_user_logged_in()){
                             <div class="data">
                                 <label class="input-label required">Some details about Sarvesh </label>
                                 <div class="cols">
-                                    <input  name="receiver_email" type="email" class="input-box name-text email-text m-r-1" placeholder="Email address">
-                                    <input name="receiver_mobile" type="number" class="input-box name-text" placeholder="Mobile number">
+                                    <input  name="receiver_email" type="email" class="input-box name-text email-text m-r-1 valid-fields" placeholder="Email address" required>
+                                    <input name="receiver_mobile" type="number" class="input-box name-text valid-fields" placeholder="Mobile number" required>
                                 </div>
                             </div>
                         </div>
                         <div class="msg-info">
                             <label class="input-label required">Type a message for Sarvesh</label>
                             <p class="label-caption">Sarvesh will see this when he receives the gift <a href="#" class="underline" data-toggle="modal" data-target="#template-modal">Choose from a template</a></p>
-                            <textarea name="receiver_message" rows="4" class="input-box" placeholder="A nice message that will bring a smile to the recipient's face..."></textarea>
+                            <textarea name="receiver_message" rows="4" class="input-box valid-fields" placeholder="A nice message that will bring a smile to the recipient's face..." required></textarea>
                         </div>
                     </div>
 
@@ -161,11 +161,11 @@ if(is_user_logged_in()){
                             <label class="input-label required">Would you like others to contribute to this gift?</label>
                             <div class="radio-option">
                                 <label>
-                                    <input type="radio" name="contrib_setting_id" value="2" class="input-radio">
+                                    <input type="radio" name="contrib_setting_id" value="2" class="input-radio valid-fields" required>
                                     <span>Yes, I want others to contribute</span>
                                 </label>
                                 <label>
-                                    <input type="radio" name="contrib_setting_id" value="1" class="input-radio">
+                                    <input type="radio" name="contrib_setting_id" value="1" class="input-radio valid-fields" required>
                                     <span>No i don't</span>
                                 </label>
                             </div>
@@ -179,12 +179,12 @@ if(is_user_logged_in()){
                             <label class="input-label required">When do you want the gift to be sent?</label>
                             <div class="radio-option align-top">
                                 <label class="s-label">
-                                    <input name="send_type" type="radio" value="1" class="input-radio">
+                                    <input name="send_type" type="radio" value="1" class="input-radio valid-fields" required>
                                     <span>Send now</span>
                                 </label>
                                 <label class="s-label schedule">
                                     <div class="flex-col">
-                                        <input  name="send_type" type="radio" value="2" class="input-radio schedule-trigger">
+                                        <input  name="send_type" type="radio" value="2" class="input-radio schedule-trigger valid-fields" required>
                                         <span>Schedule to send</span>
                                     </div>
                                     <input type="date" class="input-box date-field">
@@ -193,16 +193,17 @@ if(is_user_logged_in()){
                         </div>
                     </div>
 
+                       <div class="send-actions">
+                    <!-- <button type="button" class="btn btn-default cancel">Cancel</button>-->
+                        <!-- <div class="group"> -->
+                            <button type="submit" id="update-gift" class="btn btn-default site-btn-2 save-data" disabled>Contribute</button>
+                            <!-- </div> -->
+                        </div>
 
                     </form>
 
 
-            <div class="send-actions">
-<!--                        <button type="button" class="btn btn-default cancel">Cancel</button>-->
-                        <div class="group">
-                            <button type="button" id="update-gift" class="btn btn-default site-btn-2">Contribute</button>
-                        </div>
-                    </div>
+         
 
                 </div>
                 <div class="col-sm-5">
@@ -222,10 +223,10 @@ if(is_user_logged_in()){
                                 <span class="caption">Contributors</span>
                             </li>
                         </ul>
-<!--                        <div class="save-changes">
+                        <!-- <div class="save-changes">
                             <p class="title">Make sure to save your changes regularly</p>
-                            <button type="button" class="btn btn-default site-btn save-draft">Save as draft</button>
-                        </div>-->
+                            <button type="button" id="update-gift" class="btn btn-default site-btn save-draft save-data" disabled>Contribute</button>
+                        </div> -->
                     </div>
 
                 </div>

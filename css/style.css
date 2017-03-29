@@ -1595,8 +1595,20 @@ textarea:focus {
   .fund-risk img {
     margin: 0 auto;
   }
+  .brand-data {
+    -webkit-box-align: baseline;
+    -webkit-align-items: baseline;
+        -ms-flex-align: baseline;
+            align-items: baseline;
+  }
   .brand-data .brand-box {
     left: 0;
+  }
+  .brand-data .bucket {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
   }
   .fund-stats {
     background-color: #fff;
@@ -2602,6 +2614,9 @@ label .fa.checkbox-inline.fa-check-circle {
       -ms-flex: 1.2 0 0;
           flex: 1.2 0 0;
 }
+.name-box .voucher .col.voucher-name span {
+  margin-left: 6px;
+}
 .gift-note {
   background-color: #feeaa1;
   padding: 1.5em;
@@ -2854,10 +2869,10 @@ label .fa.checkbox-inline.fa-check-circle {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
   margin-bottom: 10em;
 }
 .send-actions .btn {
