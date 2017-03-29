@@ -271,7 +271,7 @@
 
          $('.read-more').readmore({
            speed: 25,
-           collapsedHeight: 183,
+           collapsedHeight: 175,
            moreLink: '<a href="#">More</a>',
            lessLink: '<a href="#">Less</a>'
          });
