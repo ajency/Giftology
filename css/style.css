@@ -2643,6 +2643,7 @@ label .fa.checkbox-inline.fa-check-circle {
     -webkit-flex: 1;
         -ms-flex: 1;
             flex: 1;
+    width: 310px;
   }
   .cards .header .fund-desc {
     width: 100%;
