@@ -1262,6 +1262,11 @@ textarea:focus {
   top: 0;
   right: 8px;
 }
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .brand-box img {
+    width: 100%;
+  }
+}
 .brand-data {
   display: -webkit-box;
   display: -webkit-flex;
