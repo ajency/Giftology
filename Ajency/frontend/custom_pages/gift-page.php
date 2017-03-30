@@ -56,6 +56,7 @@ if( !defined( 'ABSPATH' ) ) exit;
                     $perms['current_user_can_edit'] = $user_id == $gift->created_by ? true : false;
                     $perms['current_user_can_view_invites'] = Ajency_MFG_Gift::get_acl_access_rule('gift',$gift_id,$user_id,'view-invites');
                     $perms['current_user_can_send_invites'] = Ajency_MFG_Gift::get_acl_access_rule('gift',$gift_id,$user_id,'send-invites');
+                    print_r($perms);
                     ?>
 
                     <?php if($perms['current_user_can_edit']) : ?>
@@ -129,8 +130,8 @@ if( !defined( 'ABSPATH' ) ) exit;
 -->
 
                                 <?php if($perms['current_user_can_view_invites'] && $perms['recepients_count'] > 0) : ?>
-                                    <?php $resent_invites = $perms['current_user_can_send_invites']; ?>
-                                    <?php echo do_shortcode( '[gift_invites show-resend='.$resend_invites.' view-all-link=# gift_id="'.$gift_id.'" status="1"]' ); ?>
+                                    <?php $show_resend = (isset($perms['current_user_can_send_invites']) && !empty($perms['current_user_can_send_invites'])) ? 1 : 0;  ?>
+                                    <?php echo do_shortcode( '[gift_invites show-resend='.$show_resend.' gift_id="'.$gift_id.'" status="1"]' ); ?>
                                 <?php  endif; ?>
                             </div>
                             <div role="tabpanel" class="tab-pane" id="contributors">contributors</div>
