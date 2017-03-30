@@ -77,6 +77,8 @@ if(is_user_logged_in()){
                         ];
                         $loop = new WP_Query( $query );
 
+                        $buckets = (get_option('_amfg_bucket_settings'));
+                        
                         if ($loop->have_posts() ) :
                             while ( $loop->have_posts() ) : $loop->the_post(); // standard WordPress loop.
                                 include locate_template('template-parts/funds/fund-card.php', false, fals);
