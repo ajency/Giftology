@@ -276,6 +276,13 @@
            lessLink: '<a href="#">Less</a>'
          });
 
+         $('.create_Card .read-more').readmore({
+           speed: 25,
+           collapsedHeight: 145,
+           moreLink: '<a href="#">More</a>',
+           lessLink: '<a href="#">Less</a>'
+         });
+
         $(".input-search").on('keyup', function (e) {
             if (e.keyCode == 13) {
                 window.location = "?search=" +  $( '.input-search' ).val();
