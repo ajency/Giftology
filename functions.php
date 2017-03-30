@@ -193,6 +193,7 @@ function giftology_resend_invite_email($request_data) {
         'inviter' => wp_get_current_user()->display_name,
         'occasion' => $invite->receiver_occasion,
         'link' => $link,
+        'image_file_dir' => get_template_directory_uri().'/img/',
     ];
 
     /*                return [$vars,wp_get_current_user(),$gift];*/
@@ -439,6 +440,7 @@ function giftology_send_invites($request_data){
                     'inviter' => wp_get_current_user()->display_name,
                     'occasion' => $gift->receiver_occasion,
                     'link' => $link,
+                    'image_file_dir' => get_template_directory_uri().'/img/'
                 ];
 
 /*                return [$vars,wp_get_current_user(),$gift];*/
