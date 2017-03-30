@@ -393,14 +393,18 @@
 
 
 
-        $('.section-number').affix({
-            offset: {
-                top: $('.gift-name').offset().top,
-                bottom: function() {
-                    return this.bottom = $('.gift-footer').outerHeight(true);
+        if (typeof $().affix !== 'undefined'){
+            $('.section-number').affix({
+                offset: {
+                    top: $('.gift-name').offset().top,
+                    bottom: function() {
+                        return this.bottom = $('.gift-footer').outerHeight(true);
+                    }
                 }
-            }
-        });
+            });
+        }
+        
+
 
 
         var first = $('.template').offset().top;
@@ -419,6 +423,8 @@
                 $('.points .third').addClass('active').siblings().removeClass('active');
             }
         });
+        
+
 
 
         $('#template-modal').on('shown.bs.modal', function () {
