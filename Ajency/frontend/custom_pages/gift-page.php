@@ -56,7 +56,6 @@ if( !defined( 'ABSPATH' ) ) exit;
                     $perms['current_user_can_edit'] = $user_id == $gift->created_by ? true : false;
                     $perms['current_user_can_view_invites'] = Ajency_MFG_Gift::get_acl_access_rule('gift',$gift_id,$user_id,'view-invites');
                     $perms['current_user_can_send_invites'] = Ajency_MFG_Gift::get_acl_access_rule('gift',$gift_id,$user_id,'send-invites');
-                    print_r($perms);
                     ?>
 
                     <?php if($perms['current_user_can_edit']) : ?>
