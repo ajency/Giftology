@@ -438,7 +438,7 @@
         });
         $(".points .third").click(function() {
             $('html, body').animate({
-                scrollTop: third
+                scrollTop: third - 15
             }, 1000);
         });
     }
