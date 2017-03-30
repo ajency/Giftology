@@ -259,7 +259,7 @@ if( !defined( 'ABSPATH' ) ) exit;
                                 <input type="hidden" value="<?php echo get_the_ID(); ?>" name="fund_id" >
                                 <div class="data-box">
                                     <label class="input-label required">Who is the gift for?</label>
-                                    <input name="receiver_name" type="text" class="input-box" placeholder="The recepient's name">
+                                    <input name="receiver_name" type="text" class="input-box" placeholder="The recepient name">
                                 </div>
                                 <div class="data-box cols">
                                     <div class="fields occasion">
