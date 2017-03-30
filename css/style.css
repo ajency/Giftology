@@ -2620,6 +2620,9 @@ label .fa.checkbox-inline.fa-check-circle {
   .fund-modal .modal-body .recepient-details .cols .fields.contribute:after {
     bottom: 2px;
   }
+  .fund-card__header .occ-data {
+    width: 100%;
+  }
 }
 .name-box {
   background-color: #ee275f;
