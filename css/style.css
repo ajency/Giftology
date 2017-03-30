@@ -518,7 +518,7 @@ textarea:focus {
 }
 .voucher {
   position: absolute;
-  bottom: -50px;
+  top: 90%;
   background-color: #fff;
   width: 90%;
   left: 2em;
@@ -541,14 +541,6 @@ textarea:focus {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
 }
 .voucher .col .fa {
   font-size: 3em;
@@ -567,6 +559,11 @@ textarea:focus {
   -webkit-flex: 1.5 0 0;
       -ms-flex: 1.5 0 0;
           flex: 1.5 0 0;
+}
+.voucher .col.voucher-name img {
+  -webkit-align-self: baseline;
+      -ms-flex-item-align: baseline;
+          align-self: baseline;
 }
 .voucher .col.occasion {
   -webkit-box-align: baseline;
@@ -2607,7 +2604,7 @@ label .fa.checkbox-inline.fa-check-circle {
   color: rgba(255, 255, 255, 0.78);
 }
 .name-box .voucher {
-  bottom: -55px;
+  top: 70%;
   border-radius: 3px;
   left: 0;
   width: 90%;
@@ -2928,6 +2925,9 @@ label .fa.checkbox-inline.fa-check-circle {
 }
 .section-number {
   margin-top: 4em;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
 }
 .section-number .points {
   padding: 0;
@@ -2943,6 +2943,7 @@ label .fa.checkbox-inline.fa-check-circle {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
+  cursor: pointer;
 }
 .section-number .points li .number {
   position: relative;
@@ -3010,7 +3011,7 @@ label .fa.checkbox-inline.fa-check-circle {
 .section-number.affix {
   position: fixed !important;
   top: 0;
-  padding-left: 0.3em;
+  padding-left: 3.5em;
 }
 .template-modal .templates {
   font-family: 'Montserrat', sans-serif;
@@ -3019,7 +3020,7 @@ label .fa.checkbox-inline.fa-check-circle {
   overflow: hidden;
 }
 .template-modal .keywords {
-  padding: 1em 1em 0 1em;
+  padding: 1em 0.7em 0 0.7em;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3058,7 +3059,6 @@ label .fa.checkbox-inline.fa-check-circle {
     font-size: 1.6em;
   }
   .name-box .voucher {
-    bottom: -5em;
     -webkit-box-align: start;
     -webkit-align-items: flex-start;
         -ms-flex-align: start;
@@ -3157,7 +3157,7 @@ label .fa.checkbox-inline.fa-check-circle {
     font-size: 1.05em;
   }
 }
-@media screen and (min-width: 1024px) and (max-width: 1999px) {
+@media screen and (min-width: 1024px) and (max-width: 1199px) {
   .name-box .voucher .col.voucher-name {
     -webkit-box-flex: inherit;
     -webkit-flex: inherit;
@@ -3167,6 +3167,14 @@ label .fa.checkbox-inline.fa-check-circle {
   .name-box .voucher .col.occasion {
     min-width: 200px;
     padding-left: 1em;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1200px) {
+  .section-number {
+    width: 100%;
+  }
+  .section-number.affix {
+    padding-left: 0.3em;
   }
 }
 @media screen and (min-width: 550px) and (max-width: 1023px) {
@@ -3206,7 +3214,6 @@ label .fa.checkbox-inline.fa-check-circle {
 }
 @media screen and (min-width: 700px) and (max-width: 767px) {
   .name-box .voucher {
-    bottom: -5em;
     width: 65%;
   }
 }
@@ -3227,7 +3234,6 @@ label .fa.checkbox-inline.fa-check-circle {
 }
 @media screen and (max-width: 500px) {
   .name-box .voucher {
-    bottom: -118px;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -webkit-flex-direction: column;
@@ -3264,8 +3270,11 @@ label .fa.checkbox-inline.fa-check-circle {
     text-align: center;
   }
   .name-box .voucher .col.voucher-name img {
-    margin: 0 1em 0 0;
+    margin: 0 0.5em 0 0;
     display: block;
+  }
+  .name-box .voucher .col.voucher-name span {
+    margin-left: 0;
   }
   .gift-note {
     margin: 9em auto 1em auto;

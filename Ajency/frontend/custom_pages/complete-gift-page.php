@@ -163,7 +163,7 @@ if(is_user_logged_in()){
                                 </div>
                                 <div class="msg-info">
                                     <label class="input-label required">Type a message for Sarvesh</label>
-                                    <p class="label-caption">Sarvesh will see this when he receives the gift <a href="#" class="underline" data-toggle="modal" data-target="#template-modal">Choose from a template</a></p>
+                                    <p class="label-caption">Sarvesh will see this once the gift is received <a href="#" class="underline" data-toggle="modal" data-target="#template-modal">Choose from a template</a></p>
                                     <textarea name="receiver_message" rows="4" class="input-box valid-fields" placeholder="A nice message that will bring a smile to the recipient's face..." required></textarea>
                                 </div>
                             </div>
@@ -178,7 +178,7 @@ if(is_user_logged_in()){
                                         </label>
                                         <label>
                                             <input type="radio" name="contrib_setting_id" value="1" class="input-radio valid-fields" required>
-                                            <span>No i don't</span>
+                                            <span>No I don't</span>
                                         </label>
                                     </div>
                                 </div>
@@ -253,7 +253,7 @@ if(is_user_logged_in()){
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                 <h4 class="modal-title" id="myModalLabel">Choose a message template</h4>
-                                <p class="modal-caption">You can edit the template once you select a template</p>
+                                <p class="modal-caption">You can edit the message once you select a template</p>
                             </div>
                             <div class="modal-body">
                                 <div class="templates">
