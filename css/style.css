@@ -3345,6 +3345,20 @@ label .fa.checkbox-inline.fa-check-circle {
     margin-right: 1.3em;
   }
 }
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .voucher .col.occasion {
+    -webkit-box-align: start;
+    -webkit-align-items: flex-start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+  }
+  .template-modal .keywords {
+    -webkit-box-align: start;
+    -webkit-align-items: flex-start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+  }
+}
 .modal-open[style] {
   padding-right: 0px !important;
 }
