@@ -371,7 +371,16 @@
 
         $(document).on('click', '.resend', function () {
 
+            var invi_id = this.id;
+
+            $('#' + invi_id).replaceWith(function() {
+                return $('<span class="resend" id="' + invi_id + '"> <i class="fa fa-circle-o-notch" aria-hidden="true"></i></span>', {
+                    html: this.innerHTML
+                });
+            });
+
             var gift_id = $( '#gift_id' ).val();
+
             $.ajax({
                 type: "POST",
                 url: giftology_api.root + 'giftology/v1/gifts/' + gift_id + '/resend-invite/' +  this.id ,
@@ -382,6 +391,12 @@
                 success: function(data){
                     console.log(data);
                     if(data.success) {
+                        $('#' + invi_id).replaceWith(function() {
+                            return $('<span class="resend"> <i class="fa fa-check" aria-hidden="true"></i></span>', {
+                                html: this.innerHTML
+                            });
+                        });
+                        $('.tooltip-inner').text('Email Resent');
 
                     }
                 },
