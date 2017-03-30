@@ -2595,20 +2595,6 @@ label .fa.checkbox-inline.fa-check-circle {
   }
 }
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
-  .cards {
-    -webkit-box-flex: 1;
-    -webkit-flex: 1 0 calc(44% - 2em);
-        -ms-flex: 1 0 calc(44% - 2em);
-            flex: 1 0 calc(44% - 2em);
-    max-width: calc(44% - 2em);
-    background-color: #fff;
-    box-shadow: 0px 0px 20px 0px rgba(158, 1, 45, 0.13);
-    margin: 0 1.5em 3em 1.5em;
-    position: relative;
-    border-radius: 3px;
-    -webkit-transition: all 0.5s ease;
-            transition: all 0.5s ease;
-  }
   .cards .header .flex-col .funds-detail .fund-name {
     width: 240px;
     white-space: nowrap;
@@ -2628,139 +2614,11 @@ label .fa.checkbox-inline.fa-check-circle {
   .cards .header .section .title {
     width: 100%;
   }
-  .cards .header .section span {
-    -webkit-box-flex: 1;
-    -webkit-flex: 1;
-        -ms-flex: 1;
-            flex: 1;
-  }
   .cards .header .fund-desc {
     width: 290px;
   }
-  .cards .body {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: justify;
-    -webkit-justify-content: space-between;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-    padding: 1em 1.5em;
-  }
-  .cards .body .rating {
-    font-size: 1.05em;
-  }
-  .cards .body .rating p {
-    margin-bottom: 0;
-  }
-  .cards .body .percent .fa-percent {
-    height: 45px;
-    width: 45px;
-    line-height: 45px;
-  }
-  .cards .footer,
-  .cards .sub-footer {
-    padding: 1em 1.5em;
-    text-align: center;
-    text-transform: uppercase;
-    box-shadow: inset 0px 2px 10px -2px rgba(0, 0, 0, 0.14);
-  }
-  .cards .footer .q-view,
-  .cards .sub-footer .q-view {
-    margin-bottom: 0;
-    color: #7b7b7b;
-    letter-spacing: 0.5px;
-    font-size: 0.95em;
-  }
-  .cards .footer .actions,
-  .cards .sub-footer .actions {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: justify;
-    -webkit-justify-content: space-between;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-  }
-  .cards .footer .actions button,
-  .cards .sub-footer .actions button {
-    padding: 0.5em 1.5em;
-    text-transform: uppercase;
-    outline: 0;
-    box-shadow: none;
-    font-size: 0.9em;
-  }
-  .cards .footer .actions button:active,
-  .cards .sub-footer .actions button:active,
-  .cards .footer .actions button:focus,
-  .cards .sub-footer .actions button:focus {
-    box-shadow: none;
-  }
-  .cards .footer .actions .view-close,
-  .cards .sub-footer .actions .view-close {
-    background-color: transparent;
-    color: #7b7b7b;
-    letter-spacing: 0.5px;
-  }
-  .cards .sub-footer {
-    cursor: pointer;
-  }
-  .cards .footer {
-    padding: 0.8em 1.5em;
-  }
-  .cards.full-view {
-    z-index: 1;
-    -webkit-transform: scale(1.1);
-        -ms-transform: scale(1.1);
-            transform: scale(1.1);
-  }
-  .cards.full-view .flex-col .funds-detail .fund-name {
-    white-space: normal;
-    line-height: 1.3;
-    font-size: 1.15em;
-  }
-  .cards.full-view .flex-col .funds-detail .fund-subname {
-    display: block;
-  }
-  .cards.full-view .flex-col .funds-detail .box-divider {
-    width: 100%;
-    height: 1px;
-    position: absolute;
-    left: 0;
-    right: 0;
-    box-shadow: 0px 2px 0px 0px rgba(158, 1, 45, 0.21);
-  }
-  .cards.full-view .flex-col .funds-detail .bucket-data {
-    margin-top: 2.5em;
-  }
-  .cards.full-view .section {
-    font-size: 0.95em;
-  }
-  .cards.full-view .section .title {
-    display: block;
-  }
-  .cards.full-view .fund-desc {
-    font-size: 0.95em;
-  }
-  .cards.full-view .fund-desc .read-more {
-    white-space: normal;
-  }
-  .cards.full-view .fund-desc .more-detail {
-    display: none;
-  }
-  .cards.full-view .body .rating,
-  .cards.full-view .body .percent {
-    font-size: 0.95em;
+  .fund-modal .modal-body .recepient-details .cols .fields.contribute:after {
+    bottom: 2px;
   }
 }
 .name-box {
