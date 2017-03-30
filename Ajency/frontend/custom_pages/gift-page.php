@@ -129,7 +129,8 @@ if( !defined( 'ABSPATH' ) ) exit;
 -->
 
                                 <?php if($perms['current_user_can_view_invites'] && $perms['recepients_count'] > 0) : ?>
-                                    <?php echo do_shortcode( '[gift_invites show-resend=1 view-all-link=# gift_id="'.$gift_id.'" status="1"]' ); ?>
+                                    <?php $resent_invites = $perms['current_user_can_send_invites']; ?>
+                                    <?php echo do_shortcode( '[gift_invites show-resend='.$resend_invites.' view-all-link=# gift_id="'.$gift_id.'" status="1"]' ); ?>
                                 <?php  endif; ?>
                             </div>
                             <div role="tabpanel" class="tab-pane" id="contributors">contributors</div>

@@ -205,6 +205,7 @@ function giftology_resend_invite_email($request_data) {
     $text = 'Copy and Paste the following link in your browser : '.$link;
     $email_subject = "A user has invited you to contribute to a Gift on Giftology!";
     Ajency_MFG_Users::send_email($email_subject, $message, $text, $invite->email, 'invite-email');
+    return json_response(true, "Gift Invite resent Successfully");
 
 }
 
