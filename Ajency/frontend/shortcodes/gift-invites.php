@@ -10,7 +10,7 @@ function gift_invites($atts) {
     $inv_group = isset($atts['inv_group']) ? $atts['inv_group'] : false;
     $view_all_link = isset($atts['view-all-link']) ? $atts['view-all-link'] : false;
     $filter_by_user = isset($atts['filter-by-user']) ? $atts['filter-by-user'] : false;
-    $show_resend = isset($atts['show-resend']) ? $atts['show-resend'] : false;
+    $show_resend = isset($atts['show-resend']) && !empty($atts['show-resend']) ? $atts['show-resend'] : false;
 
 /*    $status = explode(',',$atts['status']);*/
     $show_op_icon = isset($atts['show_op_icon']) ? $atts['show_op_icon'] : 0;
