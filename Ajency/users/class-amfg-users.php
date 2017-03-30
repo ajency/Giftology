@@ -47,6 +47,7 @@ class Ajency_MFG_Users {
 
             $vars = [
                 'name' => $user->first_name,
+                'image_file_dir' => get_template_directory_uri().'/img/',
             ];
 
             $message = file_get_contents( get_template_directory() . '/Ajency/users/welcome-email-template.html');
