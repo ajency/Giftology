@@ -449,6 +449,11 @@
             $('input:checked').parent().addClass("date-style");
         });
 
+        $('input[name="sel-temp"]').on('change',function(){
+            $('input:not(:checked)').parent().parent().closest('.template__cover').removeClass("active");
+            $('input:checked').parent().parent().closest('.template__cover').addClass("active");
+        });
+
 
         $('#update-gift').on('click', function () {
 

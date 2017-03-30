@@ -140,25 +140,40 @@
     		position: absolute;
 		    height: 100%;
 		    width: 100%;
+            padding: 0.7em;
 		    background-color: rgba(243, 94, 136, 0.83);
 		    bottom: -100%;
 		    transition: all 0.5s ease;
-		    .preview{
-		    	padding: 0.3em 0.5em;
-			    background-color: rgba(197, 79, 113, 0.61);
-			    color: #fff;
-			    font-weight: 500;
-			    position: absolute;
-			    right: 10px;
-			    top: 10px;
-			    border-radius: 3px;
-		    }
+            .data{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                .radio-inline{
+                    margin-top: -4px;
+                    &:before{
+                        background-color: rgb(245, 121, 156);
+                        color: #fff;
+                        font-size: 1.5em;
+                    }
+                }
+                .preview{
+                    padding: 0.3em 0.5em;
+                    background-color: rgba(197, 79, 113, 0.61);
+                    color: #fff;
+                    font-weight: 500;
+                    border-radius: 3px;
+                }
+            }
+		    
     	}
     	&:hover{
     		.overlay{
     			bottom: 0;
     		}
     	}
+        &.active{
+            box-shadow: 0px 0px 2px 2px #ee275f;
+        }
 	}
 	&__name{
 		margin: 0;

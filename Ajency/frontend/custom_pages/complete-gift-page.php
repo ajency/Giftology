@@ -114,7 +114,12 @@ if(is_user_logged_in()){
                                 <div class="col">
                                     <div class="template__cover">
                                         <img src="<?php echo get_template_directory_uri(); ?>/img/template-1.png" class="img-responsive center-block">
-                                        <div class="overlay"></div>
+                                        <div class="overlay">
+                                            <div class="data">
+                                                <input type="radio" class="radio-inline" name="sel-temp">
+                                                <span class="preview">Preview</span>
+                                            </div>
+                                        </div>
                                     </div>
                                     <h2 class="template__name">The Bohemian Rapshody</h2>
                                     <p class="template__number">Template 01</p>
@@ -122,7 +127,12 @@ if(is_user_logged_in()){
                                 <div class="col">
                                     <div class="template__cover">
                                         <img src="<?php echo get_template_directory_uri(); ?>/img/template-1.png" class="img-responsive center-block">
-                                        <div class="overlay"></div>
+                                        <div class="overlay">
+                                            <div class="data">
+                                                <input type="radio" class="radio-inline" name="sel-temp">
+                                                <span class="preview">Preview</span>
+                                            </div>
+                                        </div>
                                     </div>
                                     <h2 class="template__name">The Blue Danube</h2>
                                     <p class="template__number">Template 02</p>
@@ -130,7 +140,12 @@ if(is_user_logged_in()){
                                 <div class="col">
                                     <div class="template__cover">
                                         <img src="<?php echo get_template_directory_uri(); ?>/img/template-1.png" class="img-responsive center-block">
-                                        <div class="overlay"></div>
+                                        <div class="overlay">
+                                            <div class="data">
+                                                <input type="radio" class="radio-inline" name="sel-temp">
+                                                <span class="preview">Preview</span>
+                                            </div>
+                                        </div>
                                     </div>
                                     <h2 class="template__name">Moonlight Sonata</h2>
                                     <p class="template__number">Template 03</p>
