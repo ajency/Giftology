@@ -2635,7 +2635,7 @@ label .fa.checkbox-inline.fa-check-circle {
             flex: 1;
   }
   .cards .header .fund-desc {
-    width: 100%;
+    width: 290px;
   }
   .cards .body {
     display: -webkit-box;
