@@ -128,9 +128,10 @@ class Ajency_MFG_Testing {
 
             $vars = [
                 'name' => 'Anton',
+                'image_file_dir' => get_template_directory_uri().'/img/',
             ];
 
-            $message = file_get_contents( get_template_directory() . '/Ajency/users/welcome-email-template.html');
+            $message = file_get_contents( get_template_directory() . '/Ajency/gift/invite-email-template.html');
             foreach ($vars as $k => $v) {
                 print '{{'.$vars[$k].'}}';
                 $message = str_replace('{{'.$k.'}}', $v, $message);
