@@ -518,7 +518,7 @@ textarea:focus {
 }
 .voucher {
   position: absolute;
-  bottom: -50px;
+  top: 90%;
   background-color: #fff;
   width: 90%;
   left: 2em;
@@ -541,14 +541,6 @@ textarea:focus {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
 }
 .voucher .col .fa {
   font-size: 3em;
@@ -567,6 +559,11 @@ textarea:focus {
   -webkit-flex: 1.5 0 0;
       -ms-flex: 1.5 0 0;
           flex: 1.5 0 0;
+}
+.voucher .col.voucher-name img {
+  -webkit-align-self: baseline;
+      -ms-flex-item-align: baseline;
+          align-self: baseline;
 }
 .voucher .col.occasion {
   -webkit-box-align: baseline;
@@ -2607,7 +2604,7 @@ label .fa.checkbox-inline.fa-check-circle {
   color: rgba(255, 255, 255, 0.78);
 }
 .name-box .voucher {
-  bottom: -55px;
+  top: 70%;
   border-radius: 3px;
   left: 0;
   width: 90%;
@@ -2635,6 +2632,13 @@ label .fa.checkbox-inline.fa-check-circle {
   .create_Card .cards {
     max-width: 450px;
   }
+}
+.create_Card .cards .fund-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 .gift-note {
   background-color: #feeaa1;
@@ -2733,23 +2737,46 @@ label .fa.checkbox-inline.fa-check-circle {
   position: absolute;
   height: 100%;
   width: 100%;
+  padding: 0.7em;
   background-color: rgba(243, 94, 136, 0.83);
   bottom: -100%;
   -webkit-transition: all 0.5s ease;
           transition: all 0.5s ease;
 }
-.template__cover .overlay .preview {
+.template__cover .overlay .data {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.template__cover .overlay .data .radio-inline {
+  margin-top: -4px;
+}
+.template__cover .overlay .data .radio-inline:before {
+  background-color: #f5799c;
+  color: #fff;
+  font-size: 1.5em;
+}
+.template__cover .overlay .data .preview {
   padding: 0.3em 0.5em;
   background-color: rgba(197, 79, 113, 0.61);
   color: #fff;
   font-weight: 500;
-  position: absolute;
-  right: 10px;
-  top: 10px;
   border-radius: 3px;
 }
 .template__cover:hover .overlay {
   bottom: 0;
+}
+.template__cover.active {
+  box-shadow: 0px 0px 2px 2px #ee275f;
 }
 .template__name {
   margin: 0;
@@ -2905,6 +2932,9 @@ label .fa.checkbox-inline.fa-check-circle {
 }
 .section-number {
   margin-top: 4em;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
 }
 .section-number .points {
   padding: 0;
@@ -2920,6 +2950,7 @@ label .fa.checkbox-inline.fa-check-circle {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
+  cursor: pointer;
 }
 .section-number .points li .number {
   position: relative;
@@ -2987,7 +3018,7 @@ label .fa.checkbox-inline.fa-check-circle {
 .section-number.affix {
   position: fixed !important;
   top: 0;
-  padding-left: 0.3em;
+  padding-left: 3.5em;
 }
 .template-modal .templates {
   font-family: 'Montserrat', sans-serif;
@@ -2996,7 +3027,7 @@ label .fa.checkbox-inline.fa-check-circle {
   overflow: hidden;
 }
 .template-modal .keywords {
-  padding: 1em 1em 0 1em;
+  padding: 1em 0.7em 0 0.7em;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3035,7 +3066,6 @@ label .fa.checkbox-inline.fa-check-circle {
     font-size: 1.6em;
   }
   .name-box .voucher {
-    bottom: -5em;
     -webkit-box-align: start;
     -webkit-align-items: flex-start;
         -ms-flex-align: start;
@@ -3133,8 +3163,21 @@ label .fa.checkbox-inline.fa-check-circle {
   .data-card.dc .dc-footer p {
     font-size: 1.05em;
   }
+  .template-modal .modal-header .modal-title {
+    font-size: 1.2em;
+  }
+  .template-modal .modal-header .modal-caption {
+    font-size: 1em;
+  }
+  .template-modal .keywords .string {
+    font-size: 1em;
+  }
+  .template-modal .btn.site-btn-2 {
+    padding: 0.7em 2em;
+    font-size: 0.95em;
+  }
 }
-@media screen and (min-width: 1024px) and (max-width: 1999px) {
+@media screen and (min-width: 1024px) and (max-width: 1199px) {
   .name-box .voucher .col.voucher-name {
     -webkit-box-flex: inherit;
     -webkit-flex: inherit;
@@ -3144,6 +3187,14 @@ label .fa.checkbox-inline.fa-check-circle {
   .name-box .voucher .col.occasion {
     min-width: 200px;
     padding-left: 1em;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1200px) {
+  .section-number {
+    width: 100%;
+  }
+  .section-number.affix {
+    padding-left: 0.3em;
   }
 }
 @media screen and (min-width: 550px) and (max-width: 1023px) {
@@ -3183,7 +3234,6 @@ label .fa.checkbox-inline.fa-check-circle {
 }
 @media screen and (min-width: 700px) and (max-width: 767px) {
   .name-box .voucher {
-    bottom: -5em;
     width: 65%;
   }
 }
@@ -3191,10 +3241,19 @@ label .fa.checkbox-inline.fa-check-circle {
   .gift-note {
     width: 450px;
   }
+  .gift-note .data {
+    padding: 0;
+  }
+  .send-actions {
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin-bottom: 2em;
+  }
 }
 @media screen and (max-width: 500px) {
   .name-box .voucher {
-    bottom: -118px;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -webkit-flex-direction: column;
@@ -3205,6 +3264,8 @@ label .fa.checkbox-inline.fa-check-circle {
         -ms-flex-align: center;
             align-items: center;
     text-align: center;
+    padding: 0.7em;
+    top: 80%;
   }
   .name-box .voucher .col {
     -webkit-box-flex: inherit;
@@ -3231,12 +3292,22 @@ label .fa.checkbox-inline.fa-check-circle {
     text-align: center;
   }
   .name-box .voucher .col.voucher-name img {
-    margin: 0 1em 0 0;
+    margin: 0 0.5em 0 0;
     display: block;
   }
+  .name-box .voucher .col.voucher-name span {
+    margin-left: 0;
+  }
   .gift-note {
-    margin: 9em auto 1em auto;
+    margin: 8.5em auto 2em auto;
     width: 90%;
+  }
+  .create_Card .cards {
+    width: 90%;
+  }
+  .width-box {
+    margin-left: 1.3em;
+    margin-right: 1.3em;
   }
 }
 .modal-open[style] {

@@ -392,18 +392,25 @@
         });
 
 
-
-        $('.section-number').affix({
-            offset: {
-                top: $('.gift-name').offset().top,
-                bottom: function() {
-                    return this.bottom = $('.gift-footer').outerHeight(true);
-                }
+        if ($(".section-number").length){
+            if (typeof $('.section-number').affix !== 'undefined'){
+                $('.section-number').affix({
+                    offset: {
+                        top: $('.gift-name').offset().top,
+                        bottom: function() {
+                            return this.bottom = $('.gift-footer').outerHeight(true);
+                        }
+                    }
+                });
             }
-        });
+        }
+
+        
 
 
+    if ($(".template,.send-details,.contribute").length){
         var first = $('.template').offset().top;
+        var firstTop = $('.gift-name').offset().top;
         var second = $('.send-details').offset().top;
         var third = $('.contribute').offset().top;
 
@@ -419,6 +426,25 @@
                 $('.points .third').addClass('active').siblings().removeClass('active');
             }
         });
+        $(".points .first").click(function() {
+            $('html, body').animate({
+                scrollTop: firstTop
+            }, 1000);
+        });
+        $(".points .second").click(function() {
+            $('html, body').animate({
+                scrollTop: second
+            }, 1000);
+        });
+        $(".points .third").click(function() {
+            $('html, body').animate({
+                scrollTop: third - 15
+            }, 1000);
+        });
+    }
+
+
+        
 
 
         $('#template-modal').on('shown.bs.modal', function () {
@@ -447,6 +473,11 @@
         $('input[name="gift-send"]').on('change',function(){
             $('input:not(:checked)').parent().removeClass("date-style");
             $('input:checked').parent().addClass("date-style");
+        });
+
+        $('input[name="sel-temp"]').on('change',function(){
+            $('input:not(:checked)').parent().parent().closest('.template__cover').removeClass("active");
+            $('input:checked').parent().parent().closest('.template__cover').addClass("active");
         });
 
 
