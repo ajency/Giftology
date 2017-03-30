@@ -261,17 +261,9 @@ if( !defined( 'ABSPATH' ) ) exit;
                                         <label class="input-label required">What is the occasion?</label>
                                         <select name="receiver_occasion" class="input-box select-box">
                                             <option>-- Please select --</option>
-                                            <?php
-                                            $options_object = $bucket_2_terms;
-                                            foreach ( $options_object as $term) {
-                                                $seperator = ' > ';
-                                                if($term->parent != 0) {
-                                                    $parent = get_term($term->parent);
-                                                    $term_name =  $parent->name.$seperator.$term->name;
-                                                    ?>
-                                                    <option value="<?php echo $term->name; ?>"><?php echo $term_name; ?></option>
-                                                <?php                                             }
-                                            } ?>
+                                            <?php foreach ( $bucket_2_terms as $term) { ?>
+                                                    <option value="<?php echo $term->name; ?>"><?php echo $term->name; ?></option>
+                                                <?php } ?>
                                         </select>
                                     </div>
                                     <div class="fields contribute">
