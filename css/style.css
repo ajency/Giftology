@@ -2594,6 +2594,36 @@ label .fa.checkbox-inline.fa-check-circle {
     text-indent: 50px;
   }
 }
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .cards .header .flex-col .funds-detail .fund-name {
+    width: 240px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .cards .header .flex-col .funds-detail .fund-subname .fund-link,
+  .cards .header .flex-col .funds-detail .fund-subname .title {
+    width: 240px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .cards .header .section {
+    display: inherit;
+  }
+  .cards .header .section .title {
+    width: 100%;
+  }
+  .cards .header .fund-desc {
+    width: 290px;
+  }
+  .fund-modal .modal-body .recepient-details .cols .fields.contribute:after {
+    bottom: 2px;
+  }
+  .fund-card__header .occ-data {
+    width: 100%;
+  }
+}
 .name-box {
   background-color: #ee275f;
   padding: 1.5em 2.3em 2.5em 2.3em;
@@ -3313,6 +3343,20 @@ label .fa.checkbox-inline.fa-check-circle {
   .width-box {
     margin-left: 1.3em;
     margin-right: 1.3em;
+  }
+}
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .voucher .col.occasion {
+    -webkit-box-align: start;
+    -webkit-align-items: flex-start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+  }
+  .template-modal .keywords {
+    -webkit-box-align: start;
+    -webkit-align-items: flex-start;
+        -ms-flex-align: start;
+            align-items: flex-start;
   }
 }
 .modal-open[style] {

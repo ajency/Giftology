@@ -1358,8 +1358,69 @@ label{
 
 
 
+// IE specific styles for cards
 
 
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+
+	.cards{
+		.header{
+			.flex-col{
+				.funds-detail{
+					.fund-name{
+						width: 240px;
+						white-space: nowrap;
+						overflow: hidden;
+						text-overflow: ellipsis;
+					}
+					.fund-subname{
+						.fund-link,.title{
+							width: 240px;
+							white-space: nowrap;
+							overflow: hidden;
+							text-overflow: ellipsis;
+						}
+					}
+				}
+			}
+	    	.section{
+				display: inherit;
+				.title{
+					width: 100%;
+				}
+			}
+			.fund-desc{
+				width: 290px;
+			}
+		}
+	}
+
+	.fund-modal{
+		.modal-body{
+			.recepient-details{
+	    		.cols{
+	    			.fields{
+	    				&.contribute{
+	    					&:after{
+							    bottom: 2px;
+	    					}
+	    				}
+	    			}
+	    		}
+			}
+		}
+	}
+
+	.fund-card{
+		&__header{
+	    	.occ-data{
+	    		width: 100%;
+	    	}
+		}
+	}
+
+
+}
 
 
 
