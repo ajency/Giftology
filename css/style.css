@@ -2633,6 +2633,13 @@ label .fa.checkbox-inline.fa-check-circle {
     max-width: 450px;
   }
 }
+.create_Card .cards .fund-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
 .gift-note {
   background-color: #feeaa1;
   padding: 1.5em;
@@ -3156,6 +3163,19 @@ label .fa.checkbox-inline.fa-check-circle {
   .data-card.dc .dc-footer p {
     font-size: 1.05em;
   }
+  .template-modal .modal-header .modal-title {
+    font-size: 1.2em;
+  }
+  .template-modal .modal-header .modal-caption {
+    font-size: 1em;
+  }
+  .template-modal .keywords .string {
+    font-size: 1em;
+  }
+  .template-modal .btn.site-btn-2 {
+    padding: 0.7em 2em;
+    font-size: 0.95em;
+  }
 }
 @media screen and (min-width: 1024px) and (max-width: 1199px) {
   .name-box .voucher .col.voucher-name {
@@ -3244,6 +3264,8 @@ label .fa.checkbox-inline.fa-check-circle {
         -ms-flex-align: center;
             align-items: center;
     text-align: center;
+    padding: 0.7em;
+    top: 80%;
   }
   .name-box .voucher .col {
     -webkit-box-flex: inherit;
@@ -3277,8 +3299,15 @@ label .fa.checkbox-inline.fa-check-circle {
     margin-left: 0;
   }
   .gift-note {
-    margin: 9em auto 1em auto;
+    margin: 8.5em auto 2em auto;
     width: 90%;
+  }
+  .create_Card .cards {
+    width: 90%;
+  }
+  .width-box {
+    margin-left: 1.3em;
+    margin-right: 1.3em;
   }
 }
 .modal-open[style] {
