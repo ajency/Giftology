@@ -23,14 +23,10 @@ if ( $bucket_2_terms && ! is_wp_error( $bucket_2_terms ) ) {
     $bucket_2 = array();
     foreach ( $bucket_2_terms as $term ) {
         $params1 = [];
-        if($term->parent > 0) {
-            $params1['b2'][] = $term->slug;
-            $add_url_params = http_build_query($params1);
-            $add_url = $parsed['scheme'].'://'.$parsed['host'].$path.'?'.$add_url_params;
-            $parent = get_term($term->parent);
-            $term_name = $parent->name.' > '.$term->name;
-            $bucket_2[] = '<b><a href='.$add_url.'>'.$term_name.'</a></b>';
-        }
+        $params1['b2'][] = $term->slug;
+        $add_url_params = http_build_query($params1);
+        $add_url = $parsed['scheme'].'://'.$parsed['host'].$path.'?'.$add_url_params;
+        $bucket_2[] = '<b><a href='.$add_url.'>'.$term->name.'</a></b>';
     }
 }
 if ( $bucket_3_terms && ! is_wp_error( $bucket_3_terms ) ) {
