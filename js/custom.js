@@ -410,6 +410,7 @@
 
     if ($(".template,.send-details,.contribute").length){
         var first = $('.template').offset().top;
+        var firstTop = $('.gift-name').offset().top;
         var second = $('.send-details').offset().top;
         var third = $('.contribute').offset().top;
 
@@ -425,7 +426,25 @@
                 $('.points .third').addClass('active').siblings().removeClass('active');
             }
         });
+        $(".points .first").click(function() {
+            $('html, body').animate({
+                scrollTop: firstTop
+            }, 1000);
+        });
+        $(".points .second").click(function() {
+            $('html, body').animate({
+                scrollTop: second
+            }, 1000);
+        });
+        $(".points .third").click(function() {
+            $('html, body').animate({
+                scrollTop: third
+            }, 1000);
+        });
     }
+
+
+        
 
 
         $('#template-modal').on('shown.bs.modal', function () {
