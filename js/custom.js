@@ -396,7 +396,8 @@
                                 html: this.innerHTML
                             });
                         });
-                        $('.tooltip-inner').text('Email Resent');
+                        $('.tooltip-inner').remove();
+                        $('.tooltip-arrow').remove();
 
                     }
                 },
