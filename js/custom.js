@@ -363,7 +363,7 @@
                 success: function(data){
                     console.log(data);
                     if(data.success) {
-                        var redirect = giftology_api.homeUrl + '?update-gift=' + data.data.id;
+                        var redirect = giftology_api.homeUrl + '?update-gift=' + data.data.id + '&redirect=/?contribute=' + data.data.id;
                         console.log(redirect);
                         window.location = redirect;
                     } else {
@@ -493,20 +493,48 @@
             });
         });
 
-        $('input[name="gift-send"]').on('change',function(){
+        $('input[name="send_type"]').on('change',function(){
             $('input:not(:checked)').parent().removeClass("date-style");
             $('input:checked').parent().addClass("date-style");
         });
 
-        $('input[name="sel-temp"]').on('change',function(){
+        $('input[name="messagetemplate"]').on('change',function(){
             $('input:not(:checked)').parent().parent().closest('.template__cover').removeClass("active");
             $('input:checked').parent().parent().closest('.template__cover').addClass("active");
         });
 
 
+
+        function getFormData($form){
+            var unindexed_array = $form.serializeArray();
+            var indexed_array = {};
+
+            $.map(unindexed_array, function(n, i){
+                indexed_array[n['name']] = n['value'];
+            });
+
+            return indexed_array;
+        }
+
+        $('#select-message-template').on('click', function () {
+            var data = getFormData($('#select-message-template-form'));
+            var id = 'message-template-'+data.messagetemplate;
+
+            var message = document.getElementById(id).innerText;
+
+            console.log(id);
+            console.log(message);
+
+            $("textarea#receiver_message").text(message);
+            $('#template-modal').modal('hide');
+        });
+
+
+
         $('#update-gift').on('click', function () {
 
           var gift_id = $( '#gift_id' ).val();
+          var gift_redirect = $( '#gift_redirect' ).val();
             /*              var data = {};
             data.title = $( '#title' ).val();
             data.receiver_email = $( '#receiver_email' ).val();
@@ -516,24 +544,22 @@
             data.send_type = $( '#send_type' ).val();
             data.send_on = $( '#send_on' ).val();*/
 
-            var data = $('#update-gift1').serialize();
-            console.log(data);
             $.ajax({
                 type: "POST",
                 url: giftology_api.root + 'giftology/v1/gifts/' + gift_id + '/update',
                 beforeSend: function ( xhr ) {
                     xhr.setRequestHeader( 'X-WP-Nonce', giftology_api.nonce );
                 },
-                data: data ,
+                data: $('#update-gift1').serialize() ,
                 success: function(data){
                     console.log(data);
-                   /* if(data.success) {
-                        var redirect = giftology_api.homeUrl + '?complete-gift=' + data.data.id;
+                    if(data.success) {
+                        var redirect = giftology_api.homeUrl + gift_redirect;
                         console.log(redirect);
                         window.location = redirect;
                     } else {
-                        $('#contribution_amount_error').html('<div class="alert alert-danger">' + data.message + '</div>');
-                    }*/
+/*                        $('#contribution_amount_error').html('<div class="alert alert-danger">' + data.message + '</div>');*/
+                    }
                 },
                 error: function(){
                     alert("Internal Server Error : Please contact Admin");
