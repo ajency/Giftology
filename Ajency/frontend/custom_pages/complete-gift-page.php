@@ -164,7 +164,7 @@ if(is_user_logged_in()){
                             <div class="send-details width-box">
                                 <div class="contact-info">
                                     <div class="data">
-                                        <label class="input-label required">Some details about Sarvesh </label>
+                                        <label class="input-label required">Some details about <?php echo $gift->receiver_name ?></label>
                                         <div class="cols">
                                             <input  name="receiver_email" value="<?php echo $gift->receiver_email; ?>" type="email" class="input-box name-text email-text m-r-1 valid-fields" placeholder="Email address" required>
                                             <input name="receiver_mobile" value="<?php echo $gift->receiver_mobile; ?>" type="number" class="input-box name-text valid-fields" placeholder="Mobile number" required>
@@ -173,7 +173,7 @@ if(is_user_logged_in()){
                                 </div>
                                 <div class="msg-info">
                                     <label class="input-label required">Type a message for <?php echo $gift->receiver_name ?></label>
-                                    <p class="label-caption">Sarvesh will see this once the gift is received <a href="#" class="underline" data-toggle="modal" data-target="#template-modal">Choose from a template</a></p>
+                                    <p class="label-caption"><?php echo $gift->receiver_name ?> will see this once the gift is received <a href="#" class="underline" data-toggle="modal" data-target="#template-modal">Choose from a template</a></p>
                                     <textarea id="receiver_message" name="receiver_message" rows="4" class="input-box valid-fields" placeholder="A nice message that will bring a smile to the recipient's face..." required><?php echo $gift->receiver_message; ?></textarea>
                                 </div>
                             </div>
@@ -239,7 +239,7 @@ if(is_user_logged_in()){
                                 </li>
                                 <li class="second">
                                     <h6 class="number">02</h6>
-                                    <span class="caption">Sarvesh's details</span>
+                                    <span class="caption"><?php echo $gift->receiver_name ?>'s details</span>
                                 </li>
                                 <li class="third">
                                     <h6 class="number">03</h6>
