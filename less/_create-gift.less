@@ -32,6 +32,7 @@
     }
 }
 
+
 .create_Card{
     .cards{
         max-width: 80%;
@@ -68,7 +69,7 @@
                 }
             }
             .fund-desc{
-                // display: none;
+                display: none;
             }
         }
         .body{
@@ -245,11 +246,17 @@
     	align-items: center;
     	justify-content: space-between;
 	}
+    textarea{
+        text-indent: 0px;
+    }
 }
 
 .contribute{
 	.option{
 		margin: 2.5em 0;
+        textarea{
+            text-indent: 0px;
+        }
 	}
 	.align-top{
 		align-items: baseline;
@@ -262,6 +269,9 @@
 	    		.flex-col{
 	    			display: flex;
     				align-items: center;
+                    & > span{
+                        padding-left: 0.3em;
+                    }
 	    		}
 	    		.date-field{
 	    			display: none;
@@ -659,11 +669,12 @@
     			justify-content: center;
     			text-align: center;
     			img{
-    				margin: 0 0.5em 0 0;
+    				margin: 0 0.5em 0 -2.5em;
     				display: block;
     			}
                 span{
                     margin-left: 0;
+                    text-align: left;
                 }
     		}
 	    }
@@ -680,6 +691,9 @@
     .width-box{
         margin-left: 1.3em;
         margin-right: 1.3em;
+    }
+    .input-label,.label-caption{
+        font-size: 1.01em;
     }
 }
 

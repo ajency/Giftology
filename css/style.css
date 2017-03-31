@@ -2690,6 +2690,9 @@ label .fa.checkbox-inline.fa-check-circle {
 .create_Card .cards .header .flex-col .fund-subname .fund-link {
   display: none;
 }
+.create_Card .cards .header .fund-desc {
+  display: none;
+}
 .create_Card .cards .body {
   padding-top: 0.5em;
 }
@@ -2884,8 +2887,14 @@ label .fa.checkbox-inline.fa-check-circle {
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
+.msg-info textarea {
+  text-indent: 0px;
+}
 .contribute .option {
   margin: 2.5em 0;
+}
+.contribute .option textarea {
+  text-indent: 0px;
 }
 .contribute .align-top {
   -webkit-box-align: baseline;
@@ -2920,6 +2929,9 @@ label .fa.checkbox-inline.fa-check-circle {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
+}
+.contribute .align-top .s-label.schedule .flex-col > span {
+  padding-left: 0.3em;
 }
 .contribute .align-top .s-label.schedule .date-field {
   display: none;
@@ -3345,11 +3357,12 @@ label .fa.checkbox-inline.fa-check-circle {
     text-align: center;
   }
   .name-box .voucher .col.voucher-name img {
-    margin: 0 0.5em 0 0;
+    margin: 0 0.5em 0 -2.5em;
     display: block;
   }
   .name-box .voucher .col.voucher-name span {
     margin-left: 0;
+    text-align: left;
   }
   .gift-note {
     margin: 8.5em auto 2em auto;
@@ -3361,6 +3374,10 @@ label .fa.checkbox-inline.fa-check-circle {
   .width-box {
     margin-left: 1.3em;
     margin-right: 1.3em;
+  }
+  .input-label,
+  .label-caption {
+    font-size: 1.01em;
   }
 }
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
