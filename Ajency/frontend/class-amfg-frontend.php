@@ -131,6 +131,7 @@ class Ajency_MFG_Frontend
         $vars[] = 'login';
         $vars[] = 'gift-invites-view-all';
         $vars[] = 'update-gift';
+        $vars[] = 'contribute';
         return $vars;
     }
 }

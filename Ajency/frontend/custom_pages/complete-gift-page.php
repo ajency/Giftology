@@ -35,7 +35,7 @@ if(is_user_logged_in()){
                         <ul class="steps">
                             <li><a href="">Home</a></li>
                             <li>/</li>
-                            <li><a href="">Create a Gift</a></li>
+                            <li><a href="">Update your Gift</a></li>
                         </ul>
                     </div>
                 </div>
@@ -172,7 +172,7 @@ if(is_user_logged_in()){
                                     </div>
                                 </div>
                                 <div class="msg-info">
-                                    <label class="input-label required">Type a message for Sarvesh</label>
+                                    <label class="input-label required">Type a message for <?php echo $gift->receiver_name ?></label>
                                     <p class="label-caption">Sarvesh will see this once the gift is received <a href="#" class="underline" data-toggle="modal" data-target="#template-modal">Choose from a template</a></p>
                                     <textarea id="receiver_message" name="receiver_message" rows="4" class="input-box valid-fields" placeholder="A nice message that will bring a smile to the recipient's face..." required><?php echo $gift->receiver_message; ?></textarea>
                                 </div>
