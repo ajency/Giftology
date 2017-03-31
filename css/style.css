@@ -2690,9 +2690,6 @@ label .fa.checkbox-inline.fa-check-circle {
 .create_Card .cards .header .flex-col .fund-subname .fund-link {
   display: none;
 }
-.create_Card .cards .header .fund-desc {
-  display: none;
-}
 .create_Card .cards .body {
   padding-top: 0.5em;
 }
