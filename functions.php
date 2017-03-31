@@ -162,21 +162,30 @@ function giftology_update_gift($request_data) {
         $parameters['receiver_mobile'] &&
         $parameters['contrib_setting_id'] &&
         $parameters['template_id'] &&
-        $parameters['img'] &&
+/*        $parameters['img'] &&*/
         $parameters['send_type'] &&
-        $parameters['send_on'] &&
+/*        $parameters['send_on'] &&*/
         $parameters['gift_id']
     )
     {
-        $parameters['created_by'] = get_current_user_id();
-        $result = Ajency_MFG_Gift::update_gift($parameters);
-        if($result) {
-            return json_response(false, "Gift updated",true);
-        } else {
-            return json_response(false, "Gift could not be updated",false);
+        if($parameters['send_type'] == 1 || ($parameters['send_type'] == 2 && $parameters['send_on']))
+        {
+            if($parameters['send_type'] == 1) {
+                $parameters['send_on'] = '0000-00-00 00:00:00';
+            }
+
+            $result = Ajency_MFG_Gift::update_gift($parameters);
+            if($result) {
+                return json_response(true, "Gift updated",$parameters['gift_id']);
+            } else {
+                return json_response(false, "Gift could not be updated",false);
+            }
         }
+        return json_response(false, "Gift could not be updated",false);
+
+
     }
-    return json_response(false, "All fields are required",false);
+    return json_response(false, "All fields are required",[$parameters]);
 
 }
 

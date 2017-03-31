@@ -114,6 +114,10 @@ class Ajency_MFG_Frontend
         {
             get_template_part( 'Ajency/frontend/custom_pages/complete-gift', 'page' );
         }
+        else if($wp->query_vars['contribute']) //Step 3
+        {
+            get_template_part( 'Ajency/frontend/custom_pages/contribute', 'page' );
+        }
     }
 
     function my_plugin_query_vars($vars) {

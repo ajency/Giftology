@@ -33,7 +33,6 @@ if( !defined( 'ABSPATH' ) ) exit;
             <?php
             include locate_template('Ajency/frontend/custom_pages/gift-templates/template-'.$gift->template_id.'.php', false, false);
             ?>
-
         </div>
 
     </section>
