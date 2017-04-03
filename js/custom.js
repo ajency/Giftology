@@ -571,7 +571,9 @@
 
 
 
-        $('#update-gift').on('click', function () {
+        $('#update-gift').on('click', function (e) {
+
+            e.preventDefault();
 
           var gift_id = $( '#gift_id' ).val();
           var gift_redirect = $( '#gift_redirect' ).val();
