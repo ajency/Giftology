@@ -8,7 +8,8 @@ if( !defined( 'ABSPATH' ) ) exit;
 if(is_user_logged_in()){
 
     $gift_id = $_GET['update-gift'];
-    $gift = Ajency_MFG_Gift::get_gift_details($gift_id);
+    $gift = Ajency_MFG_Gift::get_gift_details($gift_id,true);
+    $fund = $gift->fund;
     $gift_redirect = isset($_GET['redirect']) && !empty($_GET['redirect']) ? $_GET['redirect'] : '/gifts/'.$gift->slug;
     //Assign to current user
     //TODO use some identification code to know its same session
@@ -35,7 +36,14 @@ if(is_user_logged_in()){
                         <ul class="steps">
                             <li><a href="">Home</a></li>
                             <li>/</li>
-                            <li><a href="">Update your Gift</a></li>
+
+                            <?php if($gift->created == $gift->updated) : ?>
+                                <li><a href="">Create Gift</a></li>
+                            <?php else : ?>
+                                <li><a href="/gifts/">Gifts</a></li>
+                                <li>/</li>
+                                <li><a href="">Update Gift</a></li>
+                            <?php endif; ?>
                         </ul>
                     </div>
                 </div>
@@ -69,7 +77,7 @@ if(is_user_logged_in()){
                             </div>
                             <div class="gift-note">
                                 <h6 class="title">please note</h6>
-                                <p class="data">The minimum amount to be contributed by you for this gift to be ready is <b>Rs. <?php echo $gift->contribution_amount; ?>.</b></p>
+                                <p class="data">The minimum amount to be contributed by you for this gift to be ready is <b>Rs. <?php echo $fund->_fund_min_investment; ?>.</b></p>
                             </div>
                         </div>
                     </div>
@@ -78,22 +86,22 @@ if(is_user_logged_in()){
 
                         <div class="card-holder create_Card">
 
-                        <?php
-                        $query = [
-                            'p'         => $gift->fund_id, // ID of a page, post, or custom type
-                            'post_type' => 'fund'
-                        ];
-                        $loop = new WP_Query( $query );
+                            <?php
+                            $query = [
+                                'p'         => $gift->fund_id, // ID of a page, post, or custom type
+                                'post_type' => 'fund'
+                            ];
+                            $loop = new WP_Query( $query );
 
-                        $buckets = (get_option('_amfg_bucket_settings'));
-                        
-                        if ($loop->have_posts() ) :
-                            while ( $loop->have_posts() ) : $loop->the_post(); // standard WordPress loop.
-                                include locate_template('template-parts/funds/fund-card.php', false, fals);
+                            $buckets = (get_option('_amfg_bucket_settings'));
 
-                            endwhile;
-                        endif;
-                        ?>
+                            if ($loop->have_posts() ) :
+                                while ( $loop->have_posts() ) : $loop->the_post(); // standard WordPress loop.
+                                    include locate_template('template-parts/funds/fund-card.php', false, false);
+
+                                endwhile;
+                            endif;
+                            ?>
                         </div>
 
 
@@ -209,12 +217,11 @@ if(is_user_logged_in()){
                                                 <input  name="send_type" type="radio" value="2" class="input-radio schedule-trigger valid-fields" required <?php echo $gift->send_type == 2 ? 'checked' : ''; ?>>
                                                 <span>Schedule to send</span>
                                             </div>
-                                            <input value="<?php echo date('Y-m-d', strtotime($gift->send_on)); ?>" name="send_on" type="date" class="input-box date-field">
+                                            <input value="<?php echo date('Y-m-d', strtotime($gift->send_on)); ?>" name="send_on" type="text" class="input-box date-field" id="datetimepicker1">
                                         </label>
                                     </div>
                                 </div>
                             </div>
-
                        
                             <div class="send-actions">
                                 <!-- <button type="button" class="btn btn-default cancel">Cancel</button>-->
@@ -268,37 +275,37 @@ if(is_user_logged_in()){
                             <div class="modal-body">
                                 <form id="select-message-template-form">
                                     <div class="templates">
-                                    <div class="read-more">
-                                        <div class="keywords">
-                                            <input type="radio" class="radio-select" value="1" name="messagetemplate">
-                                            <span id="message-template-1" class="string">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium deserunt accusamus molestias eum aperiam quos.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium deserunt accusamus molestias eum aperiam quos.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium deserunt accusamus molestias eum aperiam quos.</span>
+                                        <div class="read-more">
+                                            <div class="keywords">
+                                                <input type="radio" class="radio-select" value="1" name="messagetemplate">
+                                                <span id="message-template-1" class="string">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium deserunt accusamus molestias eum aperiam quos.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium deserunt accusamus molestias eum aperiam quos.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium deserunt accusamus molestias eum aperiam quos.</span>
+                                            </div>
+                                            <div class="count">
+                                                <b class="number">134</b> Words
+                                            </div>
                                         </div>
-                                        <div class="count">
-                                            <b class="number">134</b> Words
+                                        <hr>
+                                        <div class="read-more">
+                                            <div class="keywords">
+                                                <input type="radio" class="radio-select" value="2" name="messagetemplate">
+                                                <span id="message-template-2" class="string">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium deserunt accusamus molestias eum aperiam quos.</span>
+                                            </div>
+                                            <div class="count">
+                                                <b class="number">134</b> Words
+                                            </div>
                                         </div>
+                                        <hr>
+                                        <div class="read-more">
+                                            <div class="keywords">
+                                                <input type="radio" class="radio-select" value="3" name="messagetemplate">
+                                                <span id="message-template-3" class="string">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur animi quos quis natus repudiandae aliquam cum. Magni aliquid natus modi praesentium voluptates, autem eius, odit blanditiis non porro cum, doloribus.</span>
+                                            </div>
+                                            <div class="count">
+                                                <b class="number">134</b> Words
+                                            </div>
+                                        </div>
+                                        <hr>
                                     </div>
-                                    <hr>
-                                    <div class="read-more">
-                                        <div class="keywords">
-                                            <input type="radio" class="radio-select" value="2" name="messagetemplate">
-                                            <span id="message-template-2" class="string">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium deserunt accusamus molestias eum aperiam quos.</span>
-                                        </div>
-                                        <div class="count">
-                                            <b class="number">134</b> Words
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <div class="read-more">
-                                        <div class="keywords">
-                                            <input type="radio" class="radio-select" value="3" name="messagetemplate">
-                                            <span id="message-template-3" class="string">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur animi quos quis natus repudiandae aliquam cum. Magni aliquid natus modi praesentium voluptates, autem eius, odit blanditiis non porro cum, doloribus.</span>
-                                        </div>
-                                        <div class="count">
-                                            <b class="number">134</b> Words
-                                        </div>
-                                    </div>
-                                    <hr>
-                                </div>
                                 </form>
                             </div>
                             <div class="modal-footer">
