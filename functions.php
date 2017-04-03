@@ -8,9 +8,11 @@ add_action( 'wp_enqueue_scripts', 'register_api_calls_js' );
 function register_api_calls_js() {
     //load script
     wp_enqueue_script( 'readmore', get_template_directory_uri() . '/js/readmore.min.js', '', '' , true );
+    wp_enqueue_script( 'momentjs', get_template_directory_uri() . '/js/moment.js', '', '' , true );
     wp_enqueue_script( 'giftology-api', get_template_directory_uri() . '/js/custom.js', array( 'jquery' ), '' , true );
-    wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array( 'jquery' ), '' , true );
-    wp_enqueue_script( 'bootstrap-tagsinput', get_template_directory_uri() . '/js/bootstrap-tagsinput.min.js', array( 'jquery' ), '' , true );
+    wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', '', '' , true );
+    wp_enqueue_script( 'bootstrap-datetimepicker', get_template_directory_uri() . '/js/bootstrap-datetimepicker.min.js', '', '' , true );
+    wp_enqueue_script( 'bootstrap-tagsinput', get_template_directory_uri() . '/js/bootstrap-tagsinput.min.js', '', '' , true );
 
 
     //localize data for script
@@ -157,8 +159,9 @@ function giftology_update_gift($request_data) {
 
     $parameters = $request_data->get_params();
     if( $parameters['title'] &&
-        $parameters['contributors_note'] &&
+/*        $parameters['contributors_note'] &&*/
         $parameters['receiver_email'] &&
+        $parameters['receiver_message'] &&
         $parameters['receiver_mobile'] &&
         $parameters['contrib_setting_id'] &&
         $parameters['template_id'] &&
