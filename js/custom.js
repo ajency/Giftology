@@ -593,7 +593,8 @@
 /*                        $('#contribution_amount_error').html('<div class="alert alert-danger">' + data.message + '</div>');*/
                     }
                 },
-                error: function(){
+                error: function(err){
+                    console.log(err);
                     alert("Internal Server Error : Please contact Admin");
                 }
             });
