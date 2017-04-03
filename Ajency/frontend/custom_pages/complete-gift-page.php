@@ -217,21 +217,23 @@ if(is_user_logged_in()){
                                                 <input  name="send_type" type="radio" value="2" class="input-radio schedule-trigger valid-fields" required <?php echo $gift->send_type == 2 ? 'checked' : ''; ?>>
                                                 <span>Schedule to send</span>
                                             </div>
-                                            <input value="<?php echo date('Y-m-d', strtotime($gift->send_on)); ?>" name="send_on" type="text" class="input-box date-field" id="datetimepicker1">
+                                            <input value="<?php echo date('Y-m-d', strtotime($gift->send_on)); ?>" name="send_on" type="text" class="input-box date-field" placeholder="Select a date" id="datetimepicker1">
                                         </label>
                                     </div>
                                 </div>
                             </div>
 
 
-                        </form>
-
-                        <div class="send-actions">
+                            <div class="send-actions">
                                 <!-- <button type="button" class="btn btn-default cancel">Cancel</button>-->
                                 <!-- <div class="group"> -->
                                 <button type="submit" id="update-gift" class="btn btn-default site-btn-2 save-data" disabled>Next</button>
                                 <!-- </div> -->
                             </div>
+
+
+                        </form>
+
 
 
 

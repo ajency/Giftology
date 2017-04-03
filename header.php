@@ -15,6 +15,7 @@ if( !defined( 'ABSPATH' ) ) exit;
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,400i,500,500i,600,600i" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri() ?>/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri() ?>/css/bootstrap-tagsinput.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri() ?>/css/bs-datetimepicker.css">
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri() ?>/css/style.css">
 

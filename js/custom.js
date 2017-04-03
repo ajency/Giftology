@@ -498,7 +498,11 @@
             $('input:checked').parent().addClass("date-style");
         });
 
-        $('input[name="messagetemplate"]').on('change',function(){
+        if($('input[name="template_id"]').is(':checked')){
+            $('input:checked').parent().parent().closest('.template__cover').addClass("active");
+        }
+
+        $('input[name="template_id"]').on('change',function(){
             $('input:not(:checked)').parent().parent().closest('.template__cover').removeClass("active");
             $('input:checked').parent().parent().closest('.template__cover').addClass("active");
         });
