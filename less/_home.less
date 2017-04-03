@@ -366,6 +366,7 @@ input,.form-control,textarea{
 	background-color: #fff;
 	&.dc{
 		.dc-head{
+			display: none;
 			font-size: 1.1em;
 		}
 		.dc-subtitle{
@@ -413,11 +414,161 @@ input,.form-control,textarea{
 			}
 		}
 	}
+	.gift-wrap{
+		border-top: 2px solid rgba(158, 1, 45, 0.1);
+		margin: 0 -1.5em;
+		padding: 0;
+    	padding-top: 1.5em;
+	}
+	.gift-wrap{
+		padding: 1.5em;
+	}
 	&.dc-gift,&.dc-days{
 		padding: 2em 0;
 	}
 }
 
+
+// Gift condition section
+
+.gift-wrap{
+	padding: 1.5em;
+	.col{
+		display: flex;
+	    align-items: center;
+	    .gift-img,.day-img{
+	    	padding-left: 1em;
+	    }
+	    .amount,.day-left{
+	    	padding-left: 1em;
+	    	.count,.caption{
+	    		margin: 0;
+	    		.inr{
+	    			font-size: 0.4em;
+    				padding-left: 2px;
+	    		}
+	    		.fa{
+	    			color: #b3b3b3;
+	    		}
+	    	}
+	    }
+	    .day-left{
+	    	.count{
+	    		font-weight: 300;
+    			font-size: 1.1em;
+    			b{
+    				font-weight: 500;
+    			}
+	    	}
+	    }
+	}
+	.draft-footer{
+		width: 90%;
+		margin: 1.5em auto 0 auto;
+    	.btn{
+    		width: 100%;
+		    text-transform: uppercase;
+		    font-size: 1.15em;
+		    padding: 0.8em 0;
+		    border-radius: 3px;
+		    margin-bottom: 10px;
+    	}
+    	a{
+    		text-decoration: underline;
+    	}
+	}
+	.dc-days{
+		padding-bottom: 1.5em;
+    	border-bottom: 2px solid rgba(158, 1, 45, 0.1);
+	}
+}
+
+
+// Contributors
+
+.contribution{
+	display: flex;
+    margin-top: 1.5em;
+    // padding: 0 1.5em;
+    .cols{
+    	&:first-child{
+    		padding-right: 1em;
+    	}
+    	.number{
+    		margin-bottom: 5px;
+    		margin-top: 0;
+    	}
+    	.caption{
+    		font-size: 1.05em;
+    		margin-bottom: 0;
+    	}
+    	.people{
+    		display: flex;
+    		align-items: center;
+    		margin-bottom: 3px;
+    		img{
+    			&:nth-child(even){
+    				margin: 0 0.4em;
+    			}
+    		}
+    	}
+    }
+    &.no-contri{
+		align-items: center;
+		.cols{
+			&:nth-child(2n){
+				flex: 1;
+				.btn{
+					width: 100%;
+				    border-radius: 3px;
+				    text-transform: uppercase;
+				    font-size: 1.1em;
+				    padding: 0.8em 0;
+				}
+			}
+		}
+    }
+}
+
+// Draft section
+
+.gift-draft{
+	position: relative;
+	padding: 1.5em;
+	.label{
+		// background-color: #cb194b;
+		background-color: darken(@link-color-2, 13%);
+	    font-weight: 400;
+	    font-size: 1em;
+	    text-transform: uppercase;
+	    letter-spacing: 1.5px;
+	    padding: 0.25em 0.65em;
+	}
+	.msg{
+		margin: 1em 0 0 0;
+    	font-size: 1.1em;
+	}
+	.draft-footer{
+		position: absolute;
+	    bottom: -6em;
+	    width: calc(~'100% - 3em');
+	    left: 0;
+	    right: 0;
+    	margin: 0 auto;
+    	// text-align: center;
+    	.btn{
+    		width: 100%;
+		    text-transform: uppercase;
+		    font-size: 1.15em;
+		    padding: 0.8em 0;
+		    border-radius: 3px;
+		    margin-bottom: 10px;
+    	}
+    	a{
+    		text-decoration: underline;
+    	}
+	}
+}
 
 
 .testimonial{
