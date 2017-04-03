@@ -114,7 +114,7 @@ if(is_user_logged_in()){
                     <div class="col-sm-7">
 
 
-                        <form id="update-gift1" action="">
+                        <form id="update-gift1" action="" method=POST>
 
                             <div class="gift-name width-box">
                                 <label class="input-label required">What do you want to call this gift?</label>
@@ -227,7 +227,7 @@ if(is_user_logged_in()){
                             <div class="send-actions">
                                 <!-- <button type="button" class="btn btn-default cancel">Cancel</button>-->
                                 <!-- <div class="group"> -->
-                                <button type="submit" id="update-gift" class="btn btn-default site-btn-2 save-data" disabled>Next</button>
+                                <button type="submit" id="update-gift" class="btn btn-default site-btn-2 save-data">Next</button>
                                 <!-- </div> -->
                             </div>
 

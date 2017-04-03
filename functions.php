@@ -158,6 +158,8 @@ function giftology_api() {
 function giftology_update_gift($request_data) {
 
     $parameters = $request_data->get_params();
+
+
     if( $parameters['title'] &&
 /*        $parameters['contributors_note'] &&*/
         $parameters['receiver_email'] &&
