@@ -175,7 +175,7 @@ if(is_user_logged_in()){
                                         <label class="input-label required">Some details about <?php echo $gift->receiver_name ?></label>
                                         <div class="cols">
                                             <input  name="receiver_email" value="<?php echo $gift->receiver_email; ?>" type="email" class="input-box name-text email-text m-r-1 valid-fields" placeholder="Email address" required>
-                                            <input name="receiver_mobile" value="<?php echo $gift->receiver_mobile; ?>" type="number" class="input-box name-text valid-fields" placeholder="Mobile number" required>
+                                            <input name="receiver_mobile" value="<?php echo $gift->receiver_mobile; ?>" type="text" class="input-box name-text valid-fields" placeholder="Mobile number" pattern="^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$" oninvalid="setCustomValidity('Please Enter valid phone number ')" onchange="try{setCustomValidity('')}catch(e){}" required>
                                         </div>
                                     </div>
                                 </div>
@@ -200,7 +200,7 @@ if(is_user_logged_in()){
                                         </label>
                                     </div>
                                 </div>
-                                <div class="option">
+                                <div class="option contri-note">
                                     <label class="input-label">A note for the contributors</label>
                                     <p class="label-caption">This note will be visible to the contributors when they land on the gift page</p>
                                     <textarea name="contributors_note" rows="4" class="input-box" placeholder="A nice message that will encourage the conributors to contribute..."><?php echo $gift->contributors_note; ?></textarea>
@@ -217,22 +217,20 @@ if(is_user_logged_in()){
                                                 <input  name="send_type" type="radio" value="2" class="input-radio schedule-trigger valid-fields" required <?php echo $gift->send_type == 2 ? 'checked' : ''; ?>>
                                                 <span>Schedule to send</span>
                                             </div>
-                                            <input value="<?php echo date('Y-m-d', strtotime($gift->send_on)); ?>" name="send_on" type="date" class="input-box date-field">
+                                            <input value="<?php echo date('Y-m-d', strtotime($gift->send_on)); ?>" name="send_on" type="text" class="input-box date-field" id="datetimepicker1">
                                         </label>
                                     </div>
                                 </div>
                             </div>
+                       
+                            <div class="send-actions">
+                                <!-- <button type="button" class="btn btn-default cancel">Cancel</button>-->
+                                <!-- <div class="group"> -->
+                                <button type="submit" id="update-gift" class="btn btn-default site-btn-2 save-data" disabled>Next</button>
+                                <!-- </div> -->
+                            </div>
 
                         </form>
-                        <div class="send-actions">
-                            <!-- <button type="button" class="btn btn-default cancel">Cancel</button>-->
-                            <!-- <div class="group"> -->
-                            <button type="submit" id="update-gift" class="btn btn-default site-btn-2 save-data" disabled>Contribute</button>
-                            <!-- </div> -->
-                        </div>
-
-
-
 
 
 

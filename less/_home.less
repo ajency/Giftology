@@ -12,35 +12,35 @@ h1,h2,h3,h4,h5,h6{
 }
 
 a{
-	color: @link-color;
+	color: @primary-color;
 	&:hover,&:active,&:focus{
 		outline: 0;
-		color: @link-color;
+		color: @primary-color;
 	}
 }
 
 .link-color{
-	color: @link-color;
+	color: @primary-color;
 }
 
 .secondary-color{
-	color: @link-color-2;
+	color: @secondary-color;
 }
 
 input,.form-control,textarea{
 	&:active,&:focus{
 		outline: 0;
 		box-shadow: none;
-		border-color: @link-color;	
+		border-color: @primary-color;	
 	}
 }
 
 .site-btn{
-	color: @link-color;
-	border-color: @link-color;
+	color: @primary-color;
+	border-color: @primary-color;
 	transition: all 0.5s ease;
 	&:hover,&:active,&:focus,&:active:focus,&[disabled]:hover{
-		background-color: @link-color;
+		background-color: @primary-color;
 		color: #fff;
 		outline: 0;
 	}
@@ -48,14 +48,14 @@ input,.form-control,textarea{
 
 .site-btn-2,.site-btn-2:focus{
 	color: #fff;
-	background-color: @link-color;
-	border-color: @link-color;
+	background-color: @primary-color;
+	border-color: @primary-color;
 	transition: all 0.5s ease;
 	outline: 0;
 	&:hover,&:active,&:active:focus,&[disabled]:hover,&.disabled:hover{
-		color: @link-color;
+		color: @primary-color;
 		background-color: #fff;
-		border-color: @link-color;
+		border-color: @primary-color;
 		outline: 0;
 	}
 }
@@ -130,14 +130,14 @@ input,.form-control,textarea{
 	}
 	.invest-btn{
 		margin: 0.65em 0;
-		border-color: @link-color;
-    	color: @link-color;
+		border-color: @primary-color;
+    	color: @primary-color;
     	text-transform: uppercase;
     	font-weight: 400;
     	transition: all 0.5s ease;
     	font-size: 0.95em;
     	&:hover{
-			background-color: @link-color;
+			background-color: @primary-color;
 			color: #fff;
     	}
 	}
@@ -230,7 +230,7 @@ input,.form-control,textarea{
 	}
 	.cont-note{
 		& > a{
-			color: @link-color;
+			color: @primary-color;
     		text-decoration: underline;
 		}
 	}
@@ -252,7 +252,7 @@ input,.form-control,textarea{
 		}
 		.cont-note{
 			& > a{
-				color: @link-color;
+				color: @primary-color;
 	    		text-decoration: underline;
 			}
 		}
@@ -276,7 +276,7 @@ input,.form-control,textarea{
 		margin-bottom: 5em;
 		.data-banner{
 			padding: 1.5em;
-    		background-color: @link-color-2;
+    		background-color: @secondary-color;
     		width: 90%;
     		position: relative;
     		.banner-title{
@@ -329,7 +329,7 @@ input,.form-control,textarea{
 		h5{
 			margin: 0;
 			font-size: 1.05em;
-			color: @link-color-2;
+			color: @secondary-color;
 		}
 		&.voucher-name{
 			// min-width: 173px;
@@ -537,7 +537,7 @@ input,.form-control,textarea{
 	padding: 1.5em;
 	.label{
 		// background-color: #cb194b;
-		background-color: darken(@link-color-2, 13%);
+		background-color: darken(@secondary-color, 13%);
 	    font-weight: 400;
 	    font-size: 1em;
 	    text-transform: uppercase;
@@ -749,7 +749,7 @@ input,.form-control,textarea{
     		.tag{
     			font-size: 0.85em;
     			font-weight: 400;
-    			background-color: @link-color-2;
+    			background-color: @secondary-color;
     		}
 		}
 		input[type='text'],textarea{

@@ -3102,6 +3102,7 @@ label .fa.checkbox-inline.fa-check-circle {
 }
 .contribute .align-top .s-label .date-style + .date-field {
   display: block;
+  font-size: 1em;
 }
 .radio-option {
   display: -webkit-box;
@@ -3287,6 +3288,32 @@ label .fa.checkbox-inline.fa-check-circle {
 .template-modal .select-msg {
   color: #b3b2b2;
   font-size: 1.05em;
+}
+.bootstrap-datetimepicker-widget.dropdown-menu {
+  border-color: #9c1bef;
+}
+.bootstrap-datetimepicker-widget.dropdown-menu.top:before,
+.bootstrap-datetimepicker-widget.dropdown-menu.bottom:before {
+  border-top-color: #9c1bef;
+  border-bottom-color: #9c1bef;
+}
+.bootstrap-datetimepicker-widget.dropdown-menu .prev,
+.bootstrap-datetimepicker-widget.dropdown-menu .next {
+  color: #9c1bef;
+  font-size: 1.25em;
+}
+.bootstrap-datetimepicker-widget.dropdown-menu table td.day.active {
+  background-color: #9c1bef;
+}
+.bootstrap-datetimepicker-widget.dropdown-menu table td.day.active.today:before {
+  border-bottom-color: #fff;
+}
+.bootstrap-datetimepicker-widget.dropdown-menu table td.day.today:before {
+  border-bottom-color: #9c1bef;
+}
+.bootstrap-datetimepicker-widget.dropdown-menu table td.day:hover {
+  background: rgba(156, 27, 239, 0.36);
+  color: #fff;
 }
 @media screen and (max-width: 992px) {
   .name-box .owner-name {
