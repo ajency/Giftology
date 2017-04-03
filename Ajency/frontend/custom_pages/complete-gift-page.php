@@ -215,7 +215,7 @@ if(is_user_logged_in()){
                                 </div>
                             </div>
 
-                        </form>
+                       
                             <div class="send-actions">
                                 <!-- <button type="button" class="btn btn-default cancel">Cancel</button>-->
                                 <!-- <div class="group"> -->
@@ -223,8 +223,7 @@ if(is_user_logged_in()){
                                 <!-- </div> -->
                             </div>
 
-
-
+                        </form>
 
 
 
