@@ -52,7 +52,7 @@ class Ajency_MFG_Gift {
                 'entity' => $entity, //replaced non-existing variables $lq_name, and $lq_descrip, with the ones we set to collect the data - $name and $description
                 'entity_id' => $entity_id,
                 'user_id' => $user_id,
-                'action' => $action,
+                'action' => esc_sql($action),
                 'is_allowed' => $is_allowed,
                 'created' => current_time( 'mysql' ),
                 'updated' => current_time( 'mysql' ),
@@ -104,7 +104,7 @@ class Ajency_MFG_Gift {
 
         //TODO make action optional, can be dangerous though
         global $wpdb;
-        $query = 'Update '.$wpdb->prefix.'giftology_acl set is_allowed = "'.$is_allowed.'" where entity_id = "' . $entity_id . '" AND entity = "' . $entity . '" AND action = "' . $action . '" AND user_id IS NULL';
+        $query = 'Update '.$wpdb->prefix.'giftology_acl set is_allowed = "'.$is_allowed.'" where entity_id = "' . $entity_id . '" AND entity = "' . $entity . '" AND action = "' . esc_sql($action) . '" AND user_id IS NULL';
         $wpdb->query($query);
     }
 
@@ -192,7 +192,7 @@ class Ajency_MFG_Gift {
         global $wpdb;
         $table_name = $wpdb->prefix . "giftology_invites_message";
         $wpdb->insert($table_name, array(
-            'message' => $message
+            'message' => esc_sql($message)
         ));
 
         return $wpdb->insert_id; //TODO return an id
@@ -204,7 +204,7 @@ class Ajency_MFG_Gift {
         global $wpdb;
         $table_name = $wpdb->prefix . "giftology_invites_usage";
         $wpdb->insert($table_name, array(
-            'invite_code_used' => $invite_code_used,
+            'invite_code_used' => esc_sql($invite_code_used),
             'used_by' => $used_by,
             'created' => current_time( 'mysql' ),
             'updated' => current_time( 'mysql' ),
@@ -219,7 +219,7 @@ class Ajency_MFG_Gift {
         global $wpdb;
         $table_name = $wpdb->prefix . "giftology_invites";
         $wpdb->insert($table_name, array(
-                'email' => $email,
+                'email' => esc_sql($email),
                 'gift_id' => $gift_id,
                 'invite_code' => uniqid(),
                 'message_id' => $message_id,
@@ -394,15 +394,15 @@ class Ajency_MFG_Gift {
             $table_name = $wpdb->prefix . "giftology_gifts";
 
 
-            $sql ="UPDATE $table_name SET `title`= '".$data['title']."', `contributors_note` = '".$data['contributors_note']."', `receiver_email` = '".$data['receiver_email']."',
-    `receiver_mobile` = '".$data['receiver_mobile']."',
-    `receiver_message` = '".$data['receiver_message']."',
-    `contrib_setting_id` = '".$data['contrib_setting_id']."',
-    `template_id` = '".$data['template_id']."',
-    `send_type` = '".$data['send_type']."',
-    `send_on` = '".$data['send_on']."',
-    `img` = '".$data['img']."',
-    `updated` = '".current_time( 'mysql' )."' WHERE `id` = ".$gift->id."";
+            $sql ='UPDATE '.$table_name.' SET `title`= "'.$data["title"].'", `contributors_note` = "'.$data["contributors_note"].'", `receiver_email` = "'.$data["receiver_email"].'",
+    `receiver_mobile` = "'. esc_sql($data["receiver_mobile"]).'",
+    `receiver_message` = "'.esc_sql($data["receiver_message"]).'",
+    `contrib_setting_id` = "'.esc_sql($data["contrib_setting_id"]).'",
+    `template_id` = "'.esc_sql($data["template_id"]).'",
+    `send_type` = "'.esc_sql($data["send_type"]).'",
+    `send_on` = "'.esc_sql($data["send_on"]).'",
+    `img` = "'.esc_sql($data["img"]).'",
+    `updated` = "'.current_time( "mysql" ).'" WHERE `id` = '.$gift->id;
 
             $rez = $wpdb->query($sql);
 
@@ -417,11 +417,11 @@ class Ajency_MFG_Gift {
         global $wpdb;
         $table_name = $wpdb->prefix . "giftology_gifts";
         $wpdb->insert($table_name, array(
-            'receiver_name' => $recepient_name,
+            'receiver_name' => esc_sql($recepient_name),
             'created_by' => $user_id,
             'fund_id' => $fund_id,
             'contribution_amount' => $contribution_amount,
-            'receiver_occasion' => $occasion,
+            'receiver_occasion' => esc_sql($occasion),
             'created' => current_time( 'mysql' ),
             'updated' => current_time( 'mysql' ),
         ));
