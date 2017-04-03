@@ -384,21 +384,6 @@ class Ajency_MFG_Gift {
     public static function update_gift($data) {
 
         $gift = self::get_gift_details($data['gift_id']);
-
-        $data = array(
-            'title' => $data['title'],
-            'contributors_note' => $data['contributors_note'],
-            'receiver_email' => $data['receiver_email'],
-            'receiver_mobile' => $data['receiver_mobile'],
-            'receiver_message' => $data['receiver_message'],
-            'contrib_setting_id' => $data['contrib_setting_id'],
-            'template_id' => $data['template_id'],
-            'img' => $data['img'],
-            'send_type' => $data['send_type'],
-            'send_on' => $data['send_on'],
-            'updated' => current_time( 'mysql' ),
-        );
-
         if(empty($gift->slug)) {
 
             $data['slug'] = self::slugify($data['title']).'-'.uniqid();
@@ -407,13 +392,21 @@ class Ajency_MFG_Gift {
         if($gift->created_by == get_current_user_id()) {
             global $wpdb;
             $table_name = $wpdb->prefix . "giftology_gifts";
-            $wpdb->update($table_name,
-                $data,
-                array( 'id' => $gift->id)
-            );
-            if($wpdb->print_error()) {
-                return false;
-            }
+
+
+            $sql ="UPDATE $table_name SET `title`= '".$data['title']."', `contributors_note` = '".$data['contributors_note']."', `receiver_email` = '".$data['receiver_email']."',
+    `receiver_mobile` = '".$data['receiver_mobile']."',
+    `receiver_message` = '".$data['receiver_message']."',
+    `contrib_setting_id` = '".$data['contrib_setting_id']."',
+    `template_id` = '".$data['template_id']."',
+    `send_type` = '".$data['send_type']."',
+    `send_on` = '".$data['send_on']."',
+    `img` = '".$data['img']."',
+    `updated` = '".current_time( 'mysql' )."' WHERE `id` = ".$gift->id."";
+
+            $rez = $wpdb->query($sql);
+
+
             return  $gift->id;
         }
         return false;
