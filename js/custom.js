@@ -502,7 +502,19 @@
             $('input:not(:checked)').parent().parent().closest('.template__cover').removeClass("active");
             $('input:checked').parent().parent().closest('.template__cover').addClass("active");
         });
+        
+        if($('input[name="contrib_setting_id"]:checked').val() == 1){
+            $('.contri-note').addClass('hidden');
+        }
 
+        $('input[name="contrib_setting_id"]').on('change',function(){
+            if($(this).val() == 1){
+                $('.contri-note').addClass('hidden');
+            }
+            else{
+                $('.contri-note').removeClass('hidden');
+            }
+        });
 
 
         function getFormData($form){
