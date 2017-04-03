@@ -176,6 +176,8 @@ function giftology_update_gift($request_data) {
         {
             if($parameters['send_type'] == 1) {
                 $parameters['send_on'] = '0000-00-00 00:00:00';
+            } else if ($parameters['send_type'] == 2) {
+                $parameters['send_on'] = date( 'Y-m-d H:i:s', strtotime($parameters['send_on'] ));
             }
 
             $result = Ajency_MFG_Gift::update_gift($parameters);
