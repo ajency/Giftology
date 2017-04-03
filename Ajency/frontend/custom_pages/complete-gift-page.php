@@ -175,7 +175,7 @@ if(is_user_logged_in()){
                                         <label class="input-label required">Some details about <?php echo $gift->receiver_name ?></label>
                                         <div class="cols">
                                             <input  name="receiver_email" value="<?php echo $gift->receiver_email; ?>" type="email" class="input-box name-text email-text m-r-1 valid-fields" placeholder="Email address" required>
-                                            <input name="receiver_mobile" value="<?php echo $gift->receiver_mobile; ?>" type="text" class="input-box name-text valid-fields" placeholder="Mobile number" pattern="^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$" required>
+                                            <input name="receiver_mobile" value="<?php echo $gift->receiver_mobile; ?>" type="text" class="input-box name-text valid-fields" placeholder="Mobile number" pattern="^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$" oninvalid="setCustomValidity('Please Enter valid phone number ')" onchange="try{setCustomValidity('')}catch(e){}" required>
                                         </div>
                                     </div>
                                 </div>
