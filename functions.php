@@ -164,8 +164,9 @@ function giftology_update_gift($request_data) {
         $parameters['template_id'] &&
 /*        $parameters['img'] &&*/
         $parameters['send_type'] &&
-/*        $parameters['send_on'] &&*/
-        $parameters['gift_id']
+        $parameters['gift_id'] &&
+        !filter_var($parameters['receiver_email'], FILTER_VALIDATE_EMAIL) === false &&
+        preg_match('/^[0-9]{10}+$/', $parameters['receiver_mobile'])
     )
     {
         if($parameters['send_type'] == 1 || ($parameters['send_type'] == 2 && $parameters['send_on']))
