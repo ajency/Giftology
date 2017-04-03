@@ -387,6 +387,8 @@ class Ajency_MFG_Gift {
         if(empty($gift->slug)) {
 
             $data['slug'] = self::slugify($data['title']).'-'.uniqid();
+        } else {
+            $data['slug'] = $gift->slug;
         }
 
         if($gift->created_by == get_current_user_id()) {
@@ -396,6 +398,7 @@ class Ajency_MFG_Gift {
 
             $sql ='UPDATE '.$table_name.' SET `title`= "'.$data["title"].'", `contributors_note` = "'.$data["contributors_note"].'", `receiver_email` = "'.$data["receiver_email"].'",
     `receiver_mobile` = "'. esc_sql($data["receiver_mobile"]).'",
+    `slug` = "'. esc_sql($data["slug"]).'",
     `receiver_message` = "'.esc_sql($data["receiver_message"]).'",
     `contrib_setting_id` = "'.esc_sql($data["contrib_setting_id"]).'",
     `template_id` = "'.esc_sql($data["template_id"]).'",
