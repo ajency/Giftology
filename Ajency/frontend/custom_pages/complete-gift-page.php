@@ -114,7 +114,7 @@ if(is_user_logged_in()){
                     <div class="col-sm-7">
 
 
-                        <form id="update-gift1" action="" method=POST>
+                        <form id="update-gift1" method=POST>
 
                             <div class="gift-name width-box">
                                 <label class="input-label required">What do you want to call this gift?</label>
