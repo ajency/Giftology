@@ -526,7 +526,7 @@
 
         $('#datetimepicker1').datetimepicker({
             minDate:new Date(),
-            format: 'DD/MM/YYYY',
+            format: 'YYYY-MM-DD',
             // debug: true,
             icons: {
                 up: "fa fa-chevron-circle-up",
