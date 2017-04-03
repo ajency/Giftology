@@ -203,7 +203,7 @@ if(is_user_logged_in()){
                                 <div class="option contri-note">
                                     <label class="input-label">A note for the contributors</label>
                                     <p class="label-caption">This note will be visible to the contributors when they land on the gift page</p>
-                                    <textarea name="contributors_note" rows="4" class="input-box" placeholder="A nice message that will encourage the conributors to contribute..."><?php echo $gift->contributors_note; ?></textarea>
+                                    <textarea name="contributors_note" rows="4" class="input-box note-box" placeholder="A nice message that will encourage the conributors to contribute..."><?php echo $gift->contributors_note; ?></textarea>
                                 </div>
                                 <div class="option">
                                     <label class="input-label required">When do you want the gift to be sent?</label>

@@ -291,6 +291,11 @@
 
 
         // Disabled field validation
+        $('.note-box').keyup(function() {
+            if($(this).val() != '') {
+                $('.save-data').removeAttr('disabled');
+            }
+        });  
 
 
         $('.valid-fields').keyup(function() {
@@ -299,11 +304,13 @@
                 if ($(this).val() == '') {
                     empty = true;
                 }
+                console.log('test');
             });
 
             if (empty) {
                 $('.save-data').attr('disabled', 'disabled');
-            } else {
+            }
+            else {
                 $('.save-data').removeAttr('disabled');
             }
         });
@@ -528,6 +535,7 @@
             minDate:new Date(),
             format: 'YYYY-MM-DD',
             // debug: true,
+            useCurrent: true,
             icons: {
                 up: "fa fa-chevron-circle-up",
                 down: "fa fa-chevron-circle-down",
