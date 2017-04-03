@@ -219,7 +219,7 @@ if(is_user_logged_in()){
                             <div class="send-actions">
                                 <!-- <button type="button" class="btn btn-default cancel">Cancel</button>-->
                                 <!-- <div class="group"> -->
-                                <button type="submit" id="update-gift" class="btn btn-default site-btn-2 save-data" disabled>Contribute</button>
+                                <button type="submit" id="update-gift" class="btn btn-default site-btn-2 save-data" disabled>Next</button>
                                 <!-- </div> -->
                             </div>
 
