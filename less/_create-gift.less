@@ -282,6 +282,7 @@
 			.date-style{
 				& + .date-field{
 					display: block;
+					font-size: 1em;
 				}
 			}
 		}
@@ -446,6 +447,43 @@
 		font-size: 1.05em;
 	}
 }
+
+
+
+// Date-time picker styling
+
+.bootstrap-datetimepicker-widget.dropdown-menu.top{
+	border-color: @link-color;
+	&:before{
+		border-top-color: @link-color;
+	}
+	.prev,.next{
+		color: @link-color;
+    	font-size: 1.25em;
+	}
+	table{
+		td.day{
+			&.active{
+				background-color: @link-color;
+				&.today{
+					&:before{
+						border-bottom-color: #fff;
+					}
+				}
+			}
+			&.today{
+				&:before{
+					border-bottom-color: @link-color;
+				}
+			}
+			&:hover{
+				background: rgba(156, 27, 239, 0.36);
+	    		color: #fff;
+			}
+		}
+	}
+}
+
 
 
 
