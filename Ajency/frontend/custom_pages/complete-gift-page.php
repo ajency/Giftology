@@ -9,12 +9,20 @@ if(is_user_logged_in()){
 
     $gift_id = $_GET['update-gift'];
     $gift = Ajency_MFG_Gift::get_gift_details($gift_id);
+    $gift_redirect = isset($_GET['redirect']) && !empty($_GET['redirect']) ? $_GET['redirect'] : '/gifts/'.$gift->slug;
+    //Assign to current user
+    //TODO use some identification code to know its same session
+    if($gift->created_by == 0){
+        Ajency_MFG_Gift::assign_gift_to_user($gift->id);
+    }
+    $gift = Ajency_MFG_Gift::get_gift_details($gift_id);
     if($gift->created_by == get_current_user_id()) {
 
         ?>
 
         <?php
         echo '<input type="hidden" name="gift_id" id="gift_id" value="' . $gift_id . '" />';
+        echo '<input type="hidden" name="gift_redirect" id="gift_redirect" value="' . $gift_redirect . '" />';
         ?>
 
 
@@ -27,7 +35,7 @@ if(is_user_logged_in()){
                         <ul class="steps">
                             <li><a href="">Home</a></li>
                             <li>/</li>
-                            <li><a href="">Create a Gift</a></li>
+                            <li><a href="">Update your Gift</a></li>
                         </ul>
                     </div>
                 </div>
@@ -102,7 +110,7 @@ if(is_user_logged_in()){
 
                             <div class="gift-name width-box">
                                 <label class="input-label required">What do you want to call this gift?</label>
-                                <input name="title" type="text" class="input-box name-text valid-fields" placeholder="Name this gift" required>
+                                <input name="title" value="<?php echo $gift->title; ?>" type="text" class="input-box name-text valid-fields" placeholder="Name this gift" required>
                             </div>
                             <!-- <div class="cover width-box">
                                 <label class="input-label required">Add a cover image to this gift</label>
@@ -118,7 +126,7 @@ if(is_user_logged_in()){
                                         <img src="<?php echo get_template_directory_uri(); ?>/img/template-1.png" class="img-responsive center-block">
                                         <div class="overlay">
                                             <div class="data">
-                                                <input type="radio" class="radio-inline" name="sel-temp">
+                                                <input type="radio" class="radio-inline" name="template_id" value="1" <?php echo $gift->template_id == 1 ? 'checked' : ''; ?>>
                                                 <span class="preview">Preview</span>
                                             </div>
                                         </div>
@@ -131,7 +139,7 @@ if(is_user_logged_in()){
                                         <img src="<?php echo get_template_directory_uri(); ?>/img/template-1.png" class="img-responsive center-block">
                                         <div class="overlay">
                                             <div class="data">
-                                                <input type="radio" class="radio-inline" name="sel-temp">
+                                                <input type="radio" class="radio-inline" name="template_id" value="2" <?php echo $gift->template_id == 2 ? 'checked' : ''; ?>>
                                                 <span class="preview">Preview</span>
                                             </div>
                                         </div>
@@ -144,7 +152,7 @@ if(is_user_logged_in()){
                                         <img src="<?php echo get_template_directory_uri(); ?>/img/template-1.png" class="img-responsive center-block">
                                         <div class="overlay">
                                             <div class="data">
-                                                <input type="radio" class="radio-inline" name="sel-temp">
+                                                <input type="radio" class="radio-inline" name="template_id" value="3" <?php echo $gift->template_id == 3 ? 'checked' : ''; ?>>
                                                 <span class="preview">Preview</span>
                                             </div>
                                         </div>
@@ -156,17 +164,17 @@ if(is_user_logged_in()){
                             <div class="send-details width-box">
                                 <div class="contact-info">
                                     <div class="data">
-                                        <label class="input-label required">Some details about Sarvesh </label>
+                                        <label class="input-label required">Some details about <?php echo $gift->receiver_name ?></label>
                                         <div class="cols">
-                                            <input  name="receiver_email" type="email" class="input-box name-text email-text m-r-1 valid-fields" placeholder="Email address" required>
-                                            <input name="receiver_mobile" type="number" class="input-box name-text valid-fields" placeholder="Mobile number" required>
+                                            <input  name="receiver_email" value="<?php echo $gift->receiver_email; ?>" type="email" class="input-box name-text email-text m-r-1 valid-fields" placeholder="Email address" required>
+                                            <input name="receiver_mobile" value="<?php echo $gift->receiver_mobile; ?>" type="number" class="input-box name-text valid-fields" placeholder="Mobile number" required>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="msg-info">
-                                    <label class="input-label required">Type a message for Sarvesh</label>
-                                    <p class="label-caption">Sarvesh will see this once the gift is received <a href="#" class="underline" data-toggle="modal" data-target="#template-modal">Choose from a template</a></p>
-                                    <textarea name="receiver_message" rows="4" class="input-box valid-fields" placeholder="A nice message that will bring a smile to the recipient's face..." required></textarea>
+                                    <label class="input-label required">Type a message for <?php echo $gift->receiver_name ?></label>
+                                    <p class="label-caption"><?php echo $gift->receiver_name ?> will see this once the gift is received <a href="#" class="underline" data-toggle="modal" data-target="#template-modal">Choose from a template</a></p>
+                                    <textarea id="receiver_message" name="receiver_message" rows="4" class="input-box valid-fields" placeholder="A nice message that will bring a smile to the recipient's face..." required><?php echo $gift->receiver_message; ?></textarea>
                                 </div>
                             </div>
 
@@ -175,11 +183,11 @@ if(is_user_logged_in()){
                                     <label class="input-label required">Would you like others to contribute to this gift?</label>
                                     <div class="radio-option">
                                         <label>
-                                            <input type="radio" name="contrib_setting_id" value="2" class="input-radio valid-fields" required>
+                                            <input type="radio" name="contrib_setting_id" value="2" class="input-radio valid-fields" required <?php echo $gift->contrib_setting_id == 2 ? 'checked' : ''; ?>>
                                             <span>Yes, I want others to contribute</span>
                                         </label>
                                         <label>
-                                            <input type="radio" name="contrib_setting_id" value="1" class="input-radio valid-fields" required>
+                                            <input type="radio" name="contrib_setting_id" value="1" class="input-radio valid-fields" required <?php echo $gift->contrib_setting_id == 1 ? 'checked' : ''; ?>>
                                             <span>No I don't</span>
                                         </label>
                                     </div>
@@ -187,26 +195,27 @@ if(is_user_logged_in()){
                                 <div class="option">
                                     <label class="input-label">A note for the contributors</label>
                                     <p class="label-caption">This note will be visible to the contributors when they land on the gift page</p>
-                                    <textarea name="contributors_note" rows="4" class="input-box" placeholder="A nice message that will encourage the conributors to contribute..."></textarea>
+                                    <textarea name="contributors_note" rows="4" class="input-box" placeholder="A nice message that will encourage the conributors to contribute..."><?php echo $gift->contributors_note; ?></textarea>
                                 </div>
                                 <div class="option">
                                     <label class="input-label required">When do you want the gift to be sent?</label>
                                     <div class="radio-option align-top">
                                         <label class="s-label">
-                                            <input name="send_type" type="radio" value="1" class="input-radio valid-fields" required>
+                                            <input name="send_type" type="radio" value="1" class="input-radio valid-fields" required <?php echo $gift->send_type == 1 ? 'checked' : ''; ?>>
                                             <span>Send now</span>
                                         </label>
                                         <label class="s-label schedule">
-                                            <div class="flex-col">
-                                                <input  name="send_type" type="radio" value="2" class="input-radio schedule-trigger valid-fields" required>
+                                            <div class="flex-col <?php echo $gift->send_type == 2 ? 'date-style' : ''; ?>">
+                                                <input  name="send_type" type="radio" value="2" class="input-radio schedule-trigger valid-fields" required <?php echo $gift->send_type == 2 ? 'checked' : ''; ?>>
                                                 <span>Schedule to send</span>
                                             </div>
-                                            <input type="date" class="input-box date-field">
+                                            <input value="<?php echo date('Y-m-d', strtotime($gift->send_on)); ?>" name="send_on" type="date" class="input-box date-field">
                                         </label>
                                     </div>
                                 </div>
                             </div>
 
+                        </form>
                             <div class="send-actions">
                                 <!-- <button type="button" class="btn btn-default cancel">Cancel</button>-->
                                 <!-- <div class="group"> -->
@@ -214,7 +223,7 @@ if(is_user_logged_in()){
                                 <!-- </div> -->
                             </div>
 
-                        </form>
+
 
 
 
@@ -230,7 +239,7 @@ if(is_user_logged_in()){
                                 </li>
                                 <li class="second">
                                     <h6 class="number">02</h6>
-                                    <span class="caption">Sarvesh's details</span>
+                                    <span class="caption"><?php echo $gift->receiver_name ?>'s details</span>
                                 </li>
                                 <li class="third">
                                     <h6 class="number">03</h6>
@@ -258,11 +267,12 @@ if(is_user_logged_in()){
                                 <p class="modal-caption">You can edit the message once you select a template</p>
                             </div>
                             <div class="modal-body">
-                                <div class="templates">
+                                <form id="select-message-template-form">
+                                    <div class="templates">
                                     <div class="read-more">
                                         <div class="keywords">
-                                            <input type="radio" class="radio-select" name="temp-select">
-                                            <span class="string">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium deserunt accusamus molestias eum aperiam quos.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium deserunt accusamus molestias eum aperiam quos.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium deserunt accusamus molestias eum aperiam quos.</span>
+                                            <input type="radio" class="radio-select" value="1" name="messagetemplate">
+                                            <span id="message-template-1" class="string">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium deserunt accusamus molestias eum aperiam quos.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium deserunt accusamus molestias eum aperiam quos.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium deserunt accusamus molestias eum aperiam quos.</span>
                                         </div>
                                         <div class="count">
                                             <b class="number">134</b> Words
@@ -271,8 +281,8 @@ if(is_user_logged_in()){
                                     <hr>
                                     <div class="read-more">
                                         <div class="keywords">
-                                            <input type="radio" class="radio-select" name="temp-select">
-                                            <span class="string">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium deserunt accusamus molestias eum aperiam quos.</span>
+                                            <input type="radio" class="radio-select" value="2" name="messagetemplate">
+                                            <span id="message-template-2" class="string">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium deserunt accusamus molestias eum aperiam quos.</span>
                                         </div>
                                         <div class="count">
                                             <b class="number">134</b> Words
@@ -281,8 +291,8 @@ if(is_user_logged_in()){
                                     <hr>
                                     <div class="read-more">
                                         <div class="keywords">
-                                            <input type="radio" class="radio-select" name="temp-select">
-                                            <span class="string">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur animi quos quis natus repudiandae aliquam cum. Magni aliquid natus modi praesentium voluptates, autem eius, odit blanditiis non porro cum, doloribus.</span>
+                                            <input type="radio" class="radio-select" value="3" name="messagetemplate">
+                                            <span id="message-template-3" class="string">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur animi quos quis natus repudiandae aliquam cum. Magni aliquid natus modi praesentium voluptates, autem eius, odit blanditiis non porro cum, doloribus.</span>
                                         </div>
                                         <div class="count">
                                             <b class="number">134</b> Words
@@ -290,10 +300,11 @@ if(is_user_logged_in()){
                                     </div>
                                     <hr>
                                 </div>
+                                </form>
                             </div>
                             <div class="modal-footer">
                                 <span class="select-msg">Select a template to proceed</span>
-                                <button type="submit" class="btn btn-primary site-btn-2 disabled">Done</button>
+                                <button type="submit" class="btn btn-primary site-btn-2 disabled" id="select-message-template">Done</button>
                             </div>
                         </div>
                     </div>

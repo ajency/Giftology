@@ -349,16 +349,74 @@ class Ajency_MFG_Gift {
 
     }
 
+    public static function assign_gift_to_user($gift_id) {
+
+        global $wpdb;
+        $table_name = $wpdb->prefix . "giftology_gifts";
+        $wpdb->update($table_name,
+            array('created_by' => get_current_user_id(),),
+            array( 'id' => $gift_id)
+        );
+    }
+
+    function slugify($string, $replace = array(), $delimiter = '-')
+    {
+        // https://github.com/phalcon/incubator/blob/master/Library/Phalcon/Utils/Slug.php
+        if (!extension_loaded('iconv')) {
+            throw new Exception('iconv module not loaded');
+        }
+        // Save the old locale and set the new locale to UTF-8
+        $oldLocale = setlocale(LC_ALL, '0');
+        setlocale(LC_ALL, 'en_US.UTF-8');
+        $clean = iconv('UTF-8', 'ASCII//TRANSLIT', $string);
+        if (!empty($replace)) {
+            $clean = str_replace((array)$replace, ' ', $clean);
+        }
+        $clean = preg_replace("/[^a-zA-Z0-9\/_|+ -]/", '', $clean);
+        $clean = strtolower($clean);
+        $clean = preg_replace("/[\/_|+ -]+/", $delimiter, $clean);
+        $clean = trim($clean, $delimiter);
+        // Revert back to the old locale
+        setlocale(LC_ALL, $oldLocale);
+        return $clean;
+    }
+
     public static function update_gift($data) {
 
         $gift = self::get_gift_details($data['gift_id']);
-        if($gift->created_by > 0 && ($gift->created_by != $data->created_by))
-        {
-            return false;
-        } else {
 
-            //Save the data
+        $data = array(
+            'title' => $data['title'],
+            'contributors_note' => $data['contributors_note'],
+            'receiver_email' => $data['receiver_email'],
+            'receiver_mobile' => $data['receiver_mobile'],
+            'receiver_message' => $data['receiver_message'],
+            'contrib_setting_id' => $data['contrib_setting_id'],
+            'template_id' => $data['template_id'],
+            'img' => $data['img'],
+            'send_type' => $data['send_type'],
+            'send_on' => $data['send_on'],
+            'updated' => current_time( 'mysql' ),
+        );
+
+        if(empty($gift->slug)) {
+
+            $data['slug'] = self::slugify($data['title']).'-'.uniqid();
         }
+
+        if($gift->created_by == get_current_user_id()) {
+            global $wpdb;
+            $table_name = $wpdb->prefix . "giftology_gifts";
+            $wpdb->update($table_name,
+                $data,
+                array( 'id' => $gift->id)
+            );
+            if($wpdb->print_error()) {
+                return false;
+            }
+            return  $gift->id;
+        }
+        return false;
     }
 
     public static function create_gift_minimal($user_id, $fund_id, $recepient_name, $occasion, $contribution_amount) {
