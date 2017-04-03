@@ -503,6 +503,8 @@
             $('input:checked').parent().parent().closest('.template__cover').addClass("active");
         });
         
+        // Contribution conditional check
+
         if($('input[name="contrib_setting_id"]:checked').val() == 1){
             $('.contri-note').addClass('hidden');
         }
@@ -513,6 +515,20 @@
             }
             else{
                 $('.contri-note').removeClass('hidden');
+            }
+        });
+
+        // Date picker triggering
+
+        $('#datetimepicker1').datetimepicker({
+            minDate:new Date(),
+            format: 'DD/MM/YYYY',
+            // debug: true,
+            icons: {
+                up: "fa fa-chevron-circle-up",
+                down: "fa fa-chevron-circle-down",
+                next: 'fa fa-angle-right',
+                previous: 'fa fa-angle-left'
             }
         });
 
