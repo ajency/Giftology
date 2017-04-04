@@ -1,5 +1,7 @@
 <?php
 if( !defined( 'ABSPATH' ) ) exit;
+?>
+<?php
 class AMFG_Buckets_Taxonomy_Options
 {
     /**

@@ -1,6 +1,7 @@
 <?php
 if( !defined( 'ABSPATH' ) ) exit;
-
+?>
+<?php
 class Ajency_MFG_Users {
 
     private $plugin_name;

@@ -1,6 +1,7 @@
 <?php
 if( !defined( 'ABSPATH' ) ) exit;
-
+?>
+<?php
 class Ajencypress_Field_Markup {
 
     const FIELD_TYPE_CHECKBOX = 'checkbox';

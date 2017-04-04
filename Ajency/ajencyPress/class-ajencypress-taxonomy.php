@@ -1,6 +1,7 @@
 <?php
 if( !defined( 'ABSPATH' ) ) exit;
-
+?>
+<?php
 class Ajencypress_Taxonomy {
 
     //Required Variables
