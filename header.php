@@ -1,7 +1,3 @@
-<?php
-if( !defined( 'ABSPATH' ) ) exit;
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,10 +21,7 @@ if( !defined( 'ABSPATH' ) ) exit;
     <![endif]-->
     <?php wp_head(); ?>
 </head>
-
 <body <?php body_class(); ?>>
-
-
 <nav class="gift-header navbar navbar-default" role="navigation">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -98,7 +91,5 @@ if( !defined( 'ABSPATH' ) ) exit;
                 'walker'            => new WP_Bootstrap_Navwalker())
         );
         */?>
-
-
     </div>
 </nav>

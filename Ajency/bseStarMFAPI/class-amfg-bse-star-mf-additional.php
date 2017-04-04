@@ -1,5 +1,7 @@
 <?php
 if( !defined( 'ABSPATH' ) ) exit;
+?>
+<?php
 include 'lib/MFUploadService/autoload.php';
 
 class AMFG_BSE_Star_MF_Additional extends AMFG_BSE_Star_MF {

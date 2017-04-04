@@ -1,6 +1,7 @@
 <?php
 if( !defined( 'ABSPATH' ) ) exit;
-
+?>
+<?php
 include( get_template_directory() . '/Ajency/ajencyPress/class-ajencypress-post-type.php' );
 include( get_template_directory() . '/Ajency/ajencyPress/class-ajencypress-taxonomy.php' );
 include( get_template_directory() . '/Ajency/ajencyPress/class-ajencypress-post-type-metaboxes.php' );

@@ -68,7 +68,7 @@ if(is_user_logged_in()){
                                     </div>
                                     <div class="col occasion">
                                         <p>On the happy occasion of</p>
-                                        <h5><?php echo $gift->receiver_occasion ?></h5>
+                                        <h5><?php echo get_term($gift->receiver_occasion)->name ?></h5>
                                     </div>
                                     <div class="col share">
                                         <!-- <i class="fa fa-share-alt" aria-hidden="true"></i> -->

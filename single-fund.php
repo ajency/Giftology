@@ -262,7 +262,7 @@ if( !defined( 'ABSPATH' ) ) exit;
                                         <select name="receiver_occasion" class="input-box select-box">
                                             <option>-- Please select --</option>
                                             <?php foreach ( $bucket_2_terms as $term) { ?>
-                                                    <option value="<?php echo $term->name; ?>"><?php echo $term->name; ?></option>
+                                                    <option value="<?php echo $term->term_id; ?>"><?php echo $term->name; ?></option>
                                                 <?php } ?>
                                         </select>
                                     </div>

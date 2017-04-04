@@ -1,6 +1,7 @@
 <?php
 if( !defined( 'ABSPATH' ) ) exit;
-
+?>
+<?php
 function gift_invites($atts) {
 
     $gift_id = isset($atts['gift_id']) ? $atts['gift_id'] : $_GET['gift_id'];

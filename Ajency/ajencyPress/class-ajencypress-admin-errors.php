@@ -1,6 +1,7 @@
 <?php
 if( !defined( 'ABSPATH' ) ) exit;
-
+?>
+<?php
 class Ajencypress_Admin_Errors {
 
     function __construct($text_domain)

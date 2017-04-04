@@ -22,7 +22,7 @@ if( !defined( 'ABSPATH' ) ) exit;
                 </div>
                 <div class="col occasion">
                     <p>On the happy occasion of</p>
-                    <h5>Wedding Anniversary</h5>
+                    <h5><?php echo get_term($gift->receiver_occasion)->name ?></h5>
                 </div>
                 <div class="col share">
                     <i class="fa fa-share-alt" aria-hidden="true"></i>
