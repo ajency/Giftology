@@ -51,7 +51,7 @@ class Ajency_MFG_Users {
                 'image_file_dir' => get_template_directory_uri().'/img/',
             ];
 
-            $message = file_get_contents( get_template_directory() . '/Ajency/users/welcome-email-template.html');
+            $message = Ajency_MFG_Email_Template::get_template('/Ajency/users/welcome-email-template.html');
             foreach ($vars as $k => $v) {
                 $message = str_replace('{{'.$k.'}}', $v, $message);
             }
@@ -68,6 +68,10 @@ class Ajency_MFG_Users {
     function new_modify_user_table( $column ) {
         $column['last_logged_in'] = 'Last Login';
         $column['created_on'] = 'Created On';
+        $column['gifts_sent'] = 'Gifts Sent';
+        $column['gifts_rec'] = 'Gifts Received';
+        $column['gifts_sent_amt'] = 'Amount Gifted';
+        $column['gifts_rec_amt'] = 'Amount Received';
         return $column;
     }
 
@@ -79,6 +83,18 @@ class Ajency_MFG_Users {
                 break;
             case 'created_on' :
                 return get_the_author_meta('user_registered',$user_id);
+                break;
+            case 'gifts_sent' :
+                return Ajency_MFG_Gift::get_user_gifts_sent_count($user_id);
+                break;
+            case 'gifts_rec' :
+                return Ajency_MFG_Gift::get_user_gifts_received_count($user_id);
+                break;
+            case 'gifts_sent_amt' :
+                return Ajency_MFG_Gift::get_user_gifts_sent_amt($user_id);
+                break;
+            case 'gifts_rec_amt' :
+                return Ajency_MFG_Gift::get_user_gifts_received_amt($user_id);
                 break;
             default:
         }
