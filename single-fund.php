@@ -268,11 +268,10 @@ if( !defined( 'ABSPATH' ) ) exit;
                                     </div>
                                     <div class="fields contribute">
                                         <label class="input-label required">Amount you wish to contribute</label>
-                                        <input id="contribution_amount" min="<?php echo get_post_meta(get_the_ID(),'_fund_min_investment')[0]; ?>" name="contribution_amount" type="number" class="input-box" placeholder="The amount">
+                                        <input disabled min="<?php echo get_post_meta(get_the_ID(),'_fund_min_investment')[0]; ?>" id="contribution_amount" value="<?php echo get_post_meta(get_the_ID(),'_fund_min_investment')[0]; ?>" name="contribution_amount" type="number" class="input-box" placeholder="The amount">
                                         <br>
                                         <button type="button" id="increment">+ <?php echo get_post_meta(get_the_ID(),'_fund_min_increment')[0]; ?></button>
                                         <button type="button" id="decrement">- <?php echo get_post_meta(get_the_ID(),'_fund_min_increment')[0]; ?></button>
-
                                     </div>
                                 </div>
                             </form>
