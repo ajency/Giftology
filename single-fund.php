@@ -268,7 +268,10 @@ if( !defined( 'ABSPATH' ) ) exit;
                                     </div>
                                     <div class="fields contribute">
                                         <label class="input-label required">Amount you wish to contribute</label>
-                                        <input min="<?php echo get_post_meta(get_the_ID(),'_fund_min_investment')[0]; ?>" name="contribution_amount" type="number" class="input-box" placeholder="The amount">
+                                        <input disabled min="<?php echo get_post_meta(get_the_ID(),'_fund_min_investment')[0]; ?>" id="contribution_amount" value="<?php echo get_post_meta(get_the_ID(),'_fund_min_investment')[0]; ?>" name="contribution_amount" type="number" class="input-box" placeholder="The amount">
+                                        <br>
+                                        <button type="button" id="increment">+ <?php echo get_post_meta(get_the_ID(),'_fund_min_increment')[0]; ?></button>
+                                        <button type="button" id="decrement">- <?php echo get_post_meta(get_the_ID(),'_fund_min_increment')[0]; ?></button>
                                     </div>
                                 </div>
                             </form>
@@ -282,11 +285,23 @@ if( !defined( 'ABSPATH' ) ) exit;
                 </div>
             </div>
         </div>
-
-
-
-
-
-
     </section>
+
+<script>
+    var r = document.getElementById('contribution_amount'),
+        inc = document.getElementById('increment'),
+        dec = document.getElementById('decrement');
+
+
+    inc.addEventListener('click', function() {
+        r.stepUp(<?php echo get_post_meta(get_the_ID(),'_fund_min_increment')[0]; ?>);
+    }, false);
+
+    dec.addEventListener('click', function() {
+        r.stepDown(<?php echo get_post_meta(get_the_ID(),'_fund_min_increment')[0]; ?>);
+    }, false);
+
+
+
+</script>
 <?php get_footer(); ?>

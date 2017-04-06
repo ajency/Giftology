@@ -291,6 +291,54 @@ class Ajency_MFG_Gift {
     }*/
 
 
+    public static function get_gifts_count() {
+        global $wpdb;
+        $gift_query = "select count(id) from wp_giftology_gifts where receiver_id > 0";
+        return $wpdb->get_results($gift_query,ARRAY_N)[0][0];
+
+    }
+
+    public static function get_user_gifts_sent_amt($user_id) {
+        global $wpdb;
+        $gift_query = "select sum(contribution_amount) from wp_giftology_gifts where created_by = ".$user_id;
+        if($wpdb->get_results($gift_query,ARRAY_N)[0][0]) {
+            return $wpdb->get_results($gift_query,ARRAY_N)[0][0];
+        }
+        return 0;
+    }
+
+    public static function get_user_gifts_received_amt($user_id) {
+        global $wpdb;
+        $gift_query = "select sum(contribution_amount) from wp_giftology_gifts where receiver_id = ".$user_id;
+        if($wpdb->get_results($gift_query,ARRAY_N)[0][0]) {
+            return $wpdb->get_results($gift_query,ARRAY_N)[0][0];
+        }
+        return 0;
+    }
+
+    public static function get_user_gifts_sent_count($user_id) {
+        global $wpdb;
+        $gift_query = "select count(id) from wp_giftology_gifts where created_by = ".$user_id;
+        return $wpdb->get_results($gift_query,ARRAY_N)[0][0];
+
+    }
+
+    public static function get_user_gifts_received_count($user_id) {
+        global $wpdb;
+        $gift_query = "select count(id) from wp_giftology_gifts where receiver_id = ".$user_id;
+        return $wpdb->get_results($gift_query,ARRAY_N)[0][0];
+
+    }
+
+    public static function get_gifts($limit = 10, $offset = 0, $order_by = 'updated', $order = 'asc') {
+        global $wpdb;
+
+        $gift_query = "select g.*,p.post_title as fund_name, t.name as amc from wp_giftology_gifts g inner join wp_posts p on g.fund_id = p.id and p.post_type = 'fund' inner join wp_term_relationships tr on tr.object_id = p.id inner join wp_term_taxonomy tt on tr.term_taxonomy_id = tt.term_taxonomy_id and tt.taxonomy = 'amc' inner join wp_terms t on tr.term_taxonomy_id = t.term_id";
+        $gift_query .= " ORDER BY $order_by $order LIMIT $offset, $limit";
+        return $wpdb->get_results($gift_query, ARRAY_A);
+
+     }
+
     public static function get_gift_details($gift_id, $include_fund = false, $by_field = 'id') {
         global $wpdb;
 

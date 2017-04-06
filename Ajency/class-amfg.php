@@ -2,6 +2,14 @@
 if( !defined( 'ABSPATH' ) ) exit;
 ?>
 <?php
+include( get_template_directory() . '/Ajency/ajencyPress/class-ajencypress-post-type.php' );
+include( get_template_directory() . '/Ajency/ajencyPress/class-ajencypress-taxonomy.php' );
+include( get_template_directory() . '/Ajency/ajencyPress/class-ajencypress-post-type-metaboxes.php' );
+include( get_template_directory() . '/Ajency/ajencyPress/class-ajencypress-taxonomy-fields.php' );
+include( get_template_directory() . '/Ajency/ajencyPress/class-ajencypress-field-markup.php' );
+include( get_template_directory() . '/Ajency/ajencyPress/class-ajencypress-field-validation.php' );
+include( get_template_directory() . '/Ajency/ajencyPress/class-ajencypress-admin-errors.php' );
+
 class Ajency_MFG {
 
     private $plugin_name;
@@ -30,6 +38,18 @@ class Ajency_MFG {
         new Ajency_MFG_Frontend($this->plugin_name,$this->version);
 
         include 'gift/class-amfg-gift.php';
+
+        include 'email-templates-common/class-amfg-email-termplates.php';
+
+        if(is_admin())
+        {
+            include 'gift/class-gifts-list.php';
+            new List_Of_Gifts();
+        }
+
+        include 'kyc/class-amfg-kyc.php';
+        new Ajency_MFG_Kyc($this->plugin_name,$this->version);
+
     }
 
 }

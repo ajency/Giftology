@@ -2,13 +2,6 @@
 if( !defined( 'ABSPATH' ) ) exit;
 ?>
 <?php
-include( get_template_directory() . '/Ajency/ajencyPress/class-ajencypress-post-type.php' );
-include( get_template_directory() . '/Ajency/ajencyPress/class-ajencypress-taxonomy.php' );
-include( get_template_directory() . '/Ajency/ajencyPress/class-ajencypress-post-type-metaboxes.php' );
-include( get_template_directory() . '/Ajency/ajencyPress/class-ajencypress-taxonomy-fields.php' );
-include( get_template_directory() . '/Ajency/ajencyPress/class-ajencypress-field-markup.php' );
-include( get_template_directory() . '/Ajency/ajencyPress/class-ajencypress-field-validation.php' );
-include( get_template_directory() . '/Ajency/ajencyPress/class-ajencypress-admin-errors.php' );
 
 
 class Ajency_MFG_Funds {

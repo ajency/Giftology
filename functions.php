@@ -530,5 +530,30 @@ function funds_search_title_filter($where){
 add_filter( 'posts_search', 'funds_search_title_filter' );
 
 
+/*
+ * Code to add gift details to user table
+ */
+
+/*function new_modify_user_table( $column ) {
+    $column['phone'] = 'Phone';
+    $column['xyz'] = 'XYZ';
+    return $column;
+}
+add_filter( 'manage_users_columns', 'new_modify_user_table' );
+
+function new_modify_user_table_row( $val, $column_name, $user_id ) {
+    switch ($column_name) {
+        case 'phone' :
+            return get_the_author_meta( 'phone', $user_id );
+            break;
+        case 'xyz' :
+            return '';
+            break;
+        default:
+    }
+    return $val;
+}
+add_filter( 'manage_users_custom_column', 'new_modify_user_table_row', 10, 3 );*/
+
 $run = new Ajency_MFG('mfgiftology','1.0.0');
 $run->load();
